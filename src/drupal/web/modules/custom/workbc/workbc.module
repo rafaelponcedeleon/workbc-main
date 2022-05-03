@@ -1,0 +1,84 @@
+<?php
+
+/**
+ * @file
+ * Builds placeholder replacement tokens system-wide data.
+ *
+ * This file handles tokens for the global 'site' and 'date' tokens.
+ */
+
+use Drupal\Core\Url;
+use Drupal\Core\Datetime\Entity\DateFormat;
+use Drupal\Core\Render\BubbleableMetadata;
+
+/**
+ * Implements hook_token_info().
+ */
+function workbc_token_info() {
+  $types['node'] = [
+    'name' => t("Node"),
+    'description' => t("Tokens for site-wide settings and other global information."),
+  ];
+
+  // Site-wide global tokens.
+  $node['salary-annual'] = [
+    'name' => t("Annual Salary"),
+    'description' => t("Career Profile Annual Salary."),
+  ];
+  $node['job-openings'] = [
+    'name' => t("Job Openings"),
+    'description' => t("Career Profile Job Openings."),
+  ];
+
+
+  return [
+    'types' => $types,
+    'tokens' => [
+      'node' => $node,
+    ],
+  ];
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function workbc_tokens($type, $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata) {
+  $token_service = \Drupal::token();
+
+  $url_options = ['absolute' => TRUE];
+  if (isset($options['langcode'])) {
+    $url_options['language'] = \Drupal::languageManager()->getLanguage($options['langcode']);
+    $langcode = $options['langcode'];
+  }
+  else {
+    $langcode = NULL;
+  }
+  $replacements = [];
+
+  if ($type == 'node') {
+    // kint($data);
+    $node = $data['node'];
+    // if (!empty($node)) {
+    //  \Drupal::messenger()->addMessage();
+    // }
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'salary-annual':
+          $value = "Annual Salary";
+          $value .= "$83,452";
+          $replacements[$original] =  \Drupal\Core\Render\Markup::create($value);
+          break;
+
+        case 'job-openings':
+
+          $value = "Job Openings ";
+          $value .= "19,590";
+          $replacements[$original] = $value;
+          break;
+
+      }
+    }
+  }
+
+  return $replacements;
+}

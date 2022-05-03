@@ -1,0 +1,5 @@
+name: Work BC
+type: module
+description: 'Handles custom functionality for Work BC.'
+package: Work BC
+core_version_requirement: ^9
