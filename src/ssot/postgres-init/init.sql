@@ -1,5 +1,20 @@
-create role ssot_readonly nologin;
-grant connect on database ssot to ssot_readonly;
-grant usage on schema public to ssot_readonly;
-grant select on all tables in schema public to ssot_readonly;
-alter default privileges in schema public grant select on tables to ssot_readonly;
+CREATE ROLE ssot_readonly nologin;
+GRANT CONNECT ON DATABASE ssot TO ssot_readonly;
+GRANT USAGE ON SCHEMA public TO ssot_readonly;
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO ssot_readonly;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO ssot_readonly;
+
+-- https://postgrest.org/en/stable/schema_cache.html#schema-reloading
+-- Create an event trigger function
+CREATE OR REPLACE FUNCTION public.pgrst_watch() RETURNS event_trigger
+  LANGUAGE plpgsql
+  AS $$
+BEGIN
+  NOTIFY pgrst, 'reload schema';
+END;
+$$;
+
+-- This event trigger will fire after every ddl_command_end event
+CREATE EVENT TRIGGER pgrst_watch
+  ON ddl_command_end
+  EXECUTE PROCEDURE public.pgrst_watch();

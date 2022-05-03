@@ -16,9 +16,730 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+--
+-- Name: pgrst_watch(); Type: FUNCTION; Schema: public; Owner: ssot
+--
+
+CREATE FUNCTION public.pgrst_watch() RETURNS event_trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+  NOTIFY pgrst, 'reload schema';
+END;
+$$;
+
+
+ALTER FUNCTION public.pgrst_watch() OWNER TO ssot;
+
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
+
+--
+-- Name: career_provincial; Type: TABLE; Schema: public; Owner: ssot
+--
+
+CREATE TABLE public.career_provincial (
+    noc text,
+    description text,
+    forecasted_average_employment_growth_rate_2021_2026 text,
+    forecasted_average_employment_growth_rate_2026_2031 text,
+    job_openings_2022 text,
+    job_openings_2026 text,
+    job_openings_2031 text,
+    "10_year_expected_job_openings_2021_2031" text,
+    "10_year_replacement_of_retiring_workers" text,
+    "10_year_replacement_of_retiring_workers_number" text,
+    "10_year_new_jobs_due_to_economic_growth" text,
+    "10_year_new_jobs_due_to_economic_growth_number" text
+);
+
+
+ALTER TABLE public.career_provincial OWNER TO ssot;
+
+--
+-- Name: TABLE career_provincial; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON TABLE public.career_provincial IS '3.3.1_WorkBC_Career_Profile_Data_2021_2031 > Provincial Outlook';
+
+
+--
+-- Name: COLUMN career_provincial.noc; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_provincial.noc IS 'NOC';
+
+
+--
+-- Name: COLUMN career_provincial.description; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_provincial.description IS 'Description';
+
+
+--
+-- Name: COLUMN career_provincial.forecasted_average_employment_growth_rate_2021_2026; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_provincial.forecasted_average_employment_growth_rate_2021_2026 IS 'Forecasted average employment growth rate (%) 2021-2026';
+
+
+--
+-- Name: COLUMN career_provincial.forecasted_average_employment_growth_rate_2026_2031; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_provincial.forecasted_average_employment_growth_rate_2026_2031 IS 'Forecasted average employment growth rate (%) 2026-2031';
+
+
+--
+-- Name: COLUMN career_provincial.job_openings_2022; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_provincial.job_openings_2022 IS 'Job Openings 2022';
+
+
+--
+-- Name: COLUMN career_provincial.job_openings_2026; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_provincial.job_openings_2026 IS 'Job Openings 2026';
+
+
+--
+-- Name: COLUMN career_provincial.job_openings_2031; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_provincial.job_openings_2031 IS 'Job Openings 2031';
+
+
+--
+-- Name: COLUMN career_provincial."10_year_expected_job_openings_2021_2031"; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_provincial."10_year_expected_job_openings_2021_2031" IS '10 year expected job openings 2021-2031';
+
+
+--
+-- Name: COLUMN career_provincial."10_year_replacement_of_retiring_workers"; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_provincial."10_year_replacement_of_retiring_workers" IS '10 year Replacement of retiring workers (%)';
+
+
+--
+-- Name: COLUMN career_provincial."10_year_replacement_of_retiring_workers_number"; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_provincial."10_year_replacement_of_retiring_workers_number" IS '10 year Replacement of retiring workers (Number)';
+
+
+--
+-- Name: COLUMN career_provincial."10_year_new_jobs_due_to_economic_growth"; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_provincial."10_year_new_jobs_due_to_economic_growth" IS '10 year New jobs due to economic growth (%)';
+
+
+--
+-- Name: COLUMN career_provincial."10_year_new_jobs_due_to_economic_growth_number"; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_provincial."10_year_new_jobs_due_to_economic_growth_number" IS '10 year New jobs due to economic growth (Number)';
+
+
+--
+-- Name: career_regional; Type: TABLE; Schema: public; Owner: ssot
+--
+
+CREATE TABLE public.career_regional (
+    noc text,
+    occupation text,
+    cariboo_employment_in_2021 text,
+    cariboo_average_annual_employment_growth_2021_2031 text,
+    cariboo_expected_number_of_job_openings_2021_2031 text,
+    kootenay_employment_in_2021 text,
+    kootenay_average_annual_employment_growth_2021_2031 text,
+    kootenay_expected_number_of_job_openings_2021_2031 text,
+    mainland_southwest_employment_in_2021 text,
+    mainland_southwest_average_annual_employment_growth_2021_2031 text,
+    mainland_southwest_expected_number_of_job_openings_2021_2031 text,
+    north_coast_and_nechako_employment_in_2021 text,
+    north_coast_and_nechako_average_annual_employment_growth_2021_2 text,
+    north_coast_and_nechako_expected_number_of_job_openings_2021_20 text,
+    northeast_employment_in_2021 text,
+    northeast_average_annual_employment_growth_2021_2031 text,
+    northeast_expected_number_of_job_openings_2021_2031 text,
+    thompson_okanagan_employment_in_2021 text,
+    thompson_okanagan_average_annual_employment_growth_2021_2031 text,
+    thompson_okanagan_expected_number_of_job_openings_2021_2031 text,
+    vancouver_island_coast_employment_in_2021 text,
+    vancouver_island_coast_average_annual_employment_growth_2021_20 text,
+    vancouver_island_coast_expected_number_of_job_openings_2021_203 text
+);
+
+
+ALTER TABLE public.career_regional OWNER TO ssot;
+
+--
+-- Name: TABLE career_regional; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON TABLE public.career_regional IS '3.3.1_WorkBC_Career_Profile_Data_2021_2031 > Regional Outlook';
+
+
+--
+-- Name: COLUMN career_regional.noc; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_regional.noc IS 'NOC';
+
+
+--
+-- Name: COLUMN career_regional.occupation; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_regional.occupation IS 'Occupation';
+
+
+--
+-- Name: COLUMN career_regional.cariboo_employment_in_2021; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_regional.cariboo_employment_in_2021 IS 'Cariboo
+Employment in 2021';
+
+
+--
+-- Name: COLUMN career_regional.cariboo_average_annual_employment_growth_2021_2031; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_regional.cariboo_average_annual_employment_growth_2021_2031 IS 'Cariboo Average annual employment growth (%) 2021-2031';
+
+
+--
+-- Name: COLUMN career_regional.cariboo_expected_number_of_job_openings_2021_2031; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_regional.cariboo_expected_number_of_job_openings_2021_2031 IS 'Cariboo Expected number of job openings 2021-2031';
+
+
+--
+-- Name: COLUMN career_regional.kootenay_employment_in_2021; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_regional.kootenay_employment_in_2021 IS 'Kootenay
+Employment in 2021';
+
+
+--
+-- Name: COLUMN career_regional.kootenay_average_annual_employment_growth_2021_2031; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_regional.kootenay_average_annual_employment_growth_2021_2031 IS 'Kootenay Average annual employment growth (%) 2021-2031';
+
+
+--
+-- Name: COLUMN career_regional.kootenay_expected_number_of_job_openings_2021_2031; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_regional.kootenay_expected_number_of_job_openings_2021_2031 IS 'Kootenay Expected number of job openings 2021-2031';
+
+
+--
+-- Name: COLUMN career_regional.mainland_southwest_employment_in_2021; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_regional.mainland_southwest_employment_in_2021 IS 'Mainland/Southwest
+Employment in 2021';
+
+
+--
+-- Name: COLUMN career_regional.mainland_southwest_average_annual_employment_growth_2021_2031; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_regional.mainland_southwest_average_annual_employment_growth_2021_2031 IS 'Mainland/Southwest Average annual employment growth (%) 2021-2031';
+
+
+--
+-- Name: COLUMN career_regional.mainland_southwest_expected_number_of_job_openings_2021_2031; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_regional.mainland_southwest_expected_number_of_job_openings_2021_2031 IS 'Mainland/Southwest Expected number of job openings 2021-2031';
+
+
+--
+-- Name: COLUMN career_regional.north_coast_and_nechako_employment_in_2021; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_regional.north_coast_and_nechako_employment_in_2021 IS 'North Coast and Nechako
+Employment in 2021';
+
+
+--
+-- Name: COLUMN career_regional.north_coast_and_nechako_average_annual_employment_growth_2021_2; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_regional.north_coast_and_nechako_average_annual_employment_growth_2021_2 IS 'North Coast and Nechako Average annual employment growth (%) 2021-2031';
+
+
+--
+-- Name: COLUMN career_regional.north_coast_and_nechako_expected_number_of_job_openings_2021_20; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_regional.north_coast_and_nechako_expected_number_of_job_openings_2021_20 IS 'North Coast and Nechako Expected number of job openings 2021-2031';
+
+
+--
+-- Name: COLUMN career_regional.northeast_employment_in_2021; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_regional.northeast_employment_in_2021 IS 'Northeast
+Employment in 2021';
+
+
+--
+-- Name: COLUMN career_regional.northeast_average_annual_employment_growth_2021_2031; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_regional.northeast_average_annual_employment_growth_2021_2031 IS 'Northeast Average annual employment growth (%) 2021-2031';
+
+
+--
+-- Name: COLUMN career_regional.northeast_expected_number_of_job_openings_2021_2031; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_regional.northeast_expected_number_of_job_openings_2021_2031 IS 'Northeast Expected number of job openings 2021-2031';
+
+
+--
+-- Name: COLUMN career_regional.thompson_okanagan_employment_in_2021; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_regional.thompson_okanagan_employment_in_2021 IS 'Thompson-Okanagan
+Employment in 2021';
+
+
+--
+-- Name: COLUMN career_regional.thompson_okanagan_average_annual_employment_growth_2021_2031; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_regional.thompson_okanagan_average_annual_employment_growth_2021_2031 IS 'Thompson-Okanagan Average annual employment growth (%) 2021-2031';
+
+
+--
+-- Name: COLUMN career_regional.thompson_okanagan_expected_number_of_job_openings_2021_2031; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_regional.thompson_okanagan_expected_number_of_job_openings_2021_2031 IS 'Thompson-Okanagan Expected number of job openings 2021-2031';
+
+
+--
+-- Name: COLUMN career_regional.vancouver_island_coast_employment_in_2021; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_regional.vancouver_island_coast_employment_in_2021 IS 'Vancouver Island/Coast
+Employment in 2021';
+
+
+--
+-- Name: COLUMN career_regional.vancouver_island_coast_average_annual_employment_growth_2021_20; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_regional.vancouver_island_coast_average_annual_employment_growth_2021_20 IS 'Vancouver Island/Coast Average annual employment growth (%) 2021-2031';
+
+
+--
+-- Name: COLUMN career_regional.vancouver_island_coast_expected_number_of_job_openings_2021_203; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.career_regional.vancouver_island_coast_expected_number_of_job_openings_2021_203 IS 'Vancouver Island/Coast Expected number of job openings 2021-2031';
+
+
+--
+-- Name: census; Type: TABLE; Schema: public; Owner: ssot
+--
+
+CREATE TABLE public.census (
+    noc text,
+    description text,
+    workforce_characteristics_workers_are_employed text,
+    workforce_characteristics_of_workers_are_working_mostly_full_ti text,
+    employment_by_gender_men text,
+    employment_by_gender_women text,
+    employment_by_age_group_15_24 text,
+    employment_by_age_group_25_44 text,
+    employment_by_age_group_45_64 text,
+    employment_by_age_group_65 text,
+    cariboo_employment_of_this_occupation text,
+    cariboo_employment_of_all_occupations text,
+    kootenay_employment_of_this_occupation text,
+    kootenay_employment_of_all_occupations text,
+    mainland_southwest_employment_of_this_occupation text,
+    mainland_southwest_employment_of_all_occupations text,
+    north_coast_nechako_employment_of_this_occupation text,
+    north_coast_nechako_employment_of_all_occupations text,
+    northeast_employment_of_this_occupation text,
+    northeast_employment_of_all_occupations text,
+    thompson_okanagan_employment_of_this_occupation text,
+    thompson_okanagan_employment_of_all_occupations text,
+    vancouver_island_coast_employment_of_this_occupation text,
+    vancouver_island_coast_employment_of_all_occupations text,
+    industry_1_name text,
+    industry_1 text,
+    industry_2_name text,
+    industry_2 text,
+    industry_3_name text,
+    industry_3 text,
+    industry_4_name text,
+    industry_4 text,
+    industry_5_name text,
+    industry_5 text
+);
+
+
+ALTER TABLE public.census OWNER TO ssot;
+
+--
+-- Name: TABLE census; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON TABLE public.census IS '2016 Census > Career Profiles';
+
+
+--
+-- Name: COLUMN census.noc; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.noc IS 'NOC';
+
+
+--
+-- Name: COLUMN census.description; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.description IS 'Description';
+
+
+--
+-- Name: COLUMN census.workforce_characteristics_workers_are_employed; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.workforce_characteristics_workers_are_employed IS 'Workforce characteristics: workers are employed';
+
+
+--
+-- Name: COLUMN census.workforce_characteristics_of_workers_are_working_mostly_full_ti; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.workforce_characteristics_of_workers_are_working_mostly_full_ti IS 'Workforce characteristics: of workers are working mostly full time (%)';
+
+
+--
+-- Name: COLUMN census.employment_by_gender_men; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.employment_by_gender_men IS 'Employment
+by gender (%): Men';
+
+
+--
+-- Name: COLUMN census.employment_by_gender_women; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.employment_by_gender_women IS 'Employment by gender (%): Women';
+
+
+--
+-- Name: COLUMN census.employment_by_age_group_15_24; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.employment_by_age_group_15_24 IS 'Employment by age group (%): 15-24';
+
+
+--
+-- Name: COLUMN census.employment_by_age_group_25_44; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.employment_by_age_group_25_44 IS 'Employment
+by age group (%): 25-44';
+
+
+--
+-- Name: COLUMN census.employment_by_age_group_45_64; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.employment_by_age_group_45_64 IS 'Employment by age group (%): 45-64';
+
+
+--
+-- Name: COLUMN census.employment_by_age_group_65; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.employment_by_age_group_65 IS 'Employment by age group (%): 65+ ';
+
+
+--
+-- Name: COLUMN census.cariboo_employment_of_this_occupation; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.cariboo_employment_of_this_occupation IS 'Cariboo:
+% employment of this occupation';
+
+
+--
+-- Name: COLUMN census.cariboo_employment_of_all_occupations; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.cariboo_employment_of_all_occupations IS 'Cariboo: % employment of all occupations';
+
+
+--
+-- Name: COLUMN census.kootenay_employment_of_this_occupation; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.kootenay_employment_of_this_occupation IS 'Kootenay:
+% employment of this occupation';
+
+
+--
+-- Name: COLUMN census.kootenay_employment_of_all_occupations; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.kootenay_employment_of_all_occupations IS 'Kootenay: % employment of all occupations';
+
+
+--
+-- Name: COLUMN census.mainland_southwest_employment_of_this_occupation; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.mainland_southwest_employment_of_this_occupation IS 'Mainland/Southwest:
+% employment of this occupation';
+
+
+--
+-- Name: COLUMN census.mainland_southwest_employment_of_all_occupations; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.mainland_southwest_employment_of_all_occupations IS 'Mainland/Southwest: % employment of all occupations';
+
+
+--
+-- Name: COLUMN census.north_coast_nechako_employment_of_this_occupation; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.north_coast_nechako_employment_of_this_occupation IS 'North Coast & Nechako:
+% employment of this occupation';
+
+
+--
+-- Name: COLUMN census.north_coast_nechako_employment_of_all_occupations; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.north_coast_nechako_employment_of_all_occupations IS 'North Coast & Nechako: % employment of all occupations';
+
+
+--
+-- Name: COLUMN census.northeast_employment_of_this_occupation; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.northeast_employment_of_this_occupation IS 'Northeast:
+% employment of this occupation';
+
+
+--
+-- Name: COLUMN census.northeast_employment_of_all_occupations; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.northeast_employment_of_all_occupations IS 'Northeast: % employment of all occupations';
+
+
+--
+-- Name: COLUMN census.thompson_okanagan_employment_of_this_occupation; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.thompson_okanagan_employment_of_this_occupation IS 'Thompson-Okanagan:
+% employment of this occupation';
+
+
+--
+-- Name: COLUMN census.thompson_okanagan_employment_of_all_occupations; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.thompson_okanagan_employment_of_all_occupations IS 'Thompson-Okanagan: % employment of all occupations';
+
+
+--
+-- Name: COLUMN census.vancouver_island_coast_employment_of_this_occupation; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.vancouver_island_coast_employment_of_this_occupation IS 'Vancouver Island/Coast:
+% employment of this occupation';
+
+
+--
+-- Name: COLUMN census.vancouver_island_coast_employment_of_all_occupations; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.vancouver_island_coast_employment_of_all_occupations IS 'Vancouver Island/Coast: % employment of all occupations';
+
+
+--
+-- Name: COLUMN census.industry_1_name; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.industry_1_name IS 'Industry 1:
+Name';
+
+
+--
+-- Name: COLUMN census.industry_1; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.industry_1 IS 'Industry 1: %';
+
+
+--
+-- Name: COLUMN census.industry_2_name; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.industry_2_name IS 'Industry 2:
+Name';
+
+
+--
+-- Name: COLUMN census.industry_2; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.industry_2 IS 'Industry 2: %';
+
+
+--
+-- Name: COLUMN census.industry_3_name; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.industry_3_name IS 'Industry 3:
+Name';
+
+
+--
+-- Name: COLUMN census.industry_3; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.industry_3 IS 'Industry 3: %';
+
+
+--
+-- Name: COLUMN census.industry_4_name; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.industry_4_name IS 'Industry 4:
+Name';
+
+
+--
+-- Name: COLUMN census.industry_4; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.industry_4 IS 'Industry 4: %';
+
+
+--
+-- Name: COLUMN census.industry_5_name; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.industry_5_name IS 'Industry 5:
+Name';
+
+
+--
+-- Name: COLUMN census.industry_5; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.census.industry_5 IS 'Industry 5: %';
+
+
+--
+-- Name: education; Type: TABLE; Schema: public; Owner: ssot
+--
+
+CREATE TABLE public.education (
+    noc text,
+    description text,
+    typical_education_background text
+);
+
+
+ALTER TABLE public.education OWNER TO ssot;
+
+--
+-- Name: TABLE education; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON TABLE public.education IS 'All Occupation''s Education Background';
+
+
+--
+-- Name: COLUMN education.noc; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.education.noc IS '4-digit NOC';
+
+
+--
+-- Name: COLUMN education.description; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.education.description IS 'Description';
+
+
+--
+-- Name: COLUMN education.typical_education_background; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.education.typical_education_background IS 'Typical Education Background';
+
+
+--
+-- Name: titles; Type: TABLE; Schema: public; Owner: ssot
+--
+
+CREATE TABLE public.titles (
+    noc text,
+    nameenglish text,
+    commonjobtitle text
+);
+
+
+ALTER TABLE public.titles OWNER TO ssot;
+
+--
+-- Name: TABLE titles; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON TABLE public.titles IS 'Common Job Titles revised - July 18 2017 (RA)';
+
+
+--
+-- Name: COLUMN titles.noc; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.titles.noc IS 'NOCCodeWithLeadingZeros';
+
+
+--
+-- Name: COLUMN titles.nameenglish; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.titles.nameenglish IS 'NameEnglish';
+
+
+--
+-- Name: COLUMN titles.commonjobtitle; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON COLUMN public.titles.commonjobtitle IS 'CommonJobTitle';
+
 
 --
 -- Name: wages; Type: TABLE; Schema: public; Owner: ssot
@@ -36,6 +757,13 @@ CREATE TABLE public.wages (
 
 
 ALTER TABLE public.wages OWNER TO ssot;
+
+--
+-- Name: TABLE wages; Type: COMMENT; Schema: public; Owner: ssot
+--
+
+COMMENT ON TABLE public.wages IS 'WorkBC_2021_Wage_Data';
+
 
 --
 -- Name: COLUMN wages.noc; Type: COMMENT; Schema: public; Owner: ssot
@@ -88,6 +816,9535 @@ COMMENT ON COLUMN public.wages.calculated_median_annual_salary_2021 IS 'Calculat
 --
 
 COMMENT ON COLUMN public.wages.source_information IS 'Source Information';
+
+
+--
+-- Data for Name: career_provincial; Type: TABLE DATA; Schema: public; Owner: ssot
+--
+
+COPY public.career_provincial (noc, description, forecasted_average_employment_growth_rate_2021_2026, forecasted_average_employment_growth_rate_2026_2031, job_openings_2022, job_openings_2026, job_openings_2031, "10_year_expected_job_openings_2021_2031", "10_year_replacement_of_retiring_workers", "10_year_replacement_of_retiring_workers_number", "10_year_new_jobs_due_to_economic_growth", "10_year_new_jobs_due_to_economic_growth_number") FROM stdin;
+4111	Judges\t\t\t\t\t\t\t\t\t\t\t\t	0.5	0.5	20	10	10	120	85.7	120	14.3	20
+0011	Legislators\t\t\t\t\t\t\t\t\t\t\t	0.7	0.8	60	50	50	500	84	420	16.0	80
+0012	Senior government managers and officials\t\t\t\t\t\t\t\t	0.5	0.6	150	130	130	1300	90.1	1180	9.9	130
+0013	Senior managers - financial, communications and other business services\t\t\t\t	2.7	2.2	640	660	680	6510	54.8	3570	45.2	2940
+0014	Senior managers - health, education, social and community services and membership organizations\t	2.4	1.4	390	270	280	2810	70.8	1990	29.2	820
+0015	Senior managers - trade, broadcasting and other services, n.e.c.\t\t\t\t\t	2	1.2	550	350	390	3910	70.3	2740	29.7	1160
+0016	Senior managers - construction, transportation, production and utilities\t\t\t\t	0.9	0.4	520	370	350	3940	86.1	3400	13.9	550
+0111	Financial managers\t\t\t\t\t\t\t\t\t\t	1.4	0.9	610	460	500	4920	75.5	3700	24.5	1200
+0112	Human resources managers\t\t\t\t\t\t\t\t\t\t	1.5	1.1	330	280	310	2890	70.6	2040	29.4	850
+0113	Purchasing managers\t\t\t\t\t\t\t\t\t\t	1.4	0.9	190	150	160	1580	79.1	1250	20.9	330
+0114	Other administrative services managers\t\t\t\t\t\t\t\t	1.7	1.2	360	280	310	2960	74.6	2200	25.4	750
+0121	Insurance, real estate and financial brokerage managers\t\t\t\t\t\t	1.3	0.5	510	300	320	3130	77.6	2420	22.4	700
+0122	Banking, credit and other investment managers\t\t\t\t\t\t\t	1.2	0.3	430	340	360	3640	81	2940	19.0	690
+0124	Advertising, marketing and public relations managers\t\t\t\t\t\t	1.8	1.4	540	360	450	4140	53.5	2210	46.5	1920
+0125	Other business services managers\t\t\t\t\t\t\t\t\t	1.7	1.4	300	240	270	2490	73	1810	27.0	670
+0131	Telecommunication carriers managers\t\t\t\t\t\t\t\t	1.3	-0.2	120	50	50	580	88.3	530	11.7	70
+0132	Postal and courier services managers\t\t\t\t\t\t\t\t	1.4	0.9	20	20	20	210	61.9	130	38.1	80
+0211	Engineering managers\t\t\t\t\t\t\t\t\t\t	1.6	1.2	170	160	160	1570	71.7	1140	28.3	450
+0212	Architecture and science managers\t\t\t\t\t\t\t\t	1.1	1	70	60	70	650	77.6	520	22.4	150
+0213	Computer and information systems managers\t\t\t\t\t\t\t	3.3	2.5	780	830	830	8050	55.4	4450	44.6	3580
+0311	Managers in health care\t\t\t\t\t\t\t\t\t\t	1	1.9	250	320	380	3220	70.9	2290	29.1	940
+0411	Government managers - health and social policy development and program administration\t\t	0.4	0.4	30	30	30	300	90.3	280	9.7	30
+0412	Government managers - economic analysis, policy development and program administration\t\t	0.4	0.5	60	50	60	540	90.6	480	9.4	50
+0413	Government managers - education policy development and program administration\t\t\t	0.8	0.5	10	10	10	100	87.5	70	12.5	10
+0414	Other managers in public administration\t\t\t\t\t\t\t\t	0.5	0.7	60	50	60	540	88.9	480	11.1	60
+0421	Administrators - post-secondary education and vocational training\t\t\t\t	1.5	0.1	240	120	140	1420	81.1	1160	18.9	270
+0422	School principals and administrators of elementary and secondary education\t\t\t	0.1	0.7	150	190	200	1870	92	1720	8.0	150
+0423	Managers in social, community and correctional services\t\t\t\t\t\t	1.8	1.5	320	280	300	2830	67.3	1910	32.7	930
+0431	Commissioned police officers\t\t\t\t\t\t\t\t\t	0.2	0.9	10	10	10	100	92.3	120	7.7	10
+0432	Fire chiefs and senior firefighting officers\t\t\t\t\t\t\t	0.6	1.2	40	40	40	390	89.2	330	10.8	40
+0433	Commissioned officers of the Canadian Forces\t\t\t\t\t\t\t	-0.3	0.1	50	40	50	430	100	410	0.0	0
+0511	Library, archive, museum and art gallery managers\t\t\t\t\t\t	1.1	1	30	30	30	290	77.8	210	22.2	60
+0512	Managers - publishing, motion pictures, broadcasting and performing arts\t\t\t\t	2	1	130	80	90	900	76.7	690	23.3	210
+0513	Recreation, sports and fitness program and service directors\t\t\t\t\t	3.7	1.5	250	130	120	1380	53.6	750	46.4	650
+0601	Corporate sales managers\t\t\t\t\t\t\t\t\t\t	1.8	1.3	240	190	210	2040	71.7	1470	28.3	580
+0621	Retail and wholesale trade managers\t\t\t\t\t\t\t\t	1.5	1	2720	1750	2000	20010	66.8	13360	33.2	6640
+0631	Restaurant and food service managers\t\t\t\t\t\t\t\t	2	1.1	1180	900	930	9330	65.1	6070	34.9	3250
+0632	Accommodation service managers\t\t\t\t\t\t\t\t\t	2.4	1.6	730	540	560	5760	59.7	3440	40.3	2320
+0651	Managers in customer and personal services, n.e.c.\t\t\t\t\t\t	2.8	1.4	470	210	260	2490	52	1290	48.0	1190
+0711	Construction managers\t\t\t\t\t\t\t\t\t\t	1.2	0.6	1080	810	710	8380	81	6790	19.0	1590
+0712	Home building and renovation managers\t\t\t\t\t\t\t\t	1	0.5	1320	960	750	9810	81.8	8020	18.2	1780
+0714	Facility operation and maintenance managers\t\t\t\t\t\t\t	1.9	1	790	510	530	5460	72.7	3960	27.3	1490
+0731	Managers in transportation\t\t\t\t\t\t\t\t\t	1.8	1.1	440	280	310	3160	69.7	2210	30.3	960
+0811	Managers in natural resources production and fishing\t\t\t\t\t\t	-0.1	0.1	100	100	110	1010	100	1000	0.0	0
+0821	Managers in agriculture\t\t\t\t\t\t\t\t\t\t	0.4	0.2	480	330	330	3650	91.2	3330	8.8	320
+0822	Managers in horticulture\t\t\t\t\t\t\t\t\t\t	0.2	0.1	30	30	30	290	96.2	250	3.8	10
+0823	Managers in aquaculture\t\t\t\t\t\t\t\t\t\t	0	0.2	10	10	10	100	100	120	0.0	0
+0911	Manufacturing managers\t\t\t\t\t\t\t\t\t\t	0.6	0.2	470	400	410	4180	90.2	3780	9.8	410
+0912	Utilities managers\t\t\t\t\t\t\t\t\t\t	0.8	0.6	100	90	100	910	86.8	790	13.2	120
+1111	Financial auditors and accountants\t\t\t\t\t\t\t\t	1.2	1.1	1630	890	1080	11160	66.7	7440	33.3	3710
+1112	Financial and investment analysts\t\t\t\t\t\t\t\t	1.1	0.6	190	140	150	1520	73.2	1120	26.8	410
+1113	Securities agents, investment dealers and brokers\t\t\t\t\t\t	1	0.2	130	100	90	1030	83.5	860	16.5	170
+1114	Other financial officers\t\t\t\t\t\t\t\t\t\t	1.1	0.3	780	550	530	5870	76.8	4490	23.2	1360
+1121	Human resources professionals\t\t\t\t\t\t\t\t\t	1.5	1.1	440	320	330	3310	62.7	2080	37.3	1240
+1122	Professional occupations in business management consulting\t\t\t\t\t	1.8	1.6	530	500	520	5070	57.9	2930	42.1	2130
+1123	Professional occupations in advertising, marketing and public relations\t\t\t\t	2	1.4	790	450	510	5240	54.8	2870	45.2	2370
+1211	Supervisors, general office and administrative support workers\t\t\t\t\t	1.2	1	100	90	100	940	76.3	710	23.7	220
+1212	Supervisors, finance and insurance office workers\t\t\t\t\t\t	1.3	0.9	150	110	120	1200	76.7	920	23.3	280
+1213	Supervisors, library, correspondence and related information workers\t\t\t\t	0.1	0.3	20	20	20	200	94.7	180	5.3	10
+1214	Supervisors, mail and message distribution occupations\t\t\t\t\t\t	1.4	1	60	40	50	510	75	390	25.0	130
+1215	Supervisors, supply chain, tracking and scheduling co-ordination occupations\t\t\t	1.8	1	420	280	310	3080	68.3	2090	31.7	970
+1221	Administrative officers\t\t\t\t\t\t\t\t\t\t	1.5	1	2400	1750	1940	18930	73.5	13900	26.5	5020
+1222	Executive assistants\t\t\t\t\t\t\t\t\t\t	1.4	1	320	220	230	2350	67.4	1590	32.6	770
+1223	Human resources and recruitment officers\t\t\t\t\t\t\t\t	1.4	1.4	150	130	160	1290	59.7	770	40.3	520
+1224	Property administrators\t\t\t\t\t\t\t\t\t\t	1.6	0.5	950	400	360	4350	75.9	3300	24.1	1050
+1225	Purchasing agents and officers\t\t\t\t\t\t\t\t\t	1.4	0.8	340	230	220	2480	73.8	1830	26.2	650
+1226	Conference and event planners\t\t\t\t\t\t\t\t\t	2.2	1.1	270	120	140	1410	52.4	750	47.6	680
+1227	Court officers and justices of the peace\t\t\t\t\t\t\t\t	0.6	0.7	20	10	10	110	85.7	120	14.3	20
+1228	Employment insurance, immigration, border services and revenue officers\t\t\t\t	-0.1	0.3	100	90	110	960	96.9	930	3.1	30
+1241	Administrative assistants\t\t\t\t\t\t\t\t\t	1.3	0.9	1590	940	940	10370	69	7140	31.0	3210
+1242	Legal administrative assistants\t\t\t\t\t\t\t\t\t	1	1.1	380	140	220	2280	65.9	1510	34.1	780
+1243	Medical administrative assistants\t\t\t\t\t\t\t\t	1	1.7	170	190	200	1890	63.3	1190	36.7	690
+1251	Court reporters, medical transcriptionists and related occupations\t\t\t\t	1.3	1.6	90	80	90	820	63	510	37.0	300
+1252	Health information management occupations\t\t\t\t\t\t\t	0.8	1.6	30	30	30	320	71.9	230	28.1	90
+1253	Records management technicians\t\t\t\t\t\t\t\t\t	1.3	1.2	30	20	20	210	66.7	160	33.3	80
+1254	Statistical officers and related research support occupations\t\t\t\t\t	1.9	1.5	20	20	20	200	52.6	100	47.4	90
+1311	Accounting technicians and bookkeepers\t\t\t\t\t\t\t\t	1.3	0.9	1570	790	830	9750	71.7	6980	28.3	2760
+1312	Insurance adjusters and claims examiners\t\t\t\t\t\t\t\t	1.1	0.9	170	170	170	1530	69.1	1050	30.9	470
+1313	Insurance underwriters\t\t\t\t\t\t\t\t\t\t	1.1	1	60	60	60	520	66.7	340	33.3	170
+1314	Assessors, valuators and appraisers\t\t\t\t\t\t\t\t	1.4	0.5	120	50	50	560	71.4	400	28.6	160
+1315	Customs, ship and other brokers\t\t\t\t\t\t\t\t\t	2.5	1.7	50	30	30	370	58.3	210	41.7	150
+1411	General office support workers\t\t\t\t\t\t\t\t\t	1.2	1.1	1940	1330	1380	14300	67.1	9610	32.9	4710
+1414	Receptionists\t\t\t\t\t\t\t\t\t\t\t	1.6	1.3	1470	870	940	9730	54.8	5330	45.2	4400
+1415	Personnel clerks\t\t\t\t\t\t\t\t\t\t\t	1	1.1	80	70	70	700	69.4	500	30.6	220
+1416	Court clerks\t\t\t\t\t\t\t\t\t\t\t	0.5	0.5	20	10	10	110	84.6	110	15.4	20
+1422	Data entry clerks\t\t\t\t\t\t\t\t\t\t	1.3	1.1	200	140	150	1480	61.9	910	38.1	560
+1423	Desktop publishing operators and related occupations\t\t\t\t\t\t	1.9	1.5	20	10	10	110	54.5	60	45.5	50
+1431	Accounting and related clerks\t\t\t\t\t\t\t\t\t	1.3	1	1180	690	720	7900	68	5370	32.0	2530
+1432	Payroll clerks\t\t\t\t\t\t\t\t\t\t\t	1.1	1	250	180	180	1910	70.8	1360	29.2	560
+1434	Banking, insurance and other financial clerks\t\t\t\t\t\t\t	1.1	0.5	130	90	90	930	73.1	680	26.9	250
+1435	Collectors\t\t\t\t\t\t\t\t\t\t\t	1	0.9	50	40	50	410	69	290	31.0	130
+1451	Library assistants and clerks\t\t\t\t\t\t\t\t\t	1	0.7	90	50	50	510	74.5	380	25.5	130
+1452	Correspondence, publication and regulatory clerks\t\t\t\t\t\t	1	1	150	120	130	1270	70.1	890	29.9	380
+1454	Survey interviewers and statistical clerks\t\t\t\t\t\t\t	0.8	0.9	80	50	50	550	73.7	420	26.3	150
+1511	Mail, postal and related workers\t\t\t\t\t\t\t\t\t	1.4	1	210	140	150	1680	64.9	1090	35.1	590
+1512	Letter carriers\t\t\t\t\t\t\t\t\t\t\t	1.5	0.9	240	160	180	1920	64.8	1250	35.2	680
+1513	Couriers, messengers and door-to-door distributors\t\t\t\t\t\t	1.5	0.8	260	140	150	1610	64	1030	36.0	580
+1521	Shippers and receivers\t\t\t\t\t\t\t\t\t\t	1.5	0.9	650	370	370	4200	62	2610	38.0	1600
+1522	Storekeepers and partspersons\t\t\t\t\t\t\t\t\t	2.1	1	390	180	180	2240	60.1	1340	39.9	890
+1523	Production logistics co-ordinators\t\t\t\t\t\t\t\t	1.5	1	180	120	120	1310	65.9	870	34.1	450
+1524	Purchasing and inventory control workers\t\t\t\t\t\t\t\t	1.4	1.1	190	130	130	1360	62.8	860	37.2	510
+1525	Dispatchers\t\t\t\t\t\t\t\t\t\t\t	1	1	260	200	210	2050	72.9	1480	27.1	550
+1526	Transportation route and crew schedulers\t\t\t\t\t\t\t\t	2	1.1	50	30	30	330	60	180	40.0	120
+2111	Physicists and astronomers\t\t\t\t\t\t\t\t\t	1.1	1.2	20	10	10	120	61.5	80	38.5	50
+2112	Chemists\t\t\t\t\t\t\t\t\t\t\t\t	0.8	1	50	40	50	460	72.3	340	27.7	130
+2113	Geoscientists and oceanographers\t\t\t\t\t\t\t\t\t	1.5	1.1	100	70	70	760	64.5	490	35.5	270
+2114	Meteorologists and climatologists\t\t\t\t\t\t\t\t	0.6	0.8	10	0	0	20	75	30	25.0	10
+2115	Other professional occupations in physical sciences\t\t\t\t\t\t	1.9	1	10	10	10	100	57.1	40	42.9	30
+2121	Biologists and related scientists\t\t\t\t\t\t\t\t	0.9	1.1	100	90	130	1080	58.3	630	41.7	450
+2122	Forestry professionals\t\t\t\t\t\t\t\t\t\t	-0.8	0.3	0	20	40	260	100	270	0.0	0
+2123	Agricultural representatives, consultants and specialists\t\t\t\t\t	1.1	1	20	10	10	180	70.6	120	29.4	50
+2131	Civil engineers\t\t\t\t\t\t\t\t\t\t\t	1.4	1.3	510	440	430	4410	66.4	2930	33.6	1480
+2132	Mechanical engineers\t\t\t\t\t\t\t\t\t\t	1.6	1.2	300	200	210	2210	55.7	1230	44.3	980
+2133	Electrical and electronics engineers\t\t\t\t\t\t\t\t	1.6	1.3	300	240	240	2440	56.4	1370	43.6	1060
+2134	Chemical engineers\t\t\t\t\t\t\t\t\t\t	1	1	40	40	40	410	69.8	300	30.2	130
+2141	Industrial and manufacturing engineers\t\t\t\t\t\t\t\t	1.3	1	70	50	50	520	67.9	360	32.1	170
+2142	Metallurgical and materials engineers\t\t\t\t\t\t\t\t	1.3	1	20	10	10	110	61.5	80	38.5	50
+2143	Mining engineers\t\t\t\t\t\t\t\t\t\t\t	1.5	0.8	30	20	20	240	54.5	120	45.5	100
+2144	Geological engineers\t\t\t\t\t\t\t\t\t\t	1.3	1.4	40	40	50	430	55.8	240	44.2	190
+2145	Petroleum engineers\t\t\t\t\t\t\t\t\t\t	1.9	1.2	10	10	10	100	60	60	40.0	40
+2146	Aerospace engineers\t\t\t\t\t\t\t\t\t\t	3.5	0.7	40	10	10	150	53.3	80	46.7	70
+2147	Computer engineers (except software engineers and designers)\t\t\t\t\t	2.9	2.3	190	170	150	1650	46.1	770	53.9	900
+2148	Other professional engineers, n.e.c.\t\t\t\t\t\t\t\t	1.7	1.1	70	30	40	410	59	230	41.0	160
+2151	Architects\t\t\t\t\t\t\t\t\t\t\t	1.5	1.6	130	140	150	1390	48.6	680	51.4	720
+2152	Landscape architects\t\t\t\t\t\t\t\t\t\t	1.4	1.6	20	20	20	200	63.2	120	36.8	70
+2153	Urban and land use planners\t\t\t\t\t\t\t\t\t	0.9	1.2	60	60	70	580	60.3	350	39.7	230
+2154	Land surveyors\t\t\t\t\t\t\t\t\t\t\t	1.2	1.4	40	40	50	450	55.6	250	44.4	200
+2161	Mathematicians, statisticians and actuaries\t\t\t\t\t\t\t	1.5	1.3	30	30	30	310	56.2	180	43.8	140
+2171	Information systems analysts and consultants\t\t\t\t\t\t\t	3.3	2.6	1360	1380	1220	13110	41.3	5420	58.7	7710
+2172	Database analysts and data administrators\t\t\t\t\t\t\t	2.7	2	190	150	140	1530	50.3	770	49.7	760
+2173	Software engineers and designers\t\t\t\t\t\t\t\t\t	3.8	3	890	1020	870	9340	37.5	3510	62.5	5850
+2174	Computer programmers and interactive media developers\t\t\t\t\t\t	4.1	3.2	1250	1360	1160	12620	31	3910	69.0	8720
+2175	Web designers and developers\t\t\t\t\t\t\t\t\t	4.2	3.4	420	450	410	4320	23.4	1010	76.6	3300
+2211	Chemical technologists and technicians\t\t\t\t\t\t\t\t	0.8	0.8	80	70	80	750	70.1	540	29.9	230
+2212	Geological and mineral technologists and technicians\t\t\t\t\t\t	0.9	0.8	30	30	30	340	73.5	250	26.5	90
+2221	Biological technologists and technicians\t\t\t\t\t\t\t\t	1	0.8	70	30	50	440	66.7	280	33.3	140
+2222	Agricultural and fish products inspectors\t\t\t\t\t\t\t	0.8	0.6	30	20	20	210	77.3	170	22.7	50
+2223	Forestry technologists and technicians\t\t\t\t\t\t\t\t	-1.3	-0.1	10	40	60	380	100	370	0.0	0
+2224	Conservation and fishery officers\t\t\t\t\t\t\t\t	0.5	0.4	30	20	30	250	84	210	16.0	40
+2225	Landscape and horticulture technicians and specialists\t\t\t\t\t\t	1.4	1.3	150	110	140	1130	50.9	570	49.1	550
+2231	Civil engineering technologists and technicians\t\t\t\t\t\t\t	1.2	1.4	120	110	120	1140	63.2	720	36.8	420
+2232	Mechanical engineering technologists and technicians\t\t\t\t\t\t	1.8	1	130	70	60	750	57.9	440	42.1	320
+2233	Industrial engineering and manufacturing technologists and technicians\t\t\t\t	0.7	0.7	60	60	60	570	77.2	440	22.8	130
+2234	Construction estimators\t\t\t\t\t\t\t\t\t\t	1.1	0.7	150	90	70	970	68.8	660	31.2	300
+2241	Electrical and electronics engineering technologists and technicians\t\t\t\t	1.4	1	280	190	180	2020	65	1320	35.0	710
+2242	Electronic service technicians (household and business equipment)\t\t\t\t	2.2	1.5	570	360	350	3750	54.5	2040	45.5	1700
+2243	Industrial instrument technicians and mechanics\t\t\t\t\t\t\t	1.5	0.5	50	30	30	310	63.3	190	36.7	110
+2244	Aircraft instrument, electrical and avionics mechanics, technicians and inspectors\t\t	4.3	0.7	70	20	20	340	47.2	170	52.8	190
+2251	Architectural technologists and technicians\t\t\t\t\t\t\t	1.5	1.6	60	70	70	670	58.2	390	41.8	280
+2252	Industrial designers\t\t\t\t\t\t\t\t\t\t	1.1	1.2	60	50	50	530	68.5	370	31.5	170
+2253	Drafting technologists and technicians\t\t\t\t\t\t\t\t	1.5	1.3	190	160	160	1620	59.9	970	40.1	650
+2254	Land survey technologists and technicians\t\t\t\t\t\t\t	1.3	1.4	20	20	20	200	57.1	120	42.9	90
+2255	Technical occupations in geomatics and meteorology\t\t\t\t\t\t	0.9	1.2	70	60	70	660	68.2	450	31.8	210
+2261	Non-destructive testers and inspection technicians\t\t\t\t\t\t	2.1	1.1	40	30	30	300	60.7	170	39.3	110
+2262	Engineering inspectors and regulatory officers\t\t\t\t\t\t\t	1.4	0.9	40	20	20	250	69.2	180	30.8	80
+2263	Inspectors in public and environmental health and occupational health and safety\t\t\t	1.1	0.9	190	150	160	1660	70.9	1170	29.1	480
+2264	Construction inspectors\t\t\t\t\t\t\t\t\t\t	1.2	1	170	130	120	1340	74.6	1000	25.4	340
+2271	Air pilots, flight engineers and flying instructors\t\t\t\t\t\t	4.3	0.9	290	90	110	1690	42.9	720	57.1	960
+2272	Air traffic controllers and related occupations\t\t\t\t\t\t\t	4.9	1	70	30	30	450	48.9	220	51.1	230
+2273	Deck officers, water transport\t\t\t\t\t\t\t\t\t	1.2	0.9	140	40	60	690	72.9	510	27.1	190
+2274	Engineer officers, water transport\t\t\t\t\t\t\t\t	1.2	0.9	60	20	20	270	74.1	200	25.9	70
+2275	Railway traffic controllers and marine traffic regulators\t\t\t\t\t	2	1.1	10	10	10	90	57.1	40	42.9	30
+2281	Computer network technicians\t\t\t\t\t\t\t\t\t	2.8	2.2	520	450	420	4410	43.8	1930	56.2	2480
+2282	User support technicians\t\t\t\t\t\t\t\t\t\t	3	2.3	960	830	760	8090	44.1	3570	55.9	4520
+2283	Information systems testing technicians\t\t\t\t\t\t\t\t	3.7	2.9	80	90	80	830	30.1	250	69.9	580
+3011	Nursing co-ordinators and supervisors\t\t\t\t\t\t\t\t	0.9	1.9	150	190	220	1920	75.4	1440	24.6	470
+3012	Registered nurses and registered psychiatric nurses\t\t\t\t\t\t	0.7	1.7	1370	2060	2340	20140	63.3	12740	36.7	7400
+3111	Specialist physicians\t\t\t\t\t\t\t\t\t\t	1	1.6	300	300	320	3010	63.3	1900	36.7	1100
+3112	General practitioners and family physicians\t\t\t\t\t\t\t	1.1	1.5	360	320	340	3280	62.4	2040	37.6	1230
+3113	Dentists\t\t\t\t\t\t\t\t\t\t\t\t	1.3	1.6	180	140	160	1520	61.6	930	38.4	580
+3114	Veterinarians\t\t\t\t\t\t\t\t\t\t\t	1.9	1.7	90	60	60	770	61.8	470	38.2	290
+3121	Optometrists\t\t\t\t\t\t\t\t\t\t\t	1.4	1.6	40	30	40	340	67.6	230	32.4	110
+3122	Chiropractors\t\t\t\t\t\t\t\t\t\t\t	1.3	1.6	60	50	50	540	64.2	340	35.8	190
+3124	Allied primary health practitioners\t\t\t\t\t\t\t\t	3	2.1	70	60	70	710	47.8	330	52.2	360
+3125	Other professional occupations in health diagnosing and treating\t\t\t\t\t	1.3	1.7	30	20	30	260	64	160	36.0	90
+3131	Pharmacists\t\t\t\t\t\t\t\t\t\t\t	1.7	1	430	100	140	1450	54.2	780	45.8	660
+3132	Dietitians and nutritionists\t\t\t\t\t\t\t\t\t	1.2	1.6	80	80	90	830	64	550	36.0	310
+3141	Audiologists and speech-language pathologists\t\t\t\t\t\t\t	1	1.2	50	50	50	520	68.6	350	31.4	160
+3142	Physiotherapists\t\t\t\t\t\t\t\t\t\t\t	1.1	1.6	190	180	200	1860	65.6	1220	34.4	640
+3143	Occupational therapists\t\t\t\t\t\t\t\t\t\t	1.1	1.6	90	100	110	1000	63	630	37.0	370
+3144	Other professional occupations in therapy and assessment\t\t\t\t\t\t	1.7	1.9	80	70	80	730	39.2	290	60.8	450
+3211	Medical laboratory technologists\t\t\t\t\t\t\t\t\t	0.8	1.5	130	150	160	1480	69.4	1020	30.6	450
+3212	Medical laboratory technicians and pathologists' assistants\t\t\t\t\t	0.9	1.5	140	160	180	1620	63.2	1030	36.8	600
+3213	Animal health technologists and veterinary technicians\t\t\t\t\t\t	1	1	110	30	60	590	60.3	350	39.7	230
+3214	Respiratory therapists, clinical perfusionists and cardiopulmonary technologists\t\t\t	0.8	1.6	50	60	70	610	66.1	410	33.9	210
+3215	Medical radiation technologists\t\t\t\t\t\t\t\t\t	0.7	1.5	80	110	130	1120	65.8	730	34.2	380
+3216	Medical sonographers\t\t\t\t\t\t\t\t\t\t	1.4	2.1	40	40	40	390	55	220	45.0	180
+3217	Cardiology technologists and electrophysiological diagnostic technologists, n.e.c.\t\t	0.8	1.6	10	20	20	180	61.1	110	38.9	70
+3219	Other medical technologists and technicians (except dental health)\t\t\t\t	1.6	1	450	110	160	1600	52.2	830	47.8	760
+3221	Denturists\t\t\t\t\t\t\t\t\t\t\t	0.9	0.8	10	10	10	90	66.7	40	33.3	20
+3222	Dental hygienists and dental therapists\t\t\t\t\t\t\t\t	1.3	1.6	140	120	140	1270	57.9	730	42.1	530
+3223	Dental technologists, technicians and laboratory assistants\t\t\t\t\t	1	0.9	40	40	40	380	73.7	280	26.3	100
+3231	Opticians\t\t\t\t\t\t\t\t\t\t\t	1.7	1.1	110	40	40	490	68	340	32.0	160
+3232	Practitioners of natural healing\t\t\t\t\t\t\t\t\t	1.6	1.6	150	110	110	1140	62.6	720	37.4	430
+3233	Licensed practical nurses\t\t\t\t\t\t\t\t\t	1	2.1	250	470	540	4500	56.9	2560	43.1	1940
+3234	Paramedical occupations\t\t\t\t\t\t\t\t\t\t	1.2	1.3	150	120	130	1270	62.3	810	37.7	490
+3236	Massage therapists\t\t\t\t\t\t\t\t\t\t	1.6	1.6	290	230	240	2340	59	1380	41.0	960
+3237	Other technical occupations in therapy and assessment\t\t\t\t\t\t	1.4	2	40	40	50	440	51.2	220	48.8	210
+3411	Dental assistants\t\t\t\t\t\t\t\t\t\t	1.3	1.5	220	180	210	1930	54.1	1050	45.9	890
+3413	Nurse aides, orderlies and patient service associates\t\t\t\t\t\t	1.3	2.4	1280	1920	2100	18430	55.1	10150	44.9	8270
+3414	Other assisting occupations in support of health services\t\t\t\t\t	1.2	1.6	250	200	230	2120	58.2	1240	41.8	890
+4011	University professors and lecturers\t\t\t\t\t\t\t\t	0.9	-0.5	510	230	220	2560	92.6	2370	7.4	190
+4012	Post-secondary teaching and research assistants\t\t\t\t\t\t\t	0.9	-1	300	0	30	450	100	460	0.0	0
+4021	College and other vocational instructors\t\t\t\t\t\t\t\t	1.6	0.9	920	390	490	5270	66.2	3480	33.8	1780
+4031	Secondary school teachers\t\t\t\t\t\t\t\t\t	0.2	0.8	520	750	740	7180	84.8	6090	15.2	1090
+4032	Elementary school and kindergarten teachers\t\t\t\t\t\t\t	0.1	0.7	730	1110	1120	10640	85.1	9050	14.9	1590
+4033	Educational counsellors\t\t\t\t\t\t\t\t\t\t	1	0.6	160	100	110	1130	74.3	840	25.7	290
+4112	Lawyers and Quebec notaries\t\t\t\t\t\t\t\t\t	1	1.3	760	310	480	4920	67.6	3320	32.4	1590
+4151	Psychologists\t\t\t\t\t\t\t\t\t\t\t	1.2	1.5	110	100	100	980	58.6	580	41.4	410
+4152	Social workers\t\t\t\t\t\t\t\t\t\t\t	1.2	1.3	330	290	310	3010	64.3	1930	35.7	1070
+4153	Family, marriage and other related counsellors\t\t\t\t\t\t\t	1.4	1.5	310	260	260	2690	64.2	1720	35.8	960
+4154	Professional occupations in religion\t\t\t\t\t\t\t\t	2.7	1.5	450	210	180	2160	43.3	940	56.7	1230
+4155	Probation and parole officers and related occupations\t\t\t\t\t\t	0.5	0.5	50	30	40	370	83.3	300	16.7	60
+4156	Employment counsellors\t\t\t\t\t\t\t\t\t\t	1.6	1.2	140	90	110	1020	62.1	640	37.9	390
+4161	Natural and applied science policy researchers, consultants and program officers\t\t\t	1.1	1.1	140	130	150	1380	67.6	940	32.4	450
+4162	Economists and economic policy researchers and analysts\t\t\t\t\t\t	1	0.8	70	50	60	590	70.7	410	29.3	170
+4163	Business development officers and marketing researchers and consultants\t\t\t\t	1.9	1.6	530	360	400	4050	49	1980	51.0	2060
+4164	Social policy researchers, consultants and program officers\t\t\t\t\t	1.1	1	220	150	170	1710	70.5	1220	29.5	510
+4165	Health policy researchers, consultants and program officers\t\t\t\t\t	1	1.3	190	160	180	1720	65.7	1130	34.3	590
+4166	Education policy researchers, consultants and program officers\t\t\t\t\t	2.2	0.9	250	110	120	1340	57	770	43.0	580
+4167	Recreation, sports and fitness policy researchers, consultants and program officers\t\t	1.8	1.5	90	60	70	640	46.9	300	53.1	340
+4168	Program officers unique to government\t\t\t\t\t\t\t\t	0.4	0.4	60	30	30	380	86.8	330	13.2	50
+4169	Other professional occupations in social science, n.e.c.\t\t\t\t\t\t	1	1	40	30	40	340	68.6	240	31.4	110
+4211	Paralegal and related occupations\t\t\t\t\t\t\t\t	0.9	1.3	200	70	130	1280	63	800	37.0	470
+4212	Social and community service workers\t\t\t\t\t\t\t\t	1.5	1.7	1240	1210	1270	12150	58.6	7130	41.4	5030
+4214	Early childhood educators and assistants\t\t\t\t\t\t\t\t	1.6	1.3	960	830	860	8630	57.7	4980	42.3	3650
+4215	Instructors of persons with disabilities\t\t\t\t\t\t\t\t	1.5	1.4	60	50	50	510	58.5	310	41.5	220
+4216	Other instructors\t\t\t\t\t\t\t\t\t\t	4.6	0.7	1010	230	220	3430	39.7	1360	60.3	2070
+4217	Other religious occupations\t\t\t\t\t\t\t\t\t	2.9	1.5	110	50	40	510	40.4	210	59.6	310
+4311	Police officers (except commissioned)\t\t\t\t\t\t\t\t	0	0.6	310	330	400	3380	90.2	3050	9.8	330
+4312	Firefighters\t\t\t\t\t\t\t\t\t\t\t	0.5	1.1	160	160	190	1610	76.7	1250	23.3	380
+4313	Non-commissioned ranks of the Canadian Forces\t\t\t\t\t\t\t	-0.3	0	140	90	110	980	100	990	0.0	0
+4411	Home child care providers\t\t\t\t\t\t\t\t\t	2.2	1.5	470	280	270	2860	44.2	1260	55.8	1590
+4412	Home support workers, housekeepers and related occupations\t\t\t\t\t	1.8	1.7	940	740	720	7410	59.1	4380	40.9	3030
+4413	Elementary and secondary school teacher assistants\t\t\t\t\t\t	0.1	0.6	390	500	470	4840	88.2	4270	11.8	570
+4421	Sheriffs and bailiffs\t\t\t\t\t\t\t\t\t\t	0.7	0.7	30	20	20	210	80	160	20.0	40
+4422	Correctional service officers\t\t\t\t\t\t\t\t\t	0.3	0.5	130	100	110	1080	88	950	12.0	130
+4423	By-law enforcement and other regulatory officers, n.e.c.\t\t\t\t\t\t	1	1	70	50	50	510	73.6	390	26.4	140
+5111	Librarians\t\t\t\t\t\t\t\t\t\t\t	0.7	0.6	50	30	30	320	81.8	270	18.2	60
+5112	Conservators and curators\t\t\t\t\t\t\t\t\t	1.7	0.8	20	10	10	110	63.6	70	36.4	40
+5113	Archivists\t\t\t\t\t\t\t\t\t\t\t	1.1	1.4	10	10	10	90	66.7	40	33.3	20
+5121	Authors and writers\t\t\t\t\t\t\t\t\t\t	2.2	1.3	400	170	190	2090	52.9	1100	47.1	980
+5122	Editors\t\t\t\t\t\t\t\t\t\t\t\t	1.8	1.3	170	100	120	1110	63.3	690	36.7	400
+5123	Journalists\t\t\t\t\t\t\t\t\t\t\t	1.5	0.6	100	40	40	470	70.2	330	29.8	140
+5125	Translators, terminologists and interpreters\t\t\t\t\t\t\t	1.1	1.5	90	40	60	620	61.9	390	38.1	240
+5131	Producers, directors, choreographers and related occupations\t\t\t\t\t	2.2	1.2	320	150	210	2050	57.3	1180	42.7	880
+5132	Conductors, composers and arrangers\t\t\t\t\t\t\t\t	2.7	0.9	70	20	20	270	55.2	160	44.8	130
+5133	Musicians and singers\t\t\t\t\t\t\t\t\t\t	4.6	0.9	1030	250	250	3640	40.8	1490	59.2	2160
+5134	Dancers\t\t\t\t\t\t\t\t\t\t\t\t	5.3	1	300	60	60	940	25.5	240	74.5	700
+5135	Actors and comedians\t\t\t\t\t\t\t\t\t\t	2.6	0.9	260	60	80	1030	43.7	450	56.3	580
+5136	Painters, sculptors and other visual artists\t\t\t\t\t\t\t	2.5	1	450	150	160	2020	50.5	1020	49.5	1000
+5211	Library and public archive technicians\t\t\t\t\t\t\t\t	0.6	0.9	40	30	30	310	79.4	270	20.6	70
+5212	Technical occupations related to museums and art galleries\t\t\t\t\t	1.9	1.1	60	20	30	310	56.7	170	43.3	130
+5221	Photographers\t\t\t\t\t\t\t\t\t\t\t	1.1	1.2	190	70	110	1130	65.5	740	34.5	390
+5222	Film and video camera operators\t\t\t\t\t\t\t\t\t	2.1	1.3	70	30	30	400	52.6	200	47.4	180
+5223	Graphic arts technicians\t\t\t\t\t\t\t\t\t\t	2.5	2	60	40	50	460	30.4	140	69.6	320
+5224	Broadcast technicians\t\t\t\t\t\t\t\t\t\t	1.6	0.6	10	0	0	10	60	30	40.0	20
+5225	Audio and video recording technicians\t\t\t\t\t\t\t\t	2.2	1.3	190	80	100	1080	46.3	500	53.7	580
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts\t\t   	2.3	1.2	290	110	140	1590	54.1	860	45.9	730
+5227	Support occupations in motion pictures, broadcasting, photography and the performing arts\t\t\t   	2.1	1.2	220	80	110	1250	51.6	640	48.4	600
+5231	Announcers and other broadcasters\t\t\t\t\t\t\t	1.9	0.9	50	20	20	230	58.3	140	41.7	100
+5232	Other performers, n.e.c.\t\t\t\t\t\t\t\t\t	2.4	1	100	40	50	500	55.1	270	44.9	220
+5241	Graphic designers and illustrators\t\t\t\t\t\t\t	2	1.6	760	440	540	5420	54.8	2970	45.2	2450
+5242	Interior designers and interior decorators\t\t\t\t\t\t	1.1	1.2	230	110	160	1580	63.9	1010	36.1	570
+5243	Theatre, fashion, exhibit and other creative designers\t\t\t\t\t	1.3	1.2	110	50	80	740	47.3	350	52.7	390
+5244	Artisans and craftspersons\t\t\t\t\t\t\t\t	1.6	0.3	260	130	120	1430	76.8	1090	23.2	330
+5245	Patternmakers - textile, leather and fur products\t\t\t\t\t	0.8	-0.4	10	0	0	30	100	40	0.0	0
+5251	Athletes\t\t\t\t\t\t\t\t\t\t\t	3.5	1.2	60	20	20	240	26.1	60	73.9	170
+5252	Coaches\t\t\t\t\t\t\t\t\t\t\t	4.5	1.1	310	90	90	1230	41.5	510	58.5	720
+5253	Sports officials and referees\t\t\t\t\t\t\t\t	3.6	1.4	90	20	20	290	19.4	60	80.6	250
+5254	Program leaders and instructors in recreation, sport and fitness\t\t\t\t	4	1.4	2140	680	600	8460	29.9	2530	70.1	5930
+6211	Retail sales supervisors\t\t\t\t\t\t\t\t\t	1.4	0.9	1880	1140	1370	13230	69.8	9240	30.2	4000
+6221	Technical sales specialists - wholesale trade\t\t\t\t\t\t	2.1	1.6	620	570	580	5730	61.1	3500	38.9	2230
+6222	Retail and wholesale buyers\t\t\t\t\t\t\t\t	1.3	0.9	270	180	210	2030	73	1490	27.0	550
+6231	Insurance agents and brokers\t\t\t\t\t\t\t\t	1	0.8	380	350	370	3300	66.8	2210	33.2	1100
+6232	Real estate agents and salespersons\t\t\t\t\t\t\t	1.7	0.3	2050	580	540	6800	66.9	4540	33.1	2250
+6235	Financial sales representatives\t\t\t\t\t\t\t\t	1.1	0.1	330	230	220	2500	76	1900	24.0	600
+6311	Food service supervisors\t\t\t\t\t\t\t\t\t	1.9	1.1	270	190	200	1980	50.8	1010	49.2	980
+6312	Executive housekeepers\t\t\t\t\t\t\t\t\t	2.2	1.6	50	40	50	430	63.6	280	36.4	160
+6313	Accommodation, travel, tourism and related services supervisors\t\t\t\t	4.3	1.6	140	50	60	680	44.8	300	55.2	370
+6314	Customer and information services supervisors\t\t\t\t\t\t	1.4	0.9	60	50	60	510	70.6	360	29.4	150
+6315	Cleaning supervisors\t\t\t\t\t\t\t\t\t	1.2	1.4	70	70	90	710	72.9	510	27.1	190
+6316	Other services supervisors\t\t\t\t\t\t\t\t	2.3	1.4	160	100	120	1060	60.7	650	39.3	420
+6321	Chefs\t\t\t\t\t\t\t\t\t\t\t	2.1	1.3	520	330	310	3490	48.3	1670	51.7	1790
+6322	Cooks\t\t\t\t\t\t\t\t\t\t\t	1.9	1.2	1770	1190	1120	12460	52.9	6600	47.1	5870
+6331	Butchers, meat cutters and fishmongers - retail and wholesale\t\t\t\t	1.2	0.8	110	70	70	810	67.5	540	32.5	260
+6332	Bakers\t\t\t\t\t\t\t\t\t\t\t	1.2	1.5	340	210	210	2860	57.7	1650	42.3	1210
+6341	Hairstylists and barbers\t\t\t\t\t\t\t\t\t	2.8	1.4	1320	570	540	6070	39.3	2380	60.7	3680
+6342	Tailors, dressmakers, furriers and milliners\t\t\t\t\t\t	1.5	0.8	160	100	90	1010	69.7	690	30.3	300
+6343	Shoe repairers and shoemakers\t\t\t\t\t\t\t\t	2.6	0.8	20	10	10	100	63.6	70	36.4	40
+6344	Jewellers, jewellery and watch repairers and related occupations\t\t\t\t	1.3	0.8	40	30	30	300	69	200	31.0	90
+6345	Upholsterers\t\t\t\t\t\t\t\t\t\t	2.2	1	50	30	30	330	64.5	200	35.5	110
+6346	Funeral directors and embalmers\t\t\t\t\t\t\t\t	2.8	1.5	50	20	20	230	43.5	100	56.5	130
+6411	Sales and account representatives - wholesale trade (non-technical)\t\t\t	1.2	0.9	1730	1120	1160	12340	68.9	8500	31.1	3840
+6421	Retail salespersons\t\t\t\t\t\t\t\t\t	1.5	0.9	4080	2010	2060	24090	56	13490	44.0	10600
+6511	Maîtres d'hôtel and hosts/hostesses 	2.1	1.1	200	90	90	1010	20.4	210	79.6	820
+6512	Bartenders\t\t\t\t\t\t\t\t\t\t	2.2	1.1	270	150	140	1610	40.3	640	59.7	950
+6513	Food and beverage servers\t\t\t\t\t\t\t\t	2.1	1.1	1640	960	910	10220	41.3	4220	58.7	6010
+6521	Travel counsellors\t\t\t\t\t\t\t\t\t	4.5	1.6	1240	-30	320	3540	40.8	1440	59.2	2090
+6522	Pursers and flight attendants\t\t\t\t\t\t\t\t	6.1	0.9	310	100	120	1910	45.3	870	54.7	1050
+6523	Airline ticket and service agents\t\t\t\t\t\t\t	5.4	1	300	90	110	1650	46.1	760	53.9	890
+6524	Ground and water transport ticket agents, cargo service representatives and related clerks	1.9	1	70	10	20	250	57.7	150	42.3	110
+6525	Hotel front desk clerks\t\t\t\t\t\t\t\t\t	2.4	1.6	170	130	120	1300	43.9	580	56.1	740
+6531	Tour and travel guides\t\t\t\t\t\t\t\t\t	3.6	1.4	150	20	40	520	50	270	50.0	270
+6532	Outdoor sport and recreational guides\t\t\t\t\t\t\t	3	1.3	120	50	50	610	52.5	320	47.5	290
+6533	Casino occupations\t\t\t\t\t\t\t\t\t	5.1	1.8	460	170	120	1920	37	710	63.0	1210
+6541	Security guards and related security service occupations\t\t\t\t\t	1.5	1.5	810	610	760	5780	57.5	3330	42.5	2460
+6551	Customer services representatives - financial institutions\t\t\t\t	1.1	0.2	350	210	210	2400	72.9	1750	27.1	650
+6552	Other customer and information services representatives\t\t\t\t\t	1.7	1	1210	630	720	7170	54	3880	46.0	3300
+6561	Image, social and other personal consultants\t\t\t\t\t\t	2.9	1.3	50	20	20	240	52	130	48.0	120
+6562	Estheticians, electrologists and related occupations\t\t\t\t\t	2.7	1.3	800	300	310	3360	35.8	1210	64.2	2170
+6563	Pet groomers and animal care workers\t\t\t\t\t\t\t	2.5	1.3	320	130	130	1510	40	600	60.0	900
+6564	Other personal service occupations\t\t\t\t\t\t\t	2.5	1.4	50	30	20	260	57.1	160	42.9	120
+6611	Cashiers\t\t\t\t\t\t\t\t\t\t\t	1.5	0.9	1900	910	970	10960	49.4	5410	50.6	5540
+6621	Service station attendants\t\t\t\t\t\t\t\t	1.1	0.8	70	40	40	470	55.3	260	44.7	210
+6622	Store shelf stockers, clerks and order fillers\t\t\t\t\t\t	1.3	0.9	960	510	550	6120	57	3480	43.0	2630
+6623	Other sales related occupations\t\t\t\t\t\t\t\t	1.6	1.2	210	110	120	1320	51.1	670	48.9	640
+6711	Food counter attendants, kitchen helpers and related support occupations\t\t\t	1.9	1.2	2210	1340	1290	14500	36.3	5270	63.7	9230
+6721	Support occupations in accommodation, travel and facilities set-up services\t\t	2.2	1.1	80	30	40	370	48.6	180	51.4	190
+6722	Operators and attendants in amusement, recreation and sport\t\t\t\t	3.8	1.5	450	150	110	1780	31.1	550	68.9	1220
+6731	Light duty cleaners\t\t\t\t\t\t\t\t\t	1.5	1.6	1380	1270	1480	12370	57.7	7140	42.3	5230
+6732	Specialized cleaners\t\t\t\t\t\t\t\t\t	1.8	1	380	140	220	2180	56	1220	44.0	960
+6733	Janitors, caretakers and building superintendents\t\t\t\t\t	1.3	1.2	1860	1290	1320	13110	68.2	8930	31.8	4170
+6741	Dry cleaning, laundry and related occupations\t\t\t\t\t\t	2.5	1.6	260	150	140	1520	52.3	790	47.7	720
+6742	Other service support occupations, n.e.c.\t\t\t\t\t\t	3	1.2	300	100	90	1220	31.4	380	68.6	830
+7201	Contractors and supervisors, machining, metal forming, shaping and erecting trades and related occupations\t   	1.7	0.4	170	90	90	1040	78.6	810	21.4	220
+7202	Contractors and supervisors, electrical trades and telecommunications occupations\t\t	1.1	0.5	190	120	120	1350	80	1080	20.0	270
+7203	Contractors and supervisors, pipefitting trades\t\t\t\t\t\t\t	1.2	0.5	60	40	30	440	73.3	330	26.7	120
+7204	Contractors and supervisors, carpentry trades\t\t\t\t\t\t\t	0.9	0.3	190	120	90	1260	77.6	970	22.4	280
+7205	Contractors and supervisors, other construction trades, installers, repairers and servicers\t	1	0.6	440	340	290	3460	79.9	2750	20.1	690
+7231	Machinists and machining and tooling inspectors\t\t\t\t\t\t\t	2.2	0.6	270	100	90	1250	63.7	790	36.3	450
+7232	Tool and die makers\t\t\t\t\t\t\t\t\t\t	1.8	0.4	30	20	10	160	76.5	130	23.5	40
+7233	Sheet metal workers\t\t\t\t\t\t\t\t\t\t	1.5	0.5	180	80	60	940	68.1	640	31.9	300
+7234	Boilermakers\t\t\t\t\t\t\t\t\t\t\t	1.2	0.4	70	40	30	420	78	320	22.0	90
+7235	Structural metal and platework fabricators and fitters\t\t\t\t\t\t	2.1	0.4	140	50	40	600	66.7	400	33.3	200
+7236	Ironworkers\t\t\t\t\t\t\t\t\t\t\t	1.3	0.4	100	40	30	500	66.7	340	33.3	170
+7237	Welders and related machine operators\t\t\t\t\t\t\t\t	1.8	0.6	670	220	240	2960	59.3	1760	40.7	1210
+7241	Electricians (except industrial and power system)\t\t\t\t\t\t	1.1	0.5	680	320	220	3740	64.3	2410	35.7	1340
+7242	Industrial electricians\t\t\t\t\t\t\t\t\t\t	0.9	0.2	190	110	100	1280	79.7	1020	20.3	260
+7243	Power system electricians\t\t\t\t\t\t\t\t\t	1.1	0.2	30	20	20	270	82.1	230	17.9	50
+7244	Electrical power line and cable workers\t\t\t\t\t\t\t\t	0.5	0.2	60	30	40	410	88.1	370	11.9	50
+7245	Telecommunications line and cable workers\t\t\t\t\t\t\t	1.1	-0.1	80	30	30	380	84.2	320	15.8	60
+7246	Telecommunications installation and repair workers\t\t\t\t\t\t	1.4	0.2	230	100	90	1170	82.6	950	17.4	200
+7247	Cable television service and maintenance technicians\t\t\t\t\t\t	1.1	-0.3	10	0	0	10	100	40	0.0	0
+7251	Plumbers\t\t\t\t\t\t\t\t\t\t\t\t	1.1	0.5	460	280	180	2880	70.8	2040	29.2	840
+7252	Steamfitters, pipefitters and sprinkler system installers\t\t\t\t\t	1.2	0.4	160	80	60	880	70.8	630	29.2	260
+7253	Gas fitters\t\t\t\t\t\t\t\t\t\t\t	1.1	0.4	70	40	30	440	75.6	340	24.4	110
+7271	Carpenters\t\t\t\t\t\t\t\t\t\t\t	1	0.4	1010	500	380	5820	75	4370	25.0	1460
+7272	Cabinetmakers\t\t\t\t\t\t\t\t\t\t\t	0.5	-0.5	60	40	40	380	100	380	0.0	0
+7281	Bricklayers\t\t\t\t\t\t\t\t\t\t\t	0.9	0.4	100	60	40	610	77.4	480	22.6	140
+7282	Concrete finishers\t\t\t\t\t\t\t\t\t\t	1	0.5	100	60	40	650	75.4	490	24.6	160
+7283	Tilesetters\t\t\t\t\t\t\t\t\t\t\t	1.1	0.6	110	80	40	710	69	490	31.0	220
+7284	Plasterers, drywall installers and finishers and lathers\t\t\t\t\t\t	1	0.5	230	130	80	1380	70.8	970	29.2	400
+7291	Roofers and shinglers\t\t\t\t\t\t\t\t\t\t	1.3	0.8	180	90	100	1090	61.8	680	38.2	420
+7292	Glaziers\t\t\t\t\t\t\t\t\t\t\t\t	0.9	0.3	110	70	60	770	78.9	600	21.1	160
+7293	Insulators\t\t\t\t\t\t\t\t\t\t\t	1	0.4	60	30	20	350	74.3	260	25.7	90
+7294	Painters and decorators (except interior decorators)\t\t\t\t\t\t	1	0.5	550	360	230	3620	76.9	2770	23.1	830
+7295	Floor covering installers\t\t\t\t\t\t\t\t\t	1	0.5	160	90	60	980	73.7	730	26.3	260
+7301	Contractors and supervisors, mechanic trades\t\t\t\t\t\t\t	1.6	0.6	190	100	110	1250	72.6	900	27.4	340
+7302	Contractors and supervisors, heavy equipment operator crews\t\t\t\t\t	1.3	0.6	400	240	250	2820	78.4	2210	21.6	610
+7303	Supervisors, printing and related occupations\t\t\t\t\t\t\t	0.4	0	10	10	10	90	100	80	0.0	0
+7304	Supervisors, railway transport operations\t\t\t\t\t\t\t	1.5	1	30	20	20	200	80	160	20.0	40
+7305	Supervisors, motor transport and other ground transit operators\t\t\t\t\t	1.3	0.8	70	60	70	620	77.4	480	22.6	140
+7311	Construction millwrights and industrial mechanics\t\t\t\t\t\t	0.6	0.5	370	260	240	2790	83.2	2330	16.8	470
+7312	Heavy-duty equipment mechanics\t\t\t\t\t\t\t\t\t	1.1	0.5	310	140	160	1810	73.2	1310	26.8	480
+7313	Refrigeration and air conditioning mechanics\t\t\t\t\t\t\t	1.2	0.7	150	80	60	910	65.9	600	34.1	310
+7314	Railway carmen/women\t\t\t\t\t\t\t\t\t\t	2.3	1.2	50	20	20	220	61.9	130	38.1	80
+7315	Aircraft mechanics and aircraft inspectors\t\t\t\t\t\t\t	4.2	0.8	310	100	110	1640	49.7	820	50.3	830
+7316	Machine fitters\t\t\t\t\t\t\t\t\t\t\t	1.4	0.6	10	10	10	100	71.4	50	28.6	20
+7318	Elevator constructors and mechanics\t\t\t\t\t\t\t\t	1.1	0.6	60	50	30	440	74.4	320	25.6	110
+7321	Automotive service technicians, truck and bus mechanics and mechanical repairers\t\t\t	1.6	0.6	1250	340	570	6620	67.5	4470	32.5	2150
+7322	Motor vehicle body repairers\t\t\t\t\t\t\t\t\t	0.7	0.2	220	0	110	1130	80.9	930	19.1	220
+7331	Oil and solid fuel heating mechanics\t\t\t\t\t\t\t\t	0.8	-0.4	10	0	0	10	100	30	0.0	0
+7332	Appliance servicers and repairers\t\t\t\t\t\t\t\t	2.2	1.1	90	40	40	470	54.3	250	45.7	210
+7333	Electrical mechanics\t\t\t\t\t\t\t\t\t\t	1.1	0.6	30	20	20	210	78.9	150	21.1	40
+7334	Motorcycle, all-terrain vehicle and other related mechanics\t\t\t\t\t	2.7	1	100	30	30	450	51.2	220	48.8	210
+7335	Other small engine and small equipment repairers\t\t\t\t\t\t\t	2.2	1.2	30	10	10	140	58.8	100	41.2	70
+7361	Railway and yard locomotive engineers\t\t\t\t\t\t\t\t	1.5	1.3	70	40	40	450	65.9	290	34.1	150
+7362	Railway conductors and brakemen/women\t\t\t\t\t\t\t\t	1.3	1.2	70	40	50	440	62.8	270	37.2	160
+7371	Crane operators\t\t\t\t\t\t\t\t\t\t\t	1.2	0.5	140	70	60	870	73.6	640	26.4	230
+7372	Drillers and blasters - surface mining, quarrying and construction\t\t\t\t	0.8	0.2	30	20	10	180	83.3	150	16.7	30
+7373	Water well drillers\t\t\t\t\t\t\t\t\t\t	N/A	N/A	0	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+7381	Printing press operators\t\t\t\t\t\t\t\t\t\t	0	0.1	40	50	40	440	97.7	420	2.3	10
+7384	Other trades and related occupations, n.e.c.\t\t\t\t\t\t\t	0.6	0.8	100	80	90	850	76.7	660	23.3	200
+7441	Residential and commercial installers and servicers\t\t\t\t\t\t	1	0.5	350	200	160	2190	67.9	1480	32.1	700
+7442	Waterworks and gas maintenance workers\t\t\t\t\t\t\t\t	0.9	0.5	30	30	30	250	80	200	20.0	50
+7444	Pest controllers and fumigators\t\t\t\t\t\t\t\t\t	1.2	1.6	30	30	40	260	62.5	150	37.5	90
+7445	Other repairers and servicers\t\t\t\t\t\t\t\t\t	1.6	1	140	80	80	870	55.8	480	44.2	380
+7451	Longshore workers\t\t\t\t\t\t\t\t\t\t	3.2	2.3	340	190	180	2260	46.9	1070	53.1	1210
+7452	Material handlers\t\t\t\t\t\t\t\t\t\t	1.3	0.8	1270	700	730	7730	61.8	4770	38.2	2950
+7511	Transport truck drivers\t\t\t\t\t\t\t\t\t\t	0.8	0.7	1950	1130	1300	12860	76.9	9880	23.1	2960
+7512	Bus drivers, subway operators and other transit operators\t\t\t\t\t	1.6	0.7	520	500	380	4390	73.3	3210	26.7	1170
+7513	Taxi and limousine drivers and chauffeurs\t\t\t\t\t\t\t	1.7	0.8	290	330	260	2740	61.2	1670	38.8	1060
+7514	Delivery and courier service drivers\t\t\t\t\t\t\t\t	1.6	1	680	390	400	4550	61.3	2800	38.7	1770
+7521	Heavy equipment operators (except crane)\t\t\t\t\t\t\t\t	0.9	0.2	600	270	270	3630	81.5	2950	18.5	670
+7522	Public works maintenance equipment operators and related workers\t\t\t\t\t	1.1	1.2	120	90	120	950	66.7	640	33.3	320
+7531	Railway yard and track maintenance workers\t\t\t\t\t\t\t	2.2	1.3	110	40	50	530	59.6	310	40.4	210
+7532	Water transport deck and engine room crew\t\t\t\t\t\t\t	1.6	1.1	130	30	50	540	60.4	320	39.6	210
+7533	Boat and cable ferry operators and related occupations\t\t\t\t\t\t	1.8	1.2	100	30	40	500	63.3	310	36.7	180
+7534	Air transport ramp attendants\t\t\t\t\t\t\t\t\t	5.6	1.1	220	60	80	1200	38.7	460	61.3	730
+7535	Other automotive mechanical installers and servicers\t\t\t\t\t\t	1.8	0.5	150	30	50	640	53	350	47.0	310
+7611	Construction trades helpers and labourers\t\t\t\t\t\t\t	1.1	0.5	1120	560	410	6350	67	4250	33.0	2090
+7612	Other trades helpers and labourers\t\t\t\t\t\t\t\t	1.1	0.5	50	20	20	240	56	140	44.0	110
+7621	Public works and maintenance labourers\t\t\t\t\t\t\t\t	0.9	1.1	110	80	110	860	62.8	540	37.2	320
+7622	Railway and motor transport labourers\t\t\t\t\t\t\t\t	1.2	0.7	40	20	20	210	71.4	150	28.6	60
+8211	Supervisors, logging and forestry\t\t\t\t\t\t\t\t	-3	-0.8	20	50	70	470	100	470	0.0	0
+8221	Supervisors, mining and quarrying\t\t\t\t\t\t\t\t	1.1	-0.2	60	50	50	560	92.9	520	7.1	40
+8222	Contractors and supervisors, oil and gas drilling and services\t\t\t\t\t	2.7	0.8	70	50	50	540	63.5	330	36.5	190
+8231	Underground production and development miners\t\t\t\t\t\t\t	1	-0.3	60	50	30	500	92	460	8.0	40
+8232	Oil and gas well drillers, servicers, testers and related workers\t\t\t\t	2.2	0.7	60	30	30	370	62.2	230	37.8	140
+8241	Logging machinery operators\t\t\t\t\t\t\t\t\t	-3.3	-1	-50	20	60	120	100	120	0.0	0
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers\t\t	1.3	0.6	70	40	50	480	77.1	370	22.9	110
+8255	Contractors and supervisors, landscaping, grounds maintenance and horticulture services\t\t	1.3	1.5	220	220	290	2140	73.5	1580	26.5	570
+8261	Fishing masters and officers\t\t\t\t\t\t\t\t\t	-0.6	0	0	0	10	20	100	50	0.0	0
+8262	Fishermen/women\t\t\t\t\t\t\t\t\t\t\t	-1.1	-1	10	0	20	110	100	100	0.0	0
+8411	Underground mine service and support workers\t\t\t\t\t\t\t	1.4	-0.5	20	10	0	90	87.5	70	12.5	10
+8412	Oil and gas well drilling and related workers and services operators\t\t\t\t	2.7	0.4	40	10	20	240	59.1	130	40.9	90
+8421	Chain saw and skidder operators\t\t\t\t\t\t\t\t\t	-3.6	-0.9	-30	30	60	270	100	280	0.0	0
+8422	Silviculture and forestry workers\t\t\t\t\t\t\t\t	-2	-0.4	-20	0	20	20	100	30	0.0	0
+8431	General farm workers\t\t\t\t\t\t\t\t\t\t	0.7	0.2	270	130	130	1600	82.4	1310	17.6	280
+8432	Nursery and greenhouse workers\t\t\t\t\t\t\t\t\t	0.2	0	70	60	50	540	100	560	0.0	0
+8441	Fishing vessel deckhands\t\t\t\t\t\t\t\t\t\t	-0.4	-1.6	0	0	0	-10	100	30	0.0	0
+8442	Trappers and hunters\t\t\t\t\t\t\t\t\t\t	N/A	N/A	0	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+8611	Harvesting labourers\t\t\t\t\t\t\t\t\t\t	0.2	-0.2	40	30	20	280	100	270	0.0	0
+8612	Landscaping and grounds maintenance labourers\t\t\t\t\t\t\t	1.6	1.5	910	630	860	6420	47.6	3060	52.4	3370
+8613	Aquaculture and marine harvest labourers\t\t\t\t\t\t\t\t	-0.6	1.9	0	10	10	140	78.6	110	21.4	30
+8614	Mine labourers\t\t\t\t\t\t\t\t\t\t\t	-0.4	-0.7	10	0	0	20	100	30	0.0	0
+8615	Oil and gas drilling, servicing and related labourers\t\t\t\t\t\t	2	0.9	20	10	10	170	58.8	100	41.2	70
+8616	Logging and forestry labourers\t\t\t\t\t\t\t\t\t	-3.5	-0.9	-90	0	50	-40	100	540	0.0	0
+9211	Supervisors, mineral and metal processing\t\t\t\t\t\t\t	0.4	0.2	30	20	20	290	93.3	280	6.7	20
+9212	Supervisors, petroleum, gas and chemical processing and utilities\t\t\t\t	1	0.5	60	60	60	550	82.5	470	17.5	100
+9213	Supervisors, food, beverage and associated products processing\t\t\t\t\t	1.2	1	110	80	80	950	75.3	700	24.7	230
+9214	Supervisors, plastic and rubber products manufacturing\t\t\t\t\t\t	0.6	0.5	10	10	10	100	91.7	110	8.3	10
+9215	Supervisors, forest products processing\t\t\t\t\t\t\t\t	-1.3	0.1	60	100	100	900	100	900	0.0	0
+9217	Supervisors, textile, fabric, fur and leather products processing and manufacturing\t\t	0	0.7	0	0	0	50	100	40	0.0	0
+9221	Supervisors, motor vehicle assembling\t\t\t\t\t\t\t\t	2.7	0.6	20	0	10	60	66.7	40	33.3	20
+9222	Supervisors, electronics manufacturing\t\t\t\t\t\t\t\t	1	1.1	10	10	10	100	83.3	100	16.7	20
+9223	Supervisors, electrical products manufacturing\t\t\t\t\t\t\t	0.5	0.7	0	0	10	40	80	40	20.0	10
+9224	Supervisors, furniture and fixtures manufacturing\t\t\t\t\t\t	-0.2	0.1	0	10	10	80	100	70	0.0	0
+9226	Supervisors, other mechanical and metal products manufacturing\t\t\t\t\t	2.7	0.2	30	10	10	120	75	90	25.0	30
+9227	Supervisors, other products manufacturing and assembly\t\t\t\t\t\t	0.4	0	20	20	20	190	100	160	0.0	0
+9231	Central control and process operators, mineral and metal processing\t\t\t\t	0.7	0.4	20	10	10	200	84.2	160	15.8	30
+9232	Petroleum, gas and chemical process operators\t\t\t\t\t\t\t	2.7	-0.3	80	90	60	680	70.6	480	29.4	200
+9235	Pulping, papermaking and coating control operators\t\t\t\t\t\t	0.2	-0.3	30	30	20	210	100	190	0.0	0
+9241	Power engineers and power systems operators\t\t\t\t\t\t\t	0.8	0.4	170	160	150	1520	83	1270	17.0	260
+9243	Water and waste treatment plant operators\t\t\t\t\t\t\t	0.8	0.7	70	50	60	530	77.8	420	22.2	120
+9411	Machine operators, mineral and metal processing\t\t\t\t\t\t\t	0.1	0.1	10	10	10	200	95.2	200	4.8	10
+9412	Foundry workers\t\t\t\t\t\t\t\t\t\t\t	0.7	0.5	10	0	0	70	71.4	50	28.6	20
+9413	Glass forming and finishing machine operators and glass cutters\t\t\t\t\t	0	0.5	0	10	10	120	92.3	120	7.7	10
+9414	Concrete, clay and stone forming operators\t\t\t\t\t\t\t	0.5	0.1	20	20	20	180	88.2	150	11.8	20
+9415	Inspectors and testers, mineral and metal processing\t\t\t\t\t\t	0.7	1	0	0	0	0	75	30	25.0	10
+9416	Metalworking and forging machine operators\t\t\t\t\t\t\t	1.9	0.5	90	30	30	420	64.3	270	35.7	150
+9417	Machining tool operators\t\t\t\t\t\t\t\t\t\t	2.6	0.8	30	10	10	120	57.1	80	42.9	60
+9418	Other metal products machine operators\t\t\t\t\t\t\t\t	1.7	0.3	30	10	10	150	68.8	110	31.2	50
+9421	Chemical plant machine operators\t\t\t\t\t\t\t\t\t	0.4	0.5	20	20	20	190	85	170	15.0	30
+9422	Plastics processing machine operators\t\t\t\t\t\t\t\t	0.1	0.3	30	40	30	360	94.7	360	5.3	20
+9423	Rubber processing machine operators and related workers\t\t\t\t\t\t	0.1	0.5	10	10	10	100	83.3	100	16.7	20
+9431	Sawmill machine operators\t\t\t\t\t\t\t\t\t	-1.6	0.1	10	80	70	630	100	630	0.0	0
+9432	Pulp mill machine operators\t\t\t\t\t\t\t\t\t	-1.3	-0.1	30	30	30	290	100	290	0.0	0
+9433	Papermaking and finishing machine operators\t\t\t\t\t\t\t	0.3	-0.1	30	30	20	230	100	230	0.0	0
+9434	Other wood processing machine operators\t\t\t\t\t\t\t\t	-1.9	0	-10	50	40	310	100	310	0.0	0
+9435	Paper converting machine operators\t\t\t\t\t\t\t\t	-0.8	0.4	0	10	10	90	100	100	0.0	0
+9436	Lumber graders and other wood processing inspectors and graders\t\t\t\t\t	-1.9	0.1	-10	30	30	220	100	210	0.0	0
+9437	Woodworking machine operators\t\t\t\t\t\t\t\t\t	-0.9	-0.1	20	30	20	240	100	230	0.0	0
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers\t\t\t	-0.3	0.5	0	0	0	0	100	30	0.0	0
+9442	Weavers, knitters and other fabric making occupations\t\t\t\t\t\t	1.7	0.8	30	10	10	180	66.7	120	33.3	60
+9445	Fabric, fur and leather cutters\t\t\t\t\t\t\t\t\t	0.3	0.7	10	10	10	100	85.7	60	14.3	10
+9446	Industrial sewing machine operators\t\t\t\t\t\t\t\t	-0.1	0.3	40	60	60	590	96.7	580	3.3	20
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing\t\t\t	0.4	0.8	10	10	10	100	87.5	70	12.5	10
+9461	Process control and machine operators, food, beverage and associated products processing\t\t	1.2	0.4	240	120	120	1500	70.7	1060	29.3	440
+9462	Industrial butchers and meat cutters, poultry preparers and related workers\t\t\t	1.2	1	100	50	50	720	71.2	520	28.8	210
+9463	Fish and seafood plant workers\t\t\t\t\t\t\t\t\t	0.9	3.8	70	50	40	810	54.3	440	45.7	370
+9465	Testers and graders, food, beverage and associated products processing\t\t\t\t	1	1.1	30	20	20	230	69.6	160	30.4	70
+9471	Plateless printing equipment operators\t\t\t\t\t\t\t\t	0.1	0.2	20	20	20	190	95	190	5.0	10
+9472	Camera, platemaking and other prepress occupations\t\t\t\t\t\t	0.4	0.4	10	10	10	100	90.9	100	9.1	10
+9473	Binding and finishing machine operators\t\t\t\t\t\t\t\t	-0.2	-0.3	10	10	10	110	100	120	0.0	0
+9474	Photographic and film processors\t\t\t\t\t\t\t\t\t	1.7	1.1	30	10	10	120	57.1	80	42.9	60
+9521	Aircraft assemblers and aircraft assembly inspectors\t\t\t\t\t\t	3.7	0.7	30	10	10	120	55.6	50	44.4	40
+9522	Motor vehicle assemblers, inspectors and testers\t\t\t\t\t\t\t	2.8	0.7	100	30	30	380	61.1	220	38.9	140
+9523	Electronics assemblers, fabricators, inspectors and testers\t\t\t\t\t	0.8	0.6	40	60	50	500	76	380	24.0	120
+9524	Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing\t\t	0.5	0.5	20	20	20	200	85	170	15.0	30
+9525	Assemblers, fabricators and inspectors, industrial electrical motors and transformers\t\t	0.8	0.7	10	10	0	80	83.3	50	16.7	10
+9526	Mechanical assemblers and inspectors\t\t\t\t\t\t\t\t	1.7	0.7	60	20	20	270	67.9	190	32.1	90
+9527	Machine operators and inspectors, electrical apparatus manufacturing\t\t\t\t	0.4	0.6	0	0	0	0	100	30	0.0	0
+9531	Boat assemblers and inspectors\t\t\t\t\t\t\t\t\t	2.7	0.6	80	10	10	230	56.5	130	43.5	100
+9532	Furniture and fixture assemblers and inspectors\t\t\t\t\t\t\t	0	0.2	0	20	20	200	100	210	0.0	0
+9533	Other wood products assemblers and inspectors\t\t\t\t\t\t\t	-1.3	0.2	0	50	40	320	100	320	0.0	0
+9534	Furniture finishers and refinishers\t\t\t\t\t\t\t\t	0.9	0.3	40	30	30	280	78.6	220	21.4	60
+9535	Plastic products assemblers, finishers and inspectors\t\t\t\t\t\t	0	0.2	10	20	20	170	100	180	0.0	0
+9536	Industrial painters, coaters and metal finishing process operators\t\t\t\t	2.2	0.5	140	40	40	570	64.9	370	35.1	200
+9537	Other products assemblers, finishers and inspectors\t\t\t\t\t\t	0.9	0.3	80	60	50	560	72.4	420	27.6	160
+9611	Labourers in mineral and metal processing\t\t\t\t\t\t\t	0.5	0.5	20	20	20	210	81.8	180	18.2	40
+9612	Labourers in metal fabrication\t\t\t\t\t\t\t\t\t	1.9	0.6	70	20	20	300	50	160	50.0	160
+9613	Labourers in chemical products processing and utilities\t\t\t\t\t\t	0.7	0.6	30	20	30	220	72.7	160	27.3	60
+9614	Labourers in wood, pulp and paper processing\t\t\t\t\t\t\t	-1.7	0.1	-70	130	120	800	100	810	0.0	0
+9615	Labourers in rubber and plastic products manufacturing\t\t\t\t\t\t	0.5	0.6	10	10	10	100	72.7	80	27.3	30
+9616	Labourers in textile processing\t\t\t\t\t\t\t\t\t	0.4	0.8	10	10	10	100	77.8	70	22.2	20
+9617	Labourers in food, beverage and associated products processing\t\t\t\t\t	1.3	0.8	500	270	260	3330	70.1	2340	29.9	1000
+9618	Labourers in fish and seafood processing\t\t\t\t\t\t\t\t	0.9	3.6	50	30	30	610	50.8	310	49.2	300
+9619	Other labourers in processing, manufacturing and utilities\t\t\t\t\t	0.9	0.6	240	170	180	1740	69.5	1210	30.5	530
+\.
+
+
+--
+-- Data for Name: career_regional; Type: TABLE DATA; Schema: public; Owner: ssot
+--
+
+COPY public.career_regional (noc, occupation, cariboo_employment_in_2021, cariboo_average_annual_employment_growth_2021_2031, cariboo_expected_number_of_job_openings_2021_2031, kootenay_employment_in_2021, kootenay_average_annual_employment_growth_2021_2031, kootenay_expected_number_of_job_openings_2021_2031, mainland_southwest_employment_in_2021, mainland_southwest_average_annual_employment_growth_2021_2031, mainland_southwest_expected_number_of_job_openings_2021_2031, north_coast_and_nechako_employment_in_2021, north_coast_and_nechako_average_annual_employment_growth_2021_2, north_coast_and_nechako_expected_number_of_job_openings_2021_20, northeast_employment_in_2021, northeast_average_annual_employment_growth_2021_2031, northeast_expected_number_of_job_openings_2021_2031, thompson_okanagan_employment_in_2021, thompson_okanagan_average_annual_employment_growth_2021_2031, thompson_okanagan_expected_number_of_job_openings_2021_2031, vancouver_island_coast_employment_in_2021, vancouver_island_coast_average_annual_employment_growth_2021_20, vancouver_island_coast_expected_number_of_job_openings_2021_203) FROM stdin;
+0011	Legislators\t\t\t\t\t\t\t\t\t\t\t	80	0.0	20	60	0.2	30	310	0.8	160	60	1.2	30	30	1.2	10	110	0.8	60	360	0.9	190
+0012	Senior government managers and officials\t\t\t\t\t\t\t\t	40	0.0	20	60	0.5	40	760	0.7	430	70	1.1	40	30	0.9	10	170	0.8	110	1130	0.4	660
+0013	Senior managers - financial, communications and other business services\t\t\t\t	60	0.1	20	80	2.4	60	8550	2.4	5120	50	0.9	20	N/A	N/A	N/A	670	2.8	500	1170	2.5	800
+0014	Senior managers - health, education, social and community services and membership organizations\t	90	2.1	60	110	1.8	80	2570	1.9	1840	80	1.0	40	N/A	N/A	N/A	390	1.7	280	670	2.0	520
+0015	Senior managers - trade, broadcasting and other services, n.e.c.\t\t\t\t\t	80	0.9	40	80	1.5	50	5030	1.6	2960	40	1.4	20	30	1.5	10	620	1.7	400	630	1.7	420
+0016	Senior managers - construction, transportation, production and utilities\t\t\t\t	210	-0.7	60	180	-0.7	70	5790	0.7	2840	70	1.9	40	100	1.7	60	750	1.0	440	850	0.5	450
+0111	Financial managers\t\t\t\t\t\t\t\t\t\t	230	1.0	100	200	1.2	110	6920	1.2	3360	90	2.1	50	100	1.1	40	850	1.1	460	1470	0.9	770
+0112	Human resources managers\t\t\t\t\t\t\t\t\t\t	230	0.1	70	70	0.4	30	4240	1.4	2020	60	-0.4	10	110	0.3	40	470	1.1	240	870	1.3	470
+0113	Purchasing managers\t\t\t\t\t\t\t\t\t\t	70	0.4	30	20	0.9	10	2000	1.2	1180	20	5.7	30	30	0.1	10	180	0.8	120	300	1.0	200
+0114	Other administrative services managers\t\t\t\t\t\t\t\t	140	1.2	70	60	1.4	40	3310	1.4	1950	80	1.2	40	60	0.1	20	420	1.9	310	790	1.3	530
+0121	Insurance, real estate and financial brokerage managers\t\t\t\t\t\t	70	0.8	30	100	2.1	70	5730	1.0	2410	40	0.4	10	30	0.8	10	490	0.3	210	770	0.7	380
+0122	Banking, credit and other investment managers\t\t\t\t\t\t\t	150	0.5	50	210	1.3	110	6470	0.7	2460	90	1.2	40	110	1.3	40	900	0.6	410	1090	1.1	520
+0124	Advertising, marketing and public relations managers\t\t\t\t\t\t	140	0.5	30	150	0.7	50	8740	1.7	3290	60	2.0	20	N/A	N/A	N/A	650	2.0	310	1030	1.5	420
+0125	Other business services managers\t\t\t\t\t\t\t\t\t	80	0.3	30	100	-0.2	50	2630	1.6	1630	70	1.5	40	40	1.9	20	540	1.6	370	480	1.6	350
+0131	Telecommunication carriers managers\t\t\t\t\t\t\t\t	20	-0.2	10	N/A	N/A	N/A	990	0.4	440	N/A	N/A	N/A	N/A	N/A	N/A	110	0.9	70	120	1.2	70
+0132	Postal and courier services managers\t\t\t\t\t\t\t\t	30	0.4	10	N/A	N/A	N/A	520	1.2	160	N/A	N/A	N/A	N/A	N/A	N/A	50	1.1	20	80	1.4	30
+0211	Engineering managers\t\t\t\t\t\t\t\t\t\t	80	0.5	30	50	0.3	20	2270	1.5	1230	60	0.1	20	50	1.7	20	170	1.4	100	300	1.2	170
+0212	Architecture and science managers\t\t\t\t\t\t\t\t	N/A	N/A	N/A	50	0.1	20	930	1.0	470	N/A	N/A	N/A	N/A	N/A	N/A	90	1.8	60	170	1.5	110
+0213	Computer and information systems managers\t\t\t\t\t\t\t	80	0.9	30	150	3.0	110	8640	2.9	6460	90	2.8	60	N/A	N/A	N/A	400	4.0	370	1230	2.8	990
+0311	Managers in health care\t\t\t\t\t\t\t\t\t\t	220	0.0	70	150	0.6	70	3740	1.6	2040	50	-0.1	20	60	0.2	20	720	1.5	430	990	1.5	600
+0411	Government managers - health and social policy development and program administration\t\t	20	0.9	10	N/A	N/A	N/A	230	0.5	120	N/A	N/A	N/A	N/A	N/A	N/A	40	0.4	20	330	0.4	160
+0412	Government managers - economic analysis, policy development and program administration\t\t	30	-0.2	10	N/A	N/A	N/A	540	0.4	260	30	0.8	10	N/A	N/A	N/A	110	0.9	70	290	0.5	170
+0413	Government managers - education policy development and program administration\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	80	1.0	40	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	70	0.2	40
+0414	Other managers in public administration\t\t\t\t\t\t\t\t	20	0.5	10	30	0.5	20	420	0.6	220	N/A	N/A	N/A	30	0.9	10	80	0.7	50	400	0.6	220
+0421	Administrators - post-secondary education and vocational training\t\t\t\t	110	2.7	70	40	3.5	30	2120	0.1	770	20	2.1	10	30	2.3	20	240	2.7	180	510	1.8	340
+0422	School principals and administrators of elementary and secondary education\t\t\t	90	-2.8	10	200	-1.2	70	2260	1.1	1250	90	0.1	40	100	-0.4	30	370	-0.9	140	770	-0.3	340
+0423	Managers in social, community and correctional services\t\t\t\t\t\t	210	1.4	90	110	0.7	50	3120	1.8	1760	130	1.4	60	70	0.9	20	450	1.5	280	960	1.6	570
+0431	Commissioned police officers\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	110	0.5	90	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	50	0.7	40
+0432	Fire chiefs and senior firefighting officers\t\t\t\t\t\t\t	N/A	N/A	N/A	30	0.6	30	200	0.6	160	30	1.0	20	N/A	N/A	N/A	40	1.0	30	150	1.2	120
+0433	Commissioned officers of the Canadian Forces\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	130	0.0	50	N/A	N/A	N/A	N/A	N/A	N/A	60	0.4	30	800	-0.2	320
+0511	Library, archive, museum and art gallery managers\t\t\t\t\t\t	N/A	N/A	N/A	30	1.0	10	400	0.9	170	N/A	N/A	N/A	N/A	N/A	N/A	50	1.4	30	80	1.5	50
+0512	Managers - publishing, motion pictures, broadcasting and performing arts\t\t\t\t	40	1.2	20	30	4.5	30	880	1.5	610	N/A	N/A	N/A	50	1.6	30	110	2.6	110	170	0.4	100
+0513	Recreation, sports and fitness program and service directors\t\t\t\t\t	80	1.1	30	70	1.2	40	1350	2.8	860	40	3.1	30	20	1.3	10	280	3.0	210	330	2.3	210
+0601	Corporate sales managers\t\t\t\t\t\t\t\t\t\t	50	1.4	20	30	1.3	20	2690	1.6	1560	N/A	N/A	N/A	20	1.0	10	340	1.6	230	310	1.5	200
+0621	Retail and wholesale trade managers\t\t\t\t\t\t\t\t	1660	0.7	500	2010	1.2	890	30190	1.4	12230	830	1.7	350	820	1.1	280	6230	1.0	2590	7820	1.0	3150
+0631	Restaurant and food service managers\t\t\t\t\t\t\t\t	430	1.8	190	700	0.8	280	12670	1.6	6160	240	1.8	100	250	0.7	70	2180	1.4	1050	2890	1.5	1470
+0632	Accommodation service managers\t\t\t\t\t\t\t\t\t	500	0.6	170	650	1.9	380	4440	2.1	2310	350	2.4	200	320	1.4	140	2170	1.9	1240	2200	2.0	1310
+0651	Managers in customer and personal services, n.e.c.\t\t\t\t\t\t	110	1.2	30	120	1.9	60	3220	2.2	1580	60	2.6	30	70	1.8	30	710	1.9	330	830	2.0	420
+0711	Construction managers\t\t\t\t\t\t\t\t\t\t	440	0.0	130	390	-0.3	150	11610	1.1	5700	220	0.8	90	230	1.8	120	2140	0.8	1130	2390	0.2	1060
+0712	Home building and renovation managers\t\t\t\t\t\t\t\t	530	-0.4	110	640	-0.3	210	14990	1.0	6510	270	0.4	80	140	1.8	70	2790	0.7	1240	3900	0.0	1560
+0714	Facility operation and maintenance managers\t\t\t\t\t\t\t	300	0.9	130	380	0.5	190	6010	1.5	3310	160	2.9	120	190	1.9	110	1150	1.4	700	1510	1.2	900
+0731	Managers in transportation\t\t\t\t\t\t\t\t\t	240	0.3	80	120	0.4	50	4350	1.4	2200	110	4.6	110	170	1.5	80	600	1.4	340	590	1.3	320
+0811	Managers in natural resources production and fishing\t\t\t\t\t\t	220	-1.1	40	190	-1.0	80	680	0.1	330	50	-1.0	10	260	1.0	120	330	-0.2	170	410	0.2	240
+0821	Managers in agriculture\t\t\t\t\t\t\t\t\t\t	590	-0.2	180	590	-0.5	130	3480	0.2	940	240	-0.5	60	740	0.7	300	3740	0.6	1390	2190	0.1	650
+0822	Managers in horticulture\t\t\t\t\t\t\t\t\t\t	30	-1.1	0	40	-0.6	10	430	0.2	130	N/A	N/A	N/A	N/A	N/A	N/A	170	0.7	60	210	-0.1	60
+0823	Managers in aquaculture\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	50	0.0	10	N/A	N/A	N/A	N/A	N/A	N/A	20	0.3	0	460	0.1	100
+0911	Manufacturing managers\t\t\t\t\t\t\t\t\t\t	230	1.2	100	260	1.1	140	7200	0.3	2850	120	-0.5	30	90	0.0	20	1250	1.1	660	1050	-0.3	390
+0912	Utilities managers\t\t\t\t\t\t\t\t\t\t	90	0.6	40	30	0.1	20	1030	0.6	550	N/A	N/A	N/A	40	1.6	30	200	0.9	140	200	1.1	130
+1111	Financial auditors and accountants\t\t\t\t\t\t\t\t	610	0.0	180	430	0.0	120	22970	1.3	8640	120	0.6	40	200	1.2	90	2430	0.8	900	3560	0.6	1190
+1112	Financial and investment analysts\t\t\t\t\t\t\t\t	N/A	N/A	N/A	20	1.4	10	3460	0.8	1100	20	1.1	0	40	1.4	10	240	1.0	70	860	0.9	330
+1113	Securities agents, investment dealers and brokers\t\t\t\t\t\t	30	-0.1	10	N/A	N/A	N/A	2330	0.6	860	N/A	N/A	N/A	N/A	N/A	N/A	150	0.4	40	250	1.0	120
+1114	Other financial officers\t\t\t\t\t\t\t\t\t\t	230	0.1	60	250	1.2	80	13570	0.7	4290	60	1.3	30	120	0.9	40	1670	0.7	430	2370	1.0	930
+1121	Human resources professionals\t\t\t\t\t\t\t\t\t	240	1.3	70	110	1.0	40	6080	1.4	2290	110	0.4	20	110	1.9	40	770	1.2	280	1360	1.1	570
+1122	Professional occupations in business management consulting\t\t\t\t\t	130	1.6	60	140	1.0	50	8170	1.7	3510	20	1.3	10	40	1.1	20	950	1.8	440	1860	1.8	970
+1123	Professional occupations in advertising, marketing and public relations\t\t\t\t	90	1.1	30	130	1.5	50	10130	1.7	3980	50	1.5	20	50	1.3	20	800	2.0	370	1820	1.5	750
+1211	Supervisors, general office and administrative support workers\t\t\t\t\t	50	0.7	20	60	-0.1	30	1210	1.3	600	20	0.1	10	N/A	N/A	N/A	250	1.0	140	270	0.9	140
+1212	Supervisors, finance and insurance office workers\t\t\t\t\t\t	80	0.0	30	40	1.1	20	1730	1.2	870	N/A	N/A	N/A	40	-0.7	10	220	1.2	120	300	0.8	160
+1213	Supervisors, library, correspondence and related information workers\t\t\t\t	N/A	N/A	N/A	20	0.5	10	210	0.1	100	N/A	N/A	N/A	N/A	N/A	N/A	80	0.7	40	60	-0.4	30
+1214	Supervisors, mail and message distribution occupations\t\t\t\t\t\t	50	0.0	20	N/A	N/A	N/A	540	1.1	240	50	3.5	40	40	-1.9	0	50	1.1	30	300	1.3	170
+1215	Supervisors, supply chain, tracking and scheduling co-ordination occupations\t\t\t	130	0.4	40	80	0.6	40	5000	1.5	2450	80	4.4	70	90	1.2	30	450	1.1	230	450	0.6	210
+1221	Administrative officers\t\t\t\t\t\t\t\t\t\t	1140	0.7	430	1000	0.9	520	23290	1.3	11230	510	1.4	240	610	1.3	270	4680	1.3	2700	6780	1.1	3530
+1222	Executive assistants\t\t\t\t\t\t\t\t\t\t	100	0.9	20	50	0.8	20	4240	1.3	1720	70	0.7	10	90	1.2	20	430	1.2	170	1010	0.9	390
+1223	Human resources and recruitment officers\t\t\t\t\t\t\t\t	90	0.8	30	80	0.3	20	2510	1.4	930	N/A	N/A	N/A	60	2.5	30	320	1.6	130	340	1.4	140
+1224	Property administrators\t\t\t\t\t\t\t\t\t\t	190	1.3	80	200	1.9	100	6400	1.1	2950	90	1.0	30	110	1.9	50	940	0.7	330	1780	0.8	810
+1225	Purchasing agents and officers\t\t\t\t\t\t\t\t\t	120	-0.3	30	160	0.4	60	3620	1.2	1630	80	1.4	40	200	1.3	100	600	1.2	280	770	0.9	350
+1226	Conference and event planners\t\t\t\t\t\t\t\t\t	80	2.0	30	50	0.6	10	2720	1.6	1040	N/A	N/A	N/A	50	2.7	20	410	1.9	160	420	1.5	170
+1227	Court officers and justices of the peace\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	250	0.6	100	N/A	N/A	N/A	N/A	N/A	N/A	30	0.9	10	60	0.5	20
+1228	Employment insurance, immigration, border services and revenue officers\t\t\t\t	50	0.7	20	140	0.5	20	2600	0.0	740	30	0.9	10	N/A	N/A	N/A	300	0.4	50	360	0.0	110
+1241	Administrative assistants\t\t\t\t\t\t\t\t\t	930	0.3	190	720	0.5	230	17400	1.2	6590	470	1.0	130	660	1.1	200	3100	1.0	1200	4680	1.0	1800
+1242	Legal administrative assistants\t\t\t\t\t\t\t\t\t	180	0.0	50	80	-0.2	20	4920	1.3	1660	30	-0.6	10	30	1.3	10	690	0.5	220	1120	0.4	310
+1243	Medical administrative assistants\t\t\t\t\t\t\t\t	160	-0.3	30	190	0.6	50	2710	1.5	1130	130	0.6	40	50	-0.2	10	710	1.5	290	700	1.7	330
+1251	Court reporters, medical transcriptionists and related occupations\t\t\t\t	80	0.4	20	110	0.9	40	880	1.4	380	N/A	N/A	N/A	20	2.0	10	380	1.7	170	380	1.7	180
+1252	Health information management occupations\t\t\t\t\t\t\t	70	-0.5	20	N/A	N/A	N/A	490	1.5	230	40	0.6	10	N/A	N/A	N/A	30	1.2	10	120	1.1	50
+1253	Records management technicians\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	370	1.5	170	N/A	N/A	N/A	N/A	N/A	N/A	60	0.8	20	140	0.7	60
+1254	Statistical officers and related research support occupations\t\t\t\t\t	20	1.4	10	N/A	N/A	N/A	360	1.9	130	N/A	N/A	N/A	N/A	N/A	N/A	30	2.1	20	80	0.7	30
+1311	Accounting technicians and bookkeepers\t\t\t\t\t\t\t\t	990	0.3	310	910	0.3	320	13290	1.3	5310	550	1.0	210	740	1.4	330	3700	0.9	1550	4440	0.8	1710
+1312	Insurance adjusters and claims examiners\t\t\t\t\t\t\t\t	90	-0.1	30	50	2.6	20	3600	1.1	1260	30	0.6	10	20	-2.0	0	320	-0.2	30	470	0.9	160
+1313	Insurance underwriters\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	1390	1.1	470	N/A	N/A	N/A	N/A	N/A	N/A	70	-0.2	0	90	0.9	30
+1314	Assessors, valuators and appraisers\t\t\t\t\t\t\t\t	50	1.1	10	50	1.5	20	900	1.1	330	N/A	N/A	N/A	50	1.5	10	240	0.4	70	290	0.7	110
+1315	Customs, ship and other brokers\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	600	2.1	330	N/A	N/A	N/A	N/A	N/A	N/A	20	1.6	10	30	3.0	20
+1411	General office support workers\t\t\t\t\t\t\t\t\t	1330	0.4	320	960	0.8	310	25730	1.2	9370	630	1.5	240	730	1.2	250	4240	1.1	1500	6310	0.9	2330
+1414	Receptionists\t\t\t\t\t\t\t\t\t\t\t	910	0.4	210	800	0.8	240	16740	1.7	6100	500	1.2	170	440	1.0	130	3560	1.3	1270	4220	1.4	1610
+1415	Personnel clerks\t\t\t\t\t\t\t\t\t\t\t	130	-0.1	20	60	-0.8	10	1150	1.2	420	20	2.5	10	20	-0.4	0	210	1.3	90	360	1.2	160
+1416	Court clerks\t\t\t\t\t\t\t\t\t\t\t	30	0.8	10	20	0.5	0	250	0.5	80	N/A	N/A	N/A	N/A	N/A	N/A	60	0.4	10	100	0.4	30
+1422	Data entry clerks\t\t\t\t\t\t\t\t\t\t	150	0.3	40	70	1.1	20	3110	1.2	1010	50	1.2	20	50	1.4	20	380	1.6	150	610	1.1	200
+1423	Desktop publishing operators and related occupations\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	210	1.5	80	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	50	1.3	20
+1431	Accounting and related clerks\t\t\t\t\t\t\t\t\t	540	0.1	120	380	0.5	130	14110	1.3	5610	260	1.3	100	250	1.7	110	1960	0.9	740	3020	0.9	1100
+1432	Payroll clerks\t\t\t\t\t\t\t\t\t\t\t	250	0.0	20	100	1.2	40	3190	1.1	1280	90	0.6	10	100	0.8	20	560	0.9	210	820	1.1	330
+1434	Banking, insurance and other financial clerks\t\t\t\t\t\t\t	50	0.2	10	30	1.4	10	2450	0.8	770	N/A	N/A	N/A	20	-2.0	0	220	0.3	30	300	0.8	100
+1435	Collectors\t\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	840	0.8	260	N/A	N/A	N/A	N/A	N/A	N/A	130	1.4	50	350	1.0	110
+1451	Library assistants and clerks\t\t\t\t\t\t\t\t\t	40	3.2	20	50	2.2	30	910	0.4	260	60	0.3	0	N/A	N/A	N/A	200	1.2	100	230	0.8	80
+1452	Correspondence, publication and regulatory clerks\t\t\t\t\t\t	100	0.9	20	100	0.1	30	2270	1.2	870	60	-0.5	0	100	0.4	10	280	1.0	110	670	0.7	220
+1454	Survey interviewers and statistical clerks\t\t\t\t\t\t\t	60	1.4	20	140	0.4	30	750	1.1	290	50	0.8	20	40	1.1	10	340	0.5	80	320	0.4	110
+1511	Mail, postal and related workers\t\t\t\t\t\t\t\t\t	160	0.7	50	130	2.7	100	3020	1.2	1010	90	3.4	60	130	-2.5	-10	290	1.3	160	720	1.4	300
+1512	Letter carriers\t\t\t\t\t\t\t\t\t\t\t	120	-0.2	10	60	3.4	50	3490	1.2	1180	70	3.7	40	40	-1.9	0	430	1.1	220	990	1.4	430
+1513	Couriers, messengers and door-to-door distributors\t\t\t\t\t\t	150	-0.7	0	110	2.3	70	3000	1.1	950	60	3.1	30	30	-1.7	0	440	1.8	240	1040	0.9	330
+1521	Shippers and receivers\t\t\t\t\t\t\t\t\t\t	400	0.4	90	290	0.6	80	8970	1.3	3080	170	2.1	80	200	0.8	50	1150	1.0	400	1260	1.2	420
+1522	Storekeepers and partspersons\t\t\t\t\t\t\t\t\t	490	0.9	180	200	1.7	80	2310	2.1	1140	140	3.0	90	200	1.2	80	1140	0.6	310	770	1.5	330
+1523	Production logistics co-ordinators\t\t\t\t\t\t\t\t	N/A	N/A	N/A	150	0.0	40	2300	1.2	870	60	3.3	50	30	1.6	20	350	1.1	140	410	1.4	190
+1524	Purchasing and inventory control workers\t\t\t\t\t\t\t\t	60	1.0	10	90	0.4	30	2700	1.3	1020	70	1.7	20	50	0.9	10	320	1.3	120	420	1.3	170
+1525	Dispatchers\t\t\t\t\t\t\t\t\t\t\t	200	0.5	70	120	1.0	50	3560	0.9	1340	80	3.3	60	110	0.8	40	460	1.0	190	670	1.2	280
+1526	Transportation route and crew schedulers\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	530	1.5	220	N/A	N/A	N/A	N/A	N/A	N/A	90	1.5	30	90	1.8	40
+2111	Physicists and astronomers\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	330	1.2	110	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	90	0.8	30
+2112	Chemists\t\t\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	1040	0.9	380	N/A	N/A	N/A	N/A	N/A	N/A	60	1.0	20	200	1.0	60
+2113	Geoscientists and oceanographers\t\t\t\t\t\t\t\t\t	30	1.4	10	160	0.0	30	1120	1.1	400	50	1.1	20	N/A	N/A	N/A	190	1.2	60	500	2.0	250
+2114	Meteorologists and climatologists\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	60	0.3	10	N/A	N/A	N/A	N/A	N/A	N/A	30	0.9	10	60	1.1	20
+2115	Other professional occupations in physical sciences\t\t\t\t\t\t	40	0.3	10	N/A	N/A	N/A	100	1.1	30	N/A	N/A	N/A	N/A	N/A	N/A	30	1.4	10	50	3.0	20
+2121	Biologists and related scientists\t\t\t\t\t\t\t\t	200	0.1	20	200	1.0	50	2100	1.0	550	110	0.9	20	90	1.0	20	540	1.0	120	1010	1.1	310
+2122	Forestry professionals\t\t\t\t\t\t\t\t\t\t	330	-0.5	20	110	-0.4	20	270	0.0	50	210	0.5	30	20	-0.9	0	370	-0.1	60	640	-0.5	90
+2123	Agricultural representatives, consultants and specialists\t\t\t\t\t	20	0.4	10	N/A	N/A	N/A	170	1.1	70	N/A	N/A	N/A	N/A	N/A	N/A	160	0.9	60	50	1.9	30
+2131	Civil engineers\t\t\t\t\t\t\t\t\t\t\t	150	0.8	60	210	1.2	80	7480	1.4	3370	80	1.0	40	70	0.9	30	860	1.3	320	1140	1.5	510
+2132	Mechanical engineers\t\t\t\t\t\t\t\t\t\t	180	0.9	50	240	1.2	80	5040	1.4	1700	70	-0.1	10	N/A	N/A	N/A	420	1.4	150	710	1.3	230
+2133	Electrical and electronics engineers\t\t\t\t\t\t\t\t	90	0.4	20	110	1.3	40	5700	1.4	1990	N/A	N/A	N/A	30	1.7	10	420	1.7	170	560	1.6	210
+2134	Chemical engineers\t\t\t\t\t\t\t\t\t\t	70	0.2	10	80	0.4	20	930	1.1	330	40	0.2	10	40	1.4	20	70	0.2	20	60	1.2	30
+2141	Industrial and manufacturing engineers\t\t\t\t\t\t\t\t	40	-0.4	0	N/A	N/A	N/A	1100	1.2	440	N/A	N/A	N/A	N/A	N/A	N/A	60	1.4	30	130	0.8	50
+2142	Metallurgical and materials engineers\t\t\t\t\t\t\t\t	N/A	N/A	N/A	50	0.2	10	310	1.3	100	N/A	N/A	N/A	N/A	N/A	N/A	30	0.5	10	30	1.4	10
+2143	Mining engineers\t\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	220	-0.6	10	510	1.5	160	N/A	N/A	N/A	N/A	N/A	N/A	100	0.4	10	50	5.0	40
+2144	Geological engineers\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	70	0.9	20	860	1.4	310	N/A	N/A	N/A	N/A	N/A	N/A	180	1.2	50	130	1.8	50
+2145	Petroleum engineers\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	160	0.9	50	N/A	N/A	N/A	N/A	N/A	N/A	20	2.1	10	60	2.9	40
+2146	Aerospace engineers\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	230	2.6	130	N/A	N/A	N/A	N/A	N/A	N/A	50	0.5	10	40	0.4	10
+2147	Computer engineers (except software engineers and designers)\t\t\t\t\t	30	0.3	10	30	4.8	30	2620	2.6	1430	N/A	N/A	N/A	N/A	N/A	N/A	60	3.8	50	290	2.1	150
+2148	Other professional engineers, n.e.c.\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	780	1.6	290	N/A	N/A	N/A	N/A	N/A	N/A	80	0.9	20	250	0.9	80
+2151	Architects\t\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	70	1.7	20	3520	1.5	1140	N/A	N/A	N/A	N/A	N/A	N/A	190	1.5	60	440	2.0	180
+2152	Landscape architects\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	380	1.5	160	N/A	N/A	N/A	N/A	N/A	N/A	50	1.3	20	30	2.1	10
+2153	Urban and land use planners\t\t\t\t\t\t\t\t\t	50	1.1	10	60	0.7	10	1250	1.0	340	30	1.0	10	30	1.5	10	220	1.2	60	450	1.2	140
+2154	Land surveyors\t\t\t\t\t\t\t\t\t\t\t	50	1.0	20	40	2.1	20	670	1.3	220	30	1.0	10	100	0.9	30	230	1.2	60	240	1.6	90
+2161	Mathematicians, statisticians and actuaries\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	720	1.6	260	N/A	N/A	N/A	N/A	N/A	N/A	40	0.6	10	170	0.9	60
+2171	Information systems analysts and consultants\t\t\t\t\t\t\t	210	1.8	100	270	2.3	120	17070	3.0	9970	100	2.5	60	50	3.5	40	1180	3.5	740	3440	2.8	2090
+2172	Database analysts and data administrators\t\t\t\t\t\t\t	50	1.5	20	30	4.6	20	2090	2.4	1120	N/A	N/A	N/A	N/A	N/A	N/A	150	2.1	70	520	2.3	290
+2173	Software engineers and designers\t\t\t\t\t\t\t\t\t	40	4.8	40	100	4.4	70	12920	3.3	8240	N/A	N/A	N/A	N/A	N/A	N/A	320	6.0	330	1010	3.3	670
+2174	Computer programmers and interactive media developers\t\t\t\t\t\t	100	4.1	80	180	3.9	110	16500	3.5	10130	N/A	N/A	N/A	N/A	N/A	N/A	880	4.9	700	2390	3.7	1600
+2175	Web designers and developers\t\t\t\t\t\t\t\t\t	60	4.9	60	90	5.3	70	5300	3.6	3010	N/A	N/A	N/A	N/A	N/A	N/A	480	5.5	390	1130	4.0	760
+2211	Chemical technologists and technicians\t\t\t\t\t\t\t\t	80	1.2	20	130	0.3	30	1870	0.9	600	60	0.0	10	60	1.3	20	220	0.7	60	210	0.5	50
+2212	Geological and mineral technologists and technicians\t\t\t\t\t\t	40	0.4	10	200	-0.1	50	520	1.2	170	80	-0.8	20	20	0.5	10	160	0.7	50	90	2.1	40
+2221	Biological technologists and technicians\t\t\t\t\t\t\t\t	40	2.1	20	80	1.2	20	880	0.8	230	30	0.8	10	30	1.1	10	170	1.8	50	370	0.3	80
+2222	Agricultural and fish products inspectors\t\t\t\t\t\t\t	N/A	N/A	N/A	30	1.5	10	490	0.6	150	30	3.1	20	N/A	N/A	N/A	80	0.7	30	70	0.2	20
+2223	Forestry technologists and technicians\t\t\t\t\t\t\t\t	550	-0.9	40	270	-0.5	50	330	-0.4	60	280	-0.1	40	80	0.3	20	400	-0.6	80	770	-1.2	90
+2224	Conservation and fishery officers\t\t\t\t\t\t\t\t	60	1.0	10	60	0.3	10	260	0.3	80	90	0.9	20	30	0.8	10	150	-0.2	20	250	0.6	90
+2225	Landscape and horticulture technicians and specialists\t\t\t\t\t\t	60	0.9	20	180	0.6	40	1660	1.2	470	50	1.4	20	N/A	N/A	N/A	510	1.9	190	1190	1.5	380
+2231	Civil engineering technologists and technicians\t\t\t\t\t\t\t	80	1.2	40	90	1.4	30	1530	1.1	570	120	1.7	60	50	0.8	20	580	1.3	190	580	1.6	240
+2232	Mechanical engineering technologists and technicians\t\t\t\t\t\t	30	2.5	10	30	2.3	10	1350	1.5	510	40	0.0	0	40	0.3	0	220	1.8	80	410	1.0	130
+2233	Industrial engineering and manufacturing technologists and technicians\t\t\t\t	40	0.1	10	60	0.8	20	1310	0.9	420	N/A	N/A	N/A	50	-0.5	10	220	1.0	70	170	-0.6	30
+2234	Construction estimators\t\t\t\t\t\t\t\t\t\t	70	-0.5	0	20	-1.0	0	2170	1.1	680	30	0.4	0	40	1.3	10	410	0.7	110	550	0.5	150
+2241	Electrical and electronics engineering technologists and technicians\t\t\t\t	200	1.0	70	110	0.4	30	3570	1.2	1350	100	2.5	60	90	0.9	30	670	1.3	230	830	0.8	260
+2242	Electronic service technicians (household and business equipment)\t\t\t\t	240	1.1	80	190	2.1	90	5330	1.8	2390	110	4.2	90	110	1.2	30	980	2.0	440	1300	1.8	620
+2243	Industrial instrument technicians and mechanics\t\t\t\t\t\t\t	110	0.2	10	130	-0.3	20	280	0.8	110	50	1.9	10	220	1.1	30	180	1.3	60	110	2.4	60
+2244	Aircraft instrument, electrical and avionics mechanics, technicians and inspectors\t\t	N/A	N/A	N/A	N/A	N/A	N/A	430	3.5	300	N/A	N/A	N/A	N/A	N/A	N/A	100	0.2	20	130	0.6	40
+2251	Architectural technologists and technicians\t\t\t\t\t\t\t	N/A	N/A	N/A	50	1.3	20	1220	1.5	480	N/A	N/A	N/A	N/A	N/A	N/A	170	1.6	60	200	2.0	110
+2252	Industrial designers\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	20	-0.1	10	1150	1.3	450	N/A	N/A	N/A	N/A	N/A	N/A	80	1.0	30	150	0.2	40
+2253	Drafting technologists and technicians\t\t\t\t\t\t\t\t	60	2.0	30	100	2.1	50	3150	1.4	1180	60	1.5	30	90	1.0	30	320	1.2	110	530	1.5	190
+2254	Land survey technologists and technicians\t\t\t\t\t\t\t	30	1.0	10	30	2.0	10	280	1.4	90	N/A	N/A	N/A	30	0.9	10	100	1.0	30	150	1.6	50
+2255	Technical occupations in geomatics and meteorology\t\t\t\t\t\t	110	0.9	30	90	0.2	20	770	1.3	300	120	1.0	30	90	0.8	20	260	0.7	80	460	1.1	170
+2261	Non-destructive testers and inspection technicians\t\t\t\t\t\t	40	1.2	10	50	2.2	30	290	1.6	140	N/A	N/A	N/A	N/A	N/A	N/A	170	1.4	70	100	1.8	50
+2262	Engineering inspectors and regulatory officers\t\t\t\t\t\t\t	20	1.2	10	N/A	N/A	N/A	420	1.3	180	N/A	N/A	N/A	40	0.9	20	50	0.7	20	130	0.9	40
+2263	Inspectors in public and environmental health and occupational health and safety\t\t\t	300	0.1	40	200	-0.1	50	2300	1.1	890	160	0.9	40	260	1.2	70	670	1.0	270	600	1.5	290
+2264	Construction inspectors\t\t\t\t\t\t\t\t\t\t	110	0.5	40	110	0.3	40	1540	1.2	760	50	0.5	20	100	1.4	50	390	0.9	170	530	1.5	260
+2271	Air pilots, flight engineers and flying instructors\t\t\t\t\t\t	170	-0.3	0	80	1.4	20	1850	3.6	1260	80	7.2	90	30	2.7	10	480	0.1	70	530	1.2	230
+2272	Air traffic controllers and related occupations\t\t\t\t\t\t\t	30	-0.2	0	30	1.5	10	420	3.9	360	N/A	N/A	N/A	N/A	N/A	N/A	110	0.0	30	80	1.1	40
+2273	Deck officers, water transport\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	30	1.0	10	840	0.8	310	40	4.0	30	N/A	N/A	N/A	90	0.3	20	670	1.3	330
+2274	Engineer officers, water transport\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	350	0.9	130	N/A	N/A	N/A	N/A	N/A	N/A	40	0.4	10	250	1.4	130
+2275	Railway traffic controllers and marine traffic regulators\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	130	1.4	50	30	3.0	10	N/A	N/A	N/A	N/A	N/A	N/A	30	0.7	10
+2281	Computer network technicians\t\t\t\t\t\t\t\t\t	140	1.5	50	110	2.1	50	6420	2.4	3120	70	5.2	60	40	1.5	10	710	3.2	410	1300	2.4	710
+2282	User support technicians\t\t\t\t\t\t\t\t\t\t	300	1.7	160	190	3.8	130	11340	2.6	6090	50	5.7	60	N/A	N/A	N/A	1000	2.9	540	2060	2.4	1100
+2283	Information systems testing technicians\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	1240	3.3	690	N/A	N/A	N/A	N/A	N/A	N/A	30	4.4	30	190	3.4	110
+3011	Nursing co-ordinators and supervisors\t\t\t\t\t\t\t\t	160	0.1	60	80	0.8	50	1850	1.5	1090	60	0.7	30	N/A	N/A	N/A	380	1.5	260	610	1.6	430
+3012	Registered nurses and registered psychiatric nurses\t\t\t\t\t\t	2160	-0.1	210	1670	0.6	430	34290	1.3	12620	700	-0.3	60	580	-0.1	60	7540	1.3	2650	10580	1.2	4100
+3111	Specialist physicians\t\t\t\t\t\t\t\t\t\t	200	-0.3	50	190	0.5	60	5070	1.4	2000	60	1.2	20	N/A	N/A	N/A	920	1.3	350	1250	1.3	520
+3112	General practitioners and family physicians\t\t\t\t\t\t\t	310	0.4	80	270	0.6	90	5490	1.4	2010	150	0.6	40	60	-0.2	10	1010	1.2	400	1440	1.5	650
+3113	Dentists\t\t\t\t\t\t\t\t\t\t\t\t	80	0.0	10	150	0.7	40	2400	1.6	1060	30	1.7	10	60	-0.1	10	500	1.2	180	430	1.6	200
+3114	Veterinarians\t\t\t\t\t\t\t\t\t\t\t	50	-0.5	10	50	0.7	20	800	2.3	460	N/A	N/A	N/A	N/A	N/A	N/A	180	1.4	100	350	1.3	150
+3121	Optometrists\t\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	50	0.7	20	400	1.6	190	N/A	N/A	N/A	N/A	N/A	N/A	150	1.2	70	90	1.7	50
+3122	Chiropractors\t\t\t\t\t\t\t\t\t\t\t	20	0.0	10	70	0.7	30	690	1.6	300	20	1.7	10	N/A	N/A	N/A	170	1.2	70	230	1.7	110
+3124	Allied primary health practitioners\t\t\t\t\t\t\t\t	50	1.1	30	60	2.0	30	740	2.9	440	20	-100.0	-20	N/A	N/A	N/A	150	2.5	80	230	2.9	140
+3125	Other professional occupations in health diagnosing and treating\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	340	1.5	160	N/A	N/A	N/A	N/A	N/A	N/A	100	1.2	40	110	1.7	60
+3131	Pharmacists\t\t\t\t\t\t\t\t\t\t\t	220	0.3	10	70	1.6	30	2930	1.4	960	70	2.7	20	50	2.3	10	440	1.7	180	690	1.1	210
+3132	Dietitians and nutritionists\t\t\t\t\t\t\t\t\t	70	-0.1	20	80	0.6	30	1280	1.6	550	N/A	N/A	N/A	N/A	N/A	N/A	270	1.3	120	330	1.3	140
+3141	Audiologists and speech-language pathologists\t\t\t\t\t\t\t	60	-0.1	10	50	-0.2	10	830	1.4	320	20	0.8	10	30	0.5	10	210	0.9	80	180	0.8	70
+3142	Physiotherapists\t\t\t\t\t\t\t\t\t\t\t	110	-0.5	30	180	0.5	60	2680	1.5	1170	30	2.7	20	20	-0.1	10	720	1.2	290	590	1.5	280
+3143	Occupational therapists\t\t\t\t\t\t\t\t\t\t	70	0.4	20	50	0.3	10	1550	1.5	630	50	0.6	20	N/A	N/A	N/A	400	1.3	160	410	1.3	160
+3144	Other professional occupations in therapy and assessment\t\t\t\t\t\t	30	1.1	10	90	1.0	20	1550	1.9	510	50	1.3	10	N/A	N/A	N/A	230	1.7	80	310	1.9	110
+3211	Medical laboratory technologists\t\t\t\t\t\t\t\t\t	140	-0.2	20	120	0.3	40	2090	1.3	870	100	0.1	20	70	-0.4	10	510	1.2	220	670	1.1	310
+3212	Medical laboratory technicians and pathologists' assistants\t\t\t\t\t	180	-0.4	20	100	0.3	30	2840	1.4	1070	80	-0.1	10	30	-0.3	0	600	1.2	220	750	1.3	280
+3213	Animal health technologists and veterinary technicians\t\t\t\t\t\t	50	-0.5	10	60	-0.3	10	1360	1.4	370	30	0.1	10	N/A	N/A	N/A	290	0.4	90	470	0.4	100
+6315	Cleaning supervisors\t\t\t\t\t\t\t\t\t	100	0.2	30	N/A	N/A	N/A	780	1.4	390	N/A	N/A	N/A	30	-1.2	10	180	1.3	90	300	1.6	180
+3214	Respiratory therapists, clinical perfusionists and cardiopulmonary technologists\t\t\t	30	-0.3	10	60	0.3	20	1070	1.3	400	N/A	N/A	N/A	N/A	N/A	N/A	230	1.3	90	240	1.1	110
+3215	Medical radiation technologists\t\t\t\t\t\t\t\t\t	140	-0.4	10	80	0.2	20	1750	1.3	650	80	-0.5	10	30	-0.3	0	460	1.2	160	660	1.1	250
+3216	Medical sonographers\t\t\t\t\t\t\t\t\t\t	30	-0.3	10	100	4.8	80	590	1.4	230	N/A	N/A	N/A	N/A	N/A	N/A	90	1.2	30	110	1.4	50
+3217	Cardiology technologists and electrophysiological diagnostic technologists, n.e.c.\t\t	N/A	N/A	N/A	N/A	N/A	N/A	340	1.3	110	N/A	N/A	N/A	N/A	N/A	N/A	80	1.2	30	140	1.0	40
+3219	Other medical technologists and technicians (except dental health)\t\t\t\t	280	0.5	20	120	1.2	40	3350	1.3	980	80	2.2	20	80	2.5	30	580	1.6	230	890	1.0	270
+3221	Denturists\t\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	100	1.0	30	N/A	N/A	N/A	N/A	N/A	N/A	30	1.2	10	60	0.4	20
+3222	Dental hygienists and dental therapists\t\t\t\t\t\t\t\t	140	0.0	30	80	1.1	30	1920	1.6	740	50	1.7	20	50	-0.1	10	590	1.2	200	550	1.6	230
+3223	Dental technologists, technicians and laboratory assistants\t\t\t\t\t	20	2.5	10	N/A	N/A	N/A	810	1.0	310	N/A	N/A	N/A	N/A	N/A	N/A	110	1.4	40	100	-0.6	30
+3231	Opticians\t\t\t\t\t\t\t\t\t\t\t	40	0.1	10	N/A	N/A	N/A	720	1.4	330	N/A	N/A	N/A	N/A	N/A	N/A	160	1.5	90	140	1.3	70
+3232	Practitioners of natural healing\t\t\t\t\t\t\t\t\t	80	0.0	20	90	1.0	30	1600	1.7	760	30	1.7	20	N/A	N/A	N/A	280	1.3	110	410	1.6	200
+3233	Licensed practical nurses\t\t\t\t\t\t\t\t\t	540	0.2	110	460	0.5	110	5740	1.7	2380	120	0.3	30	170	0.7	50	2220	1.6	810	2430	1.5	1020
+3234	Paramedical occupations\t\t\t\t\t\t\t\t\t\t	160	-0.1	30	280	0.5	80	1540	1.5	580	130	1.5	60	120	0.1	30	690	1.1	240	740	1.4	280
+3236	Massage therapists\t\t\t\t\t\t\t\t\t\t	110	0.2	10	320	1.1	120	3180	1.7	1370	60	1.7	20	40	-0.1	0	820	1.3	330	1030	1.7	490
+3237	Other technical occupations in therapy and assessment\t\t\t\t\t\t	20	0.0	0	100	5.1	80	550	1.4	210	N/A	N/A	N/A	30	-0.4	0	190	1.4	60	220	1.3	90
+3411	Dental assistants\t\t\t\t\t\t\t\t\t\t	240	-0.1	40	250	0.7	60	3310	1.6	1140	60	1.7	20	80	-0.1	10	950	1.2	300	940	1.6	360
+3413	Nurse aides, orderlies and patient service associates\t\t\t\t\t\t	1370	1.0	440	1360	0.9	440	21930	2.0	10580	480	1.4	180	440	0.6	120	6280	1.8	2720	8400	1.9	3930
+3414	Other assisting occupations in support of health services\t\t\t\t\t	220	-0.1	40	220	0.8	60	3080	1.5	1120	100	1.1	30	90	1.4	30	1050	1.4	390	1130	1.5	450
+4011	University professors and lecturers\t\t\t\t\t\t\t\t	390	4.4	300	60	7.0	70	5320	-2.3	240	N/A	N/A	N/A	N/A	N/A	N/A	2290	2.7	950	1890	1.7	990
+4012	Post-secondary teaching and research assistants\t\t\t\t\t\t\t	190	4.2	120	130	6.8	130	5680	-1.4	-470	N/A	N/A	N/A	N/A	N/A	N/A	980	2.7	340	1130	1.8	330
+4021	College and other vocational instructors\t\t\t\t\t\t\t\t	300	1.3	130	550	2.9	380	9290	0.9	3200	220	1.8	110	200	2.5	120	730	2.5	460	1810	1.8	860
+4031	Secondary school teachers\t\t\t\t\t\t\t\t\t	670	-2.6	-110	800	-1.2	160	14240	1.1	5610	460	0.1	40	320	-0.3	20	2100	-0.9	510	4110	-0.2	940
+4032	Elementary school and kindergarten teachers\t\t\t\t\t\t\t	1030	-2.8	-210	1810	-1.2	300	22380	1.1	8270	870	0.1	60	860	-0.2	30	3530	-0.9	720	7060	-0.2	1470
+4033	Educational counsellors\t\t\t\t\t\t\t\t\t\t	90	1.8	40	90	0.2	20	2110	0.7	650	50	0.7	10	90	1.3	30	370	1.2	140	700	0.7	240
+4111	Judges\t\t\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	220	0.6	90	N/A	N/A	N/A	N/A	N/A	N/A	60	0.3	30	50	0.2	20
+4112	Lawyers and Quebec notaries\t\t\t\t\t\t\t\t\t	180	-0.2	50	120	0.2	40	9930	1.4	3740	110	0.3	40	40	1.3	20	950	0.5	340	2140	0.4	690
+4151	Psychologists\t\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	70	0.7	20	1900	1.5	680	N/A	N/A	N/A	30	1.1	0	210	0.9	70	550	1.3	220
+4152	Social workers\t\t\t\t\t\t\t\t\t\t\t	440	0.8	90	240	0.7	80	4320	1.4	1680	230	1.2	60	110	0.6	20	1080	1.1	410	1640	1.1	660
+4153	Family, marriage and other related counsellors\t\t\t\t\t\t\t	230	0.7	90	210	0.8	80	3550	1.6	1590	140	0.7	50	90	0.6	30	640	1.3	290	1210	1.4	550
+4154	Professional occupations in religion\t\t\t\t\t\t\t\t	260	1.8	70	100	3.3	60	3130	2.2	1350	110	1.8	30	120	1.4	20	790	1.5	270	790	2.0	370
+4155	Probation and parole officers and related occupations\t\t\t\t\t\t	60	1.3	20	30	0.5	10	690	0.5	240	40	0.9	10	N/A	N/A	N/A	90	0.4	20	200	0.2	70
+4156	Employment counsellors\t\t\t\t\t\t\t\t\t\t	130	1.1	40	90	1.1	30	1330	1.5	550	60	1.0	20	20	2.1	10	300	1.2	110	640	1.4	270
+4161	Natural and applied science policy researchers, consultants and program officers\t\t\t	150	0.5	50	150	0.8	50	1970	1.2	680	170	0.9	60	130	1.4	50	390	1.1	140	1020	1.0	370
+4162	Economists and economic policy researchers and analysts\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	1080	1.0	350	40	0.3	0	N/A	N/A	N/A	130	1.5	50	520	0.7	170
+4163	Business development officers and marketing researchers and consultants\t\t\t\t	80	0.4	10	100	0.7	30	8640	1.7	3180	50	1.0	10	60	0.9	10	710	1.8	300	1200	1.8	510
+4164	Social policy researchers, consultants and program officers\t\t\t\t\t	170	1.3	80	100	1.1	40	2600	1.2	1010	20	1.3	10	60	0.6	20	310	1.2	130	1200	0.8	430
+4165	Health policy researchers, consultants and program officers\t\t\t\t\t	120	-0.1	30	60	1.2	20	2850	1.3	1030	60	1.2	30	N/A	N/A	N/A	470	1.3	200	1120	0.9	410
+4166	Education policy researchers, consultants and program officers\t\t\t\t\t	60	1.1	20	80	0.8	20	2190	1.3	750	60	1.0	20	60	4.4	50	270	2.0	130	780	1.8	360
+4167	Recreation, sports and fitness policy researchers, consultants and program officers\t\t	50	0.2	10	50	0.4	10	1120	1.7	360	30	2.3	10	N/A	N/A	N/A	160	2.3	80	440	1.7	160
+4168	Program officers unique to government\t\t\t\t\t\t\t\t	50	0.9	10	30	0.5	10	610	0.4	170	N/A	N/A	N/A	30	0.4	10	90	0.6	20	590	0.3	160
+4169	Other professional occupations in social science, n.e.c.\t\t\t\t\t\t	30	-0.4	10	N/A	N/A	N/A	540	1.1	180	N/A	N/A	N/A	70	1.3	30	100	1.0	30	260	1.0	90
+4211	Paralegal and related occupations\t\t\t\t\t\t\t\t	30	-0.5	0	30	-0.3	10	3080	1.3	1010	N/A	N/A	N/A	N/A	N/A	N/A	280	0.4	90	550	0.6	160
+4212	Social and community service workers\t\t\t\t\t\t\t\t	1780	1.1	660	1020	0.8	360	15390	1.8	6700	680	1.2	260	510	0.9	170	3010	1.4	1280	6130	1.6	2720
+4214	Early childhood educators and assistants\t\t\t\t\t\t\t\t	700	1.4	300	640	0.4	160	15240	1.6	5930	390	0.8	140	440	0.8	160	1860	1.2	650	3980	1.2	1300
+4215	Instructors of persons with disabilities\t\t\t\t\t\t\t\t	40	0.5	10	N/A	N/A	N/A	900	1.5	340	30	1.3	10	N/A	N/A	N/A	180	1.2	80	200	1.5	80
+4216	Other instructors\t\t\t\t\t\t\t\t\t\t	70	3.0	50	110	1.4	50	5380	2.5	2520	40	1.5	20	40	4.0	30	340	2.9	230	850	3.3	540
+4217	Other religious occupations\t\t\t\t\t\t\t\t\t	30	1.8	10	N/A	N/A	N/A	860	2.3	380	40	1.8	10	N/A	N/A	N/A	120	1.7	40	180	2.1	80
+4311	Police officers (except commissioned)\t\t\t\t\t\t\t\t	380	0.5	110	400	0.5	90	7150	0.2	2300	190	0.9	70	90	0.8	30	1350	0.4	270	1470	0.5	510
+4312	Firefighters\t\t\t\t\t\t\t\t\t\t\t	130	0.3	10	110	0.9	40	2890	0.7	1090	50	1.3	10	50	1.1	10	490	0.9	160	840	1.1	310
+6316	Other services supervisors\t\t\t\t\t\t\t\t	60	1.3	20	50	0.7	20	1400	1.9	740	60	1.3	20	40	1.9	20	180	2.3	110	270	1.6	140
+4313	Non-commissioned ranks of the Canadian Forces\t\t\t\t\t\t\t	30	0.5	10	70	0.5	10	800	0.0	140	20	1.2	10	N/A	N/A	N/A	220	0.4	30	3450	-0.2	770
+4411	Home child care providers\t\t\t\t\t\t\t\t\t	260	1.5	80	160	1.2	40	4900	2.0	1950	100	1.3	30	160	1.2	40	740	1.5	230	1390	1.6	480
+4412	Home support workers, housekeepers and related occupations\t\t\t\t\t	580	1.1	230	380	1.1	150	8630	1.9	4230	230	1.3	90	280	1.0	100	1800	1.6	820	3740	1.7	1780
+4413	Elementary and secondary school teacher assistants\t\t\t\t\t\t	540	-2.8	-100	780	-1.2	140	9270	1.1	3670	440	0.1	40	410	-0.4	10	1750	-0.9	390	2990	-0.2	700
+4421	Sheriffs and bailiffs\t\t\t\t\t\t\t\t\t\t	30	0.3	10	N/A	N/A	N/A	380	0.8	130	N/A	N/A	N/A	30	1.0	10	80	0.6	30	90	0.4	30
+4422	Correctional service officers\t\t\t\t\t\t\t\t\t	130	0.8	50	20	0.5	10	2320	0.4	750	40	0.9	20	N/A	N/A	N/A	180	0.4	50	530	0.4	190
+4423	By-law enforcement and other regulatory officers, n.e.c.\t\t\t\t\t\t	70	0.4	10	30	1.4	20	800	0.9	320	N/A	N/A	N/A	80	1.2	20	160	0.8	70	220	1.1	100
+5111	Librarians\t\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	30	2.2	20	620	0.4	210	N/A	N/A	N/A	N/A	N/A	N/A	90	1.2	50	80	0.8	40
+5112	Conservators and curators\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	160	1.0	50	N/A	N/A	N/A	N/A	N/A	N/A	50	2.1	20	70	1.1	30
+5113	Archivists\t\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	80	0.9	30	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	40	1.9	20
+5121	Authors and writers\t\t\t\t\t\t\t\t\t\t	90	-1.2	10	60	3.0	40	3460	1.9	1390	40	1.8	20	N/A	N/A	N/A	320	2.5	180	1130	1.3	450
+5122	Editors\t\t\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	50	3.7	50	1600	1.4	670	N/A	N/A	N/A	N/A	N/A	N/A	200	2.9	150	460	1.1	230
+5123	Journalists\t\t\t\t\t\t\t\t\t\t\t	50	-0.3	0	30	4.1	30	800	0.9	280	N/A	N/A	N/A	N/A	N/A	N/A	120	2.4	80	200	0.5	70
+5125	Translators, terminologists and interpreters\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	1370	1.4	520	N/A	N/A	N/A	N/A	N/A	N/A	60	0.6	20	230	1.2	80
+5131	Producers, directors, choreographers and related occupations\t\t\t\t\t	50	1.7	20	40	2.6	20	3870	1.7	1680	50	0.4	10	N/A	N/A	N/A	240	2.4	140	380	1.9	190
+5132	Conductors, composers and arrangers\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	490	1.9	220	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	120	1.6	60
+5133	Musicians and singers\t\t\t\t\t\t\t\t\t\t	50	1.5	20	60	3.4	40	4980	2.5	2450	80	2.3	30	20	5.5	20	420	3.6	340	1160	3.1	740
+5134	Dancers\t\t\t\t\t\t\t\t\t\t\t\t	40	1.7	10	N/A	N/A	N/A	1400	2.7	600	N/A	N/A	N/A	20	5.5	20	100	4.3	80	270	4.5	200
+5135	Actors and comedians\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	2740	1.8	950	N/A	N/A	N/A	N/A	N/A	N/A	50	2.5	20	180	1.2	60
+5136	Painters, sculptors and other visual artists\t\t\t\t\t\t\t	20	-0.6	0	90	2.4	50	3390	1.8	1270	40	3.9	30	N/A	N/A	N/A	330	2.9	210	1230	1.1	450
+5211	Library and public archive technicians\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	560	0.8	230	N/A	N/A	N/A	N/A	N/A	N/A	60	0.3	30	130	0.8	60
+5212	Technical occupations related to museums and art galleries\t\t\t\t\t	N/A	N/A	N/A	30	0.5	10	440	1.5	160	30	2.0	20	N/A	N/A	N/A	100	1.8	40	160	1.4	70
+5221	Photographers\t\t\t\t\t\t\t\t\t\t\t	70	-0.4	20	50	0.3	10	2100	1.4	780	N/A	N/A	N/A	30	1.6	20	280	1.1	110	620	0.4	180
+5222	Film and video camera operators\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	810	1.5	320	20	0.7	0	N/A	N/A	N/A	50	4.1	30	70	1.6	20
+5223	Graphic arts technicians\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	1090	2.2	390	N/A	N/A	N/A	N/A	N/A	N/A	60	3.8	40	80	1.8	30
+5224	Broadcast technicians\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	130	1.1	40	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+5225	Audio and video recording technicians\t\t\t\t\t\t\t\t	N/A	N/A	N/A	40	2.0	20	2510	1.7	900	N/A	N/A	N/A	N/A	N/A	N/A	150	2.4	70	240	1.8	100
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts\t\t   	50	2.1	30	N/A	N/A	N/A	3390	1.7	1400	N/A	N/A	N/A	N/A	N/A	N/A	110	2.4	50	240	1.6	90
+5227	Support occupations in motion pictures, broadcasting, photography and the performing arts\t\t\t   	30	1.6	10	N/A	N/A	N/A	3110	1.6	1130	N/A	N/A	N/A	N/A	N/A	N/A	50	2.2	30	140	1.7	60
+5231	Announcers and other broadcasters\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	400	1.1	140	N/A	N/A	N/A	60	2.1	20	110	1.8	50	70	1.5	30
+5232	Other performers, n.e.c.\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	910	1.8	370	N/A	N/A	N/A	N/A	N/A	N/A	100	2.0	50	170	1.1	70
+5241	Graphic designers and illustrators\t\t\t\t\t\t\t	60	0.2	10	210	2.1	110	9910	1.9	4450	40	0.6	10	30	1.0	10	640	2.1	340	1290	1.0	500
+5242	Interior designers and interior decorators\t\t\t\t\t\t	50	1.1	20	30	0.5	10	3470	1.3	1250	N/A	N/A	N/A	20	0.9	10	380	1.1	140	550	0.5	150
+5243	Theatre, fashion, exhibit and other creative designers\t\t\t\t\t	N/A	N/A	N/A	40	1.2	10	2510	1.3	650	N/A	N/A	N/A	N/A	N/A	N/A	90	1.1	30	250	0.5	60
+5244	Artisans and craftspersons\t\t\t\t\t\t\t\t	60	1.6	30	180	1.8	100	1640	1.0	670	100	2.9	70	40	0.9	20	370	1.6	200	1000	0.1	330
+5245	Patternmakers - textile, leather and fur products\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	100	0.7	40	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	50	-0.9	10
+5251	Athletes\t\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	410	2.5	150	N/A	N/A	N/A	N/A	N/A	N/A	80	3.0	40	130	1.3	30
+5252	Coaches\t\t\t\t\t\t\t\t\t\t\t	20	2.6	20	60	1.5	30	1590	2.6	800	N/A	N/A	N/A	N/A	N/A	N/A	240	3.7	190	300	3.2	200
+5253	Sports officials and referees\t\t\t\t\t\t\t\t	30	1.3	10	N/A	N/A	N/A	580	2.6	210	N/A	N/A	N/A	N/A	N/A	N/A	150	2.9	70	120	1.5	30
+5254	Program leaders and instructors in recreation, sport and fitness\t\t\t\t	450	1.6	190	430	0.9	110	12720	2.7	5380	280	2.5	160	220	1.6	90	1750	3.2	1000	3190	2.7	1520
+6211	Retail sales supervisors\t\t\t\t\t\t\t\t\t	1510	0.7	420	810	0.9	340	19510	1.3	7960	530	1.6	210	690	0.8	200	3490	1.3	1660	6180	0.9	2460
+6221	Technical sales specialists - wholesale trade\t\t\t\t\t\t	260	0.6	80	110	1.4	60	8700	1.9	4460	90	1.9	40	140	1.7	60	960	2.0	600	860	1.4	440
+6222	Retail and wholesale buyers\t\t\t\t\t\t\t\t	260	0.0	60	130	0.6	60	3180	1.2	1320	90	0.4	30	30	0.3	10	510	1.2	260	670	1.0	300
+6231	Insurance agents and brokers\t\t\t\t\t\t\t\t	380	-0.2	100	270	2.6	100	8080	1.1	2590	120	0.0	30	190	-1.8	10	1330	-0.1	60	1430	0.9	410
+6232	Real estate agents and salespersons\t\t\t\t\t\t\t	260	1.3	50	300	3.0	170	15630	1.1	4970	40	1.1	10	120	2.4	40	1980	0.5	470	3390	0.7	1090
+6235	Financial sales representatives\t\t\t\t\t\t\t\t	200	0.1	20	180	1.1	50	7100	0.5	1840	90	1.4	20	70	1.1	20	920	0.6	190	1070	1.0	360
+6311	Food service supervisors\t\t\t\t\t\t\t\t\t	180	1.7	50	170	0.8	40	3800	1.6	1330	60	2.2	20	80	0.6	10	680	1.3	210	940	1.5	330
+6312	Executive housekeepers\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	40	2.0	30	340	2.1	210	N/A	N/A	N/A	40	1.3	20	150	1.9	90	150	1.7	90
+6313	Accommodation, travel, tourism and related services supervisors\t\t\t\t	N/A	N/A	N/A	30	2.1	10	820	3.1	530	N/A	N/A	N/A	N/A	N/A	N/A	90	2.9	60	150	2.0	70
+6314	Customer and information services supervisors\t\t\t\t\t\t	40	0.1	10	N/A	N/A	N/A	910	1.2	380	N/A	N/A	N/A	N/A	N/A	N/A	70	0.9	40	150	1.0	60
+6321	Chefs\t\t\t\t\t\t\t\t\t\t\t	100	2.3	50	190	1.2	60	6790	1.7	2420	80	1.7	30	20	0.6	10	1040	1.5	370	1400	1.7	520
+6322	Cooks\t\t\t\t\t\t\t\t\t\t\t	1150	1.4	530	1050	0.9	310	20840	1.7	7510	700	1.6	330	420	0.6	150	4080	1.4	1490	6080	1.5	2170
+6331	Butchers, meat cutters and fishmongers - retail and wholesale\t\t\t\t	90	0.4	10	100	0.9	30	1420	1.1	500	40	1.2	10	40	0.4	10	310	1.3	120	470	0.6	110
+6332	Bakers\t\t\t\t\t\t\t\t\t\t\t	310	0.0	80	360	0.7	80	4870	1.1	1600	120	1.1	40	50	0.5	20	1120	0.9	300	1400	2.9	730
+6341	Hairstylists and barbers\t\t\t\t\t\t\t\t\t	560	1.8	130	360	3.3	180	8790	2.3	3770	200	1.8	50	280	1.6	60	2340	1.5	640	2830	2.0	1240
+6342	Tailors, dressmakers, furriers and milliners\t\t\t\t\t\t	70	1.8	30	40	2.7	20	1930	1.1	750	N/A	N/A	N/A	N/A	N/A	N/A	150	1.5	60	310	1.0	130
+6343	Shoe repairers and shoemakers\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	170	1.8	80	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	30	0.5	10
+6344	Jewellers, jewellery and watch repairers and related occupations\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	600	1.1	200	N/A	N/A	N/A	N/A	N/A	N/A	90	1.2	30	160	0.4	50
+6345	Upholsterers\t\t\t\t\t\t\t\t\t\t	30	3.0	20	30	3.3	20	350	1.4	170	N/A	N/A	N/A	N/A	N/A	N/A	100	1.2	40	120	1.7	60
+6346	Funeral directors and embalmers\t\t\t\t\t\t\t\t	40	1.8	20	30	3.3	20	260	2.3	120	N/A	N/A	N/A	N/A	N/A	N/A	130	1.5	40	90	2.0	40
+6411	Sales and account representatives - wholesale trade (non-technical)\t\t\t	830	0.9	170	450	1.2	180	25960	1.1	9270	130	1.4	30	220	1.2	50	3360	1.2	1330	3630	0.8	1300
+6421	Retail salespersons\t\t\t\t\t\t\t\t\t	2550	0.6	350	2480	1.1	840	51740	1.3	15480	1100	1.6	280	1080	1.0	200	10170	1.2	3430	13330	0.9	3500
+6511	Maîtres d'hôtel and hosts/hostesses       	90	1.7	20	80	0.9	20	3400	1.7	710	N/A	N/A	N/A	50	0.7	0	540	1.4	150	570	1.4	130
+6512	Bartenders\t\t\t\t\t\t\t\t\t\t	120	1.4	60	180	1.3	60	3380	1.7	930	70	2.1	40	40	0.5	10	610	1.6	210	780	1.6	280
+6513	Food and beverage servers\t\t\t\t\t\t\t\t	740	1.7	290	920	0.9	240	22150	1.7	6570	410	1.7	160	250	0.6	60	4200	1.5	1400	4940	1.5	1500
+6521	Travel counsellors\t\t\t\t\t\t\t\t\t	50	1.5	30	30	4.1	20	4650	3.1	2860	50	3.1	40	40	-3.7	-10	330	4.3	280	650	1.9	310
+6522	Pursers and flight attendants\t\t\t\t\t\t\t\t	20	0.3	10	N/A	N/A	N/A	2130	3.9	1810	N/A	N/A	N/A	N/A	N/A	N/A	180	0.0	20	160	1.1	70
+6523	Airline ticket and service agents\t\t\t\t\t\t\t	120	-0.2	10	60	1.8	30	1720	3.7	1390	60	7.2	80	N/A	N/A	N/A	140	0.1	30	180	1.1	100
+6524	Ground and water transport ticket agents, cargo service representatives and related clerks	N/A	N/A	N/A	N/A	N/A	N/A	430	1.4	160	N/A	N/A	N/A	N/A	N/A	N/A	40	1.4	20	180	1.7	80
+6525	Hotel front desk clerks\t\t\t\t\t\t\t\t\t	100	0.3	40	160	2.0	60	1560	2.2	620	60	2.2	40	120	1.3	60	590	1.9	210	690	2.0	300
+6531	Tour and travel guides\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	20	1.9	10	690	2.5	400	N/A	N/A	N/A	N/A	N/A	N/A	80	3.1	60	140	2.4	70
+6532	Outdoor sport and recreational guides\t\t\t\t\t\t\t	50	0.7	30	100	1.2	40	390	2.8	210	100	2.7	80	30	-0.5	10	160	2.5	90	350	1.8	160
+6533	Casino occupations\t\t\t\t\t\t\t\t\t	70	1.7	20	30	0.4	10	2320	3.6	1590	N/A	N/A	N/A	50	1.4	10	300	3.6	210	150	2.7	80
+6541	Security guards and related security service occupations\t\t\t\t\t	450	1.0	80	220	0.4	60	10590	1.4	3980	200	0.9	40	190	2.1	60	1190	1.9	560	2170	1.7	1010
+6551	Customer services representatives - financial institutions\t\t\t\t	250	0.2	40	260	0.9	60	6640	0.5	1530	130	1.4	40	150	1.1	40	1080	0.7	230	1460	1.0	450
+6552	Other customer and information services representatives\t\t\t\t\t	760	0.7	150	340	1.3	110	16470	1.4	5220	220	1.9	80	200	1.2	50	2050	1.3	650	3140	1.2	920
+6561	Image, social and other personal consultants\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	340	2.2	170	N/A	N/A	N/A	N/A	N/A	N/A	80	1.5	30	90	2.0	50
+6562	Estheticians, electrologists and related occupations\t\t\t\t\t	270	1.6	60	160	2.7	70	6050	2.1	2290	110	1.8	20	150	1.5	30	1260	1.5	320	1640	1.9	600
+6563	Pet groomers and animal care workers\t\t\t\t\t\t\t	250	1.4	50	120	2.7	60	2240	2.1	860	110	1.8	20	80	1.8	20	630	1.4	180	850	1.7	320
+6564	Other personal service occupations\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	410	2.0	210	N/A	N/A	N/A	N/A	N/A	N/A	30	1.5	10	90	1.7	50
+6611	Cashiers\t\t\t\t\t\t\t\t\t\t\t	1600	0.6	190	1560	1.3	500	25530	1.3	6710	790	1.4	170	500	0.6	60	5560	1.3	1800	7110	0.9	1520
+6621	Service station attendants\t\t\t\t\t\t\t\t	90	0.4	10	110	0.9	30	900	1.1	240	110	1.2	20	30	0.6	0	280	1.2	80	530	0.7	90
+6622	Store shelf stockers, clerks and order fillers\t\t\t\t\t\t	850	0.4	70	950	0.9	260	13610	1.2	3920	570	1.2	110	390	0.5	40	2830	1.2	890	4200	0.7	830
+6623	Other sales related occupations\t\t\t\t\t\t\t\t	70	0.2	10	60	1.0	20	3050	1.4	930	30	1.4	10	60	0.8	20	510	1.6	190	490	1.1	130
+6711	Food counter attendants, kitchen helpers and related support occupations\t\t\t	1420	1.6	370	1600	0.9	350	33690	1.6	9180	700	1.4	160	600	0.4	70	6710	1.4	1880	9290	1.5	2490
+6721	Support occupations in accommodation, travel and facilities set-up services\t\t	N/A	N/A	N/A	N/A	N/A	N/A	750	1.8	290	N/A	N/A	N/A	N/A	N/A	N/A	80	0.9	10	180	1.7	70
+6722	Operators and attendants in amusement, recreation and sport\t\t\t\t	110	1.2	50	190	0.7	40	2400	2.8	1040	90	2.5	60	60	1.3	30	600	3.2	340	540	2.1	230
+6731	Light duty cleaners\t\t\t\t\t\t\t\t\t	1360	0.4	340	1020	1.3	340	16160	1.6	6940	590	1.0	200	520	1.6	210	4750	1.7	1870	5960	1.7	2480
+6732	Specialized cleaners\t\t\t\t\t\t\t\t\t	370	0.8	80	230	1.3	70	3530	1.5	1280	110	2.8	50	110	0.2	10	920	1.1	260	1150	1.5	420
+6733	Janitors, caretakers and building superintendents\t\t\t\t\t	1520	0.5	310	1250	0.7	430	16790	1.3	7560	860	1.2	240	760	1.7	270	3960	1.3	1710	5910	1.3	2580
+6741	Dry cleaning, laundry and related occupations\t\t\t\t\t\t	70	1.6	20	60	2.0	30	1900	2.2	1000	50	0.5	10	60	1.1	10	440	1.6	180	530	1.9	260
+6742	Other service support occupations, n.e.c.\t\t\t\t\t\t	70	2.0	20	110	1.7	40	2400	2.2	880	N/A	N/A	N/A	40	1.8	10	310	1.7	100	520	1.9	180
+7201	Contractors and supervisors, machining, metal forming, shaping and erecting trades and related occupations\t   	130	0.3	40	40	0.2	20	1130	1.5	670	30	-0.7	0	70	1.3	30	250	0.9	140	300	0.2	130
+7202	Contractors and supervisors, electrical trades and telecommunications occupations\t\t	100	-0.5	20	100	0.0	30	1710	1.0	770	40	0.5	10	90	2.1	50	510	0.9	230	550	0.4	240
+7203	Contractors and supervisors, pipefitting trades\t\t\t\t\t\t\t	50	-0.3	10	30	-0.7	10	790	1.0	280	N/A	N/A	N/A	50	1.4	20	170	0.7	70	170	0.7	60
+7204	Contractors and supervisors, carpentry trades\t\t\t\t\t\t\t	120	-0.5	20	100	-1.0	10	2660	0.9	820	70	0.4	20	70	1.6	30	500	0.8	160	940	-0.1	200
+7205	Contractors and supervisors, other construction trades, installers, repairers and servicers\t	250	-0.4	60	220	-0.6	60	5350	1.0	2270	110	0.7	40	40	1.8	20	1030	0.8	470	1440	0.2	520
+7231	Machinists and machining and tooling inspectors\t\t\t\t\t\t\t	160	-0.2	0	60	1.1	20	2140	1.6	990	20	0.5	0	30	1.2	10	190	1.7	100	410	0.5	130
+7232	Tool and die makers\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	30	0.3	10	230	1.3	120	N/A	N/A	N/A	N/A	N/A	N/A	70	1.4	30	20	-0.5	0
+7233	Sheet metal workers\t\t\t\t\t\t\t\t\t\t	60	1.2	20	60	-0.7	10	1720	1.3	590	40	3.0	20	40	1.8	20	410	0.7	130	600	0.1	150
+7234	Boilermakers\t\t\t\t\t\t\t\t\t\t\t	40	-0.6	0	40	0.4	10	480	1.3	210	50	0.5	10	N/A	N/A	N/A	230	0.7	90	220	-0.1	80
+7235	Structural metal and platework fabricators and fitters\t\t\t\t\t\t	60	-0.7	0	30	0.9	10	1000	1.6	480	N/A	N/A	N/A	N/A	N/A	N/A	130	0.8	40	260	0.6	80
+7236	Ironworkers\t\t\t\t\t\t\t\t\t\t\t	80	0.4	10	70	-1.7	0	1250	1.2	370	20	0.4	0	30	0.7	0	270	0.5	80	240	0.0	50
+7237	Welders and related machine operators\t\t\t\t\t\t\t\t	780	0.5	70	700	0.1	140	4360	1.7	1780	340	1.2	60	410	1.3	80	1470	1.1	470	1250	0.8	370
+7241	Electricians (except industrial and power system)\t\t\t\t\t\t	480	-0.3	10	380	-0.6	40	9850	1.1	2500	310	1.3	70	270	1.9	80	2190	0.7	570	2890	0.1	490
+7242	Industrial electricians\t\t\t\t\t\t\t\t\t\t	490	-0.2	60	580	-0.3	100	1430	0.8	470	330	1.0	80	240	0.9	60	930	0.4	240	720	1.2	260
+7243	Power system electricians\t\t\t\t\t\t\t\t\t	30	-1.0	10	40	-0.4	10	420	0.6	140	N/A	N/A	N/A	80	1.7	50	170	0.5	50	70	1.2	30
+7244	Electrical power line and cable workers\t\t\t\t\t\t\t\t	70	-0.7	20	90	-0.2	10	670	0.7	190	60	-0.2	20	30	1.6	20	500	0.4	110	240	-0.4	50
+7245	Telecommunications line and cable workers\t\t\t\t\t\t\t	30	0.0	10	N/A	N/A	N/A	770	0.5	250	N/A	N/A	N/A	20	1.0	10	140	0.7	50	210	0.0	50
+7246	Telecommunications installation and repair workers\t\t\t\t\t\t	100	0.6	20	30	6.8	40	1650	0.7	750	N/A	N/A	N/A	50	0.7	10	350	0.7	180	350	0.2	120
+7247	Cable television service and maintenance technicians\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	80	0.3	30	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	40	0.6	20
+7251	Plumbers\t\t\t\t\t\t\t\t\t\t\t\t	280	-0.3	40	280	-0.5	50	7070	1.0	1980	190	0.1	40	110	1.9	50	1140	0.7	360	1590	0.1	370
+7252	Steamfitters, pipefitters and sprinkler system installers\t\t\t\t\t	210	0.4	50	140	-0.7	20	1530	1.1	460	50	0.3	10	110	0.9	30	460	0.6	130	570	0.8	180
+7253	Gas fitters\t\t\t\t\t\t\t\t\t\t\t	110	0.4	20	90	-0.6	20	740	0.9	250	60	0.3	10	60	1.4	20	140	1.1	60	180	0.7	70
+7271	Carpenters\t\t\t\t\t\t\t\t\t\t\t	760	-0.2	90	840	-0.7	130	11250	1.0	3320	660	0.7	140	320	1.8	110	2940	0.7	960	4650	0.1	1070
+7272	Cabinetmakers\t\t\t\t\t\t\t\t\t\t\t	40	2.6	20	30	3.1	20	1660	0.1	280	N/A	N/A	N/A	N/A	N/A	N/A	280	1.5	100	380	-2.6	-30
+7281	Bricklayers\t\t\t\t\t\t\t\t\t\t\t	50	-0.9	10	100	-0.3	20	1230	1.0	390	20	0.5	10	N/A	N/A	N/A	210	0.7	70	430	0.0	120
+7282	Concrete finishers\t\t\t\t\t\t\t\t\t\t	40	-0.4	0	30	-1.0	10	1350	1.0	430	20	0.7	0	N/A	N/A	N/A	240	0.8	90	380	0.0	100
+7283	Tilesetters\t\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	20	-1.0	0	1780	1.0	550	N/A	N/A	N/A	N/A	N/A	N/A	180	0.7	60	370	0.4	90
+7284	Plasterers, drywall installers and finishers and lathers\t\t\t\t\t\t	110	-0.4	10	120	-1.0	10	3200	1.0	870	80	0.4	20	40	1.8	10	760	0.7	210	1100	0.1	240
+7291	Roofers and shinglers\t\t\t\t\t\t\t\t\t\t	120	-0.1	0	140	0.3	30	2210	1.1	680	80	2.2	20	N/A	N/A	N/A	490	1.1	150	700	1.0	200
+7292	Glaziers\t\t\t\t\t\t\t\t\t\t\t\t	50	-0.1	10	50	0.1	10	1780	0.9	570	20	0.7	10	30	0.7	10	230	0.8	90	340	-0.5	70
+7293	Insulators\t\t\t\t\t\t\t\t\t\t\t	80	-0.3	0	50	0.2	10	720	1.0	220	N/A	N/A	N/A	30	1.3	10	280	0.4	70	210	0.1	50
+7294	Painters and decorators (except interior decorators)\t\t\t\t\t\t	160	0.0	30	170	-1.0	30	6800	1.0	2490	100	0.5	30	50	2.0	30	1270	0.7	460	1930	0.0	530
+7295	Floor covering installers\t\t\t\t\t\t\t\t\t	70	0.6	20	80	-0.2	20	2010	1.0	590	30	0.4	10	N/A	N/A	N/A	580	0.7	200	620	0.0	150
+7301	Contractors and supervisors, mechanic trades\t\t\t\t\t\t\t	190	0.5	60	180	0.4	70	1570	1.4	690	80	1.2	30	100	1.4	40	390	1.0	190	350	0.7	160
+7302	Contractors and supervisors, heavy equipment operator crews\t\t\t\t\t	290	0.0	90	280	-0.3	100	3220	1.2	1520	270	2.7	180	180	1.5	90	880	0.9	450	850	0.3	390
+7303	Supervisors, printing and related occupations\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	230	0.2	70	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	50	-0.2	20
+7304	Supervisors, railway transport operations\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	160	1.4	130	N/A	N/A	N/A	50	-0.1	20	40	1.8	40	N/A	N/A	N/A
+7305	Supervisors, motor transport and other ground transit operators\t\t\t\t\t	50	0.7	20	N/A	N/A	N/A	820	0.7	350	20	5.3	30	90	1.4	50	120	1.7	70	140	1.7	90
+7311	Construction millwrights and industrial mechanics\t\t\t\t\t\t	1210	-0.3	100	700	-0.2	180	3290	0.8	1250	690	0.9	160	480	1.0	110	1730	0.2	510	930	1.2	480
+7312	Heavy-duty equipment mechanics\t\t\t\t\t\t\t\t\t	660	0.3	120	740	-0.4	140	1710	1.4	630	330	0.9	80	340	1.3	100	1190	0.8	390	1060	0.6	330
+7313	Refrigeration and air conditioning mechanics\t\t\t\t\t\t\t	90	0.3	10	90	-0.6	10	1930	1.1	550	50	0.4	10	30	1.8	10	540	0.9	180	450	0.8	140
+7314	Railway carmen/women\t\t\t\t\t\t\t\t\t\t	90	0.3	30	N/A	N/A	N/A	180	1.4	80	50	5.3	50	N/A	N/A	N/A	80	1.6	50	N/A	N/A	N/A
+7315	Aircraft mechanics and aircraft inspectors\t\t\t\t\t\t\t	170	-0.1	10	70	1.3	20	1760	3.5	1340	40	7.3	50	N/A	N/A	N/A	560	0.2	90	320	0.8	130
+7316	Machine fitters\t\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	80	1.1	30	N/A	N/A	N/A	N/A	N/A	N/A	20	0.9	10	70	0.9	30
+7318	Elevator constructors and mechanics\t\t\t\t\t\t\t\t	20	-0.4	10	N/A	N/A	N/A	950	1.0	370	N/A	N/A	N/A	N/A	N/A	N/A	50	0.7	20	110	0.0	30
+7321	Automotive service technicians, truck and bus mechanics and mechanical repairers\t\t\t	1030	0.5	310	780	0.8	230	11440	1.3	4210	410	2.4	230	570	0.8	200	2630	0.4	650	2320	0.7	780
+7322	Motor vehicle body repairers\t\t\t\t\t\t\t\t\t	180	-0.3	40	180	0.2	40	2940	0.7	800	30	0.1	10	50	-0.8	10	540	0.2	130	480	0.2	120
+7331	Oil and solid fuel heating mechanics\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	40	1.1	10	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	70	-0.4	20
+7332	Appliance servicers and repairers\t\t\t\t\t\t\t\t	30	1.8	10	20	3.2	10	690	1.8	290	N/A	N/A	N/A	30	1.7	10	210	1.4	70	160	1.5	70
+7333	Electrical mechanics\t\t\t\t\t\t\t\t\t\t	40	0.8	20	N/A	N/A	N/A	300	1.1	130	N/A	N/A	N/A	N/A	N/A	N/A	80	0.6	30	40	0.5	10
+7334	Motorcycle, all-terrain vehicle and other related mechanics\t\t\t\t\t	30	2.0	10	40	1.6	10	450	2.4	230	N/A	N/A	N/A	N/A	N/A	N/A	150	1.0	50	310	1.5	120
+7335	Other small engine and small equipment repairers\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	130	1.7	60	N/A	N/A	N/A	20	1.6	0	110	1.8	50	120	1.4	50
+7361	Railway and yard locomotive engineers\t\t\t\t\t\t\t\t	80	0.3	30	160	-2.3	0	340	1.4	150	130	5.0	130	N/A	N/A	N/A	260	1.7	120	N/A	N/A	N/A
+7362	Railway conductors and brakemen/women\t\t\t\t\t\t\t\t	120	0.3	40	220	-2.2	-20	380	1.5	140	130	5.0	140	50	-0.2	10	290	1.8	110	N/A	N/A	N/A
+7371	Crane operators\t\t\t\t\t\t\t\t\t\t\t	100	0.1	10	150	0.0	50	1250	1.0	490	190	1.1	40	140	1.6	40	270	0.7	110	320	0.7	140
+7372	Drillers and blasters - surface mining, quarrying and construction\t\t\t\t	N/A	N/A	N/A	50	-0.8	10	220	1.1	70	40	0.4	10	N/A	N/A	N/A	100	0.7	30	230	0.1	50
+7373	Water well drillers\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+7381	Printing press operators\t\t\t\t\t\t\t\t\t\t	30	3.2	10	N/A	N/A	N/A	1340	0.1	380	N/A	N/A	N/A	N/A	N/A	N/A	50	2.6	30	110	-2.3	10
+7384	Other trades and related occupations, n.e.c.\t\t\t\t\t\t\t	160	0.1	30	170	0.2	40	1050	1.0	400	160	-0.3	20	70	1.2	20	460	0.3	120	630	0.9	220
+7441	Residential and commercial installers and servicers\t\t\t\t\t\t	160	0.5	20	170	0.0	30	5480	1.0	1440	50	0.0	0	50	1.5	10	1400	0.9	410	1440	0.0	270
+7442	Waterworks and gas maintenance workers\t\t\t\t\t\t\t\t	40	-0.6	10	N/A	N/A	N/A	370	0.8	130	N/A	N/A	N/A	80	1.5	40	110	0.7	40	120	0.7	40
+7444	Pest controllers and fumigators\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	400	1.2	150	N/A	N/A	N/A	N/A	N/A	N/A	90	1.8	40	100	1.7	50
+7445	Other repairers and servicers\t\t\t\t\t\t\t\t\t	60	0.5	20	110	1.2	30	1570	1.5	550	40	2.3	20	70	1.1	20	300	1.1	80	520	1.0	130
+7451	Longshore workers\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	2910	2.5	1720	490	4.8	390	N/A	N/A	N/A	N/A	N/A	N/A	330	1.8	170
+7452	Material handlers\t\t\t\t\t\t\t\t\t\t	1210	0.0	80	770	0.2	180	18560	1.2	5920	430	2.2	140	370	0.5	40	2640	0.7	800	2200	0.8	570
+7511	Transport truck drivers\t\t\t\t\t\t\t\t\t\t	2760	0.3	690	1820	0.5	650	22750	0.5	6520	1100	4.3	920	1580	1.6	660	4710	1.1	2080	3940	0.4	1330
+7512	Bus drivers, subway operators and other transit operators\t\t\t\t\t	270	1.6	130	250	0.4	90	6370	0.9	2790	80	4.6	80	180	0.2	50	740	1.4	360	1810	1.9	890
+7513	Taxi and limousine drivers and chauffeurs\t\t\t\t\t\t\t	100	2.5	50	40	2.1	20	5630	0.9	1760	50	6.2	60	60	0.4	10	510	1.1	170	1490	2.1	650
+7514	Delivery and courier service drivers\t\t\t\t\t\t\t\t	460	1.0	140	290	1.6	120	8600	1.3	3020	170	2.9	100	160	-0.3	20	1500	1.1	510	1850	1.3	660
+7521	Heavy equipment operators (except crane)\t\t\t\t\t\t\t\t	1090	0.1	220	1900	-0.6	350	4150	0.9	1200	650	1.0	210	500	1.4	180	2680	0.5	830	2000	0.6	620
+7522	Public works maintenance equipment operators and related workers\t\t\t\t\t	200	0.5	50	170	0.9	60	1220	1.0	400	110	1.2	40	70	2.3	40	420	1.5	190	470	1.3	180
+7531	Railway yard and track maintenance workers\t\t\t\t\t\t\t	90	0.3	30	90	-2.0	0	440	1.4	180	140	5.0	140	N/A	N/A	N/A	320	1.9	170	N/A	N/A	N/A
+7532	Water transport deck and engine room crew\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	680	1.1	210	70	5.4	60	N/A	N/A	N/A	80	0.4	20	590	1.1	230
+7533	Boat and cable ferry operators and related occupations\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	580	0.9	200	60	5.3	50	30	0.0	0	40	1.8	20	420	1.8	230
+7534	Air transport ramp attendants\t\t\t\t\t\t\t\t\t	60	-0.2	0	50	1.3	20	1460	3.7	1060	50	6.2	50	N/A	N/A	N/A	100	0.7	20	110	1.2	40
+7535	Other automotive mechanical installers and servicers\t\t\t\t\t\t	200	0.8	40	220	1.0	50	990	1.5	320	80	1.3	20	100	1.4	30	570	0.6	100	370	1.1	110
+7611	Construction trades helpers and labourers\t\t\t\t\t\t\t	780	0.1	50	660	-0.3	100	15720	1.0	4340	630	1.1	110	470	1.7	120	3230	0.8	930	3730	0.2	690
+7612	Other trades helpers and labourers\t\t\t\t\t\t\t\t	30	-0.6	0	40	0.6	10	720	1.2	180	90	0.2	0	N/A	N/A	N/A	170	0.5	30	170	0.4	20
+7621	Public works and maintenance labourers\t\t\t\t\t\t\t\t	120	0.5	10	150	0.3	30	1490	0.9	450	140	2.1	40	50	1.9	10	370	1.2	120	680	1.1	190
+7622	Railway and motor transport labourers\t\t\t\t\t\t\t\t	70	0.4	30	40	-0.7	0	250	1.3	100	N/A	N/A	N/A	50	1.8	30	70	1.1	30	60	0.4	10
+8211	Supervisors, logging and forestry\t\t\t\t\t\t\t\t	270	-2.1	50	100	-2.0	40	210	-1.9	70	110	-1.2	40	80	-0.4	30	220	-0.8	110	460	-2.8	130
+8221	Supervisors, mining and quarrying\t\t\t\t\t\t\t\t	180	0.3	60	430	-1.0	160	120	1.0	80	20	-2.2	0	N/A	N/A	N/A	280	0.1	140	60	8.7	130
+8222	Contractors and supervisors, oil and gas drilling and services\t\t\t\t\t	30	2.8	20	80	0.0	30	220	1.1	90	N/A	N/A	N/A	310	1.0	110	210	1.8	130	140	4.8	150
+8231	Underground production and development miners\t\t\t\t\t\t\t	160	0.8	70	540	-0.7	130	160	0.7	60	50	-1.9	10	20	1.0	10	420	-0.2	120	90	6.1	110
+8232	Oil and gas well drillers, servicers, testers and related workers\t\t\t\t	50	1.2	20	90	-1.6	10	180	-0.1	30	N/A	N/A	N/A	170	0.7	60	240	1.4	100	160	5.2	150
+8241	Logging machinery operators\t\t\t\t\t\t\t\t\t	500	-2.4	10	320	-2.4	0	220	-2.4	10	170	-0.3	40	60	-0.4	10	510	-1.7	40	900	-2.6	10
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers\t\t	70	1.0	30	30	-0.7	10	610	1.0	260	N/A	N/A	N/A	40	0.5	10	230	1.4	120	160	0.4	60
+8255	Contractors and supervisors, landscaping, grounds maintenance and horticulture services\t\t	70	0.0	30	150	1.2	90	2100	1.2	1120	30	0.3	10	N/A	N/A	N/A	550	1.8	370	800	1.7	530
+8261	Fishing masters and officers\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	60	-0.4	20	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	120	-0.3	30
+8262	Fishermen/women\t\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	640	-0.7	80	40	-0.8	10	N/A	N/A	N/A	80	-5.9	-40	510	-0.9	40
+8411	Underground mine service and support workers\t\t\t\t\t\t\t	N/A	N/A	N/A	130	-0.7	20	N/A	N/A	N/A	20	0.1	0	N/A	N/A	N/A	70	-0.5	20	40	4.3	40
+8412	Oil and gas well drilling and related workers and services operators\t\t\t\t	N/A	N/A	N/A	30	-2.7	0	70	0.6	20	N/A	N/A	N/A	200	1.0	60	120	1.4	60	90	4.6	80
+8421	Chain saw and skidder operators\t\t\t\t\t\t\t\t\t	200	-2.5	40	200	-2.2	20	290	-2.5	30	140	-1.3	50	30	-1.2	10	360	-1.1	80	950	-2.9	30
+8422	Silviculture and forestry workers\t\t\t\t\t\t\t\t	270	-1.7	-10	110	-1.3	0	240	-0.9	20	120	0.6	30	40	0.2	10	250	-0.8	10	250	-2.5	-30
+8431	General farm workers\t\t\t\t\t\t\t\t\t\t	190	0.1	50	240	-0.1	30	3450	0.4	730	100	-0.2	20	290	0.8	100	2110	0.7	420	1060	0.4	250
+8432	Nursery and greenhouse workers\t\t\t\t\t\t\t\t\t	80	-1.5	10	100	0.0	20	1760	0.1	380	N/A	N/A	N/A	N/A	N/A	N/A	360	0.0	60	370	0.1	80
+8441	Fishing vessel deckhands\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	120	-0.8	0	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	170	-1.1	-10
+8442	Trappers and hunters\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+8611	Harvesting labourers\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	1000	0.0	250	N/A	N/A	N/A	N/A	N/A	N/A	120	0.6	20	70	-0.4	10
+8612	Landscaping and grounds maintenance labourers\t\t\t\t\t\t\t	500	0.7	60	840	1.0	210	8840	1.5	3000	250	1.6	60	190	1.7	50	3160	2.0	1260	4700	1.7	1790
+8613	Aquaculture and marine harvest labourers\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	50	0.4	10	30	-0.8	10	N/A	N/A	N/A	40	-2.3	-10	350	1.1	120
+8614	Mine labourers\t\t\t\t\t\t\t\t\t\t\t	80	-0.2	0	280	-1.3	-10	60	0.1	10	50	0.7	0	N/A	N/A	N/A	190	-0.1	20	N/A	N/A	N/A
+8615	Oil and gas drilling, servicing and related labourers\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	70	1.0	20	30	-3.4	0	140	0.4	50	90	1.6	40	70	4.6	60
+8616	Logging and forestry labourers\t\t\t\t\t\t\t\t\t	440	-2.1	10	220	-2.4	-10	430	-2.7	-10	120	0.1	40	30	-0.4	10	340	-1.6	20	660	-3.0	-80
+9211	Supervisors, mineral and metal processing\t\t\t\t\t\t\t	N/A	N/A	N/A	110	0.7	60	300	0.7	120	250	-0.3	60	N/A	N/A	N/A	80	1.0	40	40	-2.3	10
+9212	Supervisors, petroleum, gas and chemical processing and utilities\t\t\t\t	80	0.6	30	80	0.2	40	570	0.5	240	70	1.4	30	100	1.0	40	220	1.1	130	130	1.0	70
+9213	Supervisors, food, beverage and associated products processing\t\t\t\t\t	N/A	N/A	N/A	40	0.5	20	1510	0.7	630	N/A	N/A	N/A	N/A	N/A	N/A	310	1.1	160	130	3.8	100
+9214	Supervisors, plastic and rubber products manufacturing\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	230	0.4	110	N/A	N/A	N/A	N/A	N/A	N/A	20	1.9	20	N/A	N/A	N/A
+9215	Supervisors, forest products processing\t\t\t\t\t\t\t\t	450	-0.6	200	130	-1.0	70	480	-1.2	240	120	0.9	80	130	-0.2	60	260	-0.6	150	120	-0.1	90
+9217	Supervisors, textile, fabric, fur and leather products processing and manufacturing\t\t	N/A	N/A	N/A	N/A	N/A	N/A	120	0.4	50	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+9221	Supervisors, motor vehicle assembling\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	70	1.8	50	N/A	N/A	N/A	N/A	N/A	N/A	20	1.1	10	N/A	N/A	N/A
+9222	Supervisors, electronics manufacturing\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	210	1.0	120	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+9223	Supervisors, electrical products manufacturing\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	80	0.5	40	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+9224	Supervisors, furniture and fixtures manufacturing\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	170	-0.2	50	N/A	N/A	N/A	N/A	N/A	N/A	20	1.6	10	N/A	N/A	N/A
+9226	Supervisors, other mechanical and metal products manufacturing\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	140	1.8	100	N/A	N/A	N/A	N/A	N/A	N/A	20	1.1	10	N/A	N/A	N/A
+9227	Supervisors, other products manufacturing and assembly\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	260	0.5	140	N/A	N/A	N/A	N/A	N/A	N/A	20	-0.3	10	50	-1.3	20
+9231	Central control and process operators, mineral and metal processing\t\t\t\t	30	2.3	20	310	0.3	90	90	1.1	40	120	0.4	40	N/A	N/A	N/A	30	-0.1	10	N/A	N/A	N/A
+9232	Petroleum, gas and chemical process operators\t\t\t\t\t\t\t	50	2.4	30	130	0.1	40	320	0.3	100	N/A	N/A	N/A	760	1.4	340	160	1.5	90	140	2.2	70
+9235	Pulping, papermaking and coating control operators\t\t\t\t\t\t	130	-0.1	40	40	-2.6	0	210	-0.2	70	N/A	N/A	N/A	N/A	N/A	N/A	30	-0.6	10	130	1.0	70
+9241	Power engineers and power systems operators\t\t\t\t\t\t\t	560	0.3	190	540	-0.1	110	1560	0.6	590	150	0.8	60	390	1.4	190	640	0.3	150	560	1.0	240
+9243	Water and waste treatment plant operators\t\t\t\t\t\t\t	80	0.2	30	130	0.3	30	560	0.8	200	60	0.0	20	50	2.2	30	420	0.7	110	330	0.9	120
+9411	Machine operators, mineral and metal processing\t\t\t\t\t\t\t	40	2.4	20	240	0.1	50	220	0.8	80	350	-0.8	10	30	-0.8	0	100	0.3	20	30	2.0	20
+9412	Foundry workers\t\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	30	0.2	10	80	1.2	30	80	-0.4	0	N/A	N/A	N/A	30	1.2	10	40	1.4	20
+9413	Glass forming and finishing machine operators and glass cutters\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	520	0.2	120	N/A	N/A	N/A	N/A	N/A	N/A	20	1.2	10	N/A	N/A	N/A
+9414	Concrete, clay and stone forming operators\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	720	0.5	160	N/A	N/A	N/A	N/A	N/A	N/A	70	1.1	20	90	-2.0	0
+9415	Inspectors and testers, mineral and metal processing\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	90	0.7	30	N/A	N/A	N/A	N/A	N/A	N/A	30	1.3	10	N/A	N/A	N/A
+9416	Metalworking and forging machine operators\t\t\t\t\t\t\t	40	1.2	10	N/A	N/A	N/A	800	1.4	330	40	0.2	0	N/A	N/A	N/A	170	1.1	60	80	0.0	20
+9417	Machining tool operators\t\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	290	1.6	130	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+9418	Other metal products machine operators\t\t\t\t\t\t\t\t	20	0.4	10	30	-0.5	0	320	1.3	130	N/A	N/A	N/A	N/A	N/A	N/A	40	0.2	10	40	0.2	10
+9421	Chemical plant machine operators\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	520	0.3	160	N/A	N/A	N/A	N/A	N/A	N/A	100	0.0	20	50	1.4	30
+9422	Plastics processing machine operators\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	810	0.2	330	N/A	N/A	N/A	N/A	N/A	N/A	100	1.2	40	30	-3.0	0
+9423	Rubber processing machine operators and related workers\t\t\t\t\t\t	40	-0.1	10	N/A	N/A	N/A	250	0.4	60	N/A	N/A	N/A	N/A	N/A	N/A	150	0.5	30	60	-0.5	10
+9431	Sawmill machine operators\t\t\t\t\t\t\t\t\t	390	-1.3	-20	220	-1.0	60	880	-1.1	280	280	0.9	50	100	-0.2	10	500	-0.5	160	380	-1.4	110
+9432	Pulp mill machine operators\t\t\t\t\t\t\t\t\t	320	-0.2	190	90	-1.8	0	80	-0.7	30	N/A	N/A	N/A	90	-1.4	30	70	-2.0	0	40	1.4	40
+9433	Papermaking and finishing machine operators\t\t\t\t\t\t\t	100	-0.2	50	N/A	N/A	N/A	220	-0.3	90	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	100	1.2	90
+9434	Other wood processing machine operators\t\t\t\t\t\t\t\t	260	-1.3	-20	90	-0.4	20	580	-1.2	170	80	0.6	10	30	-0.4	0	470	-0.5	110	120	-2.3	10
+9435	Paper converting machine operators\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	300	-0.2	100	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+9436	Lumber graders and other wood processing inspectors and graders\t\t\t\t\t	200	-1.0	-10	60	-0.4	10	400	-1.8	90	60	2.7	20	20	-0.2	0	180	-0.4	40	150	-1.4	50
+9437	Woodworking machine operators\t\t\t\t\t\t\t\t\t	90	0.0	10	70	-0.4	20	460	-0.6	140	40	0.0	0	N/A	N/A	N/A	150	-0.1	50	90	-1.9	10
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	190	0.1	40	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+9442	Weavers, knitters and other fabric making occupations\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	260	0.9	100	40	4.2	30	N/A	N/A	N/A	20	1.5	10	80	-0.1	10
+9445	Fabric, fur and leather cutters\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	150	0.4	60	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+9446	Industrial sewing machine operators\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	1610	0.2	540	N/A	N/A	N/A	N/A	N/A	N/A	60	0.6	30	120	-1.0	20
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	200	0.6	80	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+9461	Process control and machine operators, food, beverage and associated products processing\t\t	80	3.4	60	180	1.7	70	3340	0.6	940	N/A	N/A	N/A	N/A	N/A	N/A	920	1.2	290	590	0.4	130
+9462	Industrial butchers and meat cutters, poultry preparers and related workers\t\t\t	40	-0.7	10	80	0.4	20	1240	0.9	520	40	-0.2	10	20	5.2	30	190	0.7	40	110	4.6	90
+9463	Fish and seafood plant workers\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	910	0.9	430	70	-1.6	10	N/A	N/A	N/A	N/A	N/A	N/A	420	5.3	380
+9465	Testers and graders, food, beverage and associated products processing\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	470	0.8	150	40	-1.6	10	N/A	N/A	N/A	70	1.5	30	50	3.9	40
+9471	Plateless printing equipment operators\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	620	0.2	180	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	80	-0.4	10
+9472	Camera, platemaking and other prepress occupations\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	320	0.4	100	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	30	-0.7	10
+9473	Binding and finishing machine operators\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	360	-0.1	100	N/A	N/A	N/A	N/A	N/A	N/A	30	1.3	10	70	-1.8	10
+9474	Photographic and film processors\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	280	1.4	100	N/A	N/A	N/A	N/A	N/A	N/A	50	1.5	20	40	1.3	10
+9521	Aircraft assemblers and aircraft assembly inspectors\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	140	2.3	80	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	30	1.9	10
+9522	Motor vehicle assemblers, inspectors and testers\t\t\t\t\t\t\t	N/A	N/A	N/A	30	2.4	20	500	1.8	270	N/A	N/A	N/A	N/A	N/A	N/A	110	1.6	60	40	0.5	10
+9523	Electronics assemblers, fabricators, inspectors and testers\t\t\t\t\t	N/A	N/A	N/A	30	2.1	10	1350	0.9	460	N/A	N/A	N/A	N/A	N/A	N/A	50	1.2	20	130	-1.5	0
+9524	Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing\t\t	N/A	N/A	N/A	N/A	N/A	N/A	550	0.4	180	N/A	N/A	N/A	N/A	N/A	N/A	20	1.9	10	50	0.0	10
+9525	Assemblers, fabricators and inspectors, industrial electrical motors and transformers\t\t	N/A	N/A	N/A	N/A	N/A	N/A	120	0.3	40	N/A	N/A	N/A	N/A	N/A	N/A	30	2.3	20	N/A	N/A	N/A
+9526	Mechanical assemblers and inspectors\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	510	1.2	190	N/A	N/A	N/A	N/A	N/A	N/A	130	1.4	70	50	0.7	20
+9527	Machine operators and inspectors, electrical apparatus manufacturing\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	100	0.5	30	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+9531	Boat assemblers and inspectors\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	210	3.0	130	N/A	N/A	N/A	N/A	N/A	N/A	170	0.7	40	150	0.6	50
+9532	Furniture and fixture assemblers and inspectors\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	980	0.2	180	N/A	N/A	N/A	N/A	N/A	N/A	90	0.8	20	60	-2.8	0
+9533	Other wood products assemblers and inspectors\t\t\t\t\t\t\t	70	-1.0	0	N/A	N/A	N/A	830	-0.8	210	30	1.1	0	30	0.1	0	290	0.3	100	130	-1.5	10
+9534	Furniture finishers and refinishers\t\t\t\t\t\t\t\t	20	3.7	10	N/A	N/A	N/A	680	0.6	200	N/A	N/A	N/A	N/A	N/A	N/A	110	1.3	50	90	-1.1	10
+9535	Plastic products assemblers, finishers and inspectors\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	630	0.1	160	N/A	N/A	N/A	N/A	N/A	N/A	70	1.6	20	40	-2.4	0
+9536	Industrial painters, coaters and metal finishing process operators\t\t\t\t	N/A	N/A	N/A	40	1.8	20	970	1.6	440	N/A	N/A	N/A	N/A	N/A	N/A	190	0.9	60	170	0.2	50
+9537	Other products assemblers, finishers and inspectors\t\t\t\t\t\t	20	0.9	0	20	1.6	10	2140	0.7	500	20	-0.3	0	20	0.9	0	200	0.8	50	210	-1.2	20
+9611	Labourers in mineral and metal processing\t\t\t\t\t\t\t	50	0.0	0	100	0.6	30	450	0.7	160	110	-0.4	0	N/A	N/A	N/A	40	1.5	20	40	-0.2	10
+9612	Labourers in metal fabrication\t\t\t\t\t\t\t\t\t	80	-0.4	0	30	-0.9	0	760	1.8	270	50	0.1	0	50	1.6	10	130	0.8	30	100	-0.3	10
+9613	Labourers in chemical products processing and utilities\t\t\t\t\t\t	20	1.5	10	N/A	N/A	N/A	660	0.6	170	N/A	N/A	N/A	30	1.7	10	60	1.6	30	80	0.3	10
+9614	Labourers in wood, pulp and paper processing\t\t\t\t\t\t\t	1080	-1.0	-60	340	-0.8	50	1780	-1.3	430	350	1.0	60	130	0.2	10	1180	-0.7	170	540	-0.6	150
+9615	Labourers in rubber and plastic products manufacturing\t\t\t\t\t\t	20	3.7	10	N/A	N/A	N/A	390	0.2	80	N/A	N/A	N/A	N/A	N/A	N/A	40	1.9	10	N/A	N/A	N/A
+9616	Labourers in textile processing\t\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	220	0.5	70	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	20	2.0	10
+9617	Labourers in food, beverage and associated products processing\t\t\t\t\t	100	1.3	40	170	1.1	50	7580	0.9	2760	N/A	N/A	N/A	N/A	N/A	N/A	920	1.0	250	520	2.6	250
+9618	Labourers in fish and seafood processing\t\t\t\t\t\t\t\t	N/A	N/A	N/A	N/A	N/A	N/A	760	1.0	300	80	-1.7	10	N/A	N/A	N/A	N/A	N/A	N/A	330	5.4	300
+9619	Other labourers in processing, manufacturing and utilities\t\t\t\t\t	100	0.7	10	220	0.4	50	4860	0.8	1360	70	0.1	0	N/A	N/A	N/A	570	1.2	180	630	0.6	140
+\.
+
+
+--
+-- Data for Name: census; Type: TABLE DATA; Schema: public; Owner: ssot
+--
+
+COPY public.census (noc, description, workforce_characteristics_workers_are_employed, workforce_characteristics_of_workers_are_working_mostly_full_ti, employment_by_gender_men, employment_by_gender_women, employment_by_age_group_15_24, employment_by_age_group_25_44, employment_by_age_group_45_64, employment_by_age_group_65, cariboo_employment_of_this_occupation, cariboo_employment_of_all_occupations, kootenay_employment_of_this_occupation, kootenay_employment_of_all_occupations, mainland_southwest_employment_of_this_occupation, mainland_southwest_employment_of_all_occupations, north_coast_nechako_employment_of_this_occupation, north_coast_nechako_employment_of_all_occupations, northeast_employment_of_this_occupation, northeast_employment_of_all_occupations, thompson_okanagan_employment_of_this_occupation, thompson_okanagan_employment_of_all_occupations, vancouver_island_coast_employment_of_this_occupation, vancouver_island_coast_employment_of_all_occupations, industry_1_name, industry_1, industry_2_name, industry_2, industry_3_name, industry_3, industry_4_name, industry_4, industry_5_name, industry_5) FROM stdin;
+9232	Petroleum, gas and chemical process operators\t\t\t\t\t\t\t	1300	47	92	8	3	24	17	0	3.9	-	6.7	-	23.5	-	0.8	-	44.3	-	11.8	-	9.4	-	Mining and Oil and Gas Extraction	61	Manufacturing	19	Utilities	6	Construction	4	Wholesale Trade	4
+9526	Mechanical assemblers and inspectors\t\t\t\t\t\t\t\t	600	55	92	8	5	19	20	3	0.0	-	1.8	-	74.1	-	NA	-	0.0	-	17.0	-	7.1	-	Manufacturing	64	Construction	8	Wholesale Trade	8	Repair, Personal and Non-Profit Services	6	Retail Trade	4
+0011	Legislators\t\t\t\t\t\t\t\t\t\t\t	1000	50	58	42	1	12	28	17	6.5	3.3	6.0	3.0	31.2	63.1	11.1	1.9	5.0	1.5	13.1	11.0	27.6	16.3	Public Administration	84	Educational Services	8	Health Care and Social Assistance	3	Repair, Personal and Non-Profit Services	3	Finance, insurance and real estate	1
+0012	Senior government managers and officials\t\t\t\t\t\t\t\t	2000	76	60	40	0	13	34	3	2.0	-	3.2	-	37.6	-	4.2	-	1.0	-	10.2	-	42.0	-	Public Administration	96	Professional, Scientific and Technical Services	2	Educational Services	1	Mining and Oil and Gas Extraction	0	Utilities	0
+0013	Senior managers - financial, communications and other business services\t\t\t\t	8200	67	76	24	0	17	27	5	0.7	-	0.9	-	79.3	-	0.7	-	0.2	-	6.7	-	11.4	-	Professional, Scientific and Technical Services	56	Finance, insurance and real estate	38	Business, Building and Other Support Services	4	Information, Culture and Recreation	2	Mining and Oil and Gas Extraction	0
+0014	Senior managers - health, education, social and community services and membership organizations\t	3400	73	46	54	0	14	32	5	2.2	-	3.0	-	65.1	-	2.2	-	0.6	-	9.6	-	16.9	-	Repair, Personal and Non-Profit Services	39	Health Care and Social Assistance	36	Educational Services	25	Mining and Oil and Gas Extraction	0	Utilities	0
+0015	Senior managers - trade, broadcasting and other services, n.e.c.\t\t\t\t\t	6000	67	76	24	0	17	29	4	1.1	-	1.7	-	76.5	-	0.7	-	0.5	-	8.9	-	10.6	-	Wholesale Trade	35	Retail Trade	26	Information, Culture and Recreation	18	Accommodation and Food Services	16	Repair, Personal and Non-Profit Services	5
+0016	Senior managers - construction, transportation, production and utilities\t\t\t\t	6800	72	85	15	0	14	30	6	2.2	-	2.2	-	72.3	-	0.9	-	1.2	-	10.1	-	10.9	-	Manufacturing	36	Construction	31	Transportation and Warehousing	14	Information, Culture and Recreation	9	Mining and Oil and Gas Extraction	8
+0111	Financial managers\t\t\t\t\t\t\t\t\t\t	8600	72	39	61	0	21	24	3	2.3	-	1.9	-	70.5	-	1.0	-	1.0	-	8.5	-	14.7	-	Finance, insurance and real estate	23	Professional, Scientific and Technical Services	14	Retail Trade	9	Public Administration	9	Manufacturing	7
+0112	Human resources managers\t\t\t\t\t\t\t\t\t\t	5200	72	30	70	1	22	23	1	3.2	-	1.2	-	70.4	-	1.6	-	1.9	-	7.5	-	13.9	-	Professional, Scientific and Technical Services	13	Public Administration	10	Manufacturing	9	Finance, insurance and real estate	9	Educational Services	9
+0113	Purchasing managers\t\t\t\t\t\t\t\t\t\t	2300	72	66	34	0	18	27	2	3.0	-	1.1	-	75.7	-	1.3	-	1.1	-	5.9	-	12.2	-	Manufacturing	18	Wholesale Trade	16	Retail Trade	14	Professional, Scientific and Technical Services	9	Public Administration	9
+0114	Other administrative services managers\t\t\t\t\t\t\t\t	4300	68	46	54	1	19	24	3	2.8	-	1.4	-	69.4	-	1.3	-	0.9	-	8.2	-	15.9	-	Professional, Scientific and Technical Services	15	Public Administration	14	Finance, insurance and real estate	9	Health Care and Social Assistance	9	Retail Trade	7
+0121	Insurance, real estate and financial brokerage managers\t\t\t\t\t\t	6600	63	58	42	1	19	25	4	1.1	-	1.4	-	79.2	-	0.5	-	0.5	-	6.9	-	10.6	-	Finance, insurance and real estate	95	Construction	2	Professional, Scientific and Technical Services	1	Mining and Oil and Gas Extraction	0	Utilities	0
+0122	Banking, credit and other investment managers\t\t\t\t\t\t\t	7600	72	42	58	1	23	20	1	1.9	-	2.8	-	70.3	-	1.1	-	1.2	-	10.0	-	12.8	-	Finance, insurance and real estate	85	Retail Trade	7	Wholesale Trade	3	Construction	1	Manufacturing	1
+0124	Advertising, marketing and public relations managers\t\t\t\t\t\t	9200	65	43	57	1	27	14	1	1.0	-	1.5	-	80.8	-	0.5	-	0.2	-	6.2	-	9.8	-	Professional, Scientific and Technical Services	29	Information, Culture and Recreation	11	Retail Trade	9	Finance, insurance and real estate	9	Manufacturing	7
+0125	Other business services managers\t\t\t\t\t\t\t\t\t	3500	65	63	37	0	19	24	4	2.4	-	2.8	-	65.8	-	1.6	-	1.6	-	13.4	-	12.7	-	Professional, Scientific and Technical Services	32	Information, Culture and Recreation	11	Finance, insurance and real estate	9	Transportation and Warehousing	8	Construction	7
+0131	Telecommunication carriers managers\t\t\t\t\t\t\t\t	1500	79	72	28	0	26	19	1	1.3	-	1.3	-	80.8	-	NA	-	0.6	-	6.2	-	9.4	-	Information, Culture and Recreation	93	Professional, Scientific and Technical Services	4	Construction	1	Manufacturing	1	Educational Services	1
+0132	Postal and courier services managers\t\t\t\t\t\t\t\t	500	74	57	43	1	21	23	1	5.8	-	1.9	-	69.9	-	NA	-	0.0	-	10.7	-	10.7	-	Transportation and Warehousing	98	Information, Culture and Recreation	2	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0
+0211	Engineering managers\t\t\t\t\t\t\t\t\t\t	2300	72	86	14	0	19	26	2	2.4	-	1.9	-	76.7	-	1.5	-	1.1	-	6.0	-	10.7	-	Professional, Scientific and Technical Services	41	Manufacturing	18	Public Administration	8	Construction	7	Utilities	5
+0212	Architecture and science managers\t\t\t\t\t\t\t\t	1100	76	58	42	0	21	24	2	1.4	-	2.3	-	76.2	-	NA	-	0.0	-	6.1	-	13.1	-	Professional, Scientific and Technical Services	47	Educational Services	19	Manufacturing	9	Health Care and Social Assistance	6	Public Administration	5
+0213	Computer and information systems managers\t\t\t\t\t\t\t	7500	78	78	22	1	24	21	1	0.9	-	1.2	-	80.0	-	0.7	-	0.1	-	4.4	-	12.5	-	Professional, Scientific and Technical Services	41	Information, Culture and Recreation	13	Finance, insurance and real estate	8	Public Administration	7	Manufacturing	6
+0311	Managers in health care\t\t\t\t\t\t\t\t\t\t	4300	71	31	69	0	18	28	2	3.3	-	2.3	-	64.1	-	1.0	-	0.8	-	10.7	-	17.8	-	Health Care and Social Assistance	97	Professional, Scientific and Technical Services	1	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0
+0411	Government managers - health and social policy development and program administration\t\t	600	76	39	61	1	13	34	0	3.6	-	0.0	-	41.8	-	2.7	-	1.8	-	6.4	-	42.7	-	Public Administration	100	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0	Manufacturing	0
+0412	Government managers - economic analysis, policy development and program administration\t\t	1000	80	55	45	0	19	27	2	2.5	-	2.0	-	56.3	-	3.0	-	1.0	-	10.7	-	23.9	-	Public Administration	94	Information, Culture and Recreation	2	Retail Trade	1	Professional, Scientific and Technical Services	1	Educational Services	1
+9616	Labourers in textile processing\t\t\t\t\t\t\t\t\t	200	50	28	72	2	20	22	2	0.0	-	0.0	-	91.1	-	NA	-	0.0	-	6.7	-	4.4	-	Manufacturing	49	Retail Trade	24	Wholesale Trade	22	Health Care and Social Assistance	4	Mining and Oil and Gas Extraction	0
+0413	Government managers - education policy development and program administration\t\t\t	100	71	59	41	0	21	24	3	0.0	-	6.9	-	48.3	-	13.8	-	6.9	-	6.9	-	37.9	-	Public Administration	86	Educational Services	14	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0
+0414	Other managers in public administration\t\t\t\t\t\t\t\t	900	74	57	43	0	15	32	2	3.4	-	3.4	-	42.9	-	2.3	-	2.8	-	11.3	-	34.5	-	Public Administration	95	Educational Services	2	Health Care and Social Assistance	2	Professional, Scientific and Technical Services	1	Mining and Oil and Gas Extraction	0
+0421	Administrators - post-secondary education and vocational training\t\t\t\t	2900	64	39	61	1	17	27	3	2.6	-	1.9	-	70.4	-	0.7	-	0.5	-	6.8	-	17.2	-	Educational Services	90	Public Administration	3	Professional, Scientific and Technical Services	2	Information, Culture and Recreation	2	Repair, Personal and Non-Profit Services	2
+0422	School principals and administrators of elementary and secondary education\t\t\t	4300	72	48	52	0	15	32	2	2.9	-	4.0	-	59.1	-	3.0	-	2.2	-	10.8	-	18.0	-	Educational Services	100	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0	Manufacturing	0
+0423	Managers in social, community and correctional services\t\t\t\t\t\t	4000	68	26	74	1	19	25	2	4.0	-	2.2	-	62.0	-	3.0	-	0.7	-	9.8	-	18.4	-	Health Care and Social Assistance	54	Repair, Personal and Non-Profit Services	20	Public Administration	13	Educational Services	4	Finance, insurance and real estate	3
+0431	Commissioned police officers\t\t\t\t\t\t\t\t\t	200	69	65	35	0	11	37	3	8.1	-	0.0	-	59.5	-	NA	-	0.0	-	8.1	-	21.6	-	Public Administration	100	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0	Manufacturing	0
+0432	Fire chiefs and senior firefighting officers\t\t\t\t\t\t\t	500	73	98	2	0	8	39	2	3.3	-	7.7	-	44.0	-	7.7	-	2.2	-	9.9	-	25.3	-	Public Administration	100	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0	Manufacturing	0
+0433	Commissioned officers of the Canadian Forces\t\t\t\t\t\t\t	1400	67	85	15	5	25	13	1	1.0	-	0.7	-	9.0	-	NA	-	0.0	-	3.8	-	85.5	-	Public Administration	99	Educational Services	1	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0
+0511	Library, archive, museum and art gallery managers\t\t\t\t\t\t	700	64	25	75	1	16	27	4	1.5	-	5.2	-	60.4	-	5.2	-	1.5	-	10.4	-	16.4	-	Information, Culture and Recreation	76	Retail Trade	15	Professional, Scientific and Technical Services	2	Educational Services	2	Public Administration	2
+0512	Managers - publishing, motion pictures, broadcasting and performing arts\t\t\t\t	1100	55	61	39	2	21	22	3	2.7	-	2.2	-	70.7	-	NA	-	1.3	-	9.3	-	13.8	-	Information, Culture and Recreation	82	Professional, Scientific and Technical Services	5	Manufacturing	2	Retail Trade	2	Finance, insurance and real estate	2
+0513	Recreation, sports and fitness program and service directors\t\t\t\t\t	1800	58	50	50	3	22	18	2	2.2	-	3.9	-	60.8	-	1.9	-	1.4	-	13.1	-	17.2	-	Information, Culture and Recreation	64	Public Administration	10	Educational Services	7	Repair, Personal and Non-Profit Services	6	Health Care and Social Assistance	5
+0601	Corporate sales managers\t\t\t\t\t\t\t\t\t\t	8300	75	68	32	1	23	22	1	1.4	-	0.9	-	77.6	-	0.3	-	0.4	-	9.8	-	9.6	-	Wholesale Trade	24	Retail Trade	19	Manufacturing	17	Professional, Scientific and Technical Services	11	Finance, insurance and real estate	9
+0621	Retail and wholesale trade managers\t\t\t\t\t\t\t\t	56800	68	58	42	2	20	22	2	3.4	-	3.8	-	60.8	-	1.8	-	1.4	-	11.8	-	16.8	-	Retail Trade	79	Wholesale Trade	17	Manufacturing	1	Finance, insurance and real estate	1	Repair, Personal and Non-Profit Services	1
+0631	Restaurant and food service managers\t\t\t\t\t\t\t\t	20200	59	51	49	3	23	17	1	2.7	-	3.6	-	64.4	-	1.3	-	1.4	-	10.8	-	15.9	-	Accommodation and Food Services	95	Information, Culture and Recreation	2	Retail Trade	1	Mining and Oil and Gas Extraction	0	Utilities	0
+0632	Accommodation service managers\t\t\t\t\t\t\t\t\t	5400	51	48	52	2	17	24	6	3.8	-	6.5	-	42.2	-	4.2	-	1.8	-	18.7	-	22.8	-	Accommodation and Food Services	87	Information, Culture and Recreation	3	Finance, insurance and real estate	2	Educational Services	2	Health Care and Social Assistance	2
+0651	Managers in customer and personal services, n.e.c.\t\t\t\t\t\t	4600	58	40	60	2	22	20	2	2.1	-	3.2	-	63.6	-	1.3	-	1.3	-	12.6	-	15.9	-	Repair, Personal and Non-Profit Services	58	Information, Culture and Recreation	12	Educational Services	11	Transportation and Warehousing	3	Accommodation and Food Services	3
+0711	Construction managers\t\t\t\t\t\t\t\t\t\t	13900	64	89	11	1	20	23	2	2.4	-	2.8	-	66.6	-	1.1	-	1.5	-	11.9	-	13.6	-	Construction	83	Professional, Scientific and Technical Services	5	Manufacturing	2	Finance, insurance and real estate	2	Mining and Oil and Gas Extraction	1
+0712	Home building and renovation managers\t\t\t\t\t\t\t\t	8200	49	94	6	1	18	25	3	2.4	-	3.1	-	64.5	-	1.0	-	0.7	-	12.0	-	16.3	-	Construction	99	Mining and Oil and Gas Extraction	0	Utilities	0	Manufacturing	0	Wholesale Trade	0
+0714	Facility operation and maintenance managers\t\t\t\t\t\t\t	8700	68	76	24	1	18	26	4	2.9	-	3.4	-	62.6	-	1.9	-	2.0	-	11.1	-	16.0	-	Finance, insurance and real estate	20	Transportation and Warehousing	14	Information, Culture and Recreation	10	Wholesale Trade	9	Manufacturing	7
+0731	Managers in transportation\t\t\t\t\t\t\t\t\t	5300	73	78	22	1	18	27	3	2.7	-	1.5	-	71.9	-	2.0	-	2.0	-	9.3	-	10.6	-	Transportation and Warehousing	68	Wholesale Trade	7	Public Administration	5	Manufacturing	4	Construction	3
+0811	Managers in natural resources production and fishing\t\t\t\t\t\t	1900	62	89	11	0	17	28	5	10.6	-	6.6	-	34.0	-	5.3	-	11.4	-	14.4	-	17.8	-	Mining and Oil and Gas Extraction	51	Manufacturing	10	Professional, Scientific and Technical Services	10	Construction	5	Wholesale Trade	5
+0821	Managers in agriculture\t\t\t\t\t\t\t\t\t\t	11700	53	66	34	1	12	26	16	7.4	-	6.3	-	33.1	-	5.1	-	6.4	-	26.7	-	15.0	-	Manufacturing	24	Information, Culture and Recreation	11	Wholesale Trade	10	Retail Trade	10	Construction	9
+0822	Managers in horticulture\t\t\t\t\t\t\t\t\t\t	1100	54	52	48	2	15	27	8	3.2	-	5.9	-	54.5	-	1.8	-	1.4	-	14.4	-	18.5	-	Retail Trade	50	Wholesale Trade	25	Manufacturing	12	Health Care and Social Assistance	12	Mining and Oil and Gas Extraction	0
+0823	Managers in aquaculture\t\t\t\t\t\t\t\t\t\t	600	55	90	10	3	22	18	2	0.0	-	1.7	-	12.1	-	3.4	-	0.0	-	3.4	-	81.9	-	Mining and Oil and Gas Extraction	NA	Utilities	NA	Construction	NA	Manufacturing	NA	Wholesale Trade	NA
+0911	Manufacturing managers\t\t\t\t\t\t\t\t\t\t	8700	73	80	20	0	18	27	3	2.6	-	2.6	-	69.0	-	1.4	-	1.2	-	12.4	-	10.9	-	Manufacturing	95	Wholesale Trade	2	Construction	1	Professional, Scientific and Technical Services	1	Mining and Oil and Gas Extraction	0
+0912	Utilities managers\t\t\t\t\t\t\t\t\t\t	1300	80	80	20	0	17	29	3	6.8	-	4.5	-	58.6	-	1.5	-	4.5	-	10.5	-	12.4	-	Utilities	58	Public Administration	14	Construction	10	Wholesale Trade	6	Mining and Oil and Gas Extraction	5
+1111	Financial auditors and accountants\t\t\t\t\t\t\t\t	27300	65	44	56	1	22	19	3	1.9	-	1.5	-	75.9	-	0.7	-	0.7	-	8.0	-	11.3	-	Professional, Scientific and Technical Services	48	Finance, insurance and real estate	10	Public Administration	10	Manufacturing	5	Wholesale Trade	4
+1112	Financial and investment analysts\t\t\t\t\t\t\t\t	3800	68	56	44	2	24	17	2	0.3	-	0.9	-	76.1	-	0.3	-	0.5	-	4.0	-	17.9	-	Finance, insurance and real estate	56	Public Administration	13	Professional, Scientific and Technical Services	8	Manufacturing	3	Educational Services	3
+1113	Securities agents, investment dealers and brokers\t\t\t\t\t\t	2300	55	73	27	1	21	21	4	0.9	-	0.4	-	82.5	-	NA	-	0.0	-	5.7	-	10.1	-	Finance, insurance and real estate	96	Construction	1	Retail Trade	1	Transportation and Warehousing	1	Repair, Personal and Non-Profit Services	1
+1114	Other financial officers\t\t\t\t\t\t\t\t\t\t	15500	63	57	43	1	21	21	3	1.4	-	1.6	-	72.6	-	0.5	-	0.7	-	9.4	-	13.8	-	Finance, insurance and real estate	86	Professional, Scientific and Technical Services	5	Public Administration	3	Construction	1	Manufacturing	1
+1121	Human resources professionals\t\t\t\t\t\t\t\t\t	7600	65	26	74	1	23	19	2	2.4	-	1.3	-	71.1	-	1.1	-	0.8	-	7.9	-	15.6	-	Professional, Scientific and Technical Services	18	Public Administration	18	Repair, Personal and Non-Profit Services	13	Finance, insurance and real estate	11	Health Care and Social Assistance	9
+1122	Professional occupations in business management consulting\t\t\t\t\t	9900	51	59	41	1	19	24	4	1.1	-	1.1	-	74.7	-	NA	-	0.2	-	6.6	-	16.2	-	Professional, Scientific and Technical Services	60	Finance, insurance and real estate	7	Information, Culture and Recreation	6	Public Administration	6	Retail Trade	4
+1123	Professional occupations in advertising, marketing and public relations\t\t\t\t	11400	54	33	67	4	25	13	1	1.1	-	1.4	-	76.6	-	0.5	-	0.4	-	6.3	-	13.7	-	Professional, Scientific and Technical Services	29	Information, Culture and Recreation	15	Repair, Personal and Non-Profit Services	11	Educational Services	9	Public Administration	8
+1211	Supervisors, general office and administrative support workers\t\t\t\t\t	1600	74	30	70	2	20	23	1	3.8	-	3.8	-	65.3	-	0.9	-	0.0	-	11.4	-	14.8	-	Public Administration	26	Health Care and Social Assistance	20	Professional, Scientific and Technical Services	9	Information, Culture and Recreation	6	Manufacturing	5
+1212	Supervisors, finance and insurance office workers\t\t\t\t\t\t	2100	71	30	70	1	20	23	2	3.4	-	1.9	-	71.2	-	1.0	-	1.2	-	8.2	-	13.7	-	Finance, insurance and real estate	30	Professional, Scientific and Technical Services	15	Public Administration	12	Health Care and Social Assistance	6	Information, Culture and Recreation	6
+1213	Supervisors, library, correspondence and related information workers\t\t\t\t	400	30	30	70	2	15	27	2	2.3	-	3.4	-	55.2	-	5.7	-	2.3	-	10.3	-	21.8	-	Public Administration	76	Information, Culture and Recreation	19	Manufacturing	1	Educational Services	1	Repair, Personal and Non-Profit Services	1
+1214	Supervisors, mail and message distribution occupations\t\t\t\t\t\t	800	60	44	56	1	14	31	3	5.9	-	3.3	-	48.4	-	5.2	-	3.3	-	6.5	-	26.8	-	Transportation and Warehousing	95	Information, Culture and Recreation	2	Finance, insurance and real estate	1	Repair, Personal and Non-Profit Services	1	Public Administration	1
+1215	Supervisors, supply chain, tracking and scheduling co-ordination occupations\t\t\t	5600	67	67	33	2	22	20	1	1.6	-	1.3	-	79.5	-	1.4	-	1.2	-	6.8	-	8.2	-	Transportation and Warehousing	33	Wholesale Trade	20	Manufacturing	14	Retail Trade	13	Construction	4
+1221	Administrative officers\t\t\t\t\t\t\t\t\t\t	33400	57	15	85	2	18	24	3	2.9	-	2.8	-	61.5	-	1.7	-	1.6	-	11.4	-	18.1	-	Health Care and Social Assistance	15	Professional, Scientific and Technical Services	12	Educational Services	11	Public Administration	11	Construction	9
+1222	Executive assistants\t\t\t\t\t\t\t\t\t\t	5300	66	8	92	2	20	22	1	1.8	-	1.2	-	71.7	-	1.5	-	0.9	-	7.4	-	15.3	-	Public Administration	21	Finance, insurance and real estate	15	Professional, Scientific and Technical Services	13	Educational Services	10	Repair, Personal and Non-Profit Services	8
+1223	Human resources and recruitment officers\t\t\t\t\t\t\t\t	2900	59	30	70	3	26	12	1	2.1	-	1.7	-	76.5	-	0.7	-	1.2	-	6.9	-	10.7	-	Educational Services	16	Professional, Scientific and Technical Services	14	Health Care and Social Assistance	14	Public Administration	14	Retail Trade	7
+1224	Property administrators\t\t\t\t\t\t\t\t\t\t	9200	52	51	49	1	14	27	9	2.0	-	2.1	-	67.6	-	1.1	-	1.0	-	9.6	-	16.8	-	Finance, insurance and real estate	83	Construction	3	Public Administration	3	Professional, Scientific and Technical Services	2	Repair, Personal and Non-Profit Services	2
+1225	Purchasing agents and officers\t\t\t\t\t\t\t\t\t	4700	68	50	50	1	19	25	2	2.5	-	2.6	-	66.4	-	1.9	-	2.9	-	9.9	-	13.9	-	Manufacturing	17	Public Administration	15	Wholesale Trade	12	Retail Trade	11	Professional, Scientific and Technical Services	9
+1226	Conference and event planners\t\t\t\t\t\t\t\t\t	3300	43	24	76	6	25	10	1	1.5	-	1.4	-	75.2	-	0.6	-	0.8	-	9.8	-	11.0	-	Repair, Personal and Non-Profit Services	28	Information, Culture and Recreation	21	Educational Services	13	Accommodation and Food Services	9	Public Administration	7
+1227	Court officers and justices of the peace\t\t\t\t\t\t\t\t	300	54	17	83	0	17	24	10	4.3	-	2.9	-	69.6	-	5.8	-	2.9	-	8.7	-	13.0	-	Public Administration	88	Repair, Personal and Non-Profit Services	9	Professional, Scientific and Technical Services	4	Mining and Oil and Gas Extraction	0	Utilities	0
+1228	Employment insurance, immigration, border services and revenue officers\t\t\t\t	3600	69	45	55	3	23	18	1	1.8	-	2.9	-	75.5	-	1.5	-	0.3	-	6.8	-	11.4	-	Public Administration	99	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0	Manufacturing	0
+1241	Administrative assistants\t\t\t\t\t\t\t\t\t	25300	44	5	95	3	18	23	3	3.4	-	2.7	-	62.4	-	2.3	-	2.1	-	10.8	-	16.4	-	Educational Services	19	Finance, insurance and real estate	14	Professional, Scientific and Technical Services	13	Public Administration	12	Repair, Personal and Non-Profit Services	9
+1242	Legal administrative assistants\t\t\t\t\t\t\t\t\t	6500	58	6	94	4	21	18	2	2.3	-	1.3	-	70.7	-	0.8	-	0.5	-	9.9	-	14.4	-	Professional, Scientific and Technical Services	77	Finance, insurance and real estate	11	Public Administration	8	Educational Services	1	Health Care and Social Assistance	1
+1243	Medical administrative assistants\t\t\t\t\t\t\t\t	3600	47	4	96	3	18	23	3	3.3	-	4.0	-	59.4	-	2.5	-	1.0	-	12.7	-	17.1	-	Health Care and Social Assistance	97	Finance, insurance and real estate	1	Educational Services	1	Public Administration	1	Mining and Oil and Gas Extraction	0
+1251	Court reporters, medical transcriptionists and related occupations\t\t\t\t	1600	41	4	96	1	17	26	6	4.6	-	6.5	-	48.9	-	0.9	-	1.2	-	18.2	-	19.4	-	Health Care and Social Assistance	62	Public Administration	15	Professional, Scientific and Technical Services	10	Information, Culture and Recreation	5	Educational Services	4
+1252	Health information management occupations\t\t\t\t\t\t\t	500	74	16	84	1	20	26	1	8.1	-	2.0	-	67.7	-	3.0	-	0.0	-	5.1	-	15.2	-	Health Care and Social Assistance	90	Professional, Scientific and Technical Services	5	Public Administration	5	Mining and Oil and Gas Extraction	0	Utilities	0
+1253	Records management technicians\t\t\t\t\t\t\t\t\t	500	67	28	72	1	22	21	2	1.9	-	2.9	-	67.3	-	NA	-	1.9	-	7.7	-	19.2	-	Public Administration	32	Professional, Scientific and Technical Services	20	Health Care and Social Assistance	9	Transportation and Warehousing	8	Manufacturing	7
+1254	Statistical officers and related research support occupations\t\t\t\t\t	400	57	36	64	3	23	16	1	3.8	-	2.6	-	73.1	-	NA	-	0.0	-	3.8	-	16.7	-	Professional, Scientific and Technical Services	26	Public Administration	14	Health Care and Social Assistance	13	Information, Culture and Recreation	8	Retail Trade	6
+1311	Accounting technicians and bookkeepers\t\t\t\t\t\t\t\t	22000	38	10	90	2	14	28	6	3.9	-	4.1	-	53.9	-	2.5	-	3.1	-	14.7	-	17.8	-	Professional, Scientific and Technical Services	41	Construction	12	Retail Trade	7	Finance, insurance and real estate	7	Repair, Personal and Non-Profit Services	6
+1312	Insurance adjusters and claims examiners\t\t\t\t\t\t\t\t	4000	68	42	58	1	21	24	1	2.0	-	1.1	-	77.7	-	0.5	-	0.4	-	7.2	-	11.0	-	Finance, insurance and real estate	97	Public Administration	1	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0
+1313	Insurance underwriters\t\t\t\t\t\t\t\t\t\t	1300	69	32	68	1	24	17	1	0.0	-	0.0	-	88.8	-	NA	-	0.0	-	4.1	-	6.3	-	Finance, insurance and real estate	99	Transportation and Warehousing	1	Business, Building and Other Support Services	1	Mining and Oil and Gas Extraction	0	Utilities	0
+1314	Assessors, valuators and appraisers\t\t\t\t\t\t\t\t	1500	61	72	28	1	19	22	4	4.1	-	3.7	-	57.6	-	NA	-	2.4	-	15.6	-	15.9	-	Finance, insurance and real estate	60	Public Administration	24	Professional, Scientific and Technical Services	10	Retail Trade	2	Mining and Oil and Gas Extraction	1
+7271	Carpenters\t\t\t\t\t\t\t\t\t\t\t	26100	45	98	2	5	21	16	2	3.7	-	4.7	-	52.6	-	2.7	-	1.6	-	13.5	-	21.2	-	Construction	88	Manufacturing	4	Retail Trade	1	Finance, insurance and real estate	1	Professional, Scientific and Technical Services	1
+1315	Customs, ship and other brokers\t\t\t\t\t\t\t\t\t	600	73	51	49	1	19	24	4	0.0	-	0.0	-	91.3	-	NA	-	0.0	-	1.7	-	5.2	-	Transportation and Warehousing	76	Wholesale Trade	7	Retail Trade	7	Finance, insurance and real estate	4	Professional, Scientific and Technical Services	4
+1411	General office support workers\t\t\t\t\t\t\t\t\t	34200	43	14	86	5	17	21	3	3.3	-	2.5	-	65.0	-	1.8	-	1.7	-	10.2	-	15.5	-	Health Care and Social Assistance	20	Public Administration	14	Finance, insurance and real estate	10	Professional, Scientific and Technical Services	9	Construction	7
+1414	Receptionists\t\t\t\t\t\t\t\t\t\t\t	24000	38	4	96	9	18	17	2	3.3	-	2.8	-	62.7	-	2.1	-	1.4	-	11.2	-	16.5	-	Health Care and Social Assistance	50	Repair, Personal and Non-Profit Services	9	Professional, Scientific and Technical Services	8	Retail Trade	6	Finance, insurance and real estate	5
+1415	Personnel clerks\t\t\t\t\t\t\t\t\t\t\t	1500	60	16	84	4	22	16	1	5.5	-	2.6	-	62.7	-	0.6	-	2.3	-	9.4	-	16.9	-	Health Care and Social Assistance	32	Public Administration	17	Educational Services	11	Manufacturing	8	Finance, insurance and real estate	6
+1416	Court clerks\t\t\t\t\t\t\t\t\t\t\t	400	65	8	92	4	17	24	1	7.9	-	3.4	-	53.9	-	NA	-	2.2	-	12.4	-	18.0	-	Public Administration	100	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0	Manufacturing	0
+1422	Data entry clerks\t\t\t\t\t\t\t\t\t\t	3900	42	22	78	7	19	18	2	3.2	-	1.5	-	70.7	-	1.7	-	1.3	-	8.0	-	13.9	-	Public Administration	14	Finance, insurance and real estate	13	Professional, Scientific and Technical Services	13	Health Care and Social Assistance	11	Retail Trade	9
+1423	Desktop publishing operators and related occupations\t\t\t\t\t\t	300	55	57	43	3	21	19	5	0.0	-	0.0	-	72.5	-	NA	-	0.0	-	5.9	-	15.7	-	Information, Culture and Recreation	35	Professional, Scientific and Technical Services	15	Transportation and Warehousing	13	Manufacturing	8	Retail Trade	8
+1431	Accounting and related clerks\t\t\t\t\t\t\t\t\t	18100	55	17	83	3	19	23	3	2.7	-	1.9	-	69.0	-	1.5	-	1.2	-	9.1	-	14.5	-	Professional, Scientific and Technical Services	24	Finance, insurance and real estate	11	Retail Trade	9	Public Administration	9	Wholesale Trade	8
+1432	Payroll clerks\t\t\t\t\t\t\t\t\t\t\t	4500	65	10	90	2	19	25	1	4.6	-	2.2	-	61.8	-	1.9	-	2.3	-	10.3	-	17.0	-	Public Administration	16	Professional, Scientific and Technical Services	11	Health Care and Social Assistance	11	Construction	9	Manufacturing	8
+1434	Banking, insurance and other financial clerks\t\t\t\t\t\t\t	2700	62	24	76	3	21	19	2	1.7	-	0.9	-	78.0	-	0.4	-	0.7	-	7.8	-	10.6	-	Finance, insurance and real estate	86	Public Administration	7	Manufacturing	1	Wholesale Trade	1	Retail Trade	1
+1435	Collectors\t\t\t\t\t\t\t\t\t\t\t	1300	65	31	69	4	21	19	1	2.4	-	0.8	-	62.5	-	0.8	-	0.0	-	10.0	-	23.9	-	Public Administration	32	Finance, insurance and real estate	27	Information, Culture and Recreation	11	Retail Trade	6	Wholesale Trade	4
+1451	Library assistants and clerks\t\t\t\t\t\t\t\t\t	2300	26	16	84	9	14	21	3	3.5	-	3.0	-	54.1	-	2.6	-	1.3	-	11.7	-	24.0	-	Information, Culture and Recreation	99	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0	Manufacturing	0
+1452	Correspondence, publication and regulatory clerks\t\t\t\t\t\t	3000	55	24	76	3	19	22	2	1.8	-	3.2	-	65.1	-	1.5	-	2.2	-	8.0	-	18.4	-	Public Administration	41	Professional, Scientific and Technical Services	12	Health Care and Social Assistance	11	Transportation and Warehousing	7	Information, Culture and Recreation	7
+1454	Survey interviewers and statistical clerks\t\t\t\t\t\t\t	1700	14	39	61	5	16	22	6	5.1	-	7.5	-	41.0	-	4.2	-	3.9	-	15.9	-	22.8	-	Public Administration	78	Professional, Scientific and Technical Services	9	Utilities	2	Finance, insurance and real estate	2	Health Care and Social Assistance	2
+1511	Mail, postal and related workers\t\t\t\t\t\t\t\t\t	3400	43	41	59	4	14	28	3	3.4	-	4.4	-	64.0	-	1.9	-	2.3	-	8.3	-	15.7	-	Transportation and Warehousing	88	Public Administration	4	Finance, insurance and real estate	2	Information, Culture and Recreation	2	Manufacturing	1
+1512	Letter carriers\t\t\t\t\t\t\t\t\t\t\t	3900	66	55	45	1	19	28	1	2.5	-	2.6	-	63.9	-	1.2	-	0.6	-	11.5	-	17.5	-	Transportation and Warehousing	100	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0	Manufacturing	0
+1513	Couriers, messengers and door-to-door distributors\t\t\t\t\t\t	4000	40	73	27	9	13	23	4	2.6	-	2.9	-	58.5	-	1.6	-	1.0	-	12.1	-	21.1	-	Transportation and Warehousing	46	Information, Culture and Recreation	29	Retail Trade	11	Professional, Scientific and Technical Services	4	Manufacturing	2
+1521	Shippers and receivers\t\t\t\t\t\t\t\t\t\t	10900	59	74	26	7	19	19	1	3.2	-	2.0	-	72.0	-	1.5	-	1.5	-	9.0	-	11.0	-	Retail Trade	31	Wholesale Trade	22	Manufacturing	21	Transportation and Warehousing	14	Construction	2
+1522	Storekeepers and partspersons\t\t\t\t\t\t\t\t\t	4500	68	78	22	5	18	21	2	8.8	-	3.7	-	45.2	-	3.0	-	3.8	-	19.0	-	16.4	-	Retail Trade	43	Wholesale Trade	20	Manufacturing	7	Transportation and Warehousing	6	Repair, Personal and Non-Profit Services	6
+1523	Production logistics co-ordinators\t\t\t\t\t\t\t\t	2800	59	44	56	3	21	19	2	1.1	-	3.6	-	69.4	-	1.4	-	1.1	-	10.0	-	13.6	-	Manufacturing	24	Information, Culture and Recreation	12	Transportation and Warehousing	9	Health Care and Social Assistance	9	Construction	7
+1524	Purchasing and inventory control workers\t\t\t\t\t\t\t\t	3100	55	46	54	5	18	21	1	1.9	-	1.3	-	73.4	-	1.6	-	0.8	-	9.4	-	11.8	-	Retail Trade	32	Wholesale Trade	18	Manufacturing	15	Transportation and Warehousing	7	Health Care and Social Assistance	7
+1525	Dispatchers\t\t\t\t\t\t\t\t\t\t\t	4500	64	49	51	4	23	17	1	4.4	-	2.1	-	67.9	-	1.8	-	2.2	-	8.5	-	13.2	-	Transportation and Warehousing	48	Public Administration	22	Construction	6	Health Care and Social Assistance	5	Wholesale Trade	3
+1526	Transportation route and crew schedulers\t\t\t\t\t\t\t\t	600	64	49	51	3	21	20	1	1.6	-	0.0	-	75.0	-	1.6	-	0.0	-	6.5	-	13.7	-	Transportation and Warehousing	63	Wholesale Trade	7	Public Administration	6	Manufacturing	4	Professional, Scientific and Technical Services	4
+2111	Physicists and astronomers\t\t\t\t\t\t\t\t\t	400	57	84	16	1	19	22	6	2.5	-	0.0	-	72.8	-	NA	-	0.0	-	2.5	-	23.5	-	Professional, Scientific and Technical Services	44	Educational Services	21	Health Care and Social Assistance	16	Public Administration	11	Manufacturing	6
+2112	Chemists\t\t\t\t\t\t\t\t\t\t\t\t	1200	66	61	39	1	23	19	2	0.9	-	0.0	-	80.5	-	0.9	-	0.9	-	2.6	-	13.9	-	Professional, Scientific and Technical Services	48	Manufacturing	16	Public Administration	9	Educational Services	8	Health Care and Social Assistance	8
+2113	Geoscientists and oceanographers\t\t\t\t\t\t\t\t\t	1700	50	75	25	1	24	18	4	1.4	-	4.9	-	57.6	-	2.0	-	0.0	-	7.5	-	25.9	-	Professional, Scientific and Technical Services	47	Mining and Oil and Gas Extraction	28	Public Administration	14	Educational Services	3	Manufacturing	2
+2114	Meteorologists and climatologists\t\t\t\t\t\t\t\t	200	71	84	16	0	18	28	3	0.0	-	0.0	-	37.5	-	6.2	-	0.0	-	18.8	-	40.6	-	Public Administration	55	Professional, Scientific and Technical Services	24	Utilities	9	Business, Building and Other Support Services	6	Educational Services	6
+2115	Other professional occupations in physical sciences\t\t\t\t\t\t	200	49	69	31	2	21	17	5	11.1	-	0.0	-	55.6	-	NA	-	0.0	-	11.1	-	19.4	-	Professional, Scientific and Technical Services	33	Mining and Oil and Gas Extraction	28	Public Administration	15	Repair, Personal and Non-Profit Services	10	Manufacturing	8
+2121	Biologists and related scientists\t\t\t\t\t\t\t\t	3900	59	50	50	1	26	17	2	4.5	-	4.6	-	50.4	-	3.5	-	1.5	-	9.5	-	26.0	-	Professional, Scientific and Technical Services	52	Public Administration	23	Health Care and Social Assistance	6	Educational Services	5	Manufacturing	4
+2122	Forestry professionals\t\t\t\t\t\t\t\t\t\t	1700	64	80	20	0	20	25	2	18.4	-	5.5	-	15.2	-	12.4	-	1.7	-	19.0	-	27.6	-	Professional, Scientific and Technical Services	42	Public Administration	37	Manufacturing	15	Utilities	2	Wholesale Trade	1
+2123	Agricultural representatives, consultants and specialists\t\t\t\t\t	400	45	74	26	4	17	24	7	4.9	-	3.7	-	42.7	-	NA	-	2.4	-	29.3	-	13.4	-	Professional, Scientific and Technical Services	35	Public Administration	32	Wholesale Trade	7	Manufacturing	6	Information, Culture and Recreation	6
+2131	Civil engineers\t\t\t\t\t\t\t\t\t\t\t	7600	65	85	15	2	21	20	3	1.4	-	1.8	-	75.6	-	1.0	-	0.8	-	8.2	-	11.2	-	Professional, Scientific and Technical Services	60	Construction	13	Public Administration	13	Utilities	3	Manufacturing	3
+2132	Mechanical engineers\t\t\t\t\t\t\t\t\t\t	5200	67	92	8	1	24	17	2	2.6	-	3.3	-	75.6	-	1.0	-	0.2	-	6.0	-	11.4	-	Professional, Scientific and Technical Services	47	Manufacturing	24	Construction	5	Utilities	4	Wholesale Trade	3
+2133	Electrical and electronics engineers\t\t\t\t\t\t\t\t	5300	68	91	9	1	23	18	3	1.1	-	1.5	-	82.6	-	0.2	-	0.4	-	5.4	-	8.7	-	Professional, Scientific and Technical Services	47	Manufacturing	18	Utilities	12	Construction	5	Information, Culture and Recreation	4
+2134	Chemical engineers\t\t\t\t\t\t\t\t\t\t	1000	62	72	28	1	25	16	3	4.7	-	4.7	-	75.5	-	2.1	-	2.6	-	4.7	-	5.7	-	Professional, Scientific and Technical Services	45	Manufacturing	31	Mining and Oil and Gas Extraction	8	Public Administration	5	Wholesale Trade	4
+2141	Industrial and manufacturing engineers\t\t\t\t\t\t\t\t	1100	66	80	20	1	23	20	2	2.3	-	1.8	-	79.0	-	1.8	-	0.9	-	3.7	-	11.0	-	Manufacturing	38	Professional, Scientific and Technical Services	35	Construction	6	Wholesale Trade	5	Information, Culture and Recreation	3
+2142	Metallurgical and materials engineers\t\t\t\t\t\t\t\t	300	53	84	16	0	28	13	3	2.9	-	8.8	-	75.0	-	NA	-	0.0	-	5.9	-	5.9	-	Professional, Scientific and Technical Services	49	Manufacturing	27	Mining and Oil and Gas Extraction	7	Utilities	7	Wholesale Trade	4
+2143	Mining engineers\t\t\t\t\t\t\t\t\t\t\t	700	61	87	13	1	25	14	4	1.5	-	15.8	-	62.4	-	3.0	-	0.0	-	10.5	-	7.5	-	Professional, Scientific and Technical Services	45	Mining and Oil and Gas Extraction	40	Manufacturing	7	Wholesale Trade	3	Finance, insurance and real estate	2
+2144	Geological engineers\t\t\t\t\t\t\t\t\t\t	900	63	80	20	4	24	14	3	1.7	-	4.5	-	71.3	-	1.1	-	1.7	-	11.2	-	10.1	-	Professional, Scientific and Technical Services	84	Utilities	5	Mining and Oil and Gas Extraction	3	Public Administration	3	Construction	2
+2145	Petroleum engineers\t\t\t\t\t\t\t\t\t\t	200	43	90	10	2	20	21	2	0.0	-	0.0	-	55.0	-	5.0	-	5.0	-	10.0	-	22.5	-	Mining and Oil and Gas Extraction	42	Professional, Scientific and Technical Services	31	Manufacturing	6	Public Administration	6	Construction	3
+2146	Aerospace engineers\t\t\t\t\t\t\t\t\t\t	300	68	86	14	0	25	19	2	0.0	-	3.5	-	70.2	-	NA	-	0.0	-	10.5	-	15.8	-	Manufacturing	41	Transportation and Warehousing	32	Professional, Scientific and Technical Services	18	Public Administration	9	Mining and Oil and Gas Extraction	0
+2147	Computer engineers (except software engineers and designers)\t\t\t\t\t	2300	75	92	8	1	25	18	1	1.1	-	1.7	-	84.1	-	NA	-	0.7	-	2.2	-	10.5	-	Professional, Scientific and Technical Services	44	Information, Culture and Recreation	20	Manufacturing	9	Wholesale Trade	6	Public Administration	4
+2148	Other professional engineers, n.e.c.\t\t\t\t\t\t\t\t	900	56	86	14	2	23	18	2	1.1	-	0.0	-	69.4	-	NA	-	0.0	-	4.9	-	24.6	-	Professional, Scientific and Technical Services	39	Manufacturing	18	Public Administration	11	Transportation and Warehousing	9	Health Care and Social Assistance	8
+2151	Architects\t\t\t\t\t\t\t\t\t\t\t	3000	61	76	24	0	21	21	7	0.3	-	1.2	-	84.0	-	NA	-	0.0	-	4.2	-	10.7	-	Professional, Scientific and Technical Services	92	Construction	3	Public Administration	2	Manufacturing	1	Mining and Oil and Gas Extraction	0
+2152	Landscape architects\t\t\t\t\t\t\t\t\t\t	400	58	56	44	0	24	20	5	0.0	-	0.0	-	79.2	-	NA	-	2.8	-	9.7	-	6.9	-	Professional, Scientific and Technical Services	77	Public Administration	12	Construction	3	Retail Trade	3	Educational Services	3
+2153	Urban and land use planners\t\t\t\t\t\t\t\t\t	1800	62	56	44	1	25	16	4	2.5	-	2.8	-	62.3	-	1.7	-	0.8	-	10.2	-	19.9	-	Public Administration	56	Professional, Scientific and Technical Services	28	Construction	4	Transportation and Warehousing	4	Finance, insurance and real estate	2
+2154	Land surveyors\t\t\t\t\t\t\t\t\t\t\t	1000	57	95	5	0	23	18	5	3.4	-	3.0	-	50.2	-	3.0	-	5.9	-	15.3	-	18.7	-	Professional, Scientific and Technical Services	67	Construction	15	Public Administration	10	Mining and Oil and Gas Extraction	3	Utilities	1
+2161	Mathematicians, statisticians and actuaries\t\t\t\t\t\t\t	800	62	43	57	2	28	13	1	0.0	-	1.3	-	81.8	-	NA	-	0.0	-	3.2	-	14.3	-	Professional, Scientific and Technical Services	38	Public Administration	18	Finance, insurance and real estate	16	Educational Services	11	Health Care and Social Assistance	11
+2171	Information systems analysts and consultants\t\t\t\t\t\t\t	15700	68	73	27	1	24	20	1	1.1	-	1.1	-	75.2	-	0.4	-	0.2	-	5.4	-	16.5	-	Professional, Scientific and Technical Services	45	Public Administration	10	Information, Culture and Recreation	9	Finance, insurance and real estate	8	Educational Services	5
+2172	Database analysts and data administrators\t\t\t\t\t\t\t	2200	72	68	32	1	23	20	1	1.1	-	0.7	-	75.1	-	0.7	-	0.5	-	4.8	-	17.4	-	Professional, Scientific and Technical Services	32	Information, Culture and Recreation	14	Public Administration	14	Finance, insurance and real estate	9	Health Care and Social Assistance	7
+2173	Software engineers and designers\t\t\t\t\t\t\t\t\t	9100	68	86	14	3	28	11	0	0.3	-	0.8	-	87.9	-	0.1	-	0.0	-	2.7	-	8.3	-	Professional, Scientific and Technical Services	56	Information, Culture and Recreation	19	Manufacturing	6	Wholesale Trade	5	Retail Trade	4
+2174	Computer programmers and interactive media developers\t\t\t\t\t\t	12800	65	84	16	4	27	12	0	0.5	-	1.0	-	79.4	-	0.1	-	0.1	-	5.3	-	13.6	-	Professional, Scientific and Technical Services	57	Information, Culture and Recreation	19	Finance, insurance and real estate	5	Manufacturing	3	Wholesale Trade	3
+2175	Web designers and developers\t\t\t\t\t\t\t\t\t	4400	49	69	31	4	27	10	1	1.1	-	1.6	-	72.1	-	0.6	-	0.2	-	7.3	-	17.3	-	Professional, Scientific and Technical Services	69	Information, Culture and Recreation	9	Retail Trade	6	Educational Services	4	Finance, insurance and real estate	3
+2211	Chemical technologists and technicians\t\t\t\t\t\t\t\t	2100	52	51	49	7	22	14	1	2.8	-	4.5	-	73.3	-	0.9	-	2.1	-	7.8	-	8.0	-	Professional, Scientific and Technical Services	36	Manufacturing	32	Public Administration	8	Educational Services	6	Wholesale Trade	5
+2212	Geological and mineral technologists and technicians\t\t\t\t\t\t	800	47	75	25	5	21	17	2	4.2	-	12.0	-	48.2	-	5.4	-	3.6	-	15.7	-	11.4	-	Professional, Scientific and Technical Services	36	Mining and Oil and Gas Extraction	34	Manufacturing	9	Public Administration	5	Retail Trade	3
+7272	Cabinetmakers\t\t\t\t\t\t\t\t\t\t\t	2200	56	91	9	4	18	22	3	2.0	-	2.7	-	64.1	-	0.4	-	0.0	-	14.1	-	16.4	-	Manufacturing	77	Construction	15	Wholesale Trade	2	Retail Trade	2	Finance, insurance and real estate	1
+2221	Biological technologists and technicians\t\t\t\t\t\t\t\t	1500	43	51	49	9	22	13	1	2.0	-	4.3	-	51.3	-	3.3	-	0.7	-	10.5	-	27.6	-	Professional, Scientific and Technical Services	40	Public Administration	27	Manufacturing	10	Educational Services	7	Information, Culture and Recreation	4
+2222	Agricultural and fish products inspectors\t\t\t\t\t\t\t	700	63	63	37	2	21	23	1	0.0	-	1.5	-	70.9	-	7.5	-	0.0	-	9.7	-	11.2	-	Public Administration	67	Wholesale Trade	10	Professional, Scientific and Technical Services	7	Manufacturing	5	Transportation and Warehousing	3
+2223	Forestry technologists and technicians\t\t\t\t\t\t\t\t	2500	43	80	20	7	18	21	1	20.5	-	10.7	-	12.5	-	12.7	-	3.0	-	16.7	-	24.1	-	Public Administration	46	Professional, Scientific and Technical Services	30	Manufacturing	13	Construction	2	Wholesale Trade	2
+2224	Conservation and fishery officers\t\t\t\t\t\t\t\t	900	61	69	31	3	23	20	1	8.7	-	8.2	-	26.2	-	13.1	-	2.2	-	15.3	-	26.2	-	Public Administration	78	Information, Culture and Recreation	11	Utilities	4	Repair, Personal and Non-Profit Services	4	Educational Services	2
+2225	Landscape and horticulture technicians and specialists\t\t\t\t\t\t	3600	39	66	34	4	21	19	3	2.1	-	5.1	-	46.2	-	1.5	-	0.6	-	13.8	-	30.7	-	Information, Culture and Recreation	29	Public Administration	22	Professional, Scientific and Technical Services	11	Educational Services	9	Retail Trade	7
+2231	Civil engineering technologists and technicians\t\t\t\t\t\t\t	2400	54	78	22	7	19	18	2	3.3	-	3.3	-	50.5	-	3.1	-	1.9	-	19.3	-	18.7	-	Professional, Scientific and Technical Services	50	Public Administration	20	Construction	13	Utilities	4	Manufacturing	4
+2232	Mechanical engineering technologists and technicians\t\t\t\t\t\t	1800	60	92	8	8	19	18	2	1.7	-	2.0	-	63.8	-	1.4	-	1.7	-	9.1	-	20.8	-	Professional, Scientific and Technical Services	33	Manufacturing	28	Construction	9	Public Administration	7	Utilities	4
+2233	Industrial engineering and manufacturing technologists and technicians\t\t\t\t	1500	65	81	19	4	20	21	2	3.3	-	2.3	-	71.7	-	1.0	-	1.3	-	11.2	-	9.5	-	Manufacturing	52	Professional, Scientific and Technical Services	16	Construction	7	Public Administration	7	Wholesale Trade	4
+2234	Construction estimators\t\t\t\t\t\t\t\t\t\t	2600	68	88	12	2	20	20	3	2.7	-	1.1	-	66.3	-	0.6	-	1.3	-	11.6	-	16.3	-	Construction	70	Professional, Scientific and Technical Services	13	Manufacturing	8	Wholesale Trade	2	Mining and Oil and Gas Extraction	1
+2241	Electrical and electronics engineering technologists and technicians\t\t\t\t	4700	60	86	14	5	18	21	2	3.3	-	2.1	-	61.3	-	2.1	-	1.5	-	10.4	-	19.0	-	Manufacturing	16	Professional, Scientific and Technical Services	16	Construction	14	Public Administration	10	Health Care and Social Assistance	9
+2242	Electronic service technicians (household and business equipment)\t\t\t\t	7100	61	94	6	4	20	20	2	3.0	-	2.5	-	63.8	-	1.6	-	1.1	-	11.3	-	16.7	-	Retail Trade	16	Repair, Personal and Non-Profit Services	16	Construction	13	Professional, Scientific and Technical Services	13	Wholesale Trade	12
+2243	Industrial instrument technicians and mechanics\t\t\t\t\t\t\t	800	54	94	6	2	22	20	1	9.1	-	10.4	-	28.6	-	2.6	-	21.4	-	14.3	-	14.9	-	Manufacturing	32	Mining and Oil and Gas Extraction	25	Professional, Scientific and Technical Services	17	Utilities	6	Wholesale Trade	6
+2244	Aircraft instrument, electrical and avionics mechanics, technicians and inspectors\t\t	800	69	93	7	2	24	18	1	2.0	-	1.3	-	55.6	-	NA	-	1.3	-	13.7	-	26.1	-	Transportation and Warehousing	67	Public Administration	16	Manufacturing	14	Wholesale Trade	1	Retail Trade	1
+2251	Architectural technologists and technicians\t\t\t\t\t\t\t	1200	54	71	29	4	23	17	1	0.0	-	2.1	-	76.6	-	NA	-	0.0	-	8.1	-	12.3	-	Professional, Scientific and Technical Services	89	Construction	4	Public Administration	3	Educational Services	2	Manufacturing	1
+2252	Industrial designers\t\t\t\t\t\t\t\t\t\t	1200	54	73	27	2	22	18	3	0.0	-	1.3	-	79.9	-	NA	-	0.0	-	7.7	-	10.3	-	Professional, Scientific and Technical Services	45	Manufacturing	27	Retail Trade	8	Wholesale Trade	7	Construction	6
+2253	Drafting technologists and technicians\t\t\t\t\t\t\t\t	3300	58	74	26	3	21	20	2	1.5	-	2.1	-	73.5	-	1.2	-	1.8	-	7.3	-	12.4	-	Professional, Scientific and Technical Services	58	Manufacturing	15	Construction	12	Utilities	4	Public Administration	3
+2254	Land survey technologists and technicians\t\t\t\t\t\t\t	400	49	88	12	10	19	15	3	4.9	-	3.7	-	48.1	-	NA	-	4.9	-	14.8	-	22.2	-	Professional, Scientific and Technical Services	77	Public Administration	9	Mining and Oil and Gas Extraction	3	Utilities	2	Construction	2
+2255	Technical occupations in geomatics and meteorology\t\t\t\t\t\t	1600	63	63	37	3	23	18	1	6.4	-	5.1	-	41.2	-	6.4	-	3.8	-	14.1	-	23.0	-	Professional, Scientific and Technical Services	46	Public Administration	33	Utilities	4	Mining and Oil and Gas Extraction	3	Manufacturing	3
+2261	Non-destructive testers and inspection technicians\t\t\t\t\t\t	500	40	87	13	3	17	24	2	5.9	-	5.0	-	48.5	-	NA	-	2.0	-	19.8	-	18.8	-	Professional, Scientific and Technical Services	55	Manufacturing	13	Mining and Oil and Gas Extraction	12	Construction	7	Public Administration	5
+2262	Engineering inspectors and regulatory officers\t\t\t\t\t\t\t	600	60	88	12	1	15	26	8	2.7	-	0.0	-	63.6	-	1.8	-	4.5	-	5.5	-	20.9	-	Public Administration	30	Professional, Scientific and Technical Services	27	Transportation and Warehousing	16	Construction	6	Manufacturing	6
+2263	Inspectors in public and environmental health and occupational health and safety\t\t\t	3800	57	63	37	1	21	22	2	6.6	-	3.8	-	52.9	-	2.9	-	5.2	-	13.6	-	15.0	-	Professional, Scientific and Technical Services	19	Public Administration	14	Construction	11	Health Care and Social Assistance	11	Manufacturing	10
+2264	Construction inspectors\t\t\t\t\t\t\t\t\t\t	2200	58	87	13	1	16	27	4	4.2	-	3.8	-	56.3	-	2.7	-	3.1	-	13.6	-	16.7	-	Professional, Scientific and Technical Services	32	Construction	31	Public Administration	25	Mining and Oil and Gas Extraction	3	Utilities	2
+2271	Air pilots, flight engineers and flying instructors\t\t\t\t\t\t	3200	51	93	7	1	21	22	1	3.0	-	1.6	-	57.2	-	2.7	-	1.3	-	13.5	-	20.9	-	Transportation and Warehousing	89	Public Administration	5	Educational Services	4	Professional, Scientific and Technical Services	1	Mining and Oil and Gas Extraction	0
+2272	Air traffic controllers and related occupations\t\t\t\t\t\t\t	700	67	70	30	2	19	24	2	2.1	-	2.8	-	61.7	-	2.1	-	1.4	-	14.9	-	14.2	-	Transportation and Warehousing	96	Public Administration	3	Information, Culture and Recreation	1	Mining and Oil and Gas Extraction	0	Utilities	0
+2273	Deck officers, water transport\t\t\t\t\t\t\t\t\t	1800	42	89	11	2	19	24	2	0.9	-	1.7	-	41.4	-	2.3	-	0.0	-	4.3	-	48.6	-	Transportation and Warehousing	74	Public Administration	21	Manufacturing	1	Professional, Scientific and Technical Services	1	Accommodation and Food Services	1
+2274	Engineer officers, water transport\t\t\t\t\t\t\t\t	600	44	98	2	0	14	31	2	0.0	-	0.0	-	45.4	-	NA	-	0.0	-	5.0	-	47.9	-	Transportation and Warehousing	76	Public Administration	12	Professional, Scientific and Technical Services	4	Construction	2	Mining and Oil and Gas Extraction	1
+2275	Railway traffic controllers and marine traffic regulators\t\t\t\t\t	200	69	74	26	2	25	19	0	0.0	-	4.8	-	57.1	-	11.9	-	0.0	-	4.8	-	11.9	-	Transportation and Warehousing	57	Public Administration	24	Professional, Scientific and Technical Services	10	Mining and Oil and Gas Extraction	5	Manufacturing	5
+2281	Computer network technicians\t\t\t\t\t\t\t\t\t	7000	70	80	20	2	25	16	1	2.1	-	1.4	-	70.9	-	0.9	-	0.3	-	8.2	-	16.2	-	Professional, Scientific and Technical Services	28	Information, Culture and Recreation	18	Educational Services	10	Finance, insurance and real estate	8	Public Administration	8
+2282	User support technicians\t\t\t\t\t\t\t\t\t\t	5000	65	76	24	3	25	15	1	1.9	-	1.1	-	73.9	-	0.3	-	0.4	-	6.5	-	16.0	-	Professional, Scientific and Technical Services	31	Information, Culture and Recreation	21	Educational Services	10	Public Administration	8	Finance, insurance and real estate	6
+2283	Information systems testing technicians\t\t\t\t\t\t\t\t	1000	60	65	35	4	26	13	1	0.0	-	0.0	-	83.6	-	NA	-	0.0	-	2.6	-	14.4	-	Professional, Scientific and Technical Services	53	Information, Culture and Recreation	22	Manufacturing	7	Finance, insurance and real estate	6	Retail Trade	4
+3011	Nursing co-ordinators and supervisors\t\t\t\t\t\t\t\t	2100	58	9	91	1	18	27	2	3.8	-	2.4	-	59.1	-	1.9	-	0.7	-	11.3	-	20.8	-	Health Care and Social Assistance	99	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0	Manufacturing	0
+3012	Registered nurses and registered psychiatric nurses\t\t\t\t\t\t	37500	45	9	91	1	23	18	1	3.1	-	3.1	-	60.4	-	1.4	-	1.0	-	12.5	-	18.5	-	Health Care and Social Assistance	96	Educational Services	1	Public Administration	1	Mining and Oil and Gas Extraction	0	Utilities	0
+3111	Specialist physicians\t\t\t\t\t\t\t\t\t\t	6100	36	63	37	0	21	23	6	2.4	-	2.1	-	66.2	-	1.1	-	0.2	-	10.0	-	18.0	-	Health Care and Social Assistance	99	Professional, Scientific and Technical Services	1	Educational Services	1	Mining and Oil and Gas Extraction	0	Utilities	0
+3112	General practitioners and family physicians\t\t\t\t\t\t\t	7700	33	57	43	0	21	21	6	3.3	-	2.7	-	63.3	-	1.6	-	0.7	-	8.9	-	19.4	-	Health Care and Social Assistance	94	Educational Services	4	Professional, Scientific and Technical Services	1	Mining and Oil and Gas Extraction	0	Utilities	0
+3113	Dentists\t\t\t\t\t\t\t\t\t\t\t\t	3500	31	67	33	0	21	23	4	2.3	-	3.2	-	68.2	-	0.9	-	1.4	-	10.3	-	13.9	-	Health Care and Social Assistance	99	Educational Services	1	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0
+3114	Veterinarians\t\t\t\t\t\t\t\t\t\t\t	1400	51	42	58	0	21	23	2	3.3	-	4.4	-	54.8	-	0.7	-	1.5	-	12.5	-	22.1	-	Professional, Scientific and Technical Services	91	Public Administration	6	Retail Trade	1	Educational Services	1	Health Care and Social Assistance	1
+3121	Optometrists\t\t\t\t\t\t\t\t\t\t\t	700	43	50	50	0	26	16	1	1.5	-	5.9	-	58.5	-	NA	-	1.5	-	16.3	-	16.3	-	Health Care and Social Assistance	97	Retail Trade	3	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0
+3122	Chiropractors\t\t\t\t\t\t\t\t\t\t\t	1200	47	69	31	0	23	22	3	1.7	-	4.7	-	56.9	-	0.9	-	1.3	-	10.8	-	22.4	-	Health Care and Social Assistance	98	Professional, Scientific and Technical Services	2	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0
+3124	Allied primary health practitioners\t\t\t\t\t\t\t\t	800	44	11	89	1	27	16	1	3.1	-	5.0	-	57.5	-	2.5	-	0.0	-	10.6	-	20.6	-	Health Care and Social Assistance	94	Public Administration	5	Finance, insurance and real estate	1	Mining and Oil and Gas Extraction	0	Utilities	0
+3125	Other professional occupations in health diagnosing and treating\t\t\t\t\t	500	45	34	66	0	25	19	3	0.0	-	0.0	-	60.2	-	NA	-	0.0	-	13.6	-	25.2	-	Health Care and Social Assistance	98	Educational Services	2	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0
+3131	Pharmacists\t\t\t\t\t\t\t\t\t\t\t	4600	57	42	58	1	25	16	1	3.2	-	2.3	-	67.1	-	1.6	-	1.0	-	10.4	-	14.5	-	Retail Trade	80	Health Care and Social Assistance	18	Wholesale Trade	1	Professional, Scientific and Technical Services	1	Public Administration	1
+3132	Dietitians and nutritionists\t\t\t\t\t\t\t\t\t	1500	45	4	96	1	26	16	1	3.3	-	3.0	-	65.4	-	NA	-	0.0	-	11.3	-	15.9	-	Health Care and Social Assistance	79	Retail Trade	8	Professional, Scientific and Technical Services	4	Information, Culture and Recreation	2	Repair, Personal and Non-Profit Services	2
+3141	Audiologists and speech-language pathologists\t\t\t\t\t\t\t	1200	39	9	91	0	23	19	1	3.0	-	3.8	-	62.0	-	2.1	-	1.3	-	13.9	-	13.5	-	Health Care and Social Assistance	70	Educational Services	25	Retail Trade	2	Manufacturing	1	Finance, insurance and real estate	1
+3142	Physiotherapists\t\t\t\t\t\t\t\t\t\t\t	3600	42	29	71	0	25	18	2	2.1	-	3.8	-	63.2	-	1.0	-	0.8	-	13.6	-	15.5	-	Health Care and Social Assistance	97	Professional, Scientific and Technical Services	1	Educational Services	1	Repair, Personal and Non-Profit Services	1	Mining and Oil and Gas Extraction	0
+3143	Occupational therapists\t\t\t\t\t\t\t\t\t\t	2000	45	13	87	0	27	16	1	1.8	-	1.3	-	62.2	-	1.8	-	0.5	-	13.2	-	19.3	-	Health Care and Social Assistance	95	Educational Services	2	Professional, Scientific and Technical Services	1	Public Administration	1	Mining and Oil and Gas Extraction	0
+3144	Other professional occupations in therapy and assessment\t\t\t\t\t\t	1800	39	23	77	3	26	11	1	1.4	-	3.8	-	67.8	-	1.9	-	0.0	-	9.0	-	15.8	-	Health Care and Social Assistance	80	Information, Culture and Recreation	8	Educational Services	5	Professional, Scientific and Technical Services	2	Repair, Personal and Non-Profit Services	2
+3211	Medical laboratory technologists\t\t\t\t\t\t\t\t\t	2700	55	20	80	2	19	23	2	3.1	-	3.3	-	59.9	-	2.6	-	1.6	-	12.0	-	17.7	-	Health Care and Social Assistance	93	Professional, Scientific and Technical Services	2	Manufacturing	1	Educational Services	1	Repair, Personal and Non-Profit Services	1
+3212	Medical laboratory technicians and pathologists' assistants\t\t\t\t\t	3600	41	17	83	4	23	17	1	3.0	-	1.9	-	64.4	-	1.6	-	0.5	-	11.0	-	17.2	-	Health Care and Social Assistance	89	Professional, Scientific and Technical Services	5	Educational Services	2	Manufacturing	1	Public Administration	1
+4152	Social workers\t\t\t\t\t\t\t\t\t\t\t	6300	58	17	83	1	22	21	2	5.6	-	3.3	-	52.7	-	3.1	-	1.0	-	15.0	-	19.3	-	Health Care and Social Assistance	60	Public Administration	30	Repair, Personal and Non-Profit Services	4	Finance, insurance and real estate	3	Educational Services	2
+3213	Animal health technologists and veterinary technicians\t\t\t\t\t\t	2100	50	5	95	11	24	8	0	2.3	-	3.3	-	60.1	-	1.4	-	0.7	-	13.4	-	18.5	-	Professional, Scientific and Technical Services	92	Educational Services	2	Repair, Personal and Non-Profit Services	2	Health Care and Social Assistance	1	Information, Culture and Recreation	1
+3214	Respiratory therapists, clinical perfusionists and cardiopulmonary technologists\t\t\t	1100	60	36	64	3	25	15	0	1.8	-	3.6	-	64.5	-	NA	-	0.9	-	13.2	-	16.4	-	Health Care and Social Assistance	96	Retail Trade	2	Educational Services	1	Repair, Personal and Non-Profit Services	1	Public Administration	1
+3215	Medical radiation technologists\t\t\t\t\t\t\t\t\t	2300	45	27	73	3	23	18	2	3.8	-	2.4	-	57.5	-	2.7	-	0.9	-	13.3	-	19.5	-	Health Care and Social Assistance	96	Professional, Scientific and Technical Services	1	Educational Services	1	Public Administration	1	Mining and Oil and Gas Extraction	0
+3216	Medical sonographers\t\t\t\t\t\t\t\t\t\t	600	45	18	82	1	20	24	1	3.1	-	5.4	-	69.0	-	1.6	-	0.0	-	8.5	-	12.4	-	Health Care and Social Assistance	99	Educational Services	1	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0
+3217	Cardiology technologists and electrophysiological diagnostic technologists, n.e.c.\t\t	400	35	23	77	3	25	16	3	2.4	-	3.6	-	59.5	-	NA	-	0.0	-	13.1	-	21.4	-	Health Care and Social Assistance	96	Wholesale Trade	2	Professional, Scientific and Technical Services	2	Mining and Oil and Gas Extraction	0	Utilities	0
+7281	Bricklayers\t\t\t\t\t\t\t\t\t\t\t	1600	43	100	0	4	21	18	3	2.2	-	5.5	-	60.0	-	1.2	-	0.0	-	10.5	-	20.6	-	Construction	93	Manufacturing	3	Mining and Oil and Gas Extraction	1	Wholesale Trade	1	Retail Trade	1
+3219	Other medical technologists and technicians (except dental health)\t\t\t\t	5400	49	18	82	6	24	13	0	3.6	-	2.8	-	62.9	-	1.8	-	1.5	-	11.3	-	16.3	-	Retail Trade	77	Health Care and Social Assistance	18	Manufacturing	3	Mining and Oil and Gas Extraction	0	Utilities	0
+3221	Denturists\t\t\t\t\t\t\t\t\t\t\t	200	49	74	26	2	21	19	2	4.3	-	4.3	-	41.3	-	4.3	-	0.0	-	15.2	-	28.3	-	Health Care and Social Assistance	69	Manufacturing	27	Wholesale Trade	4	Mining and Oil and Gas Extraction	0	Utilities	0
+3222	Dental hygienists and dental therapists\t\t\t\t\t\t\t\t	3200	36	5	95	2	26	15	0	4.5	-	1.9	-	57.6	-	1.7	-	1.4	-	13.1	-	19.9	-	Health Care and Social Assistance	99	Educational Services	1	Public Administration	1	Mining and Oil and Gas Extraction	0	Utilities	0
+3223	Dental technologists, technicians and laboratory assistants\t\t\t\t\t	1000	55	63	37	1	18	26	2	2.0	-	0.0	-	76.5	-	NA	-	0.0	-	10.2	-	11.2	-	Health Care and Social Assistance	64	Manufacturing	34	Retail Trade	1	Mining and Oil and Gas Extraction	0	Utilities	0
+3231	Opticians\t\t\t\t\t\t\t\t\t\t\t	1200	58	37	63	3	17	25	4	3.0	-	0.0	-	67.0	-	0.9	-	0.9	-	14.3	-	13.5	-	Retail Trade	63	Health Care and Social Assistance	31	Manufacturing	5	Construction	1	Educational Services	1
+3232	Practitioners of natural healing\t\t\t\t\t\t\t\t\t	2400	26	27	73	1	18	28	3	2.1	-	3.4	-	65.1	-	1.3	-	0.6	-	8.8	-	18.7	-	Health Care and Social Assistance	81	Repair, Personal and Non-Profit Services	8	Retail Trade	3	Educational Services	3	Construction	1
+3233	Licensed practical nurses\t\t\t\t\t\t\t\t\t	7500	43	10	90	2	24	18	1	3.8	-	4.4	-	49.7	-	1.3	-	1.1	-	18.6	-	21.1	-	Health Care and Social Assistance	97	Educational Services	1	Repair, Personal and Non-Profit Services	1	Mining and Oil and Gas Extraction	0	Utilities	0
+3234	Paramedical occupations\t\t\t\t\t\t\t\t\t\t	3200	46	63	37	3	23	18	1	4.2	-	6.5	-	42.7	-	4.5	-	3.1	-	15.6	-	23.6	-	Health Care and Social Assistance	83	Public Administration	9	Manufacturing	2	Mining and Oil and Gas Extraction	1	Construction	1
+3236	Massage therapists\t\t\t\t\t\t\t\t\t\t	4600	28	21	79	2	25	15	1	1.9	-	5.2	-	57.9	-	0.8	-	0.7	-	11.6	-	21.9	-	Health Care and Social Assistance	82	Repair, Personal and Non-Profit Services	13	Accommodation and Food Services	2	Educational Services	1	Information, Culture and Recreation	1
+3237	Other technical occupations in therapy and assessment\t\t\t\t\t\t	1000	47	18	82	5	21	17	2	3.1	-	4.7	-	52.6	-	1.0	-	2.6	-	14.6	-	22.4	-	Health Care and Social Assistance	80	Educational Services	7	Retail Trade	6	Manufacturing	2	Professional, Scientific and Technical Services	2
+3411	Dental assistants\t\t\t\t\t\t\t\t\t\t	5500	35	2	98	4	23	16	0	3.9	-	3.4	-	58.5	-	1.2	-	1.2	-	12.2	-	19.4	-	Health Care and Social Assistance	98	Educational Services	1	Public Administration	1	Mining and Oil and Gas Extraction	0	Utilities	0
+3413	Nurse aides, orderlies and patient service associates\t\t\t\t\t\t	30100	39	15	85	3	18	24	2	3.2	-	3.7	-	53.3	-	1.5	-	0.9	-	15.4	-	21.9	-	Health Care and Social Assistance	92	Repair, Personal and Non-Profit Services	3	Construction	1	Manufacturing	1	Educational Services	1
+3414	Other assisting occupations in support of health services\t\t\t\t\t	4700	45	19	81	7	19	19	1	3.4	-	3.7	-	53.8	-	2.0	-	1.2	-	15.7	-	20.3	-	Health Care and Social Assistance	74	Retail Trade	20	Manufacturing	3	Repair, Personal and Non-Profit Services	1	Mining and Oil and Gas Extraction	0
+4011	University professors and lecturers\t\t\t\t\t\t\t\t	9900	58	54	46	0	17	27	5	2.5	-	0.2	-	67.7	-	0.1	-	0.0	-	9.6	-	19.9	-	Educational Services	99	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0	Manufacturing	0
+4012	Post-secondary teaching and research assistants\t\t\t\t\t\t\t	8400	27	45	55	11	23	6	1	1.5	-	0.4	-	78.7	-	0.1	-	0.1	-	5.6	-	13.7	-	Educational Services	97	Professional, Scientific and Technical Services	1	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0
+4021	College and other vocational instructors\t\t\t\t\t\t\t\t	11000	43	44	56	1	17	26	4	2.6	-	4.5	-	65.9	-	1.9	-	1.0	-	9.0	-	15.0	-	Educational Services	77	Health Care and Social Assistance	5	Professional, Scientific and Technical Services	4	Public Administration	3	Information, Culture and Recreation	2
+4031	Secondary school teachers\t\t\t\t\t\t\t\t\t	18000	61	45	55	0	23	20	2	3.5	-	2.8	-	63.2	-	2.7	-	1.1	-	10.3	-	16.4	-	Educational Services	100	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0	Manufacturing	0
+4032	Elementary school and kindergarten teachers\t\t\t\t\t\t\t	30000	57	16	84	1	25	18	1	3.3	-	3.8	-	60.4	-	3.0	-	1.9	-	10.6	-	17.0	-	Educational Services	100	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0	Manufacturing	0
+4033	Educational counsellors\t\t\t\t\t\t\t\t\t\t	3400	37	23	77	3	19	23	2	2.5	-	2.3	-	63.3	-	1.8	-	1.6	-	9.1	-	19.4	-	Educational Services	90	Health Care and Social Assistance	3	Professional, Scientific and Technical Services	2	Public Administration	2	Finance, insurance and real estate	1
+4111	Judges\t\t\t\t\t\t\t\t\t\t\t\t	400	56	66	34	0	0	34	31	4.3	-	2.9	-	61.4	-	2.9	-	0.0	-	17.1	-	12.9	-	Public Administration	97	Professional, Scientific and Technical Services	3	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0
+4112	Lawyers and Quebec notaries\t\t\t\t\t\t\t\t\t	12300	62	60	40	0	21	21	5	1.3	-	1.0	-	75.0	-	0.9	-	0.4	-	7.2	-	14.2	-	Professional, Scientific and Technical Services	80	Public Administration	10	Finance, insurance and real estate	4	Repair, Personal and Non-Profit Services	2	Educational Services	1
+4151	Psychologists\t\t\t\t\t\t\t\t\t\t\t	2500	36	24	76	1	18	22	8	1.2	-	2.6	-	68.1	-	0.6	-	1.0	-	6.8	-	19.5	-	Health Care and Social Assistance	72	Educational Services	16	Public Administration	6	Professional, Scientific and Technical Services	4	Repair, Personal and Non-Profit Services	1
+4153	Family, marriage and other related counsellors\t\t\t\t\t\t\t	4800	45	23	77	1	19	23	5	3.6	-	4.1	-	58.0	-	2.1	-	0.8	-	10.8	-	20.4	-	Health Care and Social Assistance	77	Public Administration	7	Finance, insurance and real estate	4	Professional, Scientific and Technical Services	4	Educational Services	4
+4154	Professional occupations in religion\t\t\t\t\t\t\t\t	4600	60	74	26	1	17	25	7	4.5	-	3.4	-	61.5	-	2.2	-	1.7	-	12.4	-	14.4	-	Repair, Personal and Non-Profit Services	92	Health Care and Social Assistance	3	Professional, Scientific and Technical Services	1	Educational Services	1	Mining and Oil and Gas Extraction	0
+4155	Probation and parole officers and related occupations\t\t\t\t\t\t	1000	75	35	65	1	26	17	1	5.9	-	2.0	-	63.9	-	2.4	-	1.0	-	8.3	-	15.6	-	Public Administration	96	Health Care and Social Assistance	3	Professional, Scientific and Technical Services	1	Mining and Oil and Gas Extraction	0	Utilities	0
+4156	Employment counsellors\t\t\t\t\t\t\t\t\t\t	2200	57	21	79	1	21	23	2	5.8	-	3.1	-	52.4	-	2.7	-	1.1	-	12.4	-	23.1	-	Public Administration	37	Health Care and Social Assistance	30	Educational Services	14	Repair, Personal and Non-Profit Services	9	Professional, Scientific and Technical Services	6
+7282	Concrete finishers\t\t\t\t\t\t\t\t\t\t	1700	38	98	2	5	21	17	1	2.1	-	2.4	-	63.7	-	1.8	-	0.6	-	12.1	-	17.5	-	Construction	89	Manufacturing	5	Public Administration	3	Mining and Oil and Gas Extraction	1	Wholesale Trade	1
+4161	Natural and applied science policy researchers, consultants and program officers\t\t\t	3400	61	55	45	1	24	18	2	4.0	-	3.7	-	52.4	-	2.6	-	2.5	-	9.5	-	25.3	-	Professional, Scientific and Technical Services	44	Public Administration	29	Mining and Oil and Gas Extraction	3	Utilities	3	Wholesale Trade	3
+4162	Economists and economic policy researchers and analysts\t\t\t\t\t\t	1500	64	54	46	1	22	21	1	0.7	-	0.7	-	65.1	-	0.7	-	0.7	-	5.4	-	26.8	-	Public Administration	35	Professional, Scientific and Technical Services	24	Finance, insurance and real estate	22	Utilities	2	Manufacturing	2
+4163	Business development officers and marketing researchers and consultants\t\t\t\t	9000	53	50	50	3	24	15	2	0.8	-	1.0	-	79.2	-	0.6	-	0.6	-	6.6	-	11.2	-	Professional, Scientific and Technical Services	39	Finance, insurance and real estate	11	Retail Trade	8	Information, Culture and Recreation	8	Manufacturing	6
+4164	Social policy researchers, consultants and program officers\t\t\t\t\t	3900	61	33	67	1	22	21	2	3.3	-	2.4	-	61.9	-	0.9	-	1.3	-	6.3	-	23.9	-	Public Administration	43	Professional, Scientific and Technical Services	22	Health Care and Social Assistance	15	Repair, Personal and Non-Profit Services	9	Finance, insurance and real estate	4
+4165	Health policy researchers, consultants and program officers\t\t\t\t\t	3800	55	25	75	2	21	20	2	2.3	-	1.3	-	62.7	-	1.0	-	0.3	-	8.7	-	23.6	-	Health Care and Social Assistance	47	Professional, Scientific and Technical Services	19	Public Administration	18	Educational Services	5	Repair, Personal and Non-Profit Services	5
+4166	Education policy researchers, consultants and program officers\t\t\t\t\t	3200	42	28	72	3	21	19	4	2.4	-	2.2	-	63.0	-	2.2	-	0.8	-	7.9	-	21.5	-	Educational Services	69	Public Administration	8	Professional, Scientific and Technical Services	7	Health Care and Social Assistance	6	Repair, Personal and Non-Profit Services	5
+4167	Recreation, sports and fitness policy researchers, consultants and program officers\t\t	1600	54	29	71	2	27	14	1	1.5	-	4.3	-	61.5	-	1.5	-	0.0	-	8.3	-	22.8	-	Public Administration	36	Information, Culture and Recreation	23	Health Care and Social Assistance	19	Repair, Personal and Non-Profit Services	9	Educational Services	6
+4168	Program officers unique to government\t\t\t\t\t\t\t\t	1300	38	41	59	1	18	23	5	3.5	-	1.5	-	47.3	-	1.5	-	1.9	-	7.7	-	36.9	-	Public Administration	92	Professional, Scientific and Technical Services	2	Repair, Personal and Non-Profit Services	2	Transportation and Warehousing	1	Finance, insurance and real estate	1
+4169	Other professional occupations in social science, n.e.c.\t\t\t\t\t\t	900	44	47	53	1	25	15	3	3.2	-	2.6	-	50.8	-	2.6	-	5.3	-	9.0	-	25.9	-	Professional, Scientific and Technical Services	53	Public Administration	18	Health Care and Social Assistance	9	Educational Services	6	Information, Culture and Recreation	6
+4211	Paralegal and related occupations\t\t\t\t\t\t\t\t	3700	60	10	90	2	22	20	1	0.7	-	0.8	-	77.9	-	0.5	-	0.4	-	6.9	-	12.5	-	Professional, Scientific and Technical Services	80	Finance, insurance and real estate	8	Public Administration	8	Repair, Personal and Non-Profit Services	1	Mining and Oil and Gas Extraction	0
+4212	Social and community service workers\t\t\t\t\t\t\t\t	22300	45	23	77	3	20	20	2	5.7	-	3.8	-	53.3	-	3.3	-	1.2	-	11.2	-	21.5	-	Health Care and Social Assistance	69	Repair, Personal and Non-Profit Services	9	Public Administration	9	Educational Services	7	Retail Trade	1
+4214	Early childhood educators and assistants\t\t\t\t\t\t\t\t	16500	36	5	95	6	23	15	1	2.8	-	2.7	-	64.6	-	2.3	-	1.2	-	10.1	-	16.3	-	Health Care and Social Assistance	84	Educational Services	10	Repair, Personal and Non-Profit Services	2	Information, Culture and Recreation	1	Public Administration	1
+4215	Instructors of persons with disabilities\t\t\t\t\t\t\t\t	1200	24	12	88	8	20	15	2	2.8	-	1.2	-	66.5	-	2.4	-	1.6	-	12.5	-	12.9	-	Educational Services	49	Health Care and Social Assistance	45	Repair, Personal and Non-Profit Services	3	Professional, Scientific and Technical Services	2	Public Administration	1
+4216	Other instructors\t\t\t\t\t\t\t\t\t\t	5800	20	42	58	9	16	20	4	1.6	-	1.8	-	76.0	-	1.0	-	0.6	-	5.6	-	13.4	-	Educational Services	84	Finance, insurance and real estate	3	Public Administration	3	Transportation and Warehousing	2	Health Care and Social Assistance	2
+4217	Other religious occupations\t\t\t\t\t\t\t\t\t	1100	35	38	62	4	17	22	8	1.8	-	1.3	-	69.6	-	3.5	-	0.9	-	9.3	-	13.7	-	Repair, Personal and Non-Profit Services	80	Health Care and Social Assistance	10	Educational Services	4	Professional, Scientific and Technical Services	2	Construction	1
+4311	Police officers (except commissioned)\t\t\t\t\t\t\t\t	9800	73	75	25	1	28	16	0	4.2	-	2.8	-	64.6	-	3.1	-	1.3	-	9.8	-	14.3	-	Public Administration	99	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0	Manufacturing	0
+4312	Firefighters\t\t\t\t\t\t\t\t\t\t\t	4600	64	97	3	2	25	17	0	3.2	-	2.7	-	63.8	-	1.3	-	1.1	-	13.3	-	14.6	-	Public Administration	92	Transportation and Warehousing	2	Construction	1	Manufacturing	1	Retail Trade	1
+4313	Non-commissioned ranks of the Canadian Forces\t\t\t\t\t\t\t	3800	65	85	15	6	26	10	1	0.5	-	0.7	-	13.0	-	0.3	-	0.0	-	2.8	-	82.6	-	Public Administration	99	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0	Manufacturing	0
+4411	Home child care providers\t\t\t\t\t\t\t\t\t	12400	34	4	96	7	21	15	3	2.8	-	2.3	-	64.8	-	1.6	-	1.4	-	9.9	-	17.1	-	Health Care and Social Assistance	49	Repair, Personal and Non-Profit Services	49	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0
+4412	Home support workers, housekeepers and related occupations\t\t\t\t\t	12900	34	13	87	2	16	27	3	3.1	-	2.7	-	55.7	-	2.0	-	1.2	-	10.8	-	24.6	-	Health Care and Social Assistance	61	Repair, Personal and Non-Profit Services	26	Accommodation and Food Services	4	Information, Culture and Recreation	2	Construction	1
+4413	Elementary and secondary school teacher assistants\t\t\t\t\t\t	17900	10	8	92	3	17	26	2	4.0	-	3.8	-	57.7	-	3.6	-	2.0	-	12.1	-	16.7	-	Educational Services	100	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0	Manufacturing	0
+4421	Sheriffs and bailiffs\t\t\t\t\t\t\t\t\t\t	600	72	81	19	1	24	19	2	3.6	-	1.8	-	64.5	-	1.8	-	0.0	-	13.6	-	13.6	-	Public Administration	76	Professional, Scientific and Technical Services	17	Retail Trade	2	Transportation and Warehousing	2	Finance, insurance and real estate	2
+4422	Correctional service officers\t\t\t\t\t\t\t\t\t	3100	68	66	34	2	25	17	2	5.1	-	1.0	-	72.7	-	1.1	-	0.6	-	6.0	-	13.7	-	Public Administration	98	Professional, Scientific and Technical Services	1	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0
+4423	By-law enforcement and other regulatory officers, n.e.c.\t\t\t\t\t\t	1300	63	62	38	2	20	23	1	5.4	-	1.5	-	60.5	-	1.1	-	3.1	-	15.7	-	12.6	-	Public Administration	75	Repair, Personal and Non-Profit Services	9	Transportation and Warehousing	4	Finance, insurance and real estate	3	Wholesale Trade	2
+5111	Librarians\t\t\t\t\t\t\t\t\t\t\t	1300	57	16	84	1	20	23	3	3.5	-	3.5	-	66.9	-	1.9	-	0.8	-	8.9	-	15.6	-	Information, Culture and Recreation	100	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0	Manufacturing	0
+5112	Conservators and curators\t\t\t\t\t\t\t\t\t	300	48	34	66	3	18	23	4	3.3	-	3.3	-	53.3	-	3.3	-	0.0	-	8.3	-	25.0	-	Information, Culture and Recreation	48	Public Administration	16	Educational Services	13	Retail Trade	10	Repair, Personal and Non-Profit Services	6
+5113	Archivists\t\t\t\t\t\t\t\t\t\t\t	200	43	17	83	3	21	19	3	0.0	-	6.7	-	60.0	-	6.7	-	6.7	-	0.0	-	16.7	-	Information, Culture and Recreation	62	Public Administration	14	Educational Services	11	Professional, Scientific and Technical Services	8	Repair, Personal and Non-Profit Services	5
+5121	Authors and writers\t\t\t\t\t\t\t\t\t\t	4400	37	42	58	2	20	20	8	1.4	-	2.9	-	65.3	-	1.0	-	0.0	-	6.4	-	22.8	-	Information, Culture and Recreation	66	Professional, Scientific and Technical Services	17	Educational Services	4	Repair, Personal and Non-Profit Services	3	Manufacturing	2
+5122	Editors\t\t\t\t\t\t\t\t\t\t\t\t	2200	39	40	60	3	20	19	5	0.5	-	2.0	-	68.9	-	0.7	-	0.5	-	8.2	-	19.3	-	Information, Culture and Recreation	67	Professional, Scientific and Technical Services	13	Educational Services	8	Public Administration	3	Health Care and Social Assistance	2
+5123	Journalists\t\t\t\t\t\t\t\t\t\t\t	1300	53	51	49	2	22	17	3	3.3	-	3.3	-	62.1	-	2.2	-	1.5	-	11.2	-	16.4	-	Information, Culture and Recreation	87	Public Administration	3	Manufacturing	2	Professional, Scientific and Technical Services	2	Educational Services	2
+5125	Translators, terminologists and interpreters\t\t\t\t\t\t\t	1600	24	32	68	2	17	24	6	0.6	-	0.6	-	80.5	-	NA	-	0.0	-	4.4	-	12.9	-	Professional, Scientific and Technical Services	71	Educational Services	8	Public Administration	7	Information, Culture and Recreation	5	Health Care and Social Assistance	3
+5131	Producers, directors, choreographers and related occupations\t\t\t\t\t	4200	45	69	31	3	24	16	2	1.1	-	1.0	-	84.6	-	0.6	-	0.2	-	4.4	-	8.0	-	Information, Culture and Recreation	85	Professional, Scientific and Technical Services	6	Educational Services	4	Manufacturing	1	Retail Trade	1
+5132	Conductors, composers and arrangers\t\t\t\t\t\t\t\t	500	39	57	43	2	16	24	6	0.0	-	1.9	-	76.4	-	NA	-	0.0	-	1.9	-	19.8	-	Information, Culture and Recreation	67	Repair, Personal and Non-Profit Services	17	Educational Services	10	Manufacturing	2	Retail Trade	2
+5133	Musicians and singers\t\t\t\t\t\t\t\t\t\t	5700	14	44	56	5	19	19	5	1.2	-	2.2	-	68.8	-	0.8	-	0.6	-	7.4	-	19.0	-	Educational Services	57	Information, Culture and Recreation	34	Repair, Personal and Non-Profit Services	3	Retail Trade	1	Professional, Scientific and Technical Services	1
+5134	Dancers\t\t\t\t\t\t\t\t\t\t\t\t	1600	11	13	87	12	22	9	3	2.8	-	1.2	-	69.1	-	1.6	-	0.9	-	7.2	-	16.9	-	Educational Services	79	Information, Culture and Recreation	15	Health Care and Social Assistance	2	Public Administration	2	Retail Trade	1
+5135	Actors and comedians\t\t\t\t\t\t\t\t\t\t	2500	10	51	49	7	23	13	3	0.4	-	0.0	-	92.2	-	NA	-	0.0	-	1.6	-	5.8	-	Information, Culture and Recreation	91	Educational Services	4	Retail Trade	1	Professional, Scientific and Technical Services	1	Public Administration	1
+5136	Painters, sculptors and other visual artists\t\t\t\t\t\t\t	4400	30	46	54	2	18	21	8	0.3	-	3.7	-	63.4	-	0.9	-	0.2	-	6.8	-	24.7	-	Information, Culture and Recreation	65	Educational Services	11	Professional, Scientific and Technical Services	8	Construction	5	Retail Trade	5
+5211	Library and public archive technicians\t\t\t\t\t\t\t\t	1000	38	9	91	2	16	25	4	1.0	-	2.1	-	69.8	-	3.1	-	1.0	-	8.3	-	15.1	-	Information, Culture and Recreation	55	Educational Services	33	Professional, Scientific and Technical Services	4	Public Administration	3	Repair, Personal and Non-Profit Services	2
+5212	Technical occupations related to museums and art galleries\t\t\t\t\t	800	25	45	55	11	17	16	3	2.0	-	4.6	-	56.3	-	4.6	-	1.3	-	9.3	-	23.2	-	Information, Culture and Recreation	65	Public Administration	6	Educational Services	5	Retail Trade	4	Transportation and Warehousing	4
+5221	Photographers\t\t\t\t\t\t\t\t\t\t\t	2900	31	51	49	3	24	14	3	2.4	-	1.9	-	67.4	-	0.3	-	0.7	-	9.4	-	18.1	-	Professional, Scientific and Technical Services	81	Information, Culture and Recreation	8	Retail Trade	3	Educational Services	2	Construction	1
+5222	Film and video camera operators\t\t\t\t\t\t\t\t\t	900	22	89	11	6	21	16	1	1.7	-	0.0	-	86.7	-	1.1	-	0.0	-	4.4	-	6.7	-	Information, Culture and Recreation	74	Professional, Scientific and Technical Services	12	Educational Services	5	Repair, Personal and Non-Profit Services	5	Manufacturing	1
+5223	Graphic arts technicians\t\t\t\t\t\t\t\t\t\t	1000	59	81	19	5	31	5	2	0.0	-	0.0	-	89.6	-	NA	-	0.0	-	5.2	-	5.7	-	Information, Culture and Recreation	58	Professional, Scientific and Technical Services	31	Manufacturing	5	Construction	1	Wholesale Trade	1
+5224	Broadcast technicians\t\t\t\t\t\t\t\t\t\t	200	72	85	15	3	21	19	0	6.1	-	6.1	-	81.8	-	6.1	-	6.1	-	6.1	-	6.1	-	Information, Culture and Recreation	89	Wholesale Trade	5	Repair, Personal and Non-Profit Services	5	Mining and Oil and Gas Extraction	0	Utilities	0
+5225	Audio and video recording technicians\t\t\t\t\t\t\t\t	2600	45	85	15	5	27	9	1	0.0	-	1.8	-	86.5	-	NA	-	0.0	-	4.1	-	7.2	-	Information, Culture and Recreation	79	Professional, Scientific and Technical Services	8	Retail Trade	3	Educational Services	3	Finance, insurance and real estate	2
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts\t\t   	3400	30	60	40	4	23	16	1	0.6	-	0.4	-	89.2	-	0.6	-	0.0	-	2.7	-	6.2	-	Information, Culture and Recreation	81	Professional, Scientific and Technical Services	4	Educational Services	4	Retail Trade	2	Finance, insurance and real estate	2
+5227	Support occupations in motion pictures, broadcasting, photography and the performing arts\t\t\t   	3000	23	75	25	7	22	13	1	0.7	-	0.3	-	93.7	-	NA	-	0.0	-	1.7	-	3.5	-	Information, Culture and Recreation	86	Construction	3	Professional, Scientific and Technical Services	3	Repair, Personal and Non-Profit Services	2	Manufacturing	1
+5231	Announcers and other broadcasters\t\t\t\t\t\t\t	700	51	65	35	3	24	15	2	4.2	-	1.4	-	59.7	-	1.4	-	2.1	-	11.8	-	20.8	-	Information, Culture and Recreation	91	Professional, Scientific and Technical Services	2	Accommodation and Food Services	2	Transportation and Warehousing	1	Finance, insurance and real estate	1
+6622	Store shelf stockers, clerks and order fillers\t\t\t\t\t\t	20500	30	63	37	18	14	14	1	3.4	-	3.7	-	58.6	-	2.5	-	1.4	-	11.8	-	18.5	-	Retail Trade	90	Wholesale Trade	5	Transportation and Warehousing	2	Manufacturing	1	Mining and Oil and Gas Extraction	0
+5232	Other performers, n.e.c.\t\t\t\t\t\t\t\t\t	1000	22	60	40	8	22	11	1	1.0	-	1.0	-	74.6	-	1.0	-	1.0	-	8.3	-	13.7	-	Information, Culture and Recreation	74	Accommodation and Food Services	7	Repair, Personal and Non-Profit Services	6	Professional, Scientific and Technical Services	3	Educational Services	2
+5241	Graphic designers and illustrators\t\t\t\t\t\t\t	10400	50	52	48	3	27	11	1	0.7	-	2.1	-	79.8	-	0.5	-	0.4	-	5.8	-	10.8	-	Professional, Scientific and Technical Services	49	Information, Culture and Recreation	28	Manufacturing	8	Retail Trade	4	Educational Services	3
+5242	Interior designers and interior decorators\t\t\t\t\t\t	4000	42	23	77	1	22	20	2	0.9	-	1.2	-	76.7	-	0.2	-	0.4	-	9.0	-	11.6	-	Professional, Scientific and Technical Services	65	Construction	11	Retail Trade	11	Manufacturing	4	Finance, insurance and real estate	2
+5243	Theatre, fashion, exhibit and other creative designers\t\t\t\t\t	2600	45	32	68	3	26	13	1	0.8	-	1.4	-	85.4	-	0.4	-	0.0	-	3.5	-	8.6	-	Retail Trade	36	Professional, Scientific and Technical Services	29	Information, Culture and Recreation	17	Manufacturing	8	Wholesale Trade	4
+5244	Artisans and craftspersons\t\t\t\t\t\t\t\t	3100	33	48	52	2	13	29	8	2.0	-	7.3	-	45.2	-	3.8	-	1.0	-	11.7	-	29.2	-	Manufacturing	29	Retail Trade	28	Information, Culture and Recreation	24	Construction	4	Professional, Scientific and Technical Services	4
+5245	Patternmakers - textile, leather and fur products\t\t\t\t\t	100	48	41	59	4	12	29	4	0.0	-	0.0	-	66.7	-	NA	-	0.0	-	7.4	-	25.9	-	Manufacturing	45	Retail Trade	18	Professional, Scientific and Technical Services	18	Information, Culture and Recreation	12	Repair, Personal and Non-Profit Services	6
+5251	Athletes\t\t\t\t\t\t\t\t\t\t\t	500	24	83	17	12	25	3	1	0.0	-	3.8	-	61.0	-	NA	-	1.9	-	13.3	-	20.0	-	Information, Culture and Recreation	95	Educational Services	3	Wholesale Trade	1	Repair, Personal and Non-Profit Services	1	Mining and Oil and Gas Extraction	0
+5252	Coaches\t\t\t\t\t\t\t\t\t\t\t	1900	31	59	41	3	25	15	2	1.6	-	4.7	-	66.9	-	NA	-	0.0	-	12.1	-	14.5	-	Educational Services	53	Information, Culture and Recreation	35	Repair, Personal and Non-Profit Services	5	Professional, Scientific and Technical Services	4	Health Care and Social Assistance	2
+5253	Sports officials and referees\t\t\t\t\t\t\t\t	700	2	83	17	41	3	4	0	2.1	-	2.8	-	62.8	-	NA	-	0.0	-	17.2	-	13.8	-	Information, Culture and Recreation	73	Repair, Personal and Non-Profit Services	14	Educational Services	8	Finance, insurance and real estate	2	Construction	1
+5254	Program leaders and instructors in recreation, sport and fitness\t\t\t\t	16700	18	40	60	19	16	9	1	2.3	-	3.0	-	63.8	-	1.6	-	1.0	-	10.3	-	18.0	-	Information, Culture and Recreation	43	Educational Services	24	Public Administration	14	Health Care and Social Assistance	7	Repair, Personal and Non-Profit Services	6
+6211	Retail sales supervisors\t\t\t\t\t\t\t\t\t	8400	57	39	61	9	20	15	1	4.1	-	2.4	-	59.7	-	1.8	-	2.0	-	10.5	-	19.6	-	Retail Trade	82	Wholesale Trade	4	Information, Culture and Recreation	3	Accommodation and Food Services	3	Manufacturing	2
+6221	Technical sales specialists - wholesale trade\t\t\t\t\t\t	9400	68	73	27	2	22	20	2	2.4	-	0.8	-	77.6	-	0.7	-	1.1	-	8.4	-	9.0	-	Wholesale Trade	37	Professional, Scientific and Technical Services	17	Information, Culture and Recreation	14	Manufacturing	13	Retail Trade	5
+6222	Retail and wholesale buyers\t\t\t\t\t\t\t\t	4300	46	41	59	5	19	19	2	4.0	-	2.6	-	67.0	-	2.0	-	0.5	-	9.9	-	14.1	-	Retail Trade	54	Wholesale Trade	18	Manufacturing	9	Professional, Scientific and Technical Services	6	Transportation and Warehousing	2
+6231	Insurance agents and brokers\t\t\t\t\t\t\t\t	10200	56	37	63	2	22	19	3	3.4	-	2.5	-	67.4	-	1.0	-	1.3	-	11.4	-	13.0	-	Finance, insurance and real estate	98	Professional, Scientific and Technical Services	1	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0
+6232	Real estate agents and salespersons\t\t\t\t\t\t\t	16900	53	58	42	1	17	24	7	1.2	-	1.8	-	73.3	-	0.4	-	0.4	-	9.1	-	13.8	-	Finance, insurance and real estate	99	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0	Manufacturing	0
+6235	Financial sales representatives\t\t\t\t\t\t\t\t	8100	62	34	66	3	24	16	1	2.3	-	2.0	-	71.4	-	1.3	-	0.7	-	10.1	-	12.0	-	Finance, insurance and real estate	94	Wholesale Trade	1	Retail Trade	1	Professional, Scientific and Technical Services	1	Public Administration	1
+6311	Food service supervisors\t\t\t\t\t\t\t\t\t	6100	45	36	64	15	20	8	0	3.4	-	2.9	-	63.5	-	1.2	-	1.5	-	10.8	-	16.7	-	Accommodation and Food Services	90	Health Care and Social Assistance	3	Retail Trade	2	Information, Culture and Recreation	2	Manufacturing	1
+6312	Executive housekeepers\t\t\t\t\t\t\t\t\t	800	60	13	87	2	17	27	1	1.9	-	6.4	-	49.0	-	1.3	-	3.8	-	18.5	-	18.5	-	Accommodation and Food Services	82	Health Care and Social Assistance	11	Finance, insurance and real estate	2	Information, Culture and Recreation	2	Construction	1
+6313	Accommodation, travel, tourism and related services supervisors\t\t\t\t	1000	54	49	51	4	22	18	1	0.0	-	2.5	-	73.7	-	NA	-	0.0	-	8.1	-	15.2	-	Information, Culture and Recreation	52	Accommodation and Food Services	35	Transportation and Warehousing	7	Finance, insurance and real estate	2	Manufacturing	1
+6314	Customer and information services supervisors\t\t\t\t\t\t	1000	71	35	65	2	27	13	0	2.9	-	0.0	-	75.6	-	NA	-	1.5	-	5.4	-	15.1	-	Finance, insurance and real estate	40	Information, Culture and Recreation	16	Manufacturing	8	Wholesale Trade	7	Professional, Scientific and Technical Services	7
+6315	Cleaning supervisors\t\t\t\t\t\t\t\t\t	1300	58	54	46	3	17	25	3	6.0	-	1.6	-	57.9	-	1.2	-	1.2	-	11.1	-	20.6	-	Educational Services	21	Accommodation and Food Services	20	Health Care and Social Assistance	15	Manufacturing	9	Finance, insurance and real estate	7
+6316	Other services supervisors\t\t\t\t\t\t\t\t	1900	58	64	36	6	20	18	2	2.6	-	2.6	-	68.2	-	1.8	-	1.3	-	9.6	-	13.4	-	Information, Culture and Recreation	44	Accommodation and Food Services	15	Public Administration	13	Repair, Personal and Non-Profit Services	9	Transportation and Warehousing	7
+6321	Chefs\t\t\t\t\t\t\t\t\t\t\t	12600	50	77	23	5	22	16	1	1.4	-	2.0	-	71.2	-	0.9	-	0.4	-	9.9	-	14.3	-	Accommodation and Food Services	86	Information, Culture and Recreation	4	Health Care and Social Assistance	3	Manufacturing	2	Retail Trade	2
+6322	Cooks\t\t\t\t\t\t\t\t\t\t\t	31800	34	59	41	14	17	14	1	3.7	-	3.1	-	58.7	-	2.4	-	1.4	-	11.4	-	19.3	-	Accommodation and Food Services	85	Health Care and Social Assistance	5	Information, Culture and Recreation	3	Retail Trade	2	Manufacturing	1
+6331	Butchers, meat cutters and fishmongers - retail and wholesale\t\t\t\t	2200	60	84	16	7	15	23	3	3.7	-	3.7	-	58.3	-	1.9	-	1.2	-	11.8	-	19.9	-	Retail Trade	92	Wholesale Trade	5	Accommodation and Food Services	2	Manufacturing	1	Mining and Oil and Gas Extraction	0
+6332	Bakers\t\t\t\t\t\t\t\t\t\t\t	6400	42	40	60	8	18	19	1	3.2	-	3.4	-	60.4	-	1.6	-	0.9	-	10.8	-	19.7	-	Manufacturing	38	Retail Trade	36	Accommodation and Food Services	23	Wholesale Trade	2	Repair, Personal and Non-Profit Services	1
+6341	Hairstylists and barbers\t\t\t\t\t\t\t\t\t	13600	38	17	83	4	21	17	3	2.9	-	3.6	-	59.7	-	1.4	-	1.4	-	12.9	-	18.1	-	Repair, Personal and Non-Profit Services	97	Information, Culture and Recreation	1	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0
+6342	Tailors, dressmakers, furriers and milliners\t\t\t\t\t\t	2300	41	10	90	2	11	33	5	2.6	-	2.6	-	74.9	-	0.6	-	0.0	-	5.8	-	12.8	-	Manufacturing	35	Repair, Personal and Non-Profit Services	35	Retail Trade	15	Wholesale Trade	5	Professional, Scientific and Technical Services	3
+6343	Shoe repairers and shoemakers\t\t\t\t\t\t\t\t	200	45	82	18	3	7	32	14	0.0	-	4.9	-	70.7	-	NA	-	0.0	-	4.9	-	14.6	-	Repair, Personal and Non-Profit Services	66	Retail Trade	16	Manufacturing	9	Finance, insurance and real estate	5	Information, Culture and Recreation	5
+6344	Jewellers, jewellery and watch repairers and related occupations\t\t\t\t	800	41	52	48	4	18	21	6	0.0	-	3.1	-	66.9	-	1.2	-	0.0	-	11.2	-	18.1	-	Retail Trade	66	Manufacturing	14	Repair, Personal and Non-Profit Services	8	Professional, Scientific and Technical Services	5	Information, Culture and Recreation	3
+6345	Upholsterers\t\t\t\t\t\t\t\t\t\t	600	49	77	23	1	11	34	2	4.3	-	6.0	-	53.4	-	1.7	-	0.0	-	14.7	-	19.0	-	Repair, Personal and Non-Profit Services	67	Manufacturing	14	Transportation and Warehousing	9	Retail Trade	3	Professional, Scientific and Technical Services	2
+6346	Funeral directors and embalmers\t\t\t\t\t\t\t\t	500	67	57	43	0	18	26	5	6.0	-	8.0	-	49.0	-	NA	-	2.0	-	19.0	-	16.0	-	Repair, Personal and Non-Profit Services	98	Information, Culture and Recreation	2	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0
+6411	Sales and account representatives - wholesale trade (non-technical)\t\t\t	15600	61	65	35	3	20	21	3	1.9	-	1.2	-	75.7	-	0.6	-	0.7	-	8.9	-	11.0	-	Wholesale Trade	49	Manufacturing	16	Retail Trade	8	Professional, Scientific and Technical Services	8	Information, Culture and Recreation	6
+6421	Retail salespersons\t\t\t\t\t\t\t\t\t	90800	31	42	58	15	14	15	3	3.1	-	2.9	-	62.8	-	1.4	-	1.2	-	11.7	-	16.9	-	Retail Trade	83	Manufacturing	3	Wholesale Trade	3	Information, Culture and Recreation	3	Finance, insurance and real estate	2
+6511	Maîtres d'hôtel and hosts/hostesses\t\t\t\t\t\t\t	4900	6	9	91	42	4	2	0	2.1	-	1.5	-	71.1	-	0.6	-	1.0	-	10.9	-	13.0	-	Accommodation and Food Services	96	Information, Culture and Recreation	2	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0
+6512	Bartenders\t\t\t\t\t\t\t\t\t\t	5300	31	53	47	13	22	6	1	2.2	-	3.4	-	64.3	-	1.3	-	1.0	-	11.3	-	16.4	-	Accommodation and Food Services	86	Information, Culture and Recreation	6	Repair, Personal and Non-Profit Services	4	Manufacturing	1	Public Administration	1
+6513	Food and beverage servers\t\t\t\t\t\t\t\t	35400	19	19	81	20	17	7	0	2.5	-	2.7	-	65.0	-	1.3	-	0.8	-	11.9	-	15.8	-	Accommodation and Food Services	95	Information, Culture and Recreation	4	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0
+6521	Travel counsellors\t\t\t\t\t\t\t\t\t	4400	45	22	78	3	18	22	5	1.3	-	1.3	-	75.5	-	1.0	-	0.8	-	6.5	-	13.5	-	Accommodation and Food Services	21	Transportation and Warehousing	17	Public Administration	14	Information, Culture and Recreation	9	Finance, insurance and real estate	8
+6522	Pursers and flight attendants\t\t\t\t\t\t\t\t	2600	37	23	77	3	22	19	0	0.6	-	0.4	-	85.2	-	0.4	-	0.0	-	6.2	-	7.2	-	Transportation and Warehousing	98	Professional, Scientific and Technical Services	1	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0
+6523	Airline ticket and service agents\t\t\t\t\t\t\t	2200	38	30	70	5	18	22	1	2.7	-	1.3	-	76.4	-	2.9	-	1.3	-	5.3	-	10.0	-	Transportation and Warehousing	96	Retail Trade	1	Information, Culture and Recreation	1	Accommodation and Food Services	1	Repair, Personal and Non-Profit Services	1
+6524	Ground and water transport ticket agents, cargo service representatives and related clerks	600	50	27	73	7	17	21	2	1.7	-	0.0	-	60.0	-	2.5	-	1.7	-	5.8	-	30.0	-	Transportation and Warehousing	87	Finance, insurance and real estate	3	Retail Trade	2	Professional, Scientific and Technical Services	2	Information, Culture and Recreation	2
+6525	Hotel front desk clerks\t\t\t\t\t\t\t\t\t	4100	44	36	64	11	20	12	1	2.5	-	4.6	-	49.7	-	2.7	-	2.5	-	15.2	-	22.5	-	Accommodation and Food Services	99	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0	Manufacturing	0
+6531	Tour and travel guides\t\t\t\t\t\t\t\t\t	800	14	56	44	10	12	23	2	0.0	-	5.1	-	68.8	-	2.5	-	1.3	-	8.3	-	16.6	-	Information, Culture and Recreation	34	Transportation and Warehousing	24	Educational Services	16	Public Administration	13	Accommodation and Food Services	6
+6532	Outdoor sport and recreational guides\t\t\t\t\t\t\t	1100	12	82	18	9	22	13	1	4.4	-	8.4	-	29.2	-	11.9	-	1.8	-	12.4	-	32.3	-	Information, Culture and Recreation	55	Accommodation and Food Services	32	Transportation and Warehousing	7	Construction	1	Manufacturing	1
+6533	Casino occupations\t\t\t\t\t\t\t\t\t	2400	42	50	50	5	21	18	2	1.9	-	1.0	-	77.1	-	0.4	-	1.5	-	11.5	-	6.3	-	Information, Culture and Recreation	100	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0	Manufacturing	0
+6541	Security guards and related security service occupations\t\t\t\t\t	14700	41	79	21	7	16	19	6	2.9	-	1.3	-	72.1	-	1.9	-	1.4	-	7.4	-	13.2	-	Information, Culture and Recreation	22	Retail Trade	14	Public Administration	13	Transportation and Warehousing	10	Accommodation and Food Services	10
+6551	Customer services representatives - financial institutions\t\t\t\t	8500	39	20	80	9	20	14	1	2.8	-	3.1	-	63.7	-	1.9	-	1.5	-	11.3	-	15.7	-	Finance, insurance and real estate	95	Retail Trade	1	Professional, Scientific and Technical Services	1	Public Administration	1	Mining and Oil and Gas Extraction	0
+6552	Other customer and information services representatives\t\t\t\t\t	21600	50	38	62	8	21	14	1	3.7	-	1.6	-	70.4	-	0.9	-	0.7	-	7.9	-	14.7	-	Retail Trade	22	Information, Culture and Recreation	19	Finance, insurance and real estate	11	Wholesale Trade	8	Transportation and Warehousing	7
+6561	Image, social and other personal consultants\t\t\t\t\t\t	400	29	19	81	3	17	24	4	0.0	-	2.4	-	64.7	-	NA	-	0.0	-	12.9	-	18.8	-	Repair, Personal and Non-Profit Services	38	Professional, Scientific and Technical Services	14	Educational Services	13	Health Care and Social Assistance	13	Information, Culture and Recreation	10
+6562	Estheticians, electrologists and related occupations\t\t\t\t\t	8700	34	9	91	6	24	13	1	2.2	-	2.1	-	66.0	-	1.1	-	1.1	-	10.8	-	16.7	-	Repair, Personal and Non-Profit Services	80	Retail Trade	15	Professional, Scientific and Technical Services	1	Health Care and Social Assistance	1	Information, Culture and Recreation	1
+6563	Pet groomers and animal care workers\t\t\t\t\t\t\t	3800	34	14	86	11	17	16	2	4.9	-	4.1	-	55.0	-	2.5	-	1.2	-	13.2	-	19.1	-	Repair, Personal and Non-Profit Services	80	Retail Trade	8	Professional, Scientific and Technical Services	6	Information, Culture and Recreation	3	Health Care and Social Assistance	1
+6564	Other personal service occupations\t\t\t\t\t\t\t	500	17	25	75	0	18	28	2	1.9	-	0.0	-	71.8	-	3.9	-	0.0	-	7.8	-	14.6	-	Repair, Personal and Non-Profit Services	52	Health Care and Social Assistance	35	Professional, Scientific and Technical Services	5	Retail Trade	2	Finance, insurance and real estate	2
+6611	Cashiers\t\t\t\t\t\t\t\t\t\t\t	38800	19	18	82	22	12	12	1	3.7	-	3.3	-	60.2	-	1.9	-	1.1	-	12.6	-	17.2	-	Retail Trade	72	Accommodation and Food Services	19	Information, Culture and Recreation	3	Manufacturing	1	Wholesale Trade	1
+6621	Service station attendants\t\t\t\t\t\t\t\t	1800	32	71	29	20	15	10	1	4.7	-	5.3	-	42.9	-	5.6	-	1.4	-	12.8	-	27.0	-	Retail Trade	99	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0	Manufacturing	0
+6623	Other sales related occupations\t\t\t\t\t\t\t\t	3600	21	34	66	7	18	18	4	1.9	-	1.6	-	70.4	-	1.0	-	1.4	-	11.5	-	12.2	-	Retail Trade	55	Professional, Scientific and Technical Services	13	Wholesale Trade	7	Information, Culture and Recreation	6	Repair, Personal and Non-Profit Services	5
+6711	Food counter attendants, kitchen helpers and related support occupations\t\t\t	53200	18	36	64	26	11	9	1	2.9	-	2.8	-	62.1	-	1.4	-	1.2	-	11.5	-	18.0	-	Accommodation and Food Services	82	Health Care and Social Assistance	6	Retail Trade	4	Information, Culture and Recreation	3	Manufacturing	1
+6721	Support occupations in accommodation, travel and facilities set-up services\t\t	1100	29	76	24	13	17	15	3	0.9	-	1.4	-	71.6	-	NA	-	0.0	-	9.5	-	17.1	-	Accommodation and Food Services	38	Transportation and Warehousing	27	Finance, insurance and real estate	7	Information, Culture and Recreation	6	Repair, Personal and Non-Profit Services	6
+7283	Tilesetters\t\t\t\t\t\t\t\t\t\t\t	1800	41	96	4	3	23	17	2	0.0	-	0.8	-	75.3	-	NA	-	0.5	-	7.6	-	15.2	-	Construction	94	Manufacturing	1	Wholesale Trade	1	Retail Trade	1	Mining and Oil and Gas Extraction	0
+6722	Operators and attendants in amusement, recreation and sport\t\t\t\t	3600	14	58	42	22	11	12	4	2.6	-	5.9	-	56.8	-	2.3	-	1.2	-	16.6	-	14.5	-	Information, Culture and Recreation	70	Public Administration	10	Accommodation and Food Services	8	Educational Services	4	Finance, insurance and real estate	2
+6731	Light duty cleaners\t\t\t\t\t\t\t\t\t	28800	27	22	78	6	15	24	3	3.9	-	3.6	-	55.4	-	2.4	-	1.7	-	14.1	-	18.9	-	Accommodation and Food Services	47	Health Care and Social Assistance	22	Manufacturing	6	Repair, Personal and Non-Profit Services	6	Construction	4
+6732	Specialized cleaners\t\t\t\t\t\t\t\t\t	5900	40	84	16	13	16	15	2	5.2	-	3.2	-	55.0	-	2.0	-	1.5	-	13.6	-	19.4	-	Repair, Personal and Non-Profit Services	39	Retail Trade	32	Construction	6	Transportation and Warehousing	6	Manufacturing	5
+6733	Janitors, caretakers and building superintendents\t\t\t\t\t	29800	41	71	29	4	12	29	5	4.8	-	4.0	-	54.8	-	3.5	-	2.5	-	12.3	-	18.1	-	Educational Services	23	Finance, insurance and real estate	12	Accommodation and Food Services	10	Health Care and Social Assistance	9	Construction	8
+6741	Dry cleaning, laundry and related occupations\t\t\t\t\t\t	2700	45	22	78	3	14	29	3	2.6	-	2.2	-	63.4	-	1.7	-	1.7	-	12.0	-	16.8	-	Repair, Personal and Non-Profit Services	65	Health Care and Social Assistance	15	Accommodation and Food Services	14	Manufacturing	1	Finance, insurance and real estate	1
+6742	Other service support occupations, n.e.c.\t\t\t\t\t\t	3100	25	56	44	17	14	13	4	1.8	-	3.2	-	70.0	-	0.3	-	1.1	-	8.7	-	14.8	-	Repair, Personal and Non-Profit Services	30	Information, Culture and Recreation	25	Retail Trade	20	Accommodation and Food Services	7	Finance, insurance and real estate	4
+7201	Contractors and supervisors, machining, metal forming, shaping and erecting trades and related occupations\t   	1700	66	96	4	1	21	23	1	5.8	-	1.8	-	58.2	-	1.2	-	3.2	-	13.5	-	16.4	-	Manufacturing	40	Construction	33	Wholesale Trade	7	Repair, Personal and Non-Profit Services	7	Mining and Oil and Gas Extraction	3
+7202	Contractors and supervisors, electrical trades and telecommunications occupations\t\t	2500	58	94	6	3	20	20	3	3.0	-	3.6	-	56.2	-	1.4	-	2.6	-	15.7	-	17.5	-	Construction	68	Information, Culture and Recreation	7	Utilities	4	Mining and Oil and Gas Extraction	3	Manufacturing	3
+7203	Contractors and supervisors, pipefitting trades\t\t\t\t\t\t\t	1000	63	95	5	1	24	19	1	5.1	-	3.0	-	64.1	-	NA	-	3.0	-	12.1	-	12.6	-	Construction	82	Mining and Oil and Gas Extraction	5	Manufacturing	2	Wholesale Trade	2	Retail Trade	2
+7204	Contractors and supervisors, carpentry trades\t\t\t\t\t\t\t	3600	56	97	3	1	21	22	3	3.2	-	3.1	-	59.0	-	1.4	-	1.8	-	11.1	-	20.6	-	Construction	84	Manufacturing	9	Professional, Scientific and Technical Services	2	Wholesale Trade	1	Transportation and Warehousing	1
+7205	Contractors and supervisors, other construction trades, installers, repairers and servicers\t	6700	53	94	6	2	20	23	2	3.0	-	2.9	-	63.6	-	1.0	-	0.5	-	11.9	-	16.9	-	Construction	86	Manufacturing	4	Professional, Scientific and Technical Services	2	Wholesale Trade	1	Retail Trade	1
+7231	Machinists and machining and tooling inspectors\t\t\t\t\t\t\t	2800	62	97	3	3	19	22	3	4.8	-	2.0	-	70.9	-	1.2	-	1.1	-	7.4	-	12.6	-	Manufacturing	75	Repair, Personal and Non-Profit Services	6	Wholesale Trade	4	Professional, Scientific and Technical Services	3	Construction	2
+7232	Tool and die makers\t\t\t\t\t\t\t\t\t\t	300	61	94	6	2	11	29	12	0.0	-	3.3	-	77.0	-	NA	-	0.0	-	13.1	-	8.2	-	Manufacturing	66	Wholesale Trade	11	Repair, Personal and Non-Profit Services	6	Retail Trade	5	Transportation and Warehousing	5
+7233	Sheet metal workers\t\t\t\t\t\t\t\t\t\t	2500	58	98	2	6	22	16	1	2.2	-	2.2	-	59.6	-	1.4	-	1.0	-	13.5	-	20.1	-	Construction	59	Manufacturing	28	Wholesale Trade	7	Transportation and Warehousing	2	Professional, Scientific and Technical Services	1
+7234	Boilermakers\t\t\t\t\t\t\t\t\t\t\t	400	14	96	4	4	18	21	2	6.5	-	7.8	-	37.7	-	6.5	-	0.0	-	20.8	-	22.1	-	Manufacturing	51	Construction	24	Repair, Personal and Non-Profit Services	10	Mining and Oil and Gas Extraction	5	Professional, Scientific and Technical Services	5
+7235	Structural metal and platework fabricators and fitters\t\t\t\t\t\t	1500	58	98	2	4	19	21	2	4.1	-	1.7	-	67.0	-	0.7	-	0.0	-	8.8	-	17.7	-	Manufacturing	74	Construction	7	Repair, Personal and Non-Profit Services	5	Public Administration	4	Transportation and Warehousing	3
+7236	Ironworkers\t\t\t\t\t\t\t\t\t\t\t	1700	40	96	4	5	25	12	1	3.9	-	3.3	-	67.1	-	1.5	-	0.6	-	13.0	-	10.3	-	Construction	69	Manufacturing	24	Mining and Oil and Gas Extraction	2	Repair, Personal and Non-Profit Services	2	Finance, insurance and real estate	1
+7237	Welders and related machine operators\t\t\t\t\t\t\t\t	8800	48	97	3	6	22	15	2	7.2	-	6.2	-	48.9	-	3.9	-	4.0	-	16.0	-	14.0	-	Manufacturing	43	Repair, Personal and Non-Profit Services	22	Construction	16	Mining and Oil and Gas Extraction	6	Wholesale Trade	4
+7241	Electricians (except industrial and power system)\t\t\t\t\t\t	13100	49	98	2	7	23	12	2	3.0	-	2.6	-	60.1	-	1.9	-	2.0	-	13.2	-	17.3	-	Construction	87	Transportation and Warehousing	2	Educational Services	2	Public Administration	2	Manufacturing	1
+7242	Industrial electricians\t\t\t\t\t\t\t\t\t\t	3800	54	97	3	3	23	18	1	10.3	-	10.0	-	31.1	-	5.3	-	5.9	-	19.3	-	17.8	-	Manufacturing	37	Construction	31	Mining and Oil and Gas Extraction	18	Transportation and Warehousing	5	Wholesale Trade	2
+7243	Power system electricians\t\t\t\t\t\t\t\t\t	600	60	94	6	3	27	12	1	3.9	-	12.6	-	47.2	-	1.6	-	9.4	-	14.2	-	10.2	-	Utilities	61	Construction	36	Wholesale Trade	2	Mining and Oil and Gas Extraction	1	Manufacturing	0
+7244	Electrical power line and cable workers\t\t\t\t\t\t\t\t	1200	58	98	2	3	29	9	1	5.7	-	8.5	-	37.2	-	4.9	-	2.4	-	22.3	-	18.6	-	Utilities	52	Construction	42	Transportation and Warehousing	2	Professional, Scientific and Technical Services	2	Mining and Oil and Gas Extraction	1
+7245	Telecommunications line and cable workers\t\t\t\t\t\t\t	1400	65	97	3	2	25	16	1	2.9	-	3.2	-	61.0	-	0.7	-	1.1	-	10.5	-	20.6	-	Information, Culture and Recreation	73	Construction	19	Utilities	2	Manufacturing	1	Wholesale Trade	1
+9221	Supervisors, motor vehicle assembling\t\t\t\t\t\t\t\t	100	79	100	0	7	21	21	0	0.0	-	0.0	-	76.9	-	NA	-	0.0	-	30.8	-	0.0	-	Manufacturing	100	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0	Wholesale Trade	0
+7246	Telecommunications installation and repair workers\t\t\t\t\t\t	2800	69	93	7	2	24	18	1	4.4	-	3.0	-	63.6	-	0.9	-	1.8	-	10.8	-	15.5	-	Information, Culture and Recreation	70	Construction	13	Retail Trade	3	Professional, Scientific and Technical Services	3	Repair, Personal and Non-Profit Services	3
+7247	Cable television service and maintenance technicians\t\t\t\t\t\t	100	77	92	8	0	20	24	0	0.0	-	0.0	-	72.0	-	NA	-	0.0	-	8.0	-	28.0	-	Information, Culture and Recreation	100	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0	Manufacturing	0
+7251	Plumbers\t\t\t\t\t\t\t\t\t\t\t\t	8400	54	98	2	8	23	11	1	2.6	-	3.1	-	66.1	-	1.7	-	1.2	-	10.6	-	14.8	-	Construction	92	Educational Services	2	Mining and Oil and Gas Extraction	1	Manufacturing	1	Wholesale Trade	1
+7252	Steamfitters, pipefitters and sprinkler system installers\t\t\t\t\t	2500	42	98	2	5	23	15	1	5.9	-	5.1	-	49.8	-	1.8	-	2.8	-	14.6	-	19.7	-	Construction	59	Manufacturing	21	Mining and Oil and Gas Extraction	8	Repair, Personal and Non-Profit Services	3	Public Administration	3
+7253	Gas fitters\t\t\t\t\t\t\t\t\t\t\t	1000	60	99	1	3	20	20	4	6.7	-	7.2	-	55.3	-	3.8	-	3.4	-	9.1	-	14.9	-	Construction	61	Utilities	15	Retail Trade	5	Mining and Oil and Gas Extraction	4	Manufacturing	4
+7284	Plasterers, drywall installers and finishers and lathers\t\t\t\t\t\t	4300	41	97	3	5	21	17	2	2.2	-	2.8	-	59.2	-	1.3	-	0.8	-	13.7	-	19.7	-	Construction	97	Manufacturing	1	Mining and Oil and Gas Extraction	0	Utilities	0	Wholesale Trade	0
+7291	Roofers and shinglers\t\t\t\t\t\t\t\t\t\t	3200	36	98	2	6	22	15	1	2.8	-	4.5	-	58.7	-	1.4	-	0.8	-	12.5	-	19.2	-	Construction	46	Manufacturing	10	Transportation and Warehousing	10	Retail Trade	9	Accommodation and Food Services	7
+7292	Glaziers\t\t\t\t\t\t\t\t\t\t\t\t	2100	58	97	3	6	21	17	1	2.9	-	1.9	-	69.6	-	1.0	-	1.0	-	9.9	-	13.3	-	Construction	56	Manufacturing	22	Retail Trade	10	Repair, Personal and Non-Profit Services	8	Wholesale Trade	1
+7293	Insulators\t\t\t\t\t\t\t\t\t\t\t	1100	44	96	4	8	20	16	0	5.6	-	5.1	-	52.8	-	NA	-	2.3	-	18.2	-	15.4	-	Construction	89	Manufacturing	5	Mining and Oil and Gas Extraction	2	Wholesale Trade	1	Educational Services	1
+7294	Painters and decorators (except interior decorators)\t\t\t\t\t\t	8300	32	87	13	6	18	21	2	1.6	-	2.1	-	65.1	-	0.8	-	0.6	-	11.8	-	18.0	-	Construction	90	Educational Services	2	Manufacturing	1	Retail Trade	1	Transportation and Warehousing	1
+7295	Floor covering installers\t\t\t\t\t\t\t\t\t	2700	44	96	4	5	18	21	2	2.4	-	3.0	-	59.3	-	1.1	-	0.4	-	16.5	-	17.7	-	Construction	86	Retail Trade	9	Manufacturing	2	Wholesale Trade	2	Finance, insurance and real estate	1
+7301	Contractors and supervisors, mechanic trades\t\t\t\t\t\t\t	2400	69	96	4	1	18	26	2	6.8	-	4.4	-	56.0	-	2.3	-	3.1	-	13.7	-	13.7	-	Construction	31	Repair, Personal and Non-Profit Services	17	Transportation and Warehousing	14	Manufacturing	12	Retail Trade	8
+7302	Contractors and supervisors, heavy equipment operator crews\t\t\t\t\t	4800	60	97	3	1	19	24	2	4.6	-	4.9	-	54.9	-	3.7	-	3.2	-	15.0	-	13.9	-	Construction	70	Transportation and Warehousing	14	Public Administration	5	Mining and Oil and Gas Extraction	3	Manufacturing	2
+7303	Supervisors, printing and related occupations\t\t\t\t\t\t\t	300	76	69	31	0	16	29	2	0.0	-	0.0	-	79.6	-	NA	-	0.0	-	5.6	-	13.0	-	Manufacturing	69	Information, Culture and Recreation	12	Educational Services	6	Retail Trade	3	Finance, insurance and real estate	3
+7304	Supervisors, railway transport operations\t\t\t\t\t\t\t	200	62	92	8	0	25	21	2	4.0	-	4.0	-	60.0	-	8.0	-	8.0	-	16.0	-	6.0	-	Transportation and Warehousing	82	Construction	5	Professional, Scientific and Technical Services	5	Manufacturing	4	Wholesale Trade	4
+7305	Supervisors, motor transport and other ground transit operators\t\t\t\t\t	1100	68	84	16	2	17	28	2	3.2	-	3.2	-	62.6	-	2.7	-	6.8	-	11.0	-	10.5	-	Transportation and Warehousing	78	Construction	5	Retail Trade	3	Educational Services	3	Wholesale Trade	2
+7311	Construction millwrights and industrial mechanics\t\t\t\t\t\t	7800	61	99	1	2	17	26	2	13.3	-	7.4	-	36.2	-	7.7	-	5.7	-	17.3	-	12.4	-	Manufacturing	51	Mining and Oil and Gas Extraction	11	Construction	10	Repair, Personal and Non-Profit Services	9	Wholesale Trade	5
+7312	Heavy-duty equipment mechanics\t\t\t\t\t\t\t\t\t	5200	57	99	1	5	21	16	2	10.5	-	10.1	-	30.1	-	6.1	-	5.6	-	19.3	-	18.3	-	Repair, Personal and Non-Profit Services	21	Wholesale Trade	20	Construction	17	Mining and Oil and Gas Extraction	14	Transportation and Warehousing	10
+7313	Refrigeration and air conditioning mechanics\t\t\t\t\t\t\t	2600	62	98	2	5	23	14	2	2.1	-	2.5	-	61.5	-	1.6	-	1.0	-	17.3	-	13.8	-	Construction	66	Repair, Personal and Non-Profit Services	7	Manufacturing	6	Retail Trade	6	Wholesale Trade	4
+7314	Railway carmen/women\t\t\t\t\t\t\t\t\t\t	300	71	97	3	1	18	25	0	19.1	-	2.9	-	52.9	-	4.4	-	0.0	-	20.6	-	0.0	-	Transportation and Warehousing	97	Construction	3	Mining and Oil and Gas Extraction	0	Utilities	0	Manufacturing	0
+7315	Aircraft mechanics and aircraft inspectors\t\t\t\t\t\t\t	2900	63	95	5	3	22	19	1	3.4	-	1.4	-	60.8	-	1.4	-	0.9	-	17.3	-	15.1	-	Transportation and Warehousing	74	Manufacturing	14	Public Administration	7	Wholesale Trade	2	Finance, insurance and real estate	1
+7316	Machine fitters\t\t\t\t\t\t\t\t\t\t\t	100	57	93	7	0	23	23	3	0.0	-	0.0	-	48.1	-	NA	-	7.4	-	7.4	-	37.0	-	Manufacturing	53	Public Administration	21	Repair, Personal and Non-Profit Services	9	Mining and Oil and Gas Extraction	6	Construction	6
+7318	Elevator constructors and mechanics\t\t\t\t\t\t\t\t	900	69	99	1	1	25	18	1	1.7	-	1.1	-	83.5	-	NA	-	0.0	-	4.5	-	9.1	-	Construction	99	Transportation and Warehousing	1	Mining and Oil and Gas Extraction	0	Utilities	0	Manufacturing	0
+7321	Automotive service technicians, truck and bus mechanics and mechanical repairers\t\t\t	17600	66	98	2	6	20	18	2	5.4	-	3.9	-	57.2	-	2.8	-	3.1	-	13.2	-	14.5	-	Repair, Personal and Non-Profit Services	50	Retail Trade	24	Transportation and Warehousing	10	Wholesale Trade	4	Construction	2
+7322	Motor vehicle body repairers\t\t\t\t\t\t\t\t\t	4100	67	97	3	4	19	21	2	4.2	-	3.7	-	62.1	-	1.3	-	1.3	-	12.9	-	14.5	-	Repair, Personal and Non-Profit Services	84	Retail Trade	7	Manufacturing	2	Transportation and Warehousing	2	Construction	1
+7331	Oil and solid fuel heating mechanics\t\t\t\t\t\t\t\t	100	57	100	0	8	15	21	4	8.3	-	8.3	-	29.2	-	8.3	-	0.0	-	0.0	-	45.8	-	Construction	76	Mining and Oil and Gas Extraction	8	Manufacturing	8	Repair, Personal and Non-Profit Services	8	Utilities	0
+7332	Appliance servicers and repairers\t\t\t\t\t\t\t\t	1000	57	97	3	3	13	27	7	2.1	-	2.6	-	61.9	-	NA	-	1.5	-	17.0	-	14.4	-	Repair, Personal and Non-Profit Services	56	Retail Trade	18	Construction	11	Wholesale Trade	4	Manufacturing	3
+7333	Electrical mechanics\t\t\t\t\t\t\t\t\t\t	300	66	96	4	4	18	24	4	9.1	-	4.5	-	62.1	-	NA	-	3.0	-	12.1	-	9.1	-	Utilities	28	Construction	18	Repair, Personal and Non-Profit Services	17	Manufacturing	10	Wholesale Trade	9
+7334	Motorcycle, all-terrain vehicle and other related mechanics\t\t\t\t\t	900	52	98	2	6	17	21	1	2.9	-	2.3	-	46.9	-	1.1	-	0.0	-	14.3	-	31.4	-	Retail Trade	32	Repair, Personal and Non-Profit Services	19	Transportation and Warehousing	16	Manufacturing	12	Wholesale Trade	9
+7335	Other small engine and small equipment repairers\t\t\t\t\t\t\t	400	55	97	3	5	15	24	3	2.8	-	7.0	-	31.0	-	NA	-	4.2	-	22.5	-	29.6	-	Repair, Personal and Non-Profit Services	37	Retail Trade	20	Transportation and Warehousing	12	Finance, insurance and real estate	9	Information, Culture and Recreation	5
+7361	Railway and yard locomotive engineers\t\t\t\t\t\t\t\t	800	65	95	5	1	20	24	1	7.1	-	10.3	-	44.2	-	5.1	-	0.0	-	30.1	-	2.6	-	Transportation and Warehousing	91	Professional, Scientific and Technical Services	2	Public Administration	2	Manufacturing	1	Wholesale Trade	1
+7362	Railway conductors and brakemen/women\t\t\t\t\t\t\t\t	900	61	93	7	5	24	14	1	9.2	-	11.4	-	42.9	-	4.3	-	1.6	-	29.3	-	0.0	-	Transportation and Warehousing	100	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0	Manufacturing	0
+7371	Crane operators\t\t\t\t\t\t\t\t\t\t\t	2000	58	99	1	2	21	22	2	3.8	-	6.9	-	54.3	-	4.3	-	5.4	-	11.2	-	14.0	-	Construction	53	Manufacturing	12	Transportation and Warehousing	12	Wholesale Trade	7	Mining and Oil and Gas Extraction	5
+7372	Drillers and blasters - surface mining, quarrying and construction\t\t\t\t	500	40	98	2	3	24	16	0	2.0	-	6.9	-	35.3	-	3.9	-	0.0	-	15.7	-	36.3	-	Construction	71	Mining and Oil and Gas Extraction	18	Manufacturing	4	Professional, Scientific and Technical Services	4	Wholesale Trade	2
+7373	Water well drillers\t\t\t\t\t\t\t\t\t\t	100	39	100	0	7	17	13	7	15.4	-	0.0	-	23.1	-	15.4	-	15.4	-	23.1	-	23.1	-	Construction	52	Mining and Oil and Gas Extraction	13	Utilities	9	Manufacturing	9	Professional, Scientific and Technical Services	9
+7381	Printing press operators\t\t\t\t\t\t\t\t\t\t	1400	61	85	15	3	15	28	2	2.1	-	0.7	-	83.6	-	1.1	-	0.0	-	4.6	-	7.9	-	Manufacturing	78	Information, Culture and Recreation	10	Retail Trade	3	Professional, Scientific and Technical Services	2	Educational Services	2
+7384	Other trades and related occupations, n.e.c.\t\t\t\t\t\t\t	2500	57	89	11	2	19	22	3	6.7	-	6.1	-	39.4	-	4.8	-	2.4	-	15.2	-	25.5	-	Manufacturing	33	Retail Trade	19	Repair, Personal and Non-Profit Services	13	Public Administration	9	Professional, Scientific and Technical Services	6
+7441	Residential and commercial installers and servicers\t\t\t\t\t\t	7300	48	94	6	6	20	17	2	2.1	-	2.3	-	62.1	-	0.5	-	0.8	-	15.9	-	16.3	-	Construction	63	Manufacturing	15	Retail Trade	6	Wholesale Trade	3	Utilities	2
+7442	Waterworks and gas maintenance workers\t\t\t\t\t\t\t\t	600	65	87	13	4	22	17	1	4.8	-	1.6	-	52.4	-	1.6	-	8.1	-	15.3	-	15.3	-	Public Administration	45	Utilities	20	Construction	12	Mining and Oil and Gas Extraction	7	Educational Services	4
+7444	Pest controllers and fumigators\t\t\t\t\t\t\t\t\t	600	60	89	11	4	18	22	1	0.0	-	2.4	-	67.5	-	NA	-	1.6	-	14.3	-	13.5	-	Professional, Scientific and Technical Services	50	Public Administration	50	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0
+7445	Other repairers and servicers\t\t\t\t\t\t\t\t\t	2400	48	92	8	6	20	17	3	2.9	-	3.8	-	57.4	-	2.3	-	3.1	-	9.9	-	20.8	-	Retail Trade	38	Repair, Personal and Non-Profit Services	19	Wholesale Trade	10	Manufacturing	8	Construction	5
+7451	Longshore workers\t\t\t\t\t\t\t\t\t\t	3400	43	90	10	3	21	19	1	0.3	-	0.0	-	79.8	-	9.3	-	0.0	-	0.4	-	10.3	-	Transportation and Warehousing	99	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0	Manufacturing	0
+7452	Material handlers\t\t\t\t\t\t\t\t\t\t	23000	47	87	13	9	18	17	1	4.5	-	2.8	-	70.9	-	1.8	-	1.3	-	9.8	-	8.9	-	Transportation and Warehousing	29	Wholesale Trade	21	Manufacturing	20	Retail Trade	18	Construction	4
+7511	Transport truck drivers\t\t\t\t\t\t\t\t\t\t	36900	50	97	3	2	18	25	3	6.2	-	4.3	-	59.3	-	2.9	-	3.9	-	12.4	-	11.0	-	Transportation and Warehousing	66	Construction	8	Wholesale Trade	6	Mining and Oil and Gas Extraction	5	Manufacturing	5
+7512	Bus drivers, subway operators and other transit operators\t\t\t\t\t	8900	48	80	20	0	11	34	6	3.8	-	2.8	-	63.4	-	1.5	-	1.6	-	10.8	-	16.1	-	Transportation and Warehousing	82	Educational Services	10	Health Care and Social Assistance	2	Public Administration	2	Retail Trade	1
+7513	Taxi and limousine drivers and chauffeurs\t\t\t\t\t\t\t	7000	37	95	5	1	16	28	5	2.1	-	0.8	-	70.6	-	1.1	-	0.6	-	7.8	-	17.1	-	Transportation and Warehousing	83	Retail Trade	6	Finance, insurance and real estate	3	Information, Culture and Recreation	2	Professional, Scientific and Technical Services	1
+7514	Delivery and courier service drivers\t\t\t\t\t\t\t\t	10900	47	88	12	9	16	19	3	3.5	-	2.7	-	64.7	-	1.4	-	1.1	-	11.7	-	14.9	-	Transportation and Warehousing	36	Accommodation and Food Services	18	Retail Trade	17	Wholesale Trade	12	Manufacturing	7
+7521	Heavy equipment operators (except crane)\t\t\t\t\t\t\t\t	10400	42	96	4	3	18	23	2	8.9	-	11.9	-	33.0	-	5.3	-	4.4	-	20.7	-	15.8	-	Construction	59	Mining and Oil and Gas Extraction	19	Manufacturing	8	Transportation and Warehousing	3	Public Administration	3
+7522	Public works maintenance equipment operators and related workers\t\t\t\t\t	2500	54	96	4	1	21	23	1	6.6	-	6.8	-	48.3	-	5.0	-	3.0	-	15.3	-	15.5	-	Public Administration	38	Transportation and Warehousing	29	Construction	16	Wholesale Trade	6	Utilities	3
+7531	Railway yard and track maintenance workers\t\t\t\t\t\t\t	900	52	97	3	3	19	22	1	7.7	-	5.0	-	47.5	-	5.0	-	1.1	-	31.5	-	2.2	-	Transportation and Warehousing	92	Construction	4	Retail Trade	1	Finance, insurance and real estate	1	Professional, Scientific and Technical Services	1
+7532	Water transport deck and engine room crew\t\t\t\t\t\t\t	1400	35	89	11	5	21	18	1	0.0	-	2.1	-	39.8	-	5.6	-	0.0	-	4.9	-	47.9	-	Transportation and Warehousing	80	Public Administration	11	Manufacturing	4	Construction	1	Retail Trade	1
+7533	Boat and cable ferry operators and related occupations\t\t\t\t\t\t	1000	35	82	18	5	14	26	3	1.0	-	1.0	-	45.9	-	7.2	-	1.0	-	2.9	-	43.0	-	Transportation and Warehousing	83	Information, Culture and Recreation	4	Manufacturing	3	Public Administration	3	Professional, Scientific and Technical Services	2
+7534	Air transport ramp attendants\t\t\t\t\t\t\t\t\t	1800	45	88	12	11	17	17	1	1.7	-	1.7	-	80.7	-	2.5	-	0.6	-	4.4	-	8.5	-	Transportation and Warehousing	96	Construction	1	Manufacturing	1	Wholesale Trade	1	Retail Trade	1
+7535	Other automotive mechanical installers and servicers\t\t\t\t\t\t	2300	48	97	3	15	19	10	1	8.4	-	7.0	-	37.9	-	3.7	-	4.6	-	20.7	-	17.4	-	Retail Trade	46	Repair, Personal and Non-Profit Services	31	Manufacturing	6	Mining and Oil and Gas Extraction	4	Transportation and Warehousing	4
+7611	Construction trades helpers and labourers\t\t\t\t\t\t\t	23800	34	91	9	11	19	14	1	3.2	-	3.2	-	62.0	-	2.3	-	2.0	-	12.8	-	14.5	-	Construction	83	Transportation and Warehousing	5	Manufacturing	4	Mining and Oil and Gas Extraction	1	Wholesale Trade	1
+7612	Other trades helpers and labourers\t\t\t\t\t\t\t\t	1000	37	85	15	15	17	12	2	3.4	-	4.4	-	56.8	-	5.3	-	2.9	-	13.1	-	13.6	-	Construction	35	Repair, Personal and Non-Profit Services	19	Manufacturing	10	Professional, Scientific and Technical Services	10	Wholesale Trade	5
+7621	Public works and maintenance labourers\t\t\t\t\t\t\t\t	2800	52	88	12	6	19	20	1	4.6	-	5.1	-	50.9	-	6.5	-	2.7	-	11.8	-	18.6	-	Public Administration	69	Construction	11	Transportation and Warehousing	5	Wholesale Trade	4	Utilities	2
+7622	Railway and motor transport labourers\t\t\t\t\t\t\t\t	400	33	94	6	11	15	17	1	11.1	-	4.4	-	50.0	-	5.6	-	5.6	-	11.1	-	12.2	-	Transportation and Warehousing	70	Construction	12	Retail Trade	5	Manufacturing	4	Wholesale Trade	4
+8211	Supervisors, logging and forestry\t\t\t\t\t\t\t\t	1300	51	93	7	2	19	25	3	17.6	-	6.4	-	14.2	-	11.6	-	6.4	-	15.0	-	28.8	-	Manufacturing	43	Construction	17	Professional, Scientific and Technical Services	12	Transportation and Warehousing	9	Public Administration	9
+8221	Supervisors, mining and quarrying\t\t\t\t\t\t\t\t	800	52	95	5	1	21	24	2	16.2	-	26.0	-	16.9	-	3.2	-	1.9	-	26.6	-	9.1	-	Mining and Oil and Gas Extraction	91	Construction	4	Professional, Scientific and Technical Services	2	Manufacturing	1	Retail Trade	1
+8222	Contractors and supervisors, oil and gas drilling and services\t\t\t\t\t	900	37	93	7	2	22	22	1	4.5	-	5.7	-	18.8	-	2.8	-	31.8	-	21.0	-	15.9	-	Mining and Oil and Gas Extraction	70	Construction	11	Professional, Scientific and Technical Services	10	Manufacturing	3	Transportation and Warehousing	2
+8231	Underground production and development miners\t\t\t\t\t\t\t	1000	35	94	6	3	23	18	1	12.0	-	25.4	-	13.4	-	6.2	-	1.4	-	31.1	-	11.0	-	Mining and Oil and Gas Extraction	86	Construction	5	Manufacturing	3	Transportation and Warehousing	2	Utilities	1
+8232	Oil and gas well drillers, servicers, testers and related workers\t\t\t\t	800	32	97	3	5	28	9	1	8.1	-	5.0	-	22.4	-	3.1	-	19.3	-	25.5	-	17.4	-	Mining and Oil and Gas Extraction	80	Construction	7	Professional, Scientific and Technical Services	6	Manufacturing	2	Wholesale Trade	2
+8241	Logging machinery operators\t\t\t\t\t\t\t\t\t	2500	32	98	2	4	16	24	3	19.2	-	12.3	-	7.7	-	10.1	-	3.4	-	19.2	-	28.7	-	Manufacturing	69	Construction	10	Transportation and Warehousing	6	Wholesale Trade	4	Retail Trade	3
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers\t\t	1200	53	56	44	4	19	21	3	3.4	-	2.5	-	57.6	-	0.8	-	3.0	-	20.8	-	11.4	-	Information, Culture and Recreation	54	Educational Services	13	Professional, Scientific and Technical Services	6	Wholesale Trade	5	Manufacturing	4
+8255	Contractors and supervisors, landscaping, grounds maintenance and horticulture services\t\t	3700	43	81	19	2	21	20	3	2.0	-	4.6	-	59.4	-	1.3	-	0.3	-	13.7	-	19.1	-	Information, Culture and Recreation	33	Public Administration	21	Construction	11	Accommodation and Food Services	7	Retail Trade	5
+8261	Fishing masters and officers\t\t\t\t\t\t\t\t\t	200	15	92	8	3	13	29	7	0.0	-	0.0	-	22.5	-	5.0	-	0.0	-	5.0	-	65.0	-	Manufacturing	60	Public Administration	40	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0
+8262	Fishermen/women\t\t\t\t\t\t\t\t\t\t\t	1300	12	83	17	3	15	24	6	1.1	-	0.8	-	40.2	-	8.0	-	0.0	-	2.7	-	48.1	-	Manufacturing	77	Wholesale Trade	8	Health Care and Social Assistance	8	Public Administration	8	Mining and Oil and Gas Extraction	0
+8411	Underground mine service and support workers\t\t\t\t\t\t\t	200	41	100	0	5	23	14	2	7.5	-	30.0	-	5.0	-	5.0	-	0.0	-	30.0	-	20.0	-	Mining and Oil and Gas Extraction	71	Construction	20	Manufacturing	5	Professional, Scientific and Technical Services	4	Utilities	0
+8412	Oil and gas well drilling and related workers and services operators\t\t\t\t	500	23	97	3	5	27	9	0	2.1	-	4.2	-	11.6	-	NA	-	37.9	-	26.3	-	17.9	-	Mining and Oil and Gas Extraction	69	Construction	20	Manufacturing	4	Professional, Scientific and Technical Services	2	Repair, Personal and Non-Profit Services	2
+8421	Chain saw and skidder operators\t\t\t\t\t\t\t\t\t	2000	24	98	2	3	18	25	1	9.7	-	9.7	-	13.3	-	9.4	-	1.8	-	16.6	-	40.1	-	Manufacturing	38	Construction	14	Wholesale Trade	14	Public Administration	10	Retail Trade	9
+8422	Silviculture and forestry workers\t\t\t\t\t\t\t\t	1300	20	83	17	12	20	12	1	21.0	-	7.9	-	19.0	-	11.1	-	3.2	-	20.2	-	17.1	-	Public Administration	51	Manufacturing	18	Professional, Scientific and Technical Services	11	Construction	6	Repair, Personal and Non-Profit Services	3
+8431	General farm workers\t\t\t\t\t\t\t\t\t\t	9400	24	56	44	13	13	17	6	3.7	-	4.1	-	50.1	-	3.2	-	4.3	-	23.3	-	11.3	-	Manufacturing	25	Information, Culture and Recreation	22	Wholesale Trade	10	Retail Trade	9	Educational Services	6
+8432	Nursery and greenhouse workers\t\t\t\t\t\t\t\t\t	3500	18	32	68	8	15	22	3	3.1	-	4.1	-	70.1	-	0.6	-	0.7	-	11.1	-	10.4	-	Retail Trade	52	Wholesale Trade	21	Health Care and Social Assistance	6	Manufacturing	5	Professional, Scientific and Technical Services	5
+8441	Fishing vessel deckhands\t\t\t\t\t\t\t\t\t\t	400	4	77	23	11	19	13	1	0.0	-	0.0	-	27.8	-	9.7	-	0.0	-	2.8	-	62.5	-	Mining and Oil and Gas Extraction	100	Utilities	0	Construction	0	Manufacturing	0	Wholesale Trade	0
+8442	Trappers and hunters\t\t\t\t\t\t\t\t\t\t	0	0	100	0	0	18	18	27	0.0	-	0.0	-	0.0	-	33.3	-	0.0	-	0.0	-	0.0	-	Mining and Oil and Gas Extraction	NA	Utilities	NA	Construction	NA	Manufacturing	NA	Wholesale Trade	NA
+8611	Harvesting labourers\t\t\t\t\t\t\t\t\t\t	1700	14	40	60	4	16	24	5	0.0	-	1.2	-	86.2	-	NA	-	0.0	-	7.6	-	4.7	-	Mining and Oil and Gas Extraction	NA	Utilities	NA	Construction	NA	Manufacturing	NA	Wholesale Trade	NA
+8612	Landscaping and grounds maintenance labourers\t\t\t\t\t\t\t	17900	22	79	21	13	16	15	3	2.6	-	5.0	-	49.5	-	1.8	-	1.0	-	16.6	-	23.5	-	Information, Culture and Recreation	36	Public Administration	23	Accommodation and Food Services	8	Construction	7	Educational Services	7
+8613	Aquaculture and marine harvest labourers\t\t\t\t\t\t\t\t	500	34	74	26	13	16	16	1	0.0	-	0.0	-	11.3	-	7.2	-	0.0	-	2.1	-	76.3	-	Manufacturing	51	Public Administration	20	Construction	6	Wholesale Trade	6	Transportation and Warehousing	6
+8614	Mine labourers\t\t\t\t\t\t\t\t\t\t\t	400	41	82	18	7	19	16	2	11.5	-	31.0	-	13.8	-	11.5	-	0.0	-	32.2	-	2.3	-	Mining and Oil and Gas Extraction	90	Construction	3	Manufacturing	2	Wholesale Trade	2	Professional, Scientific and Technical Services	2
+8615	Oil and gas drilling, servicing and related labourers\t\t\t\t\t\t	400	22	89	11	13	21	8	1	5.7	-	2.3	-	19.3	-	NA	-	37.5	-	19.3	-	14.8	-	Mining and Oil and Gas Extraction	73	Construction	12	Manufacturing	4	Professional, Scientific and Technical Services	3	Retail Trade	2
+8616	Logging and forestry labourers\t\t\t\t\t\t\t\t\t	2100	26	85	15	12	19	12	1	18.9	-	9.2	-	18.7	-	7.8	-	1.9	-	16.5	-	26.5	-	Manufacturing	69	Professional, Scientific and Technical Services	6	Public Administration	6	Construction	5	Wholesale Trade	5
+9211	Supervisors, mineral and metal processing\t\t\t\t\t\t\t	600	70	91	9	2	21	23	2	3.1	-	11.8	-	48.0	-	15.7	-	1.6	-	14.2	-	7.1	-	Manufacturing	77	Construction	12	Mining and Oil and Gas Extraction	4	Wholesale Trade	4	Transportation and Warehousing	1
+9212	Supervisors, petroleum, gas and chemical processing and utilities\t\t\t\t	1000	65	85	15	1	16	30	2	5.8	-	5.3	-	47.8	-	2.4	-	10.1	-	15.5	-	13.0	-	Manufacturing	23	Utilities	21	Public Administration	19	Mining and Oil and Gas Extraction	15	Construction	7
+9213	Supervisors, food, beverage and associated products processing\t\t\t\t\t	1300	67	65	35	3	19	23	1	0.8	-	1.1	-	78.1	-	NA	-	0.0	-	12.5	-	7.5	-	Manufacturing	77	Wholesale Trade	15	Retail Trade	3	Accommodation and Food Services	3	Professional, Scientific and Technical Services	1
+9214	Supervisors, plastic and rubber products manufacturing\t\t\t\t\t\t	300	68	91	9	2	21	23	0	0.0	-	0.0	-	79.2	-	NA	-	0.0	-	11.3	-	5.7	-	Manufacturing	92	Mining and Oil and Gas Extraction	4	Repair, Personal and Non-Profit Services	4	Utilities	0	Construction	0
+9215	Supervisors, forest products processing\t\t\t\t\t\t\t\t	1500	75	95	5	1	17	28	2	26.0	-	7.1	-	26.6	-	9.4	-	5.5	-	13.0	-	12.0	-	Manufacturing	88	Wholesale Trade	4	Construction	2	Retail Trade	2	Finance, insurance and real estate	1
+9217	Supervisors, textile, fabric, fur and leather products processing and manufacturing\t\t	100	76	45	55	0	7	37	5	8.7	-	0.0	-	82.6	-	NA	-	0.0	-	0.0	-	8.7	-	Manufacturing	74	Wholesale Trade	9	Retail Trade	9	Repair, Personal and Non-Profit Services	9	Mining and Oil and Gas Extraction	0
+9222	Supervisors, electronics manufacturing\t\t\t\t\t\t\t\t	200	78	72	28	3	16	30	0	0.0	-	5.7	-	94.3	-	NA	-	0.0	-	0.0	-	8.6	-	Manufacturing	71	Professional, Scientific and Technical Services	10	Transportation and Warehousing	5	Educational Services	5	Information, Culture and Recreation	5
+9223	Supervisors, electrical products manufacturing\t\t\t\t\t\t\t	100	63	82	18	6	17	31	0	0.0	-	11.1	-	77.8	-	NA	-	0.0	-	11.1	-	0.0	-	Manufacturing	67	Professional, Scientific and Technical Services	14	Construction	10	Wholesale Trade	10	Mining and Oil and Gas Extraction	0
+9224	Supervisors, furniture and fixtures manufacturing\t\t\t\t\t\t	200	76	95	5	3	20	22	4	0.0	-	5.6	-	80.6	-	NA	-	0.0	-	11.1	-	8.3	-	Manufacturing	76	Construction	10	Wholesale Trade	5	Educational Services	5	Repair, Personal and Non-Profit Services	5
+9226	Supervisors, other mechanical and metal products manufacturing\t\t\t\t\t	200	76	87	13	0	15	32	0	0.0	-	0.0	-	68.4	-	NA	-	0.0	-	21.1	-	7.9	-	Manufacturing	87	Construction	8	Wholesale Trade	5	Mining and Oil and Gas Extraction	0	Utilities	0
+9227	Supervisors, other products manufacturing and assembly\t\t\t\t\t\t	300	59	93	7	2	18	24	3	3.0	-	3.0	-	70.1	-	3.0	-	0.0	-	7.5	-	14.9	-	Manufacturing	83	Construction	6	Wholesale Trade	6	Retail Trade	5	Mining and Oil and Gas Extraction	0
+9231	Central control and process operators, mineral and metal processing\t\t\t\t	400	71	90	10	3	23	18	2	5.6	-	53.5	-	16.9	-	15.5	-	2.8	-	7.0	-	0.0	-	Manufacturing	67	Mining and Oil and Gas Extraction	21	Transportation and Warehousing	4	Professional, Scientific and Technical Services	4	Construction	2
+9235	Pulping, papermaking and coating control operators\t\t\t\t\t\t	500	56	91	9	1	16	30	0	15.2	-	6.1	-	32.3	-	NA	-	2.0	-	2.0	-	40.4	-	Manufacturing	94	Construction	2	Wholesale Trade	2	Information, Culture and Recreation	2	Mining and Oil and Gas Extraction	0
+9241	Power engineers and power systems operators\t\t\t\t\t\t\t	3500	64	96	4	3	19	23	2	12.4	-	12.0	-	36.0	-	3.3	-	8.4	-	13.0	-	15.0	-	Manufacturing	38	Mining and Oil and Gas Extraction	14	Utilities	14	Health Care and Social Assistance	8	Construction	4
+9243	Water and waste treatment plant operators\t\t\t\t\t\t\t	1400	62	89	11	2	21	20	2	6.6	-	8.3	-	32.3	-	4.9	-	3.8	-	23.6	-	20.5	-	Public Administration	42	Utilities	34	Construction	7	Mining and Oil and Gas Extraction	5	Wholesale Trade	3
+9411	Machine operators, mineral and metal processing\t\t\t\t\t\t\t	600	52	92	8	7	15	26	0	4.6	-	23.1	-	31.5	-	17.7	-	4.6	-	14.6	-	4.6	-	Manufacturing	64	Mining and Oil and Gas Extraction	23	Wholesale Trade	5	Construction	3	Transportation and Warehousing	2
+9412	Foundry workers\t\t\t\t\t\t\t\t\t\t\t	200	83	100	0	0	19	28	0	0.0	-	8.3	-	50.0	-	18.8	-	0.0	-	10.4	-	12.5	-	Manufacturing	84	Mining and Oil and Gas Extraction	4	Construction	4	Finance, insurance and real estate	4	Public Administration	4
+9413	Glass forming and finishing machine operators and glass cutters\t\t\t\t\t	500	51	87	13	8	20	17	1	0.0	-	0.0	-	93.9	-	NA	-	0.0	-	5.1	-	0.0	-	Manufacturing	87	Construction	6	Wholesale Trade	2	Transportation and Warehousing	2	Accommodation and Food Services	2
+9414	Concrete, clay and stone forming operators\t\t\t\t\t\t\t	800	61	95	5	5	22	17	1	1.9	-	0.0	-	78.6	-	NA	-	0.0	-	7.8	-	11.0	-	Manufacturing	56	Construction	28	Wholesale Trade	6	Retail Trade	5	Mining and Oil and Gas Extraction	1
+9415	Inspectors and testers, mineral and metal processing\t\t\t\t\t\t	100	53	87	13	6	19	15	4	0.0	-	8.7	-	69.6	-	NA	-	0.0	-	13.0	-	8.7	-	Manufacturing	45	Construction	19	Professional, Scientific and Technical Services	19	Mining and Oil and Gas Extraction	10	Wholesale Trade	6
+9416	Metalworking and forging machine operators\t\t\t\t\t\t\t	1100	66	96	4	7	20	18	1	4.2	-	0.9	-	74.0	-	1.4	-	0.9	-	13.0	-	6.0	-	Manufacturing	73	Wholesale Trade	13	Construction	6	Retail Trade	2	Repair, Personal and Non-Profit Services	2
+9417	Machining tool operators\t\t\t\t\t\t\t\t\t\t	300	63	95	5	6	18	20	2	3.3	-	3.3	-	85.0	-	NA	-	0.0	-	5.0	-	0.0	-	Manufacturing	70	Professional, Scientific and Technical Services	8	Construction	7	Wholesale Trade	6	Repair, Personal and Non-Profit Services	6
+9418	Other metal products machine operators\t\t\t\t\t\t\t\t	400	63	88	12	5	18	20	2	4.5	-	2.3	-	77.3	-	NA	-	0.0	-	8.0	-	8.0	-	Manufacturing	78	Wholesale Trade	11	Construction	5	Mining and Oil and Gas Extraction	2	Accommodation and Food Services	2
+9421	Chemical plant machine operators\t\t\t\t\t\t\t\t\t	600	48	70	30	6	19	19	1	2.4	-	3.2	-	75.2	-	2.4	-	0.0	-	11.2	-	4.8	-	Manufacturing	66	Retail Trade	14	Wholesale Trade	11	Construction	2	Repair, Personal and Non-Profit Services	2
+9422	Plastics processing machine operators\t\t\t\t\t\t\t\t	900	62	84	16	2	16	27	2	1.7	-	0.0	-	82.5	-	1.1	-	0.0	-	10.7	-	5.1	-	Manufacturing	85	Wholesale Trade	9	Construction	4	Retail Trade	2	Mining and Oil and Gas Extraction	1
+9423	Rubber processing machine operators and related workers\t\t\t\t\t\t	400	59	95	5	6	19	18	1	9.8	-	2.4	-	47.6	-	4.9	-	3.7	-	26.8	-	8.5	-	Manufacturing	62	Wholesale Trade	9	Retail Trade	8	Construction	6	Mining and Oil and Gas Extraction	5
+9431	Sawmill machine operators\t\t\t\t\t\t\t\t\t	2700	62	94	6	4	17	24	2	15.4	-	7.0	-	28.7	-	13.1	-	4.1	-	17.2	-	14.4	-	Manufacturing	87	Construction	4	Wholesale Trade	4	Transportation and Warehousing	2	Retail Trade	1
+9432	Pulp mill machine operators\t\t\t\t\t\t\t\t\t	500	65	92	8	3	15	28	2	38.8	-	14.6	-	14.6	-	2.9	-	6.8	-	6.8	-	13.6	-	Manufacturing	97	Construction	2	Repair, Personal and Non-Profit Services	2	Mining and Oil and Gas Extraction	0	Utilities	0
+9433	Papermaking and finishing machine operators\t\t\t\t\t\t\t	400	71	89	11	1	16	29	2	15.7	-	3.4	-	41.6	-	NA	-	0.0	-	4.5	-	36.0	-	Manufacturing	94	Mining and Oil and Gas Extraction	2	Construction	2	Wholesale Trade	2	Utilities	0
+9434	Other wood processing machine operators\t\t\t\t\t\t\t\t	1600	65	89	11	7	15	23	1	16.8	-	5.5	-	33.9	-	6.8	-	1.9	-	27.1	-	7.4	-	Manufacturing	88	Wholesale Trade	7	Construction	2	Retail Trade	1	Transportation and Warehousing	1
+9435	Paper converting machine operators\t\t\t\t\t\t\t\t	300	56	83	17	4	18	25	2	3.8	-	0.0	-	92.5	-	NA	-	0.0	-	0.0	-	3.8	-	Manufacturing	92	Retail Trade	5	Wholesale Trade	3	Mining and Oil and Gas Extraction	0	Utilities	0
+9436	Lumber graders and other wood processing inspectors and graders\t\t\t\t\t	1000	68	89	11	6	14	24	2	19.2	-	5.6	-	36.4	-	6.6	-	3.0	-	15.7	-	13.6	-	Manufacturing	89	Wholesale Trade	4	Retail Trade	3	Professional, Scientific and Technical Services	2	Construction	1
+9437	Woodworking machine operators\t\t\t\t\t\t\t\t\t	800	55	87	13	6	17	22	2	9.8	-	6.1	-	48.8	-	6.1	-	1.2	-	16.5	-	11.0	-	Manufacturing	84	Construction	9	Wholesale Trade	2	Retail Trade	2	Transportation and Warehousing	1
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers\t\t\t	200	45	59	41	8	21	13	3	0.0	-	0.0	-	73.8	-	4.8	-	0.0	-	7.1	-	9.5	-	Manufacturing	78	Retail Trade	9	Wholesale Trade	4	Information, Culture and Recreation	4	Repair, Personal and Non-Profit Services	4
+9442	Weavers, knitters and other fabric making occupations\t\t\t\t\t\t	300	45	22	78	2	17	27	3	3.1	-	4.6	-	63.1	-	3.1	-	0.0	-	7.7	-	20.0	-	Manufacturing	59	Professional, Scientific and Technical Services	14	Retail Trade	7	Transportation and Warehousing	7	Wholesale Trade	5
+9445	Fabric, fur and leather cutters\t\t\t\t\t\t\t\t\t	100	40	52	48	4	11	30	6	0.0	-	0.0	-	88.9	-	NA	-	0.0	-	7.4	-	0.0	-	Manufacturing	67	Retail Trade	15	Wholesale Trade	6	Professional, Scientific and Technical Services	6	Information, Culture and Recreation	6
+9446	Industrial sewing machine operators\t\t\t\t\t\t\t\t	1600	48	4	96	1	11	35	4	0.0	-	1.3	-	88.6	-	NA	-	0.0	-	1.9	-	7.6	-	Manufacturing	80	Retail Trade	8	Wholesale Trade	3	Repair, Personal and Non-Profit Services	3	Professional, Scientific and Technical Services	2
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing\t\t\t	200	56	26	74	4	12	31	0	0.0	-	0.0	-	102.6	-	NA	-	0.0	-	0.0	-	0.0	-	Manufacturing	48	Retail Trade	38	Wholesale Trade	14	Mining and Oil and Gas Extraction	0	Utilities	0
+9461	Process control and machine operators, food, beverage and associated products processing\t\t	3400	55	68	32	4	19	20	2	1.5	-	3.7	-	65.2	-	0.3	-	0.4	-	16.5	-	12.5	-	Manufacturing	76	Wholesale Trade	9	Retail Trade	8	Accommodation and Food Services	4	Construction	1
+9462	Industrial butchers and meat cutters, poultry preparers and related workers\t\t\t	1100	49	62	38	3	19	24	0	1.4	-	2.3	-	78.0	-	2.8	-	1.8	-	6.0	-	7.8	-	Manufacturing	96	Retail Trade	4	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0
+9463	Fish and seafood plant workers\t\t\t\t\t\t\t\t\t	1000	32	43	57	4	13	29	1	0.0	-	0.0	-	63.7	-	4.0	-	0.0	-	1.0	-	31.8	-	Manufacturing	87	Wholesale Trade	9	Retail Trade	3	Accommodation and Food Services	1	Mining and Oil and Gas Extraction	0
+9465	Testers and graders, food, beverage and associated products processing\t\t\t\t	500	50	40	60	5	17	23	1	2.2	-	0.0	-	67.7	-	6.5	-	0.0	-	12.9	-	9.7	-	Manufacturing	68	Wholesale Trade	17	Retail Trade	6	Accommodation and Food Services	4	Professional, Scientific and Technical Services	3
+9471	Plateless printing equipment operators\t\t\t\t\t\t\t\t	700	59	70	30	4	17	24	1	1.5	-	1.5	-	85.1	-	1.5	-	0.0	-	2.2	-	9.0	-	Manufacturing	73	Professional, Scientific and Technical Services	7	Retail Trade	6	Wholesale Trade	3	Transportation and Warehousing	2
+9472	Camera, platemaking and other prepress occupations\t\t\t\t\t\t	300	69	74	26	1	19	24	1	0.0	-	0.0	-	85.9	-	NA	-	0.0	-	6.2	-	7.8	-	Manufacturing	77	Professional, Scientific and Technical Services	6	Information, Culture and Recreation	6	Retail Trade	3	Finance, insurance and real estate	3
+9473	Binding and finishing machine operators\t\t\t\t\t\t\t\t	400	51	63	37	2	14	30	3	0.0	-	0.0	-	75.0	-	NA	-	0.0	-	9.5	-	15.5	-	Manufacturing	81	Information, Culture and Recreation	5	Professional, Scientific and Technical Services	3	Wholesale Trade	2	Retail Trade	2
+9474	Photographic and film processors\t\t\t\t\t\t\t\t\t	400	31	40	60	8	18	18	4	2.6	-	2.6	-	74.4	-	NA	-	0.0	-	11.5	-	9.0	-	Retail Trade	48	Repair, Personal and Non-Profit Services	20	Professional, Scientific and Technical Services	15	Information, Culture and Recreation	6	Public Administration	4
+9521	Aircraft assemblers and aircraft assembly inspectors\t\t\t\t\t\t	100	78	85	15	0	19	23	0	0.0	-	0.0	-	73.1	-	NA	-	0.0	-	0.0	-	26.9	-	Manufacturing	81	Transportation and Warehousing	19	Mining and Oil and Gas Extraction	0	Utilities	0	Construction	0
+9522	Motor vehicle assemblers, inspectors and testers\t\t\t\t\t\t\t	600	58	81	19	6	15	23	2	1.6	-	5.4	-	71.3	-	1.6	-	0.0	-	13.2	-	6.2	-	Manufacturing	54	Repair, Personal and Non-Profit Services	16	Retail Trade	14	Wholesale Trade	6	Transportation and Warehousing	3
+9523	Electronics assemblers, fabricators, inspectors and testers\t\t\t\t\t	1300	60	49	51	3	16	27	1	0.0	-	3.4	-	84.8	-	NA	-	0.0	-	3.0	-	9.1	-	Manufacturing	74	Professional, Scientific and Technical Services	11	Wholesale Trade	4	Construction	3	Retail Trade	2
+9524	Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing\t\t	600	50	72	28	3	17	24	2	3.5	-	1.7	-	81.7	-	NA	-	0.0	-	6.1	-	7.8	-	Manufacturing	72	Construction	9	Professional, Scientific and Technical Services	7	Wholesale Trade	6	Retail Trade	2
+9525	Assemblers, fabricators and inspectors, industrial electrical motors and transformers\t\t	100	59	80	20	4	14	29	4	0.0	-	0.0	-	83.3	-	NA	-	0.0	-	20.8	-	0.0	-	Manufacturing	57	Construction	17	Utilities	7	Wholesale Trade	7	Professional, Scientific and Technical Services	7
+9527	Machine operators and inspectors, electrical apparatus manufacturing\t\t\t\t	100	69	67	33	4	18	22	4	9.1	-	0.0	-	81.8	-	NA	-	0.0	-	9.1	-	0.0	-	Manufacturing	67	Wholesale Trade	13	Utilities	7	Retail Trade	7	Finance, insurance and real estate	7
+9531	Boat assemblers and inspectors\t\t\t\t\t\t\t\t\t	400	55	94	6	4	15	26	3	0.0	-	0.0	-	37.9	-	3.4	-	2.3	-	24.1	-	34.5	-	Manufacturing	76	Public Administration	8	Transportation and Warehousing	5	Repair, Personal and Non-Profit Services	5	Professional, Scientific and Technical Services	3
+9532	Furniture and fixture assemblers and inspectors\t\t\t\t\t\t\t	1000	40	78	22	5	19	21	1	1.0	-	1.0	-	82.8	-	NA	-	0.0	-	8.9	-	6.4	-	Manufacturing	80	Construction	6	Retail Trade	6	Wholesale Trade	3	Finance, insurance and real estate	2
+9533	Other wood products assemblers and inspectors\t\t\t\t\t\t\t	1300	51	91	9	10	18	17	1	5.5	-	0.8	-	58.1	-	2.8	-	2.4	-	20.6	-	9.9	-	Manufacturing	79	Construction	12	Wholesale Trade	5	Retail Trade	2	Professional, Scientific and Technical Services	1
+9534	Furniture finishers and refinishers\t\t\t\t\t\t\t\t	800	47	73	27	2	21	20	3	1.2	-	1.2	-	72.5	-	NA	-	0.0	-	13.1	-	10.6	-	Manufacturing	51	Repair, Personal and Non-Profit Services	19	Construction	16	Retail Trade	10	Wholesale Trade	1
+9535	Plastic products assemblers, finishers and inspectors\t\t\t\t\t\t	700	59	63	37	3	17	24	2	1.5	-	1.5	-	80.3	-	NA	-	0.0	-	12.4	-	6.6	-	Manufacturing	92	Wholesale Trade	5	Construction	2	Retail Trade	1	Mining and Oil and Gas Extraction	0
+9536	Industrial painters, coaters and metal finishing process operators\t\t\t\t	1300	52	93	7	4	20	20	2	1.5	-	3.1	-	67.3	-	1.2	-	1.2	-	13.1	-	12.3	-	Manufacturing	64	Construction	16	Transportation and Warehousing	5	Wholesale Trade	4	Retail Trade	2
+9537	Other products assemblers, finishers and inspectors\t\t\t\t\t\t	2400	50	71	29	6	18	21	2	1.4	-	1.4	-	77.9	-	1.6	-	0.8	-	8.0	-	9.0	-	Manufacturing	70	Retail Trade	8	Construction	7	Wholesale Trade	3	Professional, Scientific and Technical Services	3
+9611	Labourers in mineral and metal processing\t\t\t\t\t\t\t	700	47	96	4	8	18	20	1	5.6	-	9.0	-	61.1	-	9.0	-	0.0	-	6.9	-	8.3	-	Manufacturing	63	Wholesale Trade	21	Construction	6	Mining and Oil and Gas Extraction	4	Retail Trade	1
+9612	Labourers in metal fabrication\t\t\t\t\t\t\t\t\t	1000	46	90	10	11	19	14	1	5.3	-	1.4	-	69.4	-	1.9	-	3.3	-	10.5	-	7.7	-	Manufacturing	63	Construction	14	Wholesale Trade	8	Repair, Personal and Non-Profit Services	7	Mining and Oil and Gas Extraction	2
+9613	Labourers in chemical products processing and utilities\t\t\t\t\t\t	800	39	49	51	8	17	20	1	2.5	-	1.9	-	73.8	-	1.2	-	1.9	-	9.4	-	9.4	-	Manufacturing	50	Wholesale Trade	14	Construction	7	Retail Trade	7	Public Administration	7
+9614	Labourers in wood, pulp and paper processing\t\t\t\t\t\t\t	5300	50	87	13	10	17	18	1	20.5	-	5.7	-	30.2	-	9.2	-	2.9	-	20.2	-	11.3	-	Manufacturing	93	Wholesale Trade	2	Construction	1	Retail Trade	1	Professional, Scientific and Technical Services	1
+9615	Labourers in rubber and plastic products manufacturing\t\t\t\t\t\t	400	41	70	30	9	18	17	1	0.0	-	0.0	-	81.7	-	NA	-	0.0	-	15.9	-	0.0	-	Manufacturing	91	Wholesale Trade	5	Retail Trade	2	Public Administration	2	Mining and Oil and Gas Extraction	0
+9617	Labourers in food, beverage and associated products processing\t\t\t\t\t	8400	39	38	62	6	17	23	2	0.7	-	1.5	-	84.6	-	0.4	-	0.2	-	6.8	-	5.9	-	Manufacturing	69	Wholesale Trade	18	Retail Trade	8	Transportation and Warehousing	2	Professional, Scientific and Technical Services	1
+9618	Labourers in fish and seafood processing\t\t\t\t\t\t\t\t	800	17	46	54	7	15	24	3	1.2	-	0.0	-	61.8	-	8.2	-	1.2	-	1.2	-	27.1	-	Manufacturing	87	Wholesale Trade	7	Retail Trade	1	Transportation and Warehousing	1	Finance, insurance and real estate	1
+9619	Other labourers in processing, manufacturing and utilities\t\t\t\t\t	5900	38	66	34	8	17	19	1	1.6	-	3.2	-	74.3	-	1.3	-	0.5	-	9.2	-	9.8	-	Manufacturing	52	Wholesale Trade	17	Retail Trade	8	Construction	7	Transportation and Warehousing	5
+\.
+
+
+--
+-- Data for Name: education; Type: TABLE DATA; Schema: public; Owner: ssot
+--
+
+COPY public.education (noc, description, typical_education_background) FROM stdin;
+0011	Legislators	Degree
+5134	Dancers	Degree
+7232	Tool and die makers	Apprenticeship Certificate
+0012	Senior government managers and officials	Degree
+0013	Senior managers - financial, communications and other business services	Degree
+0014	Senior managers - health, education, social and community services and membership organizations	Degree
+0015	Senior managers - trade, broadcasting and other services, n.e.c.	Degree
+0016	Senior managers - construction, transportation, production and utilities	Degree
+0111	Financial managers	Degree
+0112	Human resources managers	Degree
+0113	Purchasing managers	Degree
+0114	Other administrative services managers	Degree
+0121	Insurance, real estate and financial brokerage managers	Degree
+0122	Banking, credit and other investment managers	Degree
+0124	Advertising, marketing and public relations managers	Degree
+0125	Other business services managers	Degree
+0131	Telecommunication carriers managers	Degree
+0132	Postal and courier services managers	Diploma/Certificate Excluding Apprenticeship
+0211	Engineering managers	Degree
+0212	Architecture and science managers	Degree
+0213	Computer and information systems managers	Degree
+0311	Managers in health care	Degree
+0411	Government managers - health and social policy development and program administration	Degree
+0412	Government managers - economic analysis, policy development and program administration	Degree
+0413	Government managers - education policy development and program administration	Degree
+0414	Other managers in public administration	Degree
+0421	Administrators - post-secondary education and vocational training	Degree
+0422	School principals and administrators of elementary and secondary education	Degree
+0423	Managers in social, community and correctional services	Degree
+0431	Commissioned police officers	Diploma/Certificate Excluding Apprenticeship
+0432	Fire chiefs and senior firefighting officers	Diploma/Certificate Excluding Apprenticeship
+0433	Commissioned officers of the Canadian Armed Forces	Degree
+0511	Library, archive, museum and art gallery managers	Degree
+0512	Managers - publishing, motion pictures, broadcasting and performing arts	Degree
+0513	Recreation, sports and fitness program and service directors	Degree
+0601	Corporate sales managers	Degree
+0621	Retail and wholesale trade managers	Diploma/Certificate Excluding Apprenticeship
+0631	Restaurant and food service managers	High School
+0632	Accommodation service managers	Degree
+0651	Managers in customer and personal services, n.e.c.	Diploma/Certificate Excluding Apprenticeship
+0711	Construction managers	Diploma/Certificate Excluding Apprenticeship
+0712	Home building and renovation managers	Diploma/Certificate Excluding Apprenticeship
+0714	Facility operation and maintenance managers	Diploma/Certificate Excluding Apprenticeship
+0731	Managers in transportation	Diploma/Certificate Excluding Apprenticeship
+0811	Managers in natural resources production and fishing	Degree
+0821	Managers in agriculture	Diploma/Certificate Excluding Apprenticeship
+0822	Managers in horticulture	Diploma/Certificate Excluding Apprenticeship
+0823	Managers in aquaculture	High School
+0911	Manufacturing managers	Diploma/Certificate Excluding Apprenticeship
+0912	Utilities managers	Degree
+1111	Financial auditors and accountants	Degree
+1112	Financial and investment analysts	Degree
+1113	Securities agents, investment dealers and brokers	Degree
+1114	Other financial officers	Degree
+1121	Human resources professionals	Degree
+1122	Professional occupations in business management consulting	Degree
+1123	Professional occupations in advertising, marketing and public relations	Degree
+1211	Supervisors, general office and administrative support workers	Diploma/Certificate Excluding Apprenticeship
+1212	Supervisors, finance and insurance office workers	Degree
+1213	Supervisors, library, correspondence and related information workers	Degree
+1214	Supervisors, mail and message distribution occupations	Diploma/Certificate Excluding Apprenticeship
+1215	Supervisors, supply chain, tracking and scheduling co-ordination occupations	Diploma/Certificate Excluding Apprenticeship
+1221	Administrative officers	Diploma/Certificate Excluding Apprenticeship
+1222	Executive assistants	Degree
+1223	Human resources and recruitment officers	Degree
+1224	Property administrators	Diploma/Certificate Excluding Apprenticeship
+1225	Purchasing agents and officers	Degree
+1226	Conference and event planners	Degree
+1227	Court officers and justices of the peace	Diploma/Certificate Excluding Apprenticeship
+1228	Employment insurance, immigration, border services and revenue officers	Degree
+1241	Administrative assistants	Diploma/Certificate Excluding Apprenticeship
+1242	Legal administrative assistants	Diploma/Certificate Excluding Apprenticeship
+1243	Medical administrative assistants	Diploma/Certificate Excluding Apprenticeship
+1251	Court reporters, medical transcriptionists and related occupations	Diploma/Certificate Excluding Apprenticeship
+1252	Health information management occupations	Diploma/Certificate Excluding Apprenticeship
+1253	Records management technicians	Diploma/Certificate Excluding Apprenticeship
+1254	Statistical officers and related research support occupations	Degree
+1311	Accounting technicians and bookkeepers	Diploma/Certificate Excluding Apprenticeship
+1312	Insurance adjusters and claims examiners	Diploma/Certificate Excluding Apprenticeship
+1313	Insurance underwriters	Degree
+1314	Assessors, valuators and appraisers	Degree
+1315	Customs, ship and other brokers	Diploma/Certificate Excluding Apprenticeship
+1411	General office support workers	Diploma/Certificate Excluding Apprenticeship
+1414	Receptionists	Diploma/Certificate Excluding Apprenticeship
+1415	Personnel clerks	Degree
+1416	Court clerks	Diploma/Certificate Excluding Apprenticeship
+1422	Data entry clerks	Diploma/Certificate Excluding Apprenticeship
+1423	Desktop publishing operators and related occupations	Diploma/Certificate Excluding Apprenticeship
+1431	Accounting and related clerks	Diploma/Certificate Excluding Apprenticeship
+1432	Payroll administrators	Diploma/Certificate Excluding Apprenticeship
+1434	Banking, insurance and other financial clerks	Degree
+1435	Collectors	Diploma/Certificate Excluding Apprenticeship
+1451	Library assistants and clerks	Degree
+1452	Correspondence, publication and regulatory clerks	Degree
+1454	Survey interviewers and statistical clerks	Diploma/Certificate Excluding Apprenticeship
+1511	Mail, postal and related workers	High School
+1512	Letter carriers	High School
+1513	Couriers, messengers and door-to-door distributors	High School
+1521	Shippers and receivers	High School
+1522	Storekeepers and partspersons	Apprenticeship Certificate
+1523	Production logistics co-ordinators	Diploma/Certificate Excluding Apprenticeship
+1524	Purchasing and inventory control workers	Diploma/Certificate Excluding Apprenticeship
+1525	Dispatchers	Diploma/Certificate Excluding Apprenticeship
+1526	Transportation route and crew schedulers	Diploma/Certificate Excluding Apprenticeship
+2111	Physicists and astronomers	Degree
+2112	Chemists	Degree
+2113	Geoscientists and oceanographers	Degree
+2114	Meteorologists and climatologists	Degree
+2115	Other professional occupations in physical sciences	Degree
+2121	Biologists and related scientists	Degree
+2122	Forestry professionals	Degree
+2123	Agricultural representatives, consultants and specialists	Degree
+2131	Civil engineers	Degree
+2132	Mechanical engineers	Degree
+2133	Electrical and electronics engineers	Degree
+2134	Chemical engineers	Degree
+2141	Industrial and manufacturing engineers	Degree
+2142	Metallurgical and materials engineers	Degree
+2143	Mining engineers	Degree
+2144	Geological engineers	Degree
+2145	Petroleum engineers	Degree
+2146	Aerospace engineers	Degree
+2147	Computer engineers (except software engineers and designers)	Degree
+2148	Other professional engineers, n.e.c.	Degree
+2151	Architects	Degree
+2152	Landscape architects	Degree
+2153	Urban and land use planners	Degree
+2154	Land surveyors	Diploma/Certificate Excluding Apprenticeship
+2161	Mathematicians, statisticians and actuaries	Degree
+2171	Information systems analysts and consultants	Degree
+2172	Database analysts and data administrators	Degree
+2173	Software engineers and designers	Degree
+2174	Computer programmers and interactive media developers	Degree
+2175	Web designers and developers	Degree
+2211	Chemical technologists and technicians	Degree
+2212	Geological and mineral technologists and technicians	Diploma/Certificate Excluding Apprenticeship
+2221	Biological technologists and technicians	Degree
+2222	Agricultural and fish products inspectors	Degree
+2223	Forestry technologists and technicians	Diploma/Certificate Excluding Apprenticeship
+2224	Conservation and fishery officers	Diploma/Certificate Excluding Apprenticeship
+2225	Landscape and horticulture technicians and specialists	Apprenticeship Certificate
+2231	Civil engineering technologists and technicians	Diploma/Certificate Excluding Apprenticeship
+2232	Mechanical engineering technologists and technicians	Diploma/Certificate Excluding Apprenticeship
+2233	Industrial engineering and manufacturing technologists and technicians	Diploma/Certificate Excluding Apprenticeship
+2234	Construction estimators	Diploma/Certificate Excluding Apprenticeship
+2241	Electrical and electronics engineering technologists and technicians	Diploma/Certificate Excluding Apprenticeship
+2242	Electronic service technicians (household and business equipment)	Diploma/Certificate Excluding Apprenticeship
+2243	Industrial instrument technicians and mechanics	Apprenticeship Certificate
+2244	Aircraft instrument, electrical and avionics mechanics, technicians and inspectors	Diploma/Certificate Excluding Apprenticeship
+2251	Architectural technologists and technicians	Diploma/Certificate Excluding Apprenticeship
+2252	Industrial designers	Degree
+2253	Drafting technologists and technicians	Diploma/Certificate Excluding Apprenticeship
+2254	Land survey technologists and technicians	Diploma/Certificate Excluding Apprenticeship
+2255	Technical occupations in geomatics and meteorology	Degree
+2261	Non-destructive testers and inspection technicians	Diploma/Certificate Excluding Apprenticeship
+2262	Engineering inspectors and regulatory officers	Diploma/Certificate Excluding Apprenticeship
+2263	Inspectors in public and environmental health and occupational health and safety	Degree
+2264	Construction inspectors	Diploma/Certificate Excluding Apprenticeship
+2271	Air pilots, flight engineers and flying instructors	Diploma/Certificate Excluding Apprenticeship
+2272	Air traffic controllers and related occupations	Diploma/Certificate Excluding Apprenticeship
+2273	Deck officers, water transport	Diploma/Certificate Excluding Apprenticeship
+2274	Engineer officers, water transport	Diploma/Certificate Excluding Apprenticeship
+2275	Railway traffic controllers and marine traffic regulators	Diploma/Certificate Excluding Apprenticeship
+2281	Computer network technicians	Diploma/Certificate Excluding Apprenticeship
+2282	User support technicians	Diploma/Certificate Excluding Apprenticeship
+2283	Information systems testing technicians	Degree
+3011	Nursing co-ordinators and supervisors	Degree
+3012	Registered nurses and registered psychiatric nurses	Degree
+3111	Specialist physicians	Degree
+3112	General practitioners and family physicians	Degree
+3113	Dentists	Degree
+3114	Veterinarians	Degree
+3121	Optometrists	Degree
+3122	Chiropractors	Degree
+3124	Allied primary health practitioners	Degree
+3125	Other professional occupations in health diagnosing and treating	Degree
+3131	Pharmacists	Degree
+3132	Dietitians and nutritionists	Degree
+3141	Audiologists and speech-language pathologists	Degree
+3142	Physiotherapists	Degree
+3143	Occupational therapists	Degree
+3144	Other professional occupations in therapy and assessment	Degree
+3211	Medical laboratory technologists	Diploma/Certificate Excluding Apprenticeship
+3212	Medical laboratory technicians and pathologists' assistants	Diploma/Certificate Excluding Apprenticeship
+3213	Animal health technologists and veterinary technicians	Diploma/Certificate Excluding Apprenticeship
+3214	Respiratory therapists, clinical perfusionists and cardiopulmonary technologists	Diploma/Certificate Excluding Apprenticeship
+3215	Medical radiation technologists	Diploma/Certificate Excluding Apprenticeship
+3216	Medical sonographers	Degree
+3217	Cardiology technologists and electrophysiological diagnostic technologists, n.e.c.	Diploma/Certificate Excluding Apprenticeship
+3219	Other medical technologists and technicians (except dental health)	Diploma/Certificate Excluding Apprenticeship
+3221	Denturists	Diploma/Certificate Excluding Apprenticeship
+3222	Dental hygienists and dental therapists	Diploma/Certificate Excluding Apprenticeship
+3223	Dental technologists, technicians and laboratory assistants	Diploma/Certificate Excluding Apprenticeship
+3231	Opticians	Diploma/Certificate Excluding Apprenticeship
+3232	Practitioners of natural healing	Diploma/Certificate Excluding Apprenticeship
+3233	Licensed practical nurses	Diploma/Certificate Excluding Apprenticeship
+3234	Paramedical occupations	Diploma/Certificate Excluding Apprenticeship
+3236	Massage therapists	Diploma/Certificate Excluding Apprenticeship
+3237	Other technical occupations in therapy and assessment	Diploma/Certificate Excluding Apprenticeship
+3411	Dental assistants	Diploma/Certificate Excluding Apprenticeship
+3413	Nurse aides, orderlies and patient service associates	Diploma/Certificate Excluding Apprenticeship
+3414	Other assisting occupations in support of health services	Diploma/Certificate Excluding Apprenticeship
+4011	University professors and lecturers	Degree
+4012	Post-secondary teaching and research assistants	Degree
+4021	College and other vocational instructors	Degree
+4031	Secondary school teachers	Degree
+4032	Elementary school and kindergarten teachers	Degree
+4033	Educational counsellors	Degree
+4111	Judges	Degree
+4112	Lawyers and Quebec notaries	Degree
+4151	Psychologists	Degree
+4152	Social workers	Degree
+4153	Family, marriage and other related counsellors	Degree
+4154	Professional occupations in religion	Degree
+4155	Probation and parole officers and related occupations	Degree
+4156	Employment counsellors	Degree
+4161	Natural and applied science policy researchers, consultants and program officers	Degree
+4162	Economists and economic policy researchers and analysts	Degree
+4163	Business development officers and marketing researchers and consultants	Degree
+4164	Social policy researchers, consultants and program officers	Degree
+4165	Health policy researchers, consultants and program officers	Degree
+4166	Education policy researchers, consultants and program officers	Degree
+4167	Recreation, sports and fitness policy researchers, consultants and program officers	Degree
+4168	Program officers unique to government	Degree
+4169	Other professional occupations in social science, n.e.c.	Degree
+4211	Paralegal and related occupations	Diploma/Certificate Excluding Apprenticeship
+4212	Social and community service workers	Diploma/Certificate Excluding Apprenticeship
+4214	Early childhood educators and assistants	Diploma/Certificate Excluding Apprenticeship
+4215	Instructors of persons with disabilities	Diploma/Certificate Excluding Apprenticeship
+4216	Other instructors	Degree
+4217	Other religious occupations	Degree
+4311	Police officers (except commissioned)	Diploma/Certificate Excluding Apprenticeship
+4312	Firefighters	Diploma/Certificate Excluding Apprenticeship
+4313	Non-commissioned ranks of the Canadian Armed Forces	High School
+4411	Home child care providers	Diploma/Certificate Excluding Apprenticeship
+4412	Home support workers, housekeepers and related occupations	Diploma/Certificate Excluding Apprenticeship
+4413	Elementary and secondary school teacher assistants	Diploma/Certificate Excluding Apprenticeship
+4421	Sheriffs and bailiffs	Diploma/Certificate Excluding Apprenticeship
+4422	Correctional service officers	Diploma/Certificate Excluding Apprenticeship
+4423	By-law enforcement and other regulatory officers, n.e.c.	Diploma/Certificate Excluding Apprenticeship
+5111	Librarians	Degree
+5112	Conservators and curators	Degree
+5113	Archivists	Degree
+5121	Authors and writers	Degree
+5122	Editors	Degree
+5123	Journalists	Degree
+5125	Translators, terminologists and interpreters	Degree
+5131	Producers, directors, choreographers and related occupations	Degree
+5132	Conductors, composers and arrangers	Degree
+5133	Musicians and singers	Degree
+5135	Actors and comedians	Degree
+5136	Painters, sculptors and other visual artists	Degree
+5211	Library and public archive technicians	Degree
+5212	Technical occupations related to museums and art galleries	Degree
+5221	Photographers	Diploma/Certificate Excluding Apprenticeship
+5222	Film and video camera operators	Diploma/Certificate Excluding Apprenticeship
+5223	Graphic arts technicians	Diploma/Certificate Excluding Apprenticeship
+5224	Broadcast technicians	Diploma/Certificate Excluding Apprenticeship
+5225	Audio and video recording technicians	Diploma/Certificate Excluding Apprenticeship
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	Diploma/Certificate Excluding Apprenticeship
+5227	Support occupations in motion pictures, broadcasting, photography and the performing arts	Diploma/Certificate Excluding Apprenticeship
+5231	Announcers and other broadcasters	Diploma/Certificate Excluding Apprenticeship
+5232	Other performers, n.e.c.	Diploma/Certificate Excluding Apprenticeship
+5241	Graphic designers and illustrators	Diploma/Certificate Excluding Apprenticeship
+5242	Interior designers and interior decorators	Diploma/Certificate Excluding Apprenticeship
+5243	Theatre, fashion, exhibit and other creative designers	Diploma/Certificate Excluding Apprenticeship
+5244	Artisans and craftspersons	Diploma/Certificate Excluding Apprenticeship
+5245	Patternmakers - textile, leather and fur products	Diploma/Certificate Excluding Apprenticeship
+5251	Athletes	High School
+5252	Coaches	Degree
+5253	Sports officials and referees	Degree
+5254	Program leaders and instructors in recreation, sport and fitness	Diploma/Certificate Excluding Apprenticeship
+6211	Retail sales supervisors	High School
+6221	Technical sales specialists - wholesale trade	Degree
+6222	Retail and wholesale buyers	Diploma/Certificate Excluding Apprenticeship
+6231	Insurance agents and brokers	Diploma/Certificate Excluding Apprenticeship
+6232	Real estate agents and salespersons	Diploma/Certificate Excluding Apprenticeship
+6235	Financial sales representatives	Degree
+6311	Food service supervisors	High School
+6312	Executive housekeepers	High School
+6313	Accommodation, travel, tourism and related services supervisors	High School
+6314	Customer and information services supervisors	Diploma/Certificate Excluding Apprenticeship
+6315	Cleaning supervisors	High School
+6316	Other services supervisors	Diploma/Certificate Excluding Apprenticeship
+6321	Chefs	Diploma/Certificate Excluding Apprenticeship
+6322	Cooks	Apprenticeship Certificate
+6331	Butchers, meat cutters and fishmongers - retail and wholesale	Apprenticeship Certificate
+6332	Bakers	Apprenticeship Certificate
+6341	Hairstylists and barbers	Apprenticeship Certificate
+6342	Tailors, dressmakers, furriers and milliners	Diploma/Certificate Excluding Apprenticeship
+6343	Shoe repairers and shoemakers	High School
+6344	Jewellers, jewellery and watch repairers and related occupations	Diploma/Certificate Excluding Apprenticeship
+6345	Upholsterers	High School
+6346	Funeral directors and embalmers	Apprenticeship Certificate
+6411	Sales and account representatives - wholesale trade (non-technical)	Diploma/Certificate Excluding Apprenticeship
+6421	Retail salespersons	High School
+6511	Maîtres d'hôtel and hosts/hostesses	High School
+6512	Bartenders	High School
+6513	Food and beverage servers	High School
+6521	Travel counsellors	Diploma/Certificate Excluding Apprenticeship
+6522	Pursers and flight attendants	Diploma/Certificate Excluding Apprenticeship
+6523	Airline ticket and service agents	Diploma/Certificate Excluding Apprenticeship
+6524	Ground and water transport ticket agents, cargo service representatives and related clerks	High School
+6525	Hotel front desk clerks	Diploma/Certificate Excluding Apprenticeship
+6531	Tour and travel guides	Degree
+6532	Outdoor sport and recreational guides	Diploma/Certificate Excluding Apprenticeship
+6533	Casino occupations	High School
+6541	Security guards and related security service occupations	Diploma/Certificate Excluding Apprenticeship
+6551	Customer services representatives - financial institutions	Diploma/Certificate Excluding Apprenticeship
+6552	Other customer and information services representatives	Diploma/Certificate Excluding Apprenticeship
+6561	Image, social and other personal consultants	Diploma/Certificate Excluding Apprenticeship
+6562	Estheticians, electrologists and related occupations	Apprenticeship Certificate
+6563	Pet groomers and animal care workers	Diploma/Certificate Excluding Apprenticeship
+6564	Other personal service occupations	High School
+6611	Cashiers	High School
+6621	Service station attendants	High School
+6622	Store shelf stockers, clerks and order fillers	High School
+6623	Other sales related occupations	Diploma/Certificate Excluding Apprenticeship
+6711	Food counter attendants, kitchen helpers and related support occupations	High School
+6721	Support occupations in accommodation, travel and facilities set-up services	Diploma/Certificate Excluding Apprenticeship
+6722	Operators and attendants in amusement, recreation and sport	Diploma/Certificate Excluding Apprenticeship
+6731	Light duty cleaners	High School
+6732	Specialized cleaners	High School
+6733	Janitors, caretakers and building superintendents	High School
+6741	Dry cleaning, laundry and related occupations	High School
+6742	Other service support occupations, n.e.c.	Diploma/Certificate Excluding Apprenticeship
+7201	Contractors and supervisors, machining, metal forming, shaping and erecting trades and related occupations	Apprenticeship Certificate
+7202	Contractors and supervisors, electrical trades and telecommunications occupations	Apprenticeship Certificate
+7203	Contractors and supervisors, pipefitting trades	Apprenticeship Certificate
+7204	Contractors and supervisors, carpentry trades	Apprenticeship Certificate
+7205	Contractors and supervisors, other construction trades, installers, repairers and servicers	Apprenticeship Certificate
+7231	Machinists and machining and tooling inspectors	Apprenticeship Certificate
+7233	Sheet metal workers	Apprenticeship Certificate
+7234	Boilermakers	Apprenticeship Certificate
+7235	Structural metal and platework fabricators and fitters	Apprenticeship Certificate
+7236	Ironworkers	Apprenticeship Certificate
+7237	Welders and related machine operators	Apprenticeship Certificate
+7241	Electricians (except industrial and power system)	Apprenticeship Certificate
+7242	Industrial electricians	Apprenticeship Certificate
+7243	Power system electricians	Apprenticeship Certificate
+7244	Electrical power line and cable workers	Apprenticeship Certificate
+7245	Telecommunications line and cable workers	Diploma/Certificate Excluding Apprenticeship
+7246	Telecommunications installation and repair workers	Diploma/Certificate Excluding Apprenticeship
+7247	Cable television service and maintenance technicians	Diploma/Certificate Excluding Apprenticeship
+7251	Plumbers	Apprenticeship Certificate
+7252	Steamfitters, pipefitters and sprinkler system installers	Apprenticeship Certificate
+7253	Gas fitters	Apprenticeship Certificate
+7271	Carpenters	Apprenticeship Certificate
+7272	Cabinetmakers	Apprenticeship Certificate
+7281	Bricklayers	Apprenticeship Certificate
+7282	Concrete finishers	High School
+7283	Tilesetters	Apprenticeship Certificate
+7284	Plasterers, drywall installers and finishers and lathers	Apprenticeship Certificate
+7291	Roofers and shinglers	High School
+7292	Glaziers	Apprenticeship Certificate
+7293	Insulators	Apprenticeship Certificate
+7294	Painters and decorators (except interior decorators)	High School
+7295	Floor covering installers	High School
+7301	Contractors and supervisors, mechanic trades	Apprenticeship Certificate
+7302	Contractors and supervisors, heavy equipment operator crews	Apprenticeship Certificate
+7303	Supervisors, printing and related occupations	Diploma/Certificate Excluding Apprenticeship
+7304	Supervisors, railway transport operations	High School
+7305	Supervisors, motor transport and other ground transit operators	Diploma/Certificate Excluding Apprenticeship
+7311	Construction millwrights and industrial mechanics	Apprenticeship Certificate
+7312	Heavy-duty equipment mechanics	Apprenticeship Certificate
+7313	Heating, refrigeration and air conditioning mechanics	Apprenticeship Certificate
+7314	Railway carmen/women	Apprenticeship Certificate
+7315	Aircraft mechanics and aircraft inspectors	Apprenticeship Certificate
+7316	Machine fitters	Diploma/Certificate Excluding Apprenticeship
+7318	Elevator constructors and mechanics	Apprenticeship Certificate
+7321	Automotive service technicians, truck and bus mechanics and mechanical repairers	Apprenticeship Certificate
+7322	Motor vehicle body repairers	Apprenticeship Certificate
+7331	Oil and solid fuel heating mechanics	Apprenticeship Certificate
+7332	Appliance servicers and repairers	Apprenticeship Certificate
+7333	Electrical mechanics	Apprenticeship Certificate
+7334	Motorcycle, all-terrain vehicle and other related mechanics	Apprenticeship Certificate
+7335	Other small engine and small equipment repairers	Diploma/Certificate Excluding Apprenticeship
+7361	Railway and yard locomotive engineers	Diploma/Certificate Excluding Apprenticeship
+7362	Railway conductors and brakemen/women	Diploma/Certificate Excluding Apprenticeship
+7371	Crane operators	Apprenticeship Certificate
+7372	Drillers and blasters - surface mining, quarrying and construction	Apprenticeship Certificate
+7373	Water well drillers	Apprenticeship Certificate
+7381	Printing press operators	High School
+7384	Other trades and related occupations, n.e.c.	Apprenticeship Certificate
+7441	Residential and commercial installers and servicers	High School
+7442	Waterworks and gas maintenance workers	Diploma/Certificate Excluding Apprenticeship
+7444	Pest controllers and fumigators	Diploma/Certificate Excluding Apprenticeship
+7445	Other repairers and servicers	Diploma/Certificate Excluding Apprenticeship
+7451	Longshore workers	High School
+7452	Material handlers	High School
+7511	Transport truck drivers	High School
+7512	Bus drivers, subway operators and other transit operators	Diploma/Certificate Excluding Apprenticeship
+7513	Taxi and limousine drivers and chauffeurs	High School
+7514	Delivery and courier service drivers	High School
+7521	Heavy equipment operators (except crane)	Apprenticeship Certificate
+7522	Public works maintenance equipment operators and related workers	High School
+7531	Railway yard and track maintenance workers	High School
+7532	Water transport deck and engine room crew	Diploma/Certificate Excluding Apprenticeship
+7533	Boat and cable ferry operators and related occupations	Diploma/Certificate Excluding Apprenticeship
+7534	Air transport ramp attendants	High School
+7535	Other automotive mechanical installers and servicers	High School
+7611	Construction trades helpers and labourers	High School
+7612	Other trades helpers and labourers	Apprenticeship Certificate
+7621	Public works and maintenance labourers	High School
+7622	Railway and motor transport labourers	High School
+8211	Supervisors, logging and forestry	Diploma/Certificate Excluding Apprenticeship
+8221	Supervisors, mining and quarrying	Diploma/Certificate Excluding Apprenticeship
+8222	Contractors and supervisors, oil and gas drilling and services	Apprenticeship Certificate
+8231	Underground production and development miners	Apprenticeship Certificate
+8232	Oil and gas well drillers, servicers, testers and related workers	High School
+8241	Logging machinery operators	High School
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	Diploma/Certificate Excluding Apprenticeship
+8255	Contractors and supervisors, landscaping, grounds maintenance and horticulture services	High School
+8261	Fishing masters and officers	Apprenticeship Certificate
+8262	Fishermen/women	High School
+8411	Underground mine service and support workers	Apprenticeship Certificate
+8412	Oil and gas well drilling and related workers and services operators	Apprenticeship Certificate
+8421	Chain saw and skidder operators	High School
+8422	Silviculture and forestry workers	Diploma/Certificate Excluding Apprenticeship
+8431	General farm workers	High School
+8432	Nursery and greenhouse workers	High School
+8441	Fishing vessel deckhands	High School
+8442	Trappers and hunters	Less than High School
+8611	Harvesting labourers	Less than High School
+8612	Landscaping and grounds maintenance labourers	High School
+8613	Aquaculture and marine harvest labourers	High School
+8614	Mine labourers	High School
+8615	Oil and gas drilling, servicing and related labourers	High School
+8616	Logging and forestry labourers	High School
+9211	Supervisors, mineral and metal processing	Diploma/Certificate Excluding Apprenticeship
+9212	Supervisors, petroleum, gas and chemical processing and utilities	Diploma/Certificate Excluding Apprenticeship
+9213	Supervisors, food and beverage processing	Diploma/Certificate Excluding Apprenticeship
+9214	Supervisors, plastic and rubber products manufacturing	High School
+9215	Supervisors, forest products processing	High School
+9217	Supervisors, textile, fabric, fur and leather products processing and manufacturing	High School
+9221	Supervisors, motor vehicle assembling	High School
+9222	Supervisors, electronics manufacturing	Diploma/Certificate Excluding Apprenticeship
+9223	Supervisors, electrical products manufacturing	Diploma/Certificate Excluding Apprenticeship
+9224	Supervisors, furniture and fixtures manufacturing	High School
+9226	Supervisors, other mechanical and metal products manufacturing	Diploma/Certificate Excluding Apprenticeship
+9227	Supervisors, other products manufacturing and assembly	Diploma/Certificate Excluding Apprenticeship
+9231	Central control and process operators, mineral and metal processing	Diploma/Certificate Excluding Apprenticeship
+9232	Central control and process operators, petroleum, gas and chemical processing	Diploma/Certificate Excluding Apprenticeship
+9235	Pulping, papermaking and coating control operators	Diploma/Certificate Excluding Apprenticeship
+9241	Power engineers and power systems operators	Diploma/Certificate Excluding Apprenticeship
+9243	Water and waste treatment plant operators	Diploma/Certificate Excluding Apprenticeship
+9411	Machine operators, mineral and metal processing	Apprenticeship Certificate
+9412	Foundry workers	Apprenticeship Certificate
+9413	Glass forming and finishing machine operators and glass cutters	High School
+9414	Concrete, clay and stone forming operators	High School
+9415	Inspectors and testers, mineral and metal processing	Diploma/Certificate Excluding Apprenticeship
+9416	Metalworking and forging machine operators	High School
+9417	Machining tool operators	Diploma/Certificate Excluding Apprenticeship
+9418	Other metal products machine operators	High School
+9421	Chemical plant machine operators	High School
+9422	Plastics processing machine operators	High School
+9423	Rubber processing machine operators and related workers	High School
+9431	Sawmill machine operators	High School
+9432	Pulp mill machine operators	Apprenticeship Certificate
+9433	Papermaking and finishing machine operators	Diploma/Certificate Excluding Apprenticeship
+9434	Other wood processing machine operators	High School
+9435	Paper converting machine operators	High School
+9436	Lumber graders and other wood processing inspectors and graders	High School
+9437	Woodworking machine operators	High School
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	High School
+9442	Weavers, knitters and other fabric making occupations	High School
+9445	Fabric, fur and leather cutters	High School
+9446	Industrial sewing machine operators	High School
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing	Diploma/Certificate Excluding Apprenticeship
+9461	Process control and machine operators, food and beverage processing	High School
+9462	Industrial butchers and meat cutters, poultry preparers and related workers	High School
+9463	Fish and seafood plant workers	High School
+9465	Testers and graders, food and beverage processing	Degree
+9471	Plateless printing equipment operators	Diploma/Certificate Excluding Apprenticeship
+9472	Camera, platemaking and other prepress occupations	Diploma/Certificate Excluding Apprenticeship
+9473	Binding and finishing machine operators	High School
+9474	Photographic and film processors	Diploma/Certificate Excluding Apprenticeship
+9521	Aircraft assemblers and aircraft assembly inspectors	Apprenticeship Certificate
+9522	Motor vehicle assemblers, inspectors and testers	High School
+9523	Electronics assemblers, fabricators, inspectors and testers	Diploma/Certificate Excluding Apprenticeship
+9524	Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing	Diploma/Certificate Excluding Apprenticeship
+9525	Assemblers, fabricators and inspectors, industrial electrical motors and transformers	Diploma/Certificate Excluding Apprenticeship
+9526	Mechanical assemblers and inspectors	High School
+9527	Machine operators and inspectors, electrical apparatus manufacturing	Diploma/Certificate Excluding Apprenticeship
+9531	Boat assemblers and inspectors	Diploma/Certificate Excluding Apprenticeship
+9532	Furniture and fixture assemblers and inspectors	High School
+9533	Other wood products assemblers and inspectors	High School
+9534	Furniture finishers and refinishers	High School
+9535	Plastic products assemblers, finishers and inspectors	High School
+9536	Industrial painters, coaters and metal finishing process operators	High School
+9537	Other products assemblers, finishers and inspectors	High School
+9611	Labourers in mineral and metal processing	High School
+9612	Labourers in metal fabrication	High School
+9613	Labourers in chemical products processing and utilities	High School
+9614	Labourers in wood, pulp and paper processing	High School
+9615	Labourers in rubber and plastic products manufacturing	High School
+9616	Labourers in textile processing	High School
+9617	Labourers in food and beverage processing	High School
+9618	Labourers in fish and seafood processing	Less than High School
+9619	Other labourers in processing, manufacturing and utilities	High School
+\.
+
+
+--
+-- Data for Name: titles; Type: TABLE DATA; Schema: public; Owner: ssot
+--
+
+COPY public.titles (noc, nameenglish, commonjobtitle) FROM stdin;
+0011	Legislators	Aboriginal band chief / council member
+0011	Legislators	alderman / alderwoman
+0011	Legislators	attorney general
+0011	Legislators	cabinet minister
+0011	Legislators	chair, municipal coucil chair
+0011	Legislators	city councillor / council member
+0011	Legislators	First Nations band chief / council member 
+0011	Legislators	governor general / lieutenant-governor
+0011	Legislators	leader of the opposition
+0011	Legislators	legislator
+0011	Legislators	mayor / reeve / regional municipal chair
+0011	Legislators	Member of Legislative Assembly (MLA)
+0011	Legislators	Member of Parliament (MP)
+0011	Legislators	Member of Provincial Parliament (MPP)
+0011	Legislators	Member of the House of Assembly (MHA)
+0011	Legislators	Member of the National Assembly (MNA)
+0011	Legislators	metropolitan council chair
+0011	Legislators	orator - government
+0011	Legislators	premier
+0011	Legislators	prime minister
+0011	Legislators	senator
+0011	Legislators	solicitor general
+0011	Legislators	Treasury Board president
+0012	Senior government managers and officials	ambassador, municipal
+0012	Senior government managers and officials	assistant comptroller general - government services
+0012	Senior government managers and officials	chair, employment insurance appeals board
+0012	Senior government managers and officials	chair, Human Rights Commission
+0012	Senior government managers and officials	chair, parole board
+0012	Senior government managers and officials	chief administrative officer (CAO) 
+0012	Senior government managers and officials	chief electoral officer
+0012	Senior government managers and officials	chief privacy officer - government services
+0012	Senior government managers and officials	chief statistician
+0012	Senior government managers and officials	chief, disaster management
+0012	Senior government managers and officials	city administrator / manager
+0012	Senior government managers and officials	clerk of the House of Commons
+0012	Senior government managers and officials	Clerk of the Privy Council
+0012	Senior government managers and officials	clerk, town / township / city hall
+0012	Senior government managers and officials	commissioner
+0012	Senior government managers and officials	commissioner of inquiries
+0012	Senior government managers and officials	comptroller general - government services
+0012	Senior government managers and officials	comptroller general of Canada
+0012	Senior government managers and officials	consul
+0012	Senior government managers and officials	council secretary 
+0012	Senior government managers and officials	director general
+0012	Senior government managers and officials	employment insurance commissioner
+0012	Senior government managers and officials	executive administrator - government
+0012	Senior government managers and officials	executive director, emergency preparedness
+0012	Senior government managers and officials	fire marshal
+0012	Senior government managers and officials	First Nations band manager
+0012	Senior government managers and officials	general manager - government
+0012	Senior government managers and officials	government agency commissioner
+0012	Senior government managers and officials	high commissioner
+0012	Senior government managers and officials	Human Rights Commission chairperson
+0012	Senior government managers and officials	inspector general, financial institutions
+0012	Senior government managers and officials	local government manager
+0012	Senior government managers and officials	ombudsperson 
+0012	Senior government managers and officials	president 
+0012	Senior government managers and officials	receiver general for Canada
+0012	Senior government managers and officials	regional municipality general director
+0012	Senior government managers and officials	secretary to the council 
+0012	Senior government managers and officials	sergeant-at-arms, House of Commons
+0012	Senior government managers and officials	superintendent, financial institutions
+0012	Senior government managers and officials	undersecretary of state
+0012	Senior government managers and officials	vice-consul
+0012	Senior government managers and officials	vice-president 
+0013	Senior managers - financial, communications and other business services	chairperson
+0013	Senior managers - financial, communications and other business services	chief executive officer (CEO)
+0013	Senior managers - financial, communications and other business services	chief financial officer (CFO)
+0013	Senior managers - financial, communications and other business services	chief operating officer (COO) 
+0013	Senior managers - financial, communications and other business services	chief privacy officer - financial, communications and other business services
+0013	Senior managers - financial, communications and other business services	controller
+0013	Senior managers - financial, communications and other business services	corporate controller, mortgage brokerage
+0013	Senior managers - financial, communications and other business services	employment agency general manager
+0013	Senior managers - financial, communications and other business services	engineering firm president
+0013	Senior managers - financial, communications and other business services	engineering research general manager
+0013	Senior managers - financial, communications and other business services	general manager, credit union
+0013	Senior managers - financial, communications and other business services	general manager, insurance company
+2112	Chemists	spectrometrist, NMR
+0013	Senior managers - financial, communications and other business services	general manager, telecommunications
+0013	Senior managers - financial, communications and other business services	president & chief executive officer (CEO)
+0013	Senior managers - financial, communications and other business services	vice-president, bank
+0013	Senior managers - financial, communications and other business services	vice-president, engineering
+0013	Senior managers - financial, communications and other business services	vice-president, executive
+0013	Senior managers - financial, communications and other business services	vice-president, HR
+0013	Senior managers - financial, communications and other business services	vice-president, senior, & chief economist
+0014	Senior managers - health, education, social and community services and membership organizations	alumni association executive director
+0014	Senior managers - health, education, social and community services and membership organizations	arts and culture association chairperson
+0014	Senior managers - health, education, social and community services and membership organizations	arts association executive director
+0014	Senior managers - health, education, social and community services and membership organizations	chancellor, college / university
+0014	Senior managers - health, education, social and community services and membership organizations	chief executive officer (CEO)
+0014	Senior managers - health, education, social and community services and membership organizations	chief financial officer (CFO) 
+0014	Senior managers - health, education, social and community services and membership organizations	chief operating officer (COO) 
+0014	Senior managers - health, education, social and community services and membership organizations	chief privacy officer - health, education, social and community services and membership organizations
+0014	Senior managers - health, education, social and community services and membership organizations	corporate controller
+0014	Senior managers - health, education, social and community services and membership organizations	cultural association president
+0014	Senior managers - health, education, social and community services and membership organizations	director general
+0014	Senior managers - health, education, social and community services and membership organizations	environmental group executive director
+0014	Senior managers - health, education, social and community services and membership organizations	executive director,  crafts guild
+0014	Senior managers - health, education, social and community services and membership organizations	executive director, charity
+0014	Senior managers - health, education, social and community services and membership organizations	executive director, NGO
+0014	Senior managers - health, education, social and community services and membership organizations	executive director, nurses' association
+0014	Senior managers - health, education, social and community services and membership organizations	executive director, professional assoc.
+0014	Senior managers - health, education, social and community services and membership organizations	executive director, recreational assoc.
+0014	Senior managers - health, education, social and community services and membership organizations	general manager, business school
+0014	Senior managers - health, education, social and community services and membership organizations	general manager, hockey association
+0014	Senior managers - health, education, social and community services and membership organizations	general manager, political organization
+0014	Senior managers - health, education, social and community services and membership organizations	general manager, trade school
+0014	Senior managers - health, education, social and community services and membership organizations	hospital administrator
+0014	Senior managers - health, education, social and community services and membership organizations	music guild president
+0014	Senior managers - health, education, social and community services and membership organizations	president and general manager
+0014	Senior managers - health, education, social and community services and membership organizations	president, college / university
+0014	Senior managers - health, education, social and community services and membership organizations	rector - education
+0014	Senior managers - health, education, social and community services and membership organizations	sports association president
+0014	Senior managers - health, education, social and community services and membership organizations	vice-president, academic business
+0014	Senior managers - health, education, social and community services and membership organizations	vice-president, education
+0014	Senior managers - health, education, social and community services and membership organizations	vice-president, executive
+0014	Senior managers - health, education, social and community services and membership organizations	vice-president, finance and administration
+0014	Senior managers - health, education, social and community services and membership organizations	vice-president, health
+0014	Senior managers - health, education, social and community services and membership organizations	vice-president, human resources
+0014	Senior managers - health, education, social and community services and membership organizations	vice-president, information systems
+0014	Senior managers - health, education, social and community services and membership organizations	vice-president, marketing
+0014	Senior managers - health, education, social and community services and membership organizations	vice-president, medical 
+0014	Senior managers - health, education, social and community services and membership organizations	vice-president, nursing
+0014	Senior managers - health, education, social and community services and membership organizations	vice-president, operations 
+0014	Senior managers - health, education, social and community services and membership organizations	vice-president, planning 
+0014	Senior managers - health, education, social and community services and membership organizations	vice-president, regional
+0014	Senior managers - health, education, social and community services and membership organizations	vice-president, support services
+0621	Retail and wholesale trade managers	manager, travel agency
+0015	Senior managers - trade, broadcasting and other services, n.e.c.	chair - trade, broadcasting
+0015	Senior managers - trade, broadcasting and other services, n.e.c.	chief exec. officer (CEO), travel agency
+0015	Senior managers - trade, broadcasting and other services, n.e.c.	chief financial officer (CFO), sports club
+0015	Senior managers - trade, broadcasting and other services, n.e.c.	chief operating officer
+0015	Senior managers - trade, broadcasting and other services, n.e.c.	chief privacy officer - trade, broadcasting and other services, NEC
+0015	Senior managers - trade, broadcasting and other services, n.e.c.	executive director
+0015	Senior managers - trade, broadcasting and other services, n.e.c.	general manager, casino
+0015	Senior managers - trade, broadcasting and other services, n.e.c.	general manager, funeral services
+0015	Senior managers - trade, broadcasting and other services, n.e.c.	general manager, hotel
+0015	Senior managers - trade, broadcasting and other services, n.e.c.	general manager, laundry and dry cleaning 
+0015	Senior managers - trade, broadcasting and other services, n.e.c.	general manager, radio station
+0015	Senior managers - trade, broadcasting and other services, n.e.c.	general manager, sales
+0015	Senior managers - trade, broadcasting and other services, n.e.c.	manager, operations
+0015	Senior managers - trade, broadcasting and other services, n.e.c.	president
+0015	Senior managers - trade, broadcasting and other services, n.e.c.	restaurant chain corporate controller
+0015	Senior managers - trade, broadcasting and other services, n.e.c.	vice-president, engineering
+0015	Senior managers - trade, broadcasting and other services, n.e.c.	vice-president, executive
+0015	Senior managers - trade, broadcasting and other services, n.e.c.	vice-president, finance
+0015	Senior managers - trade, broadcasting and other services, n.e.c.	vice-president, human resources
+0015	Senior managers - trade, broadcasting and other services, n.e.c.	vice-president, information systems
+0015	Senior managers - trade, broadcasting and other services, n.e.c.	vice-president, marketing
+0015	Senior managers - trade, broadcasting and other services, n.e.c.	vice-president, operations
+0015	Senior managers - trade, broadcasting and other services, n.e.c.	wholesaler - broadcasting
+0016	Senior managers - construction, transportation, production and utilities	chief executive officer (CEO)
+0016	Senior managers - construction, transportation, production and utilities	chief financial officer (CFO) 
+0016	Senior managers - construction, transportation, production and utilities	chief operating officer (COO)
+0016	Senior managers - construction, transportation, production and utilities	chief privacy officer - construction, transportation, production and utilities
+0016	Senior managers - construction, transportation, production and utilities	corporate controller
+0016	Senior managers - construction, transportation, production and utilities	executive director
+0016	Senior managers - construction, transportation, production and utilities	general manager
+0016	Senior managers - construction, transportation, production and utilities	president, electric power company
+0016	Senior managers - construction, transportation, production and utilities	president, residential construction
+0016	Senior managers - construction, transportation, production and utilities	publisher
+0016	Senior managers - construction, transportation, production and utilities	vice-president
+0111	Financial managers	assigned public accountants chief
+0111	Financial managers	assistant treasurer - finances
+0111	Financial managers	chief, independent public accountants
+0111	Financial managers	chief, revenue accounting & controls
+0111	Financial managers	collections department manager
+0111	Financial managers	comptroller
+0111	Financial managers	controller - financial services
+0111	Financial managers	co-ordinator, financial resources service
+0111	Financial managers	corporate controller
+0111	Financial managers	director, financial services
+0111	Financial managers	manager, financial planning
+0111	Financial managers	regional controller
+0111	Financial managers	treasurer
+0112	Human resources managers	chief safety officer - occupational health and safety
+0112	Human resources managers	co-ordinator, health and safety
+0112	Human resources managers	director, industrial relations
+0112	Human resources managers	director, pay-processing division
+0112	Human resources managers	director, vocational training
+0112	Human resources managers	manager, health and safety
+0112	Human resources managers	occupational health and safety director
+0113	Purchasing managers	director, procurement
+0113	Purchasing managers	manager, contracts
+0113	Purchasing managers	manager, material and services purchasing
+0113	Purchasing managers	manager, supply chain logistics
+0113	Purchasing managers	purchasing manager, office equipment
+0114	Other administrative services managers	administrator, health records
+0114	Other administrative services managers	chartered administrator
+0114	Other administrative services managers	chartered secretary
+0114	Other administrative services managers	chief / director / manager, adminservices
+0114	Other administrative services managers	chief, financial services
+0114	Other administrative services managers	chief, operations
+0114	Other administrative services managers	director, hospital admissions
+0114	Other administrative services managers	manager, inventory control
+0114	Other administrative services managers	manager, records
+0114	Other administrative services managers	managing director
+0114	Other administrative services managers	office manager - non-profit organization
+0114	Other administrative services managers	surveillance department manager - casino
+0121	Insurance, real estate and financial brokerage managers	director, insurance benefits 
+0121	Insurance, real estate and financial brokerage managers	director, investment & securities
+0121	Insurance, real estate and financial brokerage managers	manager, bonds / mutual funds
+0121	Insurance, real estate and financial brokerage managers	manager, branch / brokerage
+0121	Insurance, real estate and financial brokerage managers	manager, commodities trading 
+0121	Insurance, real estate and financial brokerage managers	manager, district real estate sales 
+0121	Insurance, real estate and financial brokerage managers	manager, petroleum research
+0121	Insurance, real estate and financial brokerage managers	managing director
+0121	Insurance, real estate and financial brokerage managers	real estate developer
+0121	Insurance, real estate and financial brokerage managers	realtor
+0121	Insurance, real estate and financial brokerage managers	supervisor, managing - real estate agents
+0122	Banking, credit and other investment managers	area manager, 
+0122	Banking, credit and other investment managers	attaché, commercial
+0122	Banking, credit and other investment managers	co-ordinator, credit area
+0122	Banking, credit and other investment managers	director / manager, bank
+0122	Banking, credit and other investment managers	manager, accounts
+0122	Banking, credit and other investment managers	manager, collection / credit approval
+0122	Banking, credit and other investment managers	manager, corporate accounts
+0122	Banking, credit and other investment managers	manager, senior
+0124	Advertising, marketing and public relations managers	administrator, advertising / publicity
+0124	Advertising, marketing and public relations managers	channel marketing manager
+0124	Advertising, marketing and public relations managers	corporate affairs manager
+0124	Advertising, marketing and public relations managers	director, sales & marketing
+0124	Advertising, marketing and public relations managers	graphic design firm manager
+0124	Advertising, marketing and public relations managers	manager,  fundraising campaign
+0124	Advertising, marketing and public relations managers	manager, web marketing
+0124	Advertising, marketing and public relations managers	marketing executive
+0125	Other business services managers	head, management services division
+0125	Other business services managers	manager, accounting & audit firm
+0125	Other business services managers	manager, call centre
+0125	Other business services managers	manager, conference centre
+0125	Other business services managers	manager, energy asset joint venture
+0125	Other business services managers	manager, land contracts
+0125	Other business services managers	manager, management consulting
+0125	Other business services managers	manager, market research
+0125	Other business services managers	manager, professional services
+0125	Other business services managers	manager, well and facilities
+0125	Other business services managers	mineral land and contract manager
+0125	Other business services managers	surface land administration manager
+0131	Telecommunication carriers managers	chief, telecommunications equipment
+0131	Telecommunication carriers managers	co-ordinator, technical services
+0131	Telecommunication carriers managers	manager, communications 
+0131	Telecommunication carriers managers	manager, installation
+0131	Telecommunication carriers managers	manager, network operations
+0131	Telecommunication carriers managers	manager, plant manager / facilities
+0131	Telecommunication carriers managers	manager, technical services
+0131	Telecommunication carriers managers	manager, traffic (cable, telephone)
+0131	Telecommunication carriers managers	superintendent, telecommunications 
+0131	Telecommunication carriers managers	switching systems director
+0131	Telecommunication carriers managers	telecommunications department manager
+0132	Postal and courier services managers	manager, collection & delivery operations
+0132	Postal and courier services managers	manager, commercial development
+0132	Postal and courier services managers	manager, mail-parcel processing plant
+0132	Postal and courier services managers	manager, postal production control
+0132	Postal and courier services managers	manager, postal service area 
+0211	Engineering managers	chief, engineering delivery
+0211	Engineering managers	director, engineering R&D
+0211	Engineering managers	director, quality assurance / control QA / QC
+0211	Engineering managers	director, safety service
+0211	Engineering managers	head, aerospace engineering service
+0211	Engineering managers	manager engineering, quality assurance
+0211	Engineering managers	manager, civil engineering
+0211	Engineering managers	manager, industrial engineering
+0211	Engineering managers	manager, mechanical engineering
+0211	Engineering managers	manager, telecommunicatons engineering
+0211	Engineering managers	manager, traffic engineering
+0212	Architecture and science managers	chief actuary
+0212	Architecture and science managers	chief, project management
+0212	Architecture and science managers	director, agricultural chemistry
+0212	Architecture and science managers	director, architecture
+0212	Architecture and science managers	director, forestry research
+0212	Architecture and science managers	director, manufacturing research
+0212	Architecture and science managers	director, mining research
+3121	Optometrists	optometrist
+0212	Architecture and science managers	director, scientific research
+0212	Architecture and science managers	director, urban planning
+0212	Architecture and science managers	manager, actuarial / statistical
+0212	Architecture and science managers	manager, chemical research 
+0212	Architecture and science managers	manager, clinical projects
+0212	Architecture and science managers	manager, geochemical / geophysical 
+0212	Architecture and science managers	manager, laboratory
+0212	Architecture and science managers	manager, life sciences
+0212	Architecture and science managers	manager, natural sciences
+0212	Architecture and science managers	manager, quality control - pharmaceutical
+0212	Architecture and science managers	manager, research and development
+0212	Architecture and science managers	manager,petroleum geology department
+0213	Computer and information systems managers	administrator, internet systems
+0213	Computer and information systems managers	computer legacy systems manager
+0213	Computer and information systems managers	co-ordinator, computer department
+0213	Computer and information systems managers	director, information systems
+0213	Computer and information systems managers	head, computer development division
+0213	Computer and information systems managers	help desk manager - information technology (IT)
+0213	Computer and information systems managers	manager, application development
+0213	Computer and information systems managers	manager, communication systems design
+0213	Computer and information systems managers	manager, computer & related services
+0213	Computer and information systems managers	manager, computer networks
+0213	Computer and information systems managers	manager, IT (information technology) 
+0213	Computer and information systems managers	manager, MIS (management info system)
+0213	Computer and information systems managers	manager, software design 
+0213	Computer and information systems managers	manager, software development
+0213	Computer and information systems managers	manager, systems analysis & planning
+0213	Computer and information systems managers	manager, systems development & operations
+0213	Computer and information systems managers	network design manager
+0311	Managers in health care	administrator, nursing services
+0311	Managers in health care	blood bank administrator
+0311	Managers in health care	chief dietitian
+0311	Managers in health care	chief radiology technologist
+0311	Managers in health care	chief, anatomical pathology
+0311	Managers in health care	chief, anesthesia
+0311	Managers in health care	chief, audiology
+0311	Managers in health care	chief, biomedical engineering service
+0311	Managers in health care	chief, cardiology
+0311	Managers in health care	chief, dermatology
+0311	Managers in health care	chief, diagnostic imaging / radiology
+0311	Managers in health care	chief, emergency medicine
+0311	Managers in health care	chief, endocrinology
+0311	Managers in health care	chief, gastro-enterology
+0311	Managers in health care	chief, hematology
+0311	Managers in health care	chief, housing activities
+0311	Managers in health care	chief, infectious diseases
+0311	Managers in health care	chief, laboratory medicine
+0311	Managers in health care	chief, medical staff
+0311	Managers in health care	chief, medicine
+0311	Managers in health care	chief, nephrology
+0311	Managers in health care	chief, neurology
+0311	Managers in health care	chief, obstetrics and gynecology
+0311	Managers in health care	chief, occupational therapy
+0311	Managers in health care	chief, operating area
+0311	Managers in health care	chief, ophthalmology
+0311	Managers in health care	chief, pathology
+0311	Managers in health care	chief, pediatrics
+0311	Managers in health care	chief, pharmacy
+0311	Managers in health care	chief, physiotherapy
+0311	Managers in health care	chief, psychiatry
+0311	Managers in health care	chief, psychology
+0311	Managers in health care	chief, radiation oncology
+0311	Managers in health care	chief, respirology
+0311	Managers in health care	chief, rheumatology
+0311	Managers in health care	chief, staff - hospital
+0311	Managers in health care	chief, surgery
+0311	Managers in health care	chief, urology
+0311	Managers in health care	director, admissions
+0311	Managers in health care	director, audiology
+0311	Managers in health care	director, clinical medicine
+0311	Managers in health care	director, dietetics
+0311	Managers in health care	director, laboratory medicine
+0311	Managers in health care	director, nursing services
+0311	Managers in health care	director, physiotherapy
+0311	Managers in health care	director, professional medical services
+0311	Managers in health care	director, psychology
+0311	Managers in health care	director, Red Cross first aid
+0311	Managers in health care	director, surgery
+0311	Managers in health care	director, therapeutic services
+0311	Managers in health care	manager, clinical services 
+0311	Managers in health care	manager, nursing services
+0311	Managers in health care	manager, podiatric clinic
+0311	Managers in health care	rehabilitation services director
+0311	Managers in health care	supervisor, dental laboratory managing
+0411	Government managers - health and social policy development and program administration	administrative tribunal judge 
+0411	Government managers - health and social policy development and program administration	administrator, income security
+0411	Government managers - health and social policy development and program administration	administrator, social programs
+0411	Government managers - health and social policy development and program administration	administrator, traffic safety
+0411	Government managers - health and social policy development and program administration	administrator, welfare services
+0411	Government managers - health and social policy development and program administration	chief, employment insurance 
+0411	Government managers - health and social policy development and program administration	chief, health information and promotion 
+0411	Government managers - health and social policy development and program administration	chief, immigration appeals and litigation 
+0411	Government managers - health and social policy development and program administration	chief, labour demand analysis 
+0411	Government managers - health and social policy development and program administration	chief, office of health promotion 
+0411	Government managers - health and social policy development and program administration	chief, social development programs 
+0411	Government managers - health and social policy development and program administration	city medical officer of health
+0411	Government managers - health and social policy development and program administration	director, adjustment programs 
+0411	Government managers - health and social policy development and program administration	director, apprenticeship training
+0411	Government managers - health and social policy development and program administration	director, career development 
+0411	Government managers - health and social policy development and program administration	director, community planning
+0411	Government managers - health and social policy development and program administration	director, day-care planning services 
+0411	Government managers - health and social policy development and program administration	director, employment and insurance
+0411	Government managers - health and social policy development and program administration	director, family and children's services
+0411	Government managers - health and social policy development and program administration	director, health insurance
+0411	Government managers - health and social policy development and program administration	director, home care services 
+0411	Government managers - health and social policy development and program administration	director, housekeeping services
+0411	Government managers - health and social policy development and program administration	director, immigration and settlement
+0411	Government managers - health and social policy development and program administration	director, industrial hygiene and health
+0411	Government managers - health and social policy development and program administration	director, occupational training
+0411	Government managers - health and social policy development and program administration	director, professional development
+0411	Government managers - health and social policy development and program administration	director, protection services 
+0411	Government managers - health and social policy development and program administration	director, social services policy
+0411	Government managers - health and social policy development and program administration	director, social surveys
+0411	Government managers - health and social policy development and program administration	director, welfare services 
+0411	Government managers - health and social policy development and program administration	judge, administrative tribunal 
+0411	Government managers - health and social policy development and program administration	manager, child welfare services
+0411	Government managers - health and social policy development and program administration	manager, community rehabilitation
+0411	Government managers - health and social policy development and program administration	manager, food safety programs 
+0411	Government managers - health and social policy development and program administration	manager, health and welfare
+0411	Government managers - health and social policy development and program administration	manager, immigration appeals 
+0411	Government managers - health and social policy development and program administration	manager, rural and Native housing 
+0411	Government managers - health and social policy development and program administration	manager, survey research 
+0411	Government managers - health and social policy development and program administration	municipal officer, public health 
+0411	Government managers - health and social policy development and program administration	regional director, Métis programs
+0411	Government managers - health and social policy development and program administration	regional manager, employment insurance 
+0411	Government managers - health and social policy development and program administration	regional manager, income security
+0412	Government managers - economic analysis, policy development and program administration	business development director
+0412	Government managers - economic analysis, policy development and program administration	chief, grain market analysis
+0412	Government managers - economic analysis, policy development and program administration	chief, revenue programs / tax policy
+0412	Government managers - economic analysis, policy development and program administration	co-ordinator, economic development
+0412	Government managers - economic analysis, policy development and program administration	director,  natural resources policy
+0412	Government managers - economic analysis, policy development and program administration	director, agricultural policy 
+0412	Government managers - economic analysis, policy development and program administration	director, community economic development
+0412	Government managers - economic analysis, policy development and program administration	director, economic and trade analysis
+0412	Government managers - economic analysis, policy development and program administration	director, energy policy
+0412	Government managers - economic analysis, policy development and program administration	director, fishery policy
+0412	Government managers - economic analysis, policy development and program administration	director, forestry policy 
+0412	Government managers - economic analysis, policy development and program administration	director, industrial development
+0412	Government managers - economic analysis, policy development and program administration	director, international trade policy
+0412	Government managers - economic analysis, policy development and program administration	director, labour market analysis 
+0412	Government managers - economic analysis, policy development and program administration	director, market development
+0412	Government managers - economic analysis, policy development and program administration	director, tourism development
+0412	Government managers - economic analysis, policy development and program administration	director, trade liaison 
+0412	Government managers - economic analysis, policy development and program administration	director, transportation policy 
+0412	Government managers - economic analysis, policy development and program administration	economic analysis chief
+0412	Government managers - economic analysis, policy development and program administration	forest resource analysis chief
+0412	Government managers - economic analysis, policy development and program administration	international trade policy manager
+0412	Government managers - economic analysis, policy development and program administration	manager, agriculture / fishery / forestry
+0412	Government managers - economic analysis, policy development and program administration	manager, border services
+0412	Government managers - economic analysis, policy development and program administration	manager, customs
+0412	Government managers - economic analysis, policy development and program administration	manager, export programs 
+0412	Government managers - economic analysis, policy development and program administration	manager, regional economic services 
+0412	Government managers - economic analysis, policy development and program administration	manager, tourism development / research
+0412	Government managers - economic analysis, policy development and program administration	manager, transportation programs 
+0412	Government managers - economic analysis, policy development and program administration	revenue programs manager
+0412	Government managers - economic analysis, policy development and program administration	superintendent, park 
+0413	Government managers - education policy development and program administration	administrator, education
+0413	Government managers - education policy development and program administration	director, curriculum development
+0413	Government managers - education policy development and program administration	director, education - children / adults
+0413	Government managers - education policy development and program administration	director, education - inspection
+0413	Government managers - education policy development and program administration	director, heritage languages
+0413	Government managers - education policy development and program administration	director, policy and planning
+0413	Government managers - education policy development and program administration	director, school services
+0413	Government managers - education policy development and program administration	director, special education
+0413	Government managers - education policy development and program administration	director, university research
+0413	Government managers - education policy development and program administration	manager, corporate policy
+0413	Government managers - education policy development and program administration	manager, program administration
+0413	Government managers - education policy development and program administration	school inspection director
+0413	Government managers - education policy development and program administration	student assistance program director
+0414	Other managers in public administration	chief of protocol
+0414	Other managers in public administration	chief, international relations
+0414	Other managers in public administration	Clerk, Legislative Assembly
+0414	Other managers in public administration	co-ordinator, disaster relief services
+0414	Other managers in public administration	co-ordinator, emergency management
+0414	Other managers in public administration	director, public works
+0414	Other managers in public administration	Elections Canada director
+0414	Other managers in public administration	emergency response services director
+0414	Other managers in public administration	House of Commons administrator
+0414	Other managers in public administration	manager, emergency measures
+0414	Other managers in public administration	Principal Clerk of Legislative Assembly
+0414	Other managers in public administration	Principal Clerk of the House of Commons
+0414	Other managers in public administration	superintendent, public works
+0421	Administrators - post-secondary education and vocational training	administrator, research - post-secondary
+0421	Administrators - post-secondary education and vocational training	business school manager
+0421	Administrators - post-secondary education and vocational training	co-ordinator, pedagogical
+0421	Administrators - post-secondary education and vocational training	co-ordinator, post-secondary education
+0421	Administrators - post-secondary education and vocational training	dean, college / university
+0421	Administrators - post-secondary education and vocational training	director, admissions
+0421	Administrators - post-secondary education and vocational training	director, research
+0421	Administrators - post-secondary education and vocational training	director, student affairs
+0421	Administrators - post-secondary education and vocational training	director, training / vocational institute
+0421	Administrators - post-secondary education and vocational training	language school manager
+0621	Retail and wholesale trade managers	manager, wholesale 
+0421	Administrators - post-secondary education and vocational training	manager, fashion school
+0421	Administrators - post-secondary education and vocational training	manager, flying school
+0421	Administrators - post-secondary education and vocational training	manager, tourism and hotel school
+0421	Administrators - post-secondary education and vocational training	provost, university
+0421	Administrators - post-secondary education and vocational training	vice-president, college or university
+0422	School principals and administrators of elementary and secondary education	administrator, school board
+0422	School principals and administrators of elementary and secondary education	director, education, correctional inst.
+0422	School principals and administrators of elementary and secondary education	director, school for the blind
+0422	School principals and administrators of elementary and secondary education	director, school for the deaf
+0422	School principals and administrators of elementary and secondary education	principal, Aboriginal school
+0422	School principals and administrators of elementary and secondary education	principal, business college
+0422	School principals and administrators of elementary and secondary education	principal, college - secondary level
+0422	School principals and administrators of elementary and secondary education	principal, community school
+0422	School principals and administrators of elementary and secondary education	principal, private primary college
+0422	School principals and administrators of elementary and secondary education	principal, private school
+0422	School principals and administrators of elementary and secondary education	principal, school - elementary / secondary
+0422	School principals and administrators of elementary and secondary education	principal, technical / vocational school
+0422	School principals and administrators of elementary and secondary education	superintendent, chief - schools / region
+0422	School principals and administrators of elementary and secondary education	superintendent, education programs
+0422	School principals and administrators of elementary and secondary education	superintendent, elementary / secondary
+0422	School principals and administrators of elementary and secondary education	superintendent, professional development
+0422	School principals and administrators of elementary and secondary education	superintendent, special education
+0422	School principals and administrators of elementary and secondary education	superintendent, student services
+0423	Managers in social, community and correctional services	administrator, regional correctional
+0423	Managers in social, community and correctional services	chief clerk, legislative assembly
+0423	Managers in social, community and correctional services	chief, social services
+0423	Managers in social, community and correctional services	co-ordinator, major community projects
+0423	Managers in social, community and correctional services	co-ordinator, provincial social services
+0423	Managers in social, community and correctional services	director, association
+0423	Managers in social, community and correctional services	director, correctional institution
+0423	Managers in social, community and correctional services	director, counselling
+0423	Managers in social, community and correctional services	director, environmental group
+0423	Managers in social, community and correctional services	director, guidance services
+0423	Managers in social, community and correctional services	director, housing operations
+0423	Managers in social, community and correctional services	director, international co-op program
+0423	Managers in social, community and correctional services	director, public welfare
+0423	Managers in social, community and correctional services	director, residential rehabilitation
+0423	Managers in social, community and correctional services	director, social services
+0423	Managers in social, community and correctional services	head, social services
+0423	Managers in social, community and correctional services	manager, Aboriginal centre
+0423	Managers in social, community and correctional services	manager, bilateral relations 
+0423	Managers in social, community and correctional services	manager, family services / social services
+0423	Managers in social, community and correctional services	manager, membership services
+0423	Managers in social, community and correctional services	manager, NGO (non-governmental org.)
+0423	Managers in social, community and correctional services	manager, political organization
+0423	Managers in social, community and correctional services	manager, vocational rehabilitation
+0423	Managers in social, community and correctional services	manger, welfare
+0423	Managers in social, community and correctional services	warden, prison
+0431	Commissioned police officers	chief detective / chief inspector
+0431	Commissioned police officers	chief of police / chief superintendent
+0431	Commissioned police officers	commanding officer - police
+0431	Commissioned police officers	detective inspector - police
+0431	Commissioned police officers	detective sergeant - police
+0431	Commissioned police officers	headquarters police inspector
+0431	Commissioned police officers	police captain / chief / lieutenant
+0431	Commissioned police officers	RCMP (Royal Canadian Mounted Police)
+0431	Commissioned police officers	superintendent
+0431	Commissioned police officers	traffic superintendent
+0432	Fire chiefs and senior firefighting officers	duty officer, fire department
+0432	Fire chiefs and senior firefighting officers	executive officer, firefighters executive
+0433	Commissioned officers of the Canadian Armed Forces	admiral / rear admiral / vice admiral
+0433	Commissioned officers of the Canadian Armed Forces	air combat systems officer
+0433	Commissioned officers of the Canadian Armed Forces	armour officer
+0433	Commissioned officers of the Canadian Armed Forces	captain - air force / army / navy 
+0433	Commissioned officers of the Canadian Armed Forces	commander / commodore / colonel
+0433	Commissioned officers of the Canadian Armed Forces	judge, court martial
+0433	Commissioned officers of the Canadian Armed Forces	lieutenant - air force / army / navy 
+0433	Commissioned officers of the Canadian Armed Forces	lieutenant-colonel / lieutenant-commander
+0433	Commissioned officers of the Canadian Armed Forces	major
+0433	Commissioned officers of the Canadian Armed Forces	major general / brigadier general
+0433	Commissioned officers of the Canadian Armed Forces	naval cadet / officer cadet
+0433	Commissioned officers of the Canadian Armed Forces	officer, artillery / infantry / logistics
+0511	Library, archive, museum and art gallery managers	administrative librarian
+0511	Library, archive, museum and art gallery managers	administrator, library
+0511	Library, archive, museum and art gallery managers	chef, library / archives / curator
+0511	Library, archive, museum and art gallery managers	curator, director, museum
+0511	Library, archive, museum and art gallery managers	director, conservation
+0511	Library, archive, museum and art gallery managers	director, historic park
+0511	Library, archive, museum and art gallery managers	exective director
+0511	Library, archive, museum and art gallery managers	head archivist / cataloguing
+0511	Library, archive, museum and art gallery managers	manager, archival document
+0512	Managers - publishing, motion pictures, broadcasting and performing arts	administrator, studio & broadcasting
+0512	Managers - publishing, motion pictures, broadcasting and performing arts	bureau chief - news agency
+0512	Managers - publishing, motion pictures, broadcasting and performing arts	director, ballet / opera / theatre
+0512	Managers - publishing, motion pictures, broadcasting and performing arts	director, programming - TV / radio
+0512	Managers - publishing, motion pictures, broadcasting and performing arts	editor, managing - newspaper / periodical
+0512	Managers - publishing, motion pictures, broadcasting and performing arts	editorial chief
+0512	Managers - publishing, motion pictures, broadcasting and performing arts	editor-in-chief
+0512	Managers - publishing, motion pictures, broadcasting and performing arts	executive producer - video games
+0512	Managers - publishing, motion pictures, broadcasting and performing arts	executive producer - visual effects
+0512	Managers - publishing, motion pictures, broadcasting and performing arts	manager, broadcasting / news
+0512	Managers - publishing, motion pictures, broadcasting and performing arts	manager, copyright / permissions 
+0512	Managers - publishing, motion pictures, broadcasting and performing arts	manager, operations
+0513	Recreation, sports and fitness program and service directors	bingo hall manager
+0513	Recreation, sports and fitness program and service directors	casino operations manager
+0513	Recreation, sports and fitness program and service directors	cruise ship director
+0513	Recreation, sports and fitness program and service directors	director, entertainment, sports, leisure
+0513	Recreation, sports and fitness program and service directors	director, executive - sport governing body
+0513	Recreation, sports and fitness program and service directors	director, physical education
+0513	Recreation, sports and fitness program and service directors	director, sport federation
+0513	Recreation, sports and fitness program and service directors	manager, 
+0513	Recreation, sports and fitness program and service directors	manager, professional team / amateur sport
+0601	Corporate sales managers	administrator, sales
+0601	Corporate sales managers	channel sales manager
+0601	Corporate sales managers	director, regional sales
+0601	Corporate sales managers	manager, commercial accounts
+0601	Corporate sales managers	manager, district
+0601	Corporate sales managers	manager, e-commerce sales
+0601	Corporate sales managers	manager, regional - sales
+0601	Corporate sales managers	manager, sales - divisional / e-commerce 
+0621	Retail and wholesale trade managers	bird seller
+0621	Retail and wholesale trade managers	dealer, cattle / livestock
+0621	Retail and wholesale trade managers	dealer, computer products
+0621	Retail and wholesale trade managers	dealer, metal / salvage / scrap metal
+0621	Retail and wholesale trade managers	dealer, pleasure boat
+0621	Retail and wholesale trade managers	dealer, tire
+0621	Retail and wholesale trade managers	front end manager - retail
+0621	Retail and wholesale trade managers	grocer
+0621	Retail and wholesale trade managers	manager, art gallery 
+0621	Retail and wholesale trade managers	manager, auto dealership
+0621	Retail and wholesale trade managers	manager, auto repair shop
+0621	Retail and wholesale trade managers	manager, bookstore 
+0621	Retail and wholesale trade managers	manager, clothing store / shoe store 
+0621	Retail and wholesale trade managers	manager, convenience store
+0621	Retail and wholesale trade managers	manager, customer service
+0621	Retail and wholesale trade managers	manager, electronics 
+0621	Retail and wholesale trade managers	manager, flower shop / garden centre
+0621	Retail and wholesale trade managers	manager, food store 
+0621	Retail and wholesale trade managers	manager, office supplies store
+0621	Retail and wholesale trade managers	manager, pharmacy 
+0621	Retail and wholesale trade managers	manager, photographic store / studio
+0621	Retail and wholesale trade managers	manager, store 
+0621	Retail and wholesale trade managers	manager, store - beer / liquor / wine
+0621	Retail and wholesale trade managers	managing supervisor - customer service
+0621	Retail and wholesale trade managers	numismatist
+0621	Retail and wholesale trade managers	operator, parking lot / parking garage
+0621	Retail and wholesale trade managers	pawnbroker
+0621	Retail and wholesale trade managers	philatelist
+0621	Retail and wholesale trade managers	retailer
+0621	Retail and wholesale trade managers	ship chandler
+0621	Retail and wholesale trade managers	wholesaler
+0631	Restaurant and food service managers	manager, banquet / bar / cafeteria 
+0631	Restaurant and food service managers	manager, services - catering
+0631	Restaurant and food service managers	restaurateur - food services
+0632	Accommodation service managers	innkeeper / country inn operator
+0632	Accommodation service managers	keeper, rooming house / boarding house
+0632	Accommodation service managers	manager, boading house / lodging house
+0632	Accommodation service managers	nursing home manager
+0632	Accommodation service managers	operator, B&B / hotel
+0632	Accommodation service managers	operator, camp / campground
+0632	Accommodation service managers	retirement home manager
+0651	Managers in customer and personal services, n.e.c.	director, spa
+0651	Managers in customer and personal services, n.e.c.	manager, art school / craft school
+0651	Managers in customer and personal services, n.e.c.	manager, boarding kennel / pet-grooming
+0651	Managers in customer and personal services, n.e.c.	manager, cold-storage
+0651	Managers in customer and personal services, n.e.c.	manager, spa / tanning salon
+0651	Managers in customer and personal services, n.e.c.	manager, swimming pool maintenance
+0651	Managers in customer and personal services, n.e.c.	manager, window washing 
+0651	Managers in customer and personal services, n.e.c.	operator, tour
+0711	Construction managers	co-ordinator, project - construction
+0711	Construction managers	director, branch - building materials
+0711	Construction managers	expediter, construction
+0711	Construction managers	manager, construction
+0711	Construction managers	manager, construction operations
+0711	Construction managers	manager, site - construction
+0711	Construction managers	residential construction site manager
+0712	Home building and renovation managers	builder - renovation / residential
+0712	Home building and renovation managers	building contractor / renovator 
+0712	Home building and renovation managers	residential contractor / renovator
+0714	Facility operation and maintenance managers	co-ordinator, maintenance
+0714	Facility operation and maintenance managers	harbour master
+0714	Facility operation and maintenance managers	head, building maintenance
+0714	Facility operation and maintenance managers	manager, cemetery
+0714	Facility operation and maintenance managers	manager, conference / convention centre
+0714	Facility operation and maintenance managers	manager, grain terminal elevator
+0714	Facility operation and maintenance managers	manager, property
+0714	Facility operation and maintenance managers	operator, marina
+0714	Facility operation and maintenance managers	planner, maintenance
+0714	Facility operation and maintenance managers	superintendent
+0731	Managers in transportation	captain, port / shore - water transport
+0731	Managers in transportation	corporate transportation
+0731	Managers in transportation	cruise ship line manager
+0731	Managers in transportation	freight forwarder
+0731	Managers in transportation	manager, cartage / freight / moving
+0731	Managers in transportation	manager, corporate traffic 
+0731	Managers in transportation	manager, distribution / warehousing 
+0731	Managers in transportation	manager, ferry operations
+0731	Managers in transportation	manager, marine transportation operations
+0731	Managers in transportation	manager, railway / passenger operations
+0731	Managers in transportation	manager, shipping and warehousing
+0731	Managers in transportation	tow truck company manager
+0811	Managers in natural resources production and fishing	director, mining operations
+0811	Managers in natural resources production and fishing	manager, mining operations / quarry
+0811	Managers in natural resources production and fishing	manager, oil and gas fields production
+0811	Managers in natural resources production and fishing	shore captain - fishing
+0821	Managers in agriculture	apiarist / apiculturist / beekeeper
+0821	Managers in agriculture	beef / egg / poultry
+0821	Managers in agriculture	breeder, animal - domestic / livestock
+0821	Managers in agriculture	cereal / oilseed / grain / wheat
+0821	Managers in agriculture	farm / hatchery / kennel
+0821	Managers in agriculture	farmer (except nursery and fish farm)
+0821	Managers in agriculture	farmer, animals / crops
+0821	Managers in agriculture	fruit / grape
+0821	Managers in agriculture	fruit farm / grain farm
+0821	Managers in agriculture	gardener, market
+0821	Managers in agriculture	grower, fruit / vegetable / organic
+0821	Managers in agriculture	maple syrup
+0821	Managers in agriculture	rancher, cattle
+0821	Managers in agriculture	viticulturist
+0822	Managers in horticulture	Christmas tree farm
+0822	Managers in horticulture	grower, hothouse / hydroponics / nursery 
+0823	Managers in aquaculture	farmer, fish / shellfish
+0823	Managers in aquaculture	manager, aquaculture / fish farm
+0911	Manufacturing managers	brewmaster
+0911	Manufacturing managers	chief, production
+0911	Manufacturing managers	director, operations - manufacturing
+0911	Manufacturing managers	enologist / oenologist
+0911	Manufacturing managers	head, production
+0911	Manufacturing managers	manager, automobile production
+0911	Manufacturing managers	manager, business - manufacturing
+0911	Manufacturing managers	manager, clothing factory
+0911	Manufacturing managers	manager, food and beverage production
+0911	Manufacturing managers	manager, foundry / metalworks fabrication
+0911	Manufacturing managers	manager, furniture factory
+0911	Manufacturing managers	manager, logistics - manufacturing
+0911	Manufacturing managers	manager, operations - public utilities
+0911	Manufacturing managers	manager, production - auto / railway cars
+0911	Manufacturing managers	manager, production planning / operations
+0911	Manufacturing managers	manager, winery
+0911	Manufacturing managers	planner, production
+0912	Utilities managers	director, distribution - gas / petroleum
+0912	Utilities managers	director, plant - sewage treatment
+0912	Utilities managers	director, transmission operations
+0912	Utilities managers	director, waste management
+0912	Utilities managers	manager, compost facility / landfill
+0912	Utilities managers	manager, distribution - gas / hydro
+0912	Utilities managers	manager, irrigation district
+0912	Utilities managers	manager, nuclear waste
+0912	Utilities managers	manager, operations - pipelines
+0912	Utilities managers	manager, plant - electrical station
+0912	Utilities managers	manager, plant - solid waste processing
+0912	Utilities managers	manager, power plant
+0912	Utilities managers	superintendent, waterworks
+1111	Financial auditors and accountants	accountant, bank branch
+1111	Financial auditors and accountants	accountant, plant / production
+1111	Financial auditors and accountants	accountant, property / public / tax
+1111	Financial auditors and accountants	accountant-controller
+1111	Financial auditors and accountants	analyst, reinsurance / senior accounting
+1111	Financial auditors and accountants	auditor, bank reserves / computer audit
+1111	Financial auditors and accountants	auditor, internal - finances
+1111	Financial auditors and accountants	CPA (chartered professional accountant), CGA (certified general accountant)
+1111	Financial auditors and accountants	chartered professional accountant, certified management accountant (CPA, CMA)
+1111	Financial auditors and accountants	chartered professional accountant, chartered accountant (CPA, CA)
+1111	Financial auditors and accountants	chief accountant
+1111	Financial auditors and accountants	controller, accounting / division / plant
+1111	Financial auditors and accountants	CPA (chartered professional accountant)
+1111	Financial auditors and accountants	professional accountant
+1111	Financial auditors and accountants	senior accounting analyst
+1111	Financial auditors and accountants	tax accountant
+1111	Financial auditors and accountants	tax adjuster / adviser / investigator 
+1111	Financial auditors and accountants	tax specialist
+1111	Financial auditors and accountants	trustee, bankruptcy
+1112	Financial and investment analysts	adviser, corporate investment
+1112	Financial and investment analysts	analyst, financial
+1112	Financial and investment analysts	analyst, investment / planning / regional 
+1112	Financial and investment analysts	bond analyst
+1112	Financial and investment analysts	consultant, financial analysis
+1112	Financial and investment analysts	manager, portfolio
+1112	Financial and investment analysts	mutual fund analyst
+1112	Financial and investment analysts	senior investment
+1113	Securities agents, investment dealers and brokers	annuity representative - investments
+1113	Securities agents, investment dealers and brokers	arbitrager
+1113	Securities agents, investment dealers and brokers	broker, commodity - grain, energy
+1113	Securities agents, investment dealers and brokers	broker, financial
+1113	Securities agents, investment dealers and brokers	dealer, bonds / stocks / foreign exchange
+1113	Securities agents, investment dealers and brokers	representative, investment / securities
+1113	Securities agents, investment dealers and brokers	sales agent, mutual funds / securities
+1113	Securities agents, investment dealers and brokers	stockbroker
+1113	Securities agents, investment dealers and brokers	trader, commodity / stock exchange
+1113	Securities agents, investment dealers and brokers	trader, investments
+1114	Other financial officers	adjudicator, credit
+1114	Other financial officers	administrator, international banking
+1114	Other financial officers	adviser, investment - personal finances
+1114	Other financial officers	broker, mortgage broker
+1114	Other financial officers	consultant, financial services
+1114	Other financial officers	controller, estimates and programs
+1114	Other financial officers	counsellor, investment / securities
+1114	Other financial officers	examiner, bank and credit union
+1114	Other financial officers	financial management
+1114	Other financial officers	foreign interbanking
+1114	Other financial officers	inspector, bank / credit agency 
+1114	Other financial officers	investigator, financial
+1114	Other financial officers	manager, account / lending solutions
+1114	Other financial officers	planner, financial - personal finances
+1114	Other financial officers	securities analyst - personal finances
+1121	Human resources professionals	administrator, staff relations
+1121	Human resources professionals	adviser, human resources
+1121	Human resources professionals	agent, bargaining
+1121	Human resources professionals	agent, business - labour union
+1121	Human resources professionals	analyst, human resources policy
+1121	Human resources professionals	analyst-researcher, compensation
+1121	Human resources professionals	case manager, disability
+1121	Human resources professionals	certified disability management pro.
+1121	Human resources professionals	chief, compensation & HR information
+1121	Human resources professionals	consultant, benefits / compensation
+1121	Human resources professionals	consultant, industrial relations
+1121	Human resources professionals	consultant, training and development
+1121	Human resources professionals	HR professional
+1121	Human resources professionals	manager - compensation and benefits claims
+1121	Human resources professionals	mediator-concilliator, labour relations
+1121	Human resources professionals	officer, employment standards & practices
+1121	Human resources professionals	officer, human resources
+1121	Human resources professionals	officer, industrial relations
+1121	Human resources professionals	officer, returning - labour relations
+1121	Human resources professionals	organizer, labour / union
+1121	Human resources professionals	representative, labour / union
+1121	Human resources professionals	specialist, human resources
+1122	Professional occupations in business management consulting	analyst, price management / supply chain
+1122	Professional occupations in business management consulting	certified management consultant
+1122	Professional occupations in business management consulting	consultant, work reorganization
+1122	Professional occupations in business management consulting	industrial standards quality auditor
+1122	Professional occupations in business management consulting	ISO consultant
+1122	Professional occupations in business management consulting	manager, file / records / point of sale
+1122	Professional occupations in business management consulting	planner, corporate
+1122	Professional occupations in business management consulting	regulatory affairs analyst
+1122	Professional occupations in business management consulting	regulatory affairs associate
+1122	Professional occupations in business management consulting	regulatory affairs officer
+1122	Professional occupations in business management consulting	regulatory affairs specialist
+1122	Professional occupations in business management consulting	regulatory compliance officer
+1122	Professional occupations in business management consulting	regulatory compliance specialist
+1122	Professional occupations in business management consulting	supervisor, records systems
+1123	Professional occupations in advertising, marketing and public relations	administrator, affiliated stations
+1123	Professional occupations in advertising, marketing and public relations	advertising consultant / e-media
+1123	Professional occupations in advertising, marketing and public relations	agent, arts / sports / authors
+1123	Professional occupations in advertising, marketing and public relations	art educator - museum
+1123	Professional occupations in advertising, marketing and public relations	communications consultant
+1123	Professional occupations in advertising, marketing and public relations	development officer - university
+1123	Professional occupations in advertising, marketing and public relations	event marketing specialist
+1123	Professional occupations in advertising, marketing and public relations	fundraiser
+1123	Professional occupations in advertising, marketing and public relations	information consultant
+1123	Professional occupations in advertising, marketing and public relations	media relations co-ordinator
+1123	Professional occupations in advertising, marketing and public relations	officer, community information
+1123	Professional occupations in advertising, marketing and public relations	officer, museum education 
+1123	Professional occupations in advertising, marketing and public relations	officer, tourism information
+1123	Professional occupations in advertising, marketing and public relations	product manager - marketing
+1123	Professional occupations in advertising, marketing and public relations	promoter, boxing
+1123	Professional occupations in advertising, marketing and public relations	promotion strategies consultant
+1123	Professional occupations in advertising, marketing and public relations	public relations agent
+1123	Professional occupations in advertising, marketing and public relations	publicist / publicity agent
+1123	Professional occupations in advertising, marketing and public relations	social media community manager
+1123	Professional occupations in advertising, marketing and public relations	spokesperson
+1123	Professional occupations in advertising, marketing and public relations	student recruiter - post-secondary education
+1211	Supervisors, general office and administrative support workers	administrative services
+1211	Supervisors, general office and administrative support workers	clerical
+1211	Supervisors, general office and administrative support workers	desktop publishing
+1211	Supervisors, general office and administrative support workers	operations
+1211	Supervisors, general office and administrative support workers	telephone system / switchboard
+1212	Supervisors, finance and insurance office workers	accounting
+1212	Supervisors, finance and insurance office workers	assessment / claims adjusters
+1212	Supervisors, finance and insurance office workers	billing co-ordinator / supervisor 
+1212	Supervisors, finance and insurance office workers	cash receipts / sales records
+1212	Supervisors, finance and insurance office workers	credit / collection 
+1212	Supervisors, finance and insurance office workers	group leader, credit service
+1212	Supervisors, finance and insurance office workers	pay and benefits / payroll
+1212	Supervisors, finance and insurance office workers	tabulation / tabulators
+1212	Supervisors, finance and insurance office workers	tollgate
+1213	Supervisors, library, correspondence and related information workers	commissioner, census 
+1213	Supervisors, library, correspondence and related information workers	manager, census area / district / regional
+1213	Supervisors, library, correspondence and related information workers	supervisor, legal services
+1214	Supervisors, mail and message distribution occupations	postmaster / postmistress
+1214	Supervisors, mail and message distribution occupations	supervisor, courier service / messengers
+1214	Supervisors, mail and message distribution occupations	supervisor, mail room / postal station
+1215	Supervisors, supply chain, tracking and scheduling co-ordination occupations	clerks - production planning
+1215	Supervisors, supply chain, tracking and scheduling co-ordination occupations	clerks - scheduling
+1215	Supervisors, supply chain, tracking and scheduling co-ordination occupations	co-ordinator, purchasing & inventory
+1215	Supervisors, supply chain, tracking and scheduling co-ordination occupations	cross dock
+1215	Supervisors, supply chain, tracking and scheduling co-ordination occupations	dispatcher, head
+1215	Supervisors, supply chain, tracking and scheduling co-ordination occupations	export / import traffic
+1215	Supervisors, supply chain, tracking and scheduling co-ordination occupations	foreperson, warehouse
+1215	Supervisors, supply chain, tracking and scheduling co-ordination occupations	guide-operator
+1215	Supervisors, supply chain, tracking and scheduling co-ordination occupations	inventory / purchasing
+1215	Supervisors, supply chain, tracking and scheduling co-ordination occupations	logistical supervisor
+1215	Supervisors, supply chain, tracking and scheduling co-ordination occupations	logistician, dispatch / transport
+1215	Supervisors, supply chain, tracking and scheduling co-ordination occupations	manager, parts shipping
+1215	Supervisors, supply chain, tracking and scheduling co-ordination occupations	manufacturing job order clerks
+1215	Supervisors, supply chain, tracking and scheduling co-ordination occupations	officer, 911 emergency centre operations
+1215	Supervisors, supply chain, tracking and scheduling co-ordination occupations	shipper, head
+1215	Supervisors, supply chain, tracking and scheduling co-ordination occupations	supply chain
+1215	Supervisors, supply chain, tracking and scheduling co-ordination occupations	technician, distribution logistics
+1215	Supervisors, supply chain, tracking and scheduling co-ordination occupations	tool crib / tool keepers
+1215	Supervisors, supply chain, tracking and scheduling co-ordination occupations	transport route scheduling
+1215	Supervisors, supply chain, tracking and scheduling co-ordination occupations	transportation logistics co-ordinator
+1215	Supervisors, supply chain, tracking and scheduling co-ordination occupations	warehouse distribution
+1221	Administrative officers	administrator, band / reserve
+1221	Administrative officers	administrator, office / office automation
+1221	Administrative officers	analyst, administrative / budget
+1221	Administrative officers	analyst, records - access to information
+1221	Administrative officers	assistant, technical - office support
+1221	Administrative officers	chief, regional services
+1221	Administrative officers	commissioner, relocation
+1221	Administrative officers	co-ordinator, administrative services 
+1221	Administrative officers	co-ordinator, communications service
+1221	Administrative officers	co-ordinator, financial assistance
+1221	Administrative officers	co-ordinator, immigrant investors program
+1221	Administrative officers	co-ordinator, office
+1221	Administrative officers	co-ordinator, parking 
+1221	Administrative officers	invigilator, chief - exam invigilator
+1221	Administrative officers	manager, non-technical project
+1221	Administrative officers	manager, office
+1221	Administrative officers	manager, organization and productivity
+1221	Administrative officers	officer, administrative services / support
+1221	Administrative officers	officer, admissions
+1221	Administrative officers	officer, business services
+1221	Administrative officers	officer, claims
+1221	Administrative officers	officer, Crown assets distribution
+1221	Administrative officers	officer, freedom of information / privacy
+1221	Administrative officers	officer, implementation
+1221	Administrative officers	officer, liaison
+1221	Administrative officers	officer, management planning
+1221	Administrative officers	officer, ombudsman
+1221	Administrative officers	officer, operations / project admin.
+1221	Administrative officers	officer, organization and productivity
+1221	Administrative officers	officer, student aid / financial asst'nce
+1221	Administrative officers	officer, surplus assets
+1221	Administrative officers	planner, preliminary press
+1221	Administrative officers	planner, prepress
+1221	Administrative officers	representative, business 
+1221	Administrative officers	supervisor, lease administration
+1221	Administrative officers	supervisor, testing
+1221	Administrative officers	technician, administrative
+1221	Administrative officers	trustee, public 
+1222	Executive assistants	committee clerk
+1222	Executive assistants	constituency aid / assistant
+1222	Executive assistants	corporate secretary
+1222	Executive assistants	executive assistant
+1222	Executive assistants	legislative assistant
+1222	Executive assistants	medical information assistant
+1222	Executive assistants	ministerial assistant
+1222	Executive assistants	parliamentary assistant
+1222	Executive assistants	parliamentary committee clerk
+1222	Executive assistants	special assistant
+1223	Human resources and recruitment officers	employment interviewer
+1223	Human resources and recruitment officers	employment supervisor
+1223	Human resources and recruitment officers	executive recruiter
+1223	Human resources and recruitment officers	head-hunter
+1223	Human resources and recruitment officers	human resources officer
+1223	Human resources and recruitment officers	labour force consultant
+1223	Human resources and recruitment officers	personnel administrator
+1223	Human resources and recruitment officers	placement officer
+1223	Human resources and recruitment officers	recruitment consultant
+1223	Human resources and recruitment officers	staffing adviser / analyst
+1224	Property administrators	administrator, property
+1224	Property administrators	agent, property - commercial building
+1224	Property administrators	chief, property management
+1224	Property administrators	co-ordinator, property leasing / rental
+1224	Property administrators	landlady / landlord
+1224	Property administrators	manager, area - property acquisitions
+1224	Property administrators	manager, housing project
+1224	Property administrators	manager, property - residential / strata
+1224	Property administrators	officer, leasing and development
+1224	Property administrators	officer, property management
+1224	Property administrators	rental property manager
+1224	Property administrators	supervisor, building management
+1225	Purchasing agents and officers	administrator, purchasing contracts
+1225	Purchasing agents and officers	agent, land / right-of-way
+1225	Purchasing agents and officers	agent, purchasing - hotel / restaurant
+1225	Purchasing agents and officers	analyst, energy asset surface land
+1225	Purchasing agents and officers	business services purchasing officer
+1225	Purchasing agents and officers	buyer, grain / ore / pulpwood
+1225	Purchasing agents and officers	buyer, manufacturing and processing
+1225	Purchasing agents and officers	buyer, purchasing
+1225	Purchasing agents and officers	co-ordinator, materials
+1225	Purchasing agents and officers	examiner, contract claims
+1225	Purchasing agents and officers	landman / landwoman - oil and gas
+1225	Purchasing agents and officers	negotiator, land
+1225	Purchasing agents and officers	negotiator, service contracts
+1225	Purchasing agents and officers	officer, government supply
+1225	Purchasing agents and officers	officer, material purchasing
+1225	Purchasing agents and officers	officer, procurement
+1225	Purchasing agents and officers	officer, purchasing - contracts
+1225	Purchasing agents and officers	officer, stewardship
+1225	Purchasing agents and officers	representative, energy asset joint venture
+1225	Purchasing agents and officers	specialist, supply chain - procurement
+1226	Conference and event planners	officer, convention planning services
+1226	Conference and event planners	organizer, festival / trade show
+1226	Conference and event planners	planner, special event / meetings
+1227	Court officers and justices of the peace	administrator, family court / judicial
+1227	Court officers and justices of the peace	clerk of the Crown - courts
+1227	Court officers and justices of the peace	clerk, court / probate
+1227	Court officers and justices of the peace	commissioner, affidavits / marriages
+1227	Court officers and justices of the peace	commissioner, marriages
+1227	Court officers and justices of the peace	co-ordinator, court services / trial
+1227	Court officers and justices of the peace	deeds, recorder
+1227	Court officers and justices of the peace	judge, citizenship
+1227	Court officers and justices of the peace	justice of the peace
+1227	Court officers and justices of the peace	prothonotary
+1227	Court officers and justices of the peace	recorder, deeds / wills
+1227	Court officers and justices of the peace	registrar, bankruptcy / deeds / land
+1227	Court officers and justices of the peace	registrar, court / court of appeal
+1227	Court officers and justices of the peace	registrar, district court / family court 
+1227	Court officers and justices of the peace	registrar, probate / wills
+1227	Court officers and justices of the peace	registrar, Queen's Bench / Supreme Court
+1227	Court officers and justices of the peace	registrar, small claims court 
+1227	Court officers and justices of the peace	supervisor, court clerk 
+1228	Employment insurance, immigration, border services and revenue officers	adjudicator, claims
+1228	Employment insurance, immigration, border services and revenue officers	agent, collection
+1228	Employment insurance, immigration, border services and revenue officers	appeal judge
+1228	Employment insurance, immigration, border services and revenue officers	auditor, tax office
+1228	Employment insurance, immigration, border services and revenue officers	benefits officer - government services
+1228	Employment insurance, immigration, border services and revenue officers	business expertise advisor - government services
+1228	Employment insurance, immigration, border services and revenue officers	business expertise consultant - government services
+1228	Employment insurance, immigration, border services and revenue officers	citizen services officer (CSO) - government services
+1228	Employment insurance, immigration, border services and revenue officers	collector, customs / excise / city tax
+1228	Employment insurance, immigration, border services and revenue officers	examiner, citizenship / immigration
+1228	Employment insurance, immigration, border services and revenue officers	examiner, customs & excise
+1228	Employment insurance, immigration, border services and revenue officers	integrity services investigator - government services
+1228	Employment insurance, immigration, border services and revenue officers	integrity services investigator - Service Canada
+1228	Employment insurance, immigration, border services and revenue officers	integrity services officer - government services
+1228	Employment insurance, immigration, border services and revenue officers	investigator, tax / benefit claims
+1228	Employment insurance, immigration, border services and revenue officers	officer, claims adjudication
+1228	Employment insurance, immigration, border services and revenue officers	officer, customs / excise duty
+1228	Employment insurance, immigration, border services and revenue officers	officer, immigraton case review / appeals
+1228	Employment insurance, immigration, border services and revenue officers	officer, tax / tax appeal / collection
+1228	Employment insurance, immigration, border services and revenue officers	payment service officer - government services
+1228	Employment insurance, immigration, border services and revenue officers	tax auditors team leader
+1241	Administrative assistants	administrative assistant
+1241	Administrative assistants	secretary (except legal and medical)
+1241	Administrative assistants	secretary, appointment / recording
+1241	Administrative assistants	secretary, contracts / finance
+1241	Administrative assistants	secretary, executive (not legal / medical)
+1241	Administrative assistants	secretary, human resources
+1241	Administrative assistants	secretary, personal / private
+1241	Administrative assistants	secretary-clerk
+1242	Legal administrative assistants	administrative assistant,  real estate
+1242	Legal administrative assistants	assistant, commercial law / corporate law
+1242	Legal administrative assistants	assistant, corporate finance / tax
+1242	Legal administrative assistants	assistant, criminal law
+1242	Legal administrative assistants	assistant, family law / wills & estates
+1242	Legal administrative assistants	assistant, foreclosures / insurance
+1242	Legal administrative assistants	assistant, labour law / litigation
+1242	Legal administrative assistants	assistant, oil and gas rights
+1242	Legal administrative assistants	assistant, trademarks
+1242	Legal administrative assistants	secretary, legal
+1242	Legal administrative assistants	stenographer, legal
+1243	Medical administrative assistants	case load planner - home health care services
+1243	Medical administrative assistants	secretary, medical
+1243	Medical administrative assistants	stenographer, medical
+1251	Court reporters, medical transcriptionists and related occupations	closed captioner
+1251	Court reporters, medical transcriptionists and related occupations	court monitor / recorder / reporter
+1251	Court reporters, medical transcriptionists and related occupations	dictatypist
+1251	Court reporters, medical transcriptionists and related occupations	operator, stenotype
+1251	Court reporters, medical transcriptionists and related occupations	reporter, Hansard
+1251	Court reporters, medical transcriptionists and related occupations	transcriber braille
+1252	Health information management occupations	cancer registrar
+1252	Health information management occupations	health information management coder
+1252	Health information management occupations	health records classifier
+1252	Health information management occupations	medical archivist
+1252	Health information management occupations	medical records technician / supervisor
+1252	Health information management occupations	transcriber / transcriptionist - medical
+1252	Health information management occupations	tumour registrar
+1253	Records management technicians	classifier, fingerprint / records
+1253	Records management technicians	microfilm mounter / records searcher
+1253	Records management technicians	technical indexer
+1253	Records management technicians	technician, information management
+1253	Records management technicians	technician, records / digitizing 
+1254	Statistical officers and related research support occupations	assistant, research (not post-secondary)
+1254	Statistical officers and related research support occupations	officer, research support
+1254	Statistical officers and related research support occupations	officer, statistics
+1254	Statistical officers and related research support occupations	officer, technical services - statistics
+1254	Statistical officers and related research support occupations	technician, statistics
+1311	Accounting technicians and bookkeepers	bookkeeper, accounting
+1311	Accounting technicians and bookkeepers	clerk, bookkeeping
+1311	Accounting technicians and bookkeepers	officer, budget
+1311	Accounting technicians and bookkeepers	officer, finance
+1311	Accounting technicians and bookkeepers	technician, accounting
+1312	Insurance adjusters and claims examiners	adjuster, disability / workers' comp.
+1312	Insurance adjusters and claims examiners	adjuster, disaster relief / fire
+1312	Insurance adjusters and claims examiners	adjuster, freight / liability / public
+1312	Insurance adjusters and claims examiners	adjuster, marine / auto / railroad 
+1312	Insurance adjusters and claims examiners	adjustor
+1312	Insurance adjusters and claims examiners	assessor, medical claims - insurance
+1312	Insurance adjusters and claims examiners	associate, settlement management
+1312	Insurance adjusters and claims examiners	claims adjuster / examiner 
+1312	Insurance adjusters and claims examiners	examiner, group life / health & dental
+1312	Insurance adjusters and claims examiners	specialist, settlement
+1313	Insurance underwriters	analyst, insurance rating
+1313	Insurance underwriters	underwriter, accident / life / group
+1313	Insurance underwriters	underwriter, auto / boiler & machinery
+1313	Insurance underwriters	underwriter, commercial / farm
+1313	Insurance underwriters	underwriter, head office
+1313	Insurance underwriters	underwriter, home office / personal lines
+1313	Insurance underwriters	underwriter, liability / public liability 
+1313	Insurance underwriters	underwriter, marine / aircraft / property
+1314	Assessors, valuators and appraisers	analyst, real estate
+1314	Assessors, valuators and appraisers	appraiser - accredited / insurance
+1314	Assessors, valuators and appraisers	appraiser - automobile / fishing vessels
+1314	Assessors, valuators and appraisers	appraiser - building / real estate
+1314	Assessors, valuators and appraisers	appraiser - business
+1314	Assessors, valuators and appraisers	appraiser - furniture / property
+1314	Assessors, valuators and appraisers	assessor - municipal / property
+1314	Assessors, valuators and appraisers	CBV (Chartered Business Valuator)
+1314	Assessors, valuators and appraisers	consultant, valuation
+1314	Assessors, valuators and appraisers	CRA (Canadian residential appraiser)
+1314	Assessors, valuators and appraisers	officer, business valuation
+1314	Assessors, valuators and appraisers	technician, appraisal
+1314	Assessors, valuators and appraisers	valuator, business / property
+1314	Assessors, valuators and appraisers	valuator-appraiser
+1315	Customs, ship and other brokers	agent, customs clearance
+1315	Customs, ship and other brokers	agent, ship / ship line
+1315	Customs, ship and other brokers	broker, customs / customs house
+1315	Customs, ship and other brokers	broker, royalty
+1315	Customs, ship and other brokers	consultant, customs
+1315	Customs, ship and other brokers	customs rater
+1315	Customs, ship and other brokers	shipbroker, chartered / designated
+1315	Customs, ship and other brokers	specialist, supply chain (customs)
+1411	General office support workers	bill sorter
+1411	General office support workers	clerk, address forms
+1411	General office support workers	clerk, administrative / general office
+1411	General office support workers	clerk, auction / mail order
+1411	General office support workers	clerk, broadcast
+1411	General office support workers	clerk, credit card authorization
+1411	General office support workers	clerk, file / filing / classification
+1411	General office support workers	clerk, float 
+1411	General office support workers	clerk, map
+1411	General office support workers	clerk, municipal office
+1411	General office support workers	clerk, plate filing
+1411	General office support workers	clerk, police station
+1411	General office support workers	clerk, relief
+1411	General office support workers	clerk, road maintenance
+1411	General office support workers	clerk, subscription
+1411	General office support workers	clerk, unit
+1411	General office support workers	clerk, utilities
+1411	General office support workers	clerk, warranty
+1411	General office support workers	clerk-stenographer
+1411	General office support workers	co-ordinator, course
+1411	General office support workers	CPIC operator
+1411	General office support workers	criminal records clerk
+1411	General office support workers	filer, card / mail order
+1411	General office support workers	general office
+1411	General office support workers	marker, board - grain quotations
+1411	General office support workers	office assistant / clerk
+1411	General office support workers	personnel scheduling clerk
+1411	General office support workers	program and service delivery clerk - government services
+1411	General office support workers	ticket preparer - manufacturing
+1411	General office support workers	transcriber, orders
+1411	General office support workers	typist
+1414	Receptionists	answering service / switchboard
+1414	Receptionists	assistant, medical office
+1414	Receptionists	beauty salon receptionist
+1414	Receptionists	booking clerk - hospital
+1414	Receptionists	booking clerk - medical office
+1414	Receptionists	clerk, appointment / information desk
+1414	Receptionists	clerk, front desk (except hotel)
+1414	Receptionists	clerk, mail and message distribution
+1414	Receptionists	clerk, office reception
+1414	Receptionists	clerk, telephone
+1414	Receptionists	guest service representative - spa
+1414	Receptionists	information officer - Elections Canada
+1414	Receptionists	receptionist, business
+1414	Receptionists	receptionist, medical office / hospital
+1414	Receptionists	receptionist-clerk
+1414	Receptionists	receptionist-secretary-typist
+1414	Receptionists	receptionist-switchboard operator
+1414	Receptionists	service analyst, telephone
+1414	Receptionists	service assistant, telephone
+1414	Receptionists	spa receptionist
+1414	Receptionists	telereceptionist
+1414	Receptionists	voice communication system
+1415	Personnel clerks	assistant, human resources / staffing
+1415	Personnel clerks	clerk, classification - human resources
+1415	Personnel clerks	clerk, employment
+1415	Personnel clerks	clerk, human resources / personnel
+1415	Personnel clerks	clerk, identification
+1415	Personnel clerks	clerk, labour relations
+1415	Personnel clerks	clerk, training
+1416	Court clerks	clerk of process - courts
+1416	Court clerks	clerk, criminal court
+1416	Court clerks	clerk, judicial
+1416	Court clerks	clerk, provincial court
+1416	Court clerks	clerk, youth court
+1422	Data entry clerks	clerk, control - data processing
+1422	Data entry clerks	clerk, payment entry / input
+1422	Data entry clerks	computer equipment
+1422	Data entry clerks	data entry
+1422	Data entry clerks	EDP (electronic data-processing) operator
+1422	Data entry clerks	interpreting machine
+1422	Data entry clerks	processor, data
+1422	Data entry clerks	verifier-operator, data entry
+1423	Desktop publishing operators and related occupations	braille block maker / engraver
+1423	Desktop publishing operators and related occupations	braille computer translations specialist
+1423	Desktop publishing operators and related occupations	braille data entry clerk
+1423	Desktop publishing operators and related occupations	braille stereograph machine operator
+1423	Desktop publishing operators and related occupations	compositor, typographer / typesetter
+1423	Desktop publishing operators and related occupations	computer photocompositor / phototypesetter
+1423	Desktop publishing operators and related occupations	computer-aided page maker-up
+1423	Desktop publishing operators and related occupations	copy cutter / marker / stylist 
+1423	Desktop publishing operators and related occupations	DTP (desktop publishing) specialist
+1423	Desktop publishing operators and related occupations	electronic formatter / letterer 
+1423	Desktop publishing operators and related occupations	electronic sign maker
+1423	Desktop publishing operators and related occupations	formatter
+1423	Desktop publishing operators and related occupations	impositor / imposition planner
+1423	Desktop publishing operators and related occupations	input compositor
+1423	Desktop publishing operators and related occupations	Intertype / Linotype / Ludlow
+1423	Desktop publishing operators and related occupations	job compositor
+1423	Desktop publishing operators and related occupations	machine compositor
+1423	Desktop publishing operators and related occupations	manual compositor
+1423	Desktop publishing operators and related occupations	markup person
+1423	Desktop publishing operators and related occupations	Monotype hot metal typesetter
+1423	Desktop publishing operators and related occupations	newspaper page assembler
+1423	Desktop publishing operators and related occupations	output compositor 
+1423	Desktop publishing operators and related occupations	page compositor
+1423	Desktop publishing operators and related occupations	photocomposer operator / photocompositor
+1423	Desktop publishing operators and related occupations	preproduction
+1423	Desktop publishing operators and related occupations	processing and output compositor
+1423	Desktop publishing operators and related occupations	scanner
+1423	Desktop publishing operators and related occupations	type compositor
+1423	Desktop publishing operators and related occupations	typesetting / Linotype
+1423	Desktop publishing operators and related occupations	typographer, cold-composition
+1423	Desktop publishing operators and related occupations	VariTyper
+1423	Desktop publishing operators and related occupations	videotext
+1431	Accounting and related clerks	assistant, accounting
+1431	Accounting and related clerks	billing machine
+1431	Accounting and related clerks	clerk, accounting 
+1431	Accounting and related clerks	clerk, accounts payable & receivable
+1431	Accounting and related clerks	clerk, auditing / financial investigation
+1431	Accounting and related clerks	clerk, budget 
+1431	Accounting and related clerks	clerk, journal entry / ledger
+1431	Accounting and related clerks	clerk, tariff / tax 
+1431	Accounting and related clerks	currency sorter
+1431	Accounting and related clerks	preparer, income tax return
+1431	Accounting and related clerks	rate reviewer
+1431	Accounting and related clerks	wharfinger
+1432	Payroll administrators	administrator, pay and benefits
+1432	Payroll administrators	adviser, pay
+1432	Payroll administrators	clerk, payroll accounts / pay and benefits
+1432	Payroll administrators	clerk, superannuation - government
+1432	Payroll administrators	officer, salary, benefits & pension plan
+1432	Payroll administrators	payroll administrator / clerk / officer
+1432	Payroll administrators	timekeeper - payroll
+1432	Payroll administrators	verifier, pay
+1434	Banking, insurance and other financial clerks	adjuster, foreign currency accounts 
+1434	Banking, insurance and other financial clerks	administrator, pension
+1434	Banking, insurance and other financial clerks	attendant, vault
+1434	Banking, insurance and other financial clerks	clerk, actuarial
+1434	Banking, insurance and other financial clerks	clerk, ATM (automatic teller machine)
+1434	Banking, insurance and other financial clerks	clerk, credit application
+1434	Banking, insurance and other financial clerks	clerk, employee insurance
+1434	Banking, insurance and other financial clerks	clerk, financial
+1434	Banking, insurance and other financial clerks	clerk, financial accounts
+1434	Banking, insurance and other financial clerks	clerk, insurance
+1434	Banking, insurance and other financial clerks	officer, ledger control
+1434	Banking, insurance and other financial clerks	representative, accounts
+1434	Banking, insurance and other financial clerks	reviewer, insurance application
+1435	Collectors	clerk, redit and collection
+1435	Collectors	collection agent
+1435	Collectors	collector, advertising
+1435	Collectors	collector, bill, and inspector
+1435	Collectors	collector, claims
+1435	Collectors	locator - collection
+1435	Collectors	skip tracer - collection
+1451	Library assistants and clerks	assistant, on call - library
+1451	Library assistants and clerks	clerk, book returns / circulation
+1451	Library assistants and clerks	clerk, interlibrary loans / bookmobile
+1451	Library assistants and clerks	clerk, periodicals
+1451	Library assistants and clerks	clerk, shelving
+1451	Library assistants and clerks	clerk, technical services
+1451	Library assistants and clerks	filer, library / photographs
+1451	Library assistants and clerks	reference aide / assistant / clerk
+1452	Correspondence, publication and regulatory clerks	clearer, construction permits
+1452	Correspondence, publication and regulatory clerks	clerk, administrative contract 
+1452	Correspondence, publication and regulatory clerks	clerk, advertising
+1452	Correspondence, publication and regulatory clerks	clerk, archives / documents
+1452	Correspondence, publication and regulatory clerks	clerk, by-law
+1452	Correspondence, publication and regulatory clerks	clerk, customs & excise / import-export
+1452	Correspondence, publication and regulatory clerks	clerk, directory
+1452	Correspondence, publication and regulatory clerks	clerk, editorial / publishing / copyright
+1452	Correspondence, publication and regulatory clerks	clerk, engineering
+1452	Correspondence, publication and regulatory clerks	clerk, fingerprint
+1452	Correspondence, publication and regulatory clerks	clerk, land registry
+1452	Correspondence, publication and regulatory clerks	clerk, licence / permit / passport
+1452	Correspondence, publication and regulatory clerks	clerk, motor vehicle bureau
+1452	Correspondence, publication and regulatory clerks	clerk, newspaper circulation
+1452	Correspondence, publication and regulatory clerks	clerk, tests
+1452	Correspondence, publication and regulatory clerks	clerk, translation
+1452	Correspondence, publication and regulatory clerks	clipper, press
+1452	Correspondence, publication and regulatory clerks	compiler, catalogue / mailing list
+1452	Correspondence, publication and regulatory clerks	examiner, photograph
+1452	Correspondence, publication and regulatory clerks	holder, copy
+1452	Correspondence, publication and regulatory clerks	issuer, passport
+1452	Correspondence, publication and regulatory clerks	marker, clipping
+1452	Correspondence, publication and regulatory clerks	measurer, advertising space
+1452	Correspondence, publication and regulatory clerks	proofreader, composing / manuscripts
+1452	Correspondence, publication and regulatory clerks	proofreader, copy-reader
+1452	Correspondence, publication and regulatory clerks	reader, press
+1452	Correspondence, publication and regulatory clerks	recorder, brand
+1454	Survey interviewers and statistical clerks	assistant, technical - statistics
+1454	Survey interviewers and statistical clerks	census clerk / enumerator / taker / worker
+1454	Survey interviewers and statistical clerks	clerk, chart / statistics coding / poll 
+1454	Survey interviewers and statistical clerks	counter / checker - traffic / vehicle
+1454	Survey interviewers and statistical clerks	election clerk / enumerator / worker
+1454	Survey interviewers and statistical clerks	enumerator
+1454	Survey interviewers and statistical clerks	interviewer - survey or poll
+1454	Survey interviewers and statistical clerks	meter reader
+1454	Survey interviewers and statistical clerks	public opinion collector / interviewer
+1454	Survey interviewers and statistical clerks	statistical assistant / clerk
+1454	Survey interviewers and statistical clerks	survey taker / interviewer / compiler
+1511	Mail, postal and related workers	assistant, mail room
+1511	Mail, postal and related workers	clerk, express mail / registered mail
+1511	Mail, postal and related workers	clerk, filing - mail / letter sorting
+1511	Mail, postal and related workers	clerk, management services clerk
+1511	Mail, postal and related workers	clerk, railway station mail / shipping
+1511	Mail, postal and related workers	clerk, search / mail tracing
+1511	Mail, postal and related workers	clerk, sub-post office
+1511	Mail, postal and related workers	inserter, address-plate
+1511	Mail, postal and related workers	mailer
+1511	Mail, postal and related workers	operator, mail-sorting system
+1511	Mail, postal and related workers	representatitve, messenger service
+1511	Mail, postal and related workers	tender, imprinting / stamp-cancelling
+1512	Letter carriers	carrier, priority post / special delivery
+1512	Letter carriers	mail collector / deliverer / worker
+1512	Letter carriers	postal service collector / deliverer
+1513	Couriers, messengers and door-to-door distributors	bank messenger / runner
+1513	Couriers, messengers and door-to-door distributors	copy runner, courier service
+1513	Couriers, messengers and door-to-door distributors	courier
+1513	Couriers, messengers and door-to-door distributors	courier, mail
+1513	Couriers, messengers and door-to-door distributors	delivery person - parcels / packages
+1513	Couriers, messengers and door-to-door distributors	delivery person, advertising / newspaper
+1513	Couriers, messengers and door-to-door distributors	distributor, bill / flyer / sample
+1513	Couriers, messengers and door-to-door distributors	handbill passer - courier service
+1513	Couriers, messengers and door-to-door distributors	messenger-clerk
+1513	Couriers, messengers and door-to-door distributors	paper boy / paper girl
+1513	Couriers, messengers and door-to-door distributors	runner
+1521	Shippers and receivers	agent, shipping
+1521	Shippers and receivers	assistant, supply chain
+1521	Shippers and receivers	clerk, billing rate / cargo location clerk
+1521	Shippers and receivers	clerk, delivery / distribution
+1521	Shippers and receivers	clerk, export traffic / import traffic
+1521	Shippers and receivers	clerk, freight receiving / shipping
+1521	Shippers and receivers	clerk, shipping and receiving / warehouse
+1521	Shippers and receivers	freight checker / receiver / forwarder
+1521	Shippers and receivers	receiver, milk and cream
+1521	Shippers and receivers	shipper, produce
+1521	Shippers and receivers	shipper-receiver
+1521	Shippers and receivers	stock handler / receiver
+1521	Shippers and receivers	supercargo
+1521	Shippers and receivers	warehouse receiver / shipper
+1522	Storekeepers and partspersons	attendant, linen room 
+1522	Storekeepers and partspersons	attendant, tool room / tool crib
+1522	Storekeepers and partspersons	attendant, wine cellar
+1522	Storekeepers and partspersons	checker, warehouse
+1522	Storekeepers and partspersons	clerk, industrial warehouse
+1522	Storekeepers and partspersons	clerk, linen supply
+1522	Storekeepers and partspersons	clerk, medical supply
+1522	Storekeepers and partspersons	clerk, parts - auto, aircraft, industrial
+1522	Storekeepers and partspersons	clerk, salvage
+1522	Storekeepers and partspersons	clerk, sample
+1522	Storekeepers and partspersons	clerk, stock control / stock records
+1522	Storekeepers and partspersons	clerk, supply centre
+1522	Storekeepers and partspersons	clerk, tool
+1522	Storekeepers and partspersons	clerk, warehouse
+1522	Storekeepers and partspersons	keeper, linen
+1522	Storekeepers and partspersons	keeper, machine shop
+1522	Storekeepers and partspersons	keeper, magazine / powder / explosives
+1522	Storekeepers and partspersons	keeper, material
+1522	Storekeepers and partspersons	keeper, ship
+1522	Storekeepers and partspersons	parts lister / sorter / supplier
+1522	Storekeepers and partspersons	storekeeper, ammunition
+1523	Production logistics co-ordinators	checker, delivery
+1523	Production logistics co-ordinators	clerk / officer, control - shipping
+1523	Production logistics co-ordinators	clerk, construction progress report
+1523	Production logistics co-ordinators	clerk, industrial order completion
+1523	Production logistics co-ordinators	clerk, manufacturing order
+1523	Production logistics co-ordinators	clerk, production control clerk
+1523	Production logistics co-ordinators	clerk, recording - broadcasting
+1523	Production logistics co-ordinators	clerk, schedule / scheduling
+1523	Production logistics co-ordinators	clerk, supply - aeronautics / production
+1523	Production logistics co-ordinators	clerk, tally
+1523	Production logistics co-ordinators	clerk, traffic / traffic control
+1523	Production logistics co-ordinators	clerk, vehicle servicing
+1523	Production logistics co-ordinators	co-ordinator, construction schedule
+1523	Production logistics co-ordinators	co-ordinator, logistics inbound / outbound
+1523	Production logistics co-ordinators	co-ordinator, motor vehicle repair shop
+1523	Production logistics co-ordinators	co-ordinator, supply chain - production
+1523	Production logistics co-ordinators	estimator, supply needs
+1523	Production logistics co-ordinators	expediter
+1523	Production logistics co-ordinators	material co-ordinator / estimator
+1523	Production logistics co-ordinators	production expediter / scheduler
+1523	Production logistics co-ordinators	service sector
+1524	Purchasing and inventory control workers	clerk, control
+1524	Purchasing and inventory control workers	clerk, equipment inventory
+1524	Purchasing and inventory control workers	clerk, inventory - permanent
+1524	Purchasing and inventory control workers	clerk, invoice and purchase order
+1524	Purchasing and inventory control workers	clerk, procurement / purchasing
+1524	Purchasing and inventory control workers	clerk, supply - ship
+1524	Purchasing and inventory control workers	controller, food - inventory
+1524	Purchasing and inventory control workers	controller, inventory
+1524	Purchasing and inventory control workers	inventory auditor
+1524	Purchasing and inventory control workers	inventory control clerk / planner
+1525	Dispatchers	clerk, car assignments
+1525	Dispatchers	clerk, yard
+1525	Dispatchers	communications officer - emergency services
+1525	Dispatchers	co-ordinator, inbound / outbound freight
+1525	Dispatchers	dispatcher, boat / tugboat
+1525	Dispatchers	dispatcher, emergency services
+1525	Dispatchers	dispatcher, maintenance crews
+1525	Dispatchers	dispatcher, pilot services
+1525	Dispatchers	dispatcher, radio / communications
+1525	Dispatchers	dispatcher, troubleshooting services
+1525	Dispatchers	dispatcher, water service
+1525	Dispatchers	operator, airline radio
+1525	Dispatchers	operator, alarm system / fire alarm
+1525	Dispatchers	operator, monitoring station
+1525	Dispatchers	operator, protective signal
+1525	Dispatchers	operator, radio
+1526	Transportation route and crew schedulers	analyst, schedule
+1526	Transportation route and crew schedulers	clerk, control - schedule
+1526	Transportation route and crew schedulers	clerk, depot - transit system
+1526	Transportation route and crew schedulers	clerk, logistics - transportation
+1526	Transportation route and crew schedulers	clerk, transport / transportation
+1526	Transportation route and crew schedulers	dispatcher, crew 
+1526	Transportation route and crew schedulers	planner, transport / transit
+1526	Transportation route and crew schedulers	scheduler - air / flight / rail / train
+1526	Transportation route and crew schedulers	scheduler - transit / subway / truck / bus
+1526	Transportation route and crew schedulers	scheduler / schedule maker
+1526	Transportation route and crew schedulers	scheduler, crew 
+1526	Transportation route and crew schedulers	scheduler, rapid
+1526	Transportation route and crew schedulers	transportation route scheduler / clerk 
+1526	Transportation route and crew schedulers	truck scheduler
+2111	Physicists and astronomers	aerodynamicist / aerophysicist
+2111	Physicists and astronomers	astronomer / radio astronomer
+2111	Physicists and astronomers	astrophysicist / cosmologist
+2111	Physicists and astronomers	biophysicist / medical engineering 
+2111	Physicists and astronomers	metrologist
+2111	Physicists and astronomers	physicist, acoustics
+2111	Physicists and astronomers	physicist, atmospheric 
+2111	Physicists and astronomers	physicist, chemical
+2111	Physicists and astronomers	physicist, cryogenics / crystal
+2111	Physicists and astronomers	physicist, electricity / electronics
+2111	Physicists and astronomers	physicist, experimental
+2111	Physicists and astronomers	physicist, laser
+2111	Physicists and astronomers	physicist, magnetism
+2111	Physicists and astronomers	physicist, mathematical / molecular
+2111	Physicists and astronomers	physicist, mechanics
+2111	Physicists and astronomers	physicist, medical
+2111	Physicists and astronomers	physicist, microwave
+2111	Physicists and astronomers	physicist, nanotechnology
+2111	Physicists and astronomers	physicist, nuclear
+2111	Physicists and astronomers	physicist, optics
+2111	Physicists and astronomers	physicist, plasma
+2111	Physicists and astronomers	physicist, solid-state
+2111	Physicists and astronomers	physicist, space
+2111	Physicists and astronomers	physicist, thermal 
+2111	Physicists and astronomers	physicist, x-ray / cosmic ray / radiation
+2111	Physicists and astronomers	rheologist
+2111	Physicists and astronomers	scientist, research - aerospace
+2111	Physicists and astronomers	scientist, research - electronics
+2111	Physicists and astronomers	theorist, elementary particle
+2112	Chemists	agrochemist
+2112	Chemists	biochemist - analytical / medical
+2112	Chemists	chemist, agricultural
+2112	Chemists	chemist, analytical / clinical 
+2112	Chemists	chemist, biological / bioanalytical
+2112	Chemists	chemist, detergent / dye
+2112	Chemists	chemist, environmental / oceanographic
+2112	Chemists	chemist, forensic
+2112	Chemists	chemist, industrial / process control
+2112	Chemists	chemist, inorganic / glass / 
+2112	Chemists	chemist, laboratory / research 
+2112	Chemists	chemist, leather / textile 
+2112	Chemists	chemist, nuclear
+2112	Chemists	chemist, organic / organometallic
+2112	Chemists	chemist, pharmaceutical / pharmacological
+2112	Chemists	chemist, physical
+2112	Chemists	chemist, physiological / medical
+2112	Chemists	chemist, plastics / resins / polymer
+2112	Chemists	chemist, water / water purification
+2112	Chemists	electrochemist
+2112	Chemists	fermentologist
+2112	Chemists	hydrochemist
+2112	Chemists	nanochemist
+2112	Chemists	researcher, chemistry
+2112	Chemists	scientist, research - chemistry / biochem.
+2112	Chemists	spectrometrist, chemical / organic mass
+2113	Geoscientists and oceanographers	biostratigrapher
+2113	Geoscientists and oceanographers	co-ordinator, well site -  geology
+2113	Geoscientists and oceanographers	geochemist
+2113	Geoscientists and oceanographers	geodesist
+2113	Geoscientists and oceanographers	geologist, consulting / development
+2113	Geoscientists and oceanographers	geologist, environmental / exploration
+2113	Geoscientists and oceanographers	geologist, mine / mining / coal 
+2113	Geoscientists and oceanographers	geologist, oil / petroleum / prospecting
+2113	Geoscientists and oceanographers	geologist, sedimentary / structural
+2113	Geoscientists and oceanographers	geomorphologist
+2113	Geoscientists and oceanographers	geophysicist - consulting / exploration
+2113	Geoscientists and oceanographers	glaciologist
+2113	Geoscientists and oceanographers	hydrologist / hydrogeologist
+2113	Geoscientists and oceanographers	micropaleontologist
+2113	Geoscientists and oceanographers	mineralogist
+2113	Geoscientists and oceanographers	oceanographer, biological / chemical
+2113	Geoscientists and oceanographers	paleobotanist / paleoecologist 
+2113	Geoscientists and oceanographers	palynologist
+2113	Geoscientists and oceanographers	petrographer / petrologist
+2113	Geoscientists and oceanographers	photogeologist
+2113	Geoscientists and oceanographers	quaternarist / quaternary scientist
+2113	Geoscientists and oceanographers	sedimentologist
+2113	Geoscientists and oceanographers	seismologist
+2113	Geoscientists and oceanographers	specialist, ice 
+2113	Geoscientists and oceanographers	stratigrapher
+2113	Geoscientists and oceanographers	surveyor, hydrographic - geology
+2113	Geoscientists and oceanographers	vulcanologist
+2114	Meteorologists and climatologists	climatologist
+2114	Meteorologists and climatologists	hydrometeorologist
+2114	Meteorologists and climatologists	meteorologist
+2114	Meteorologists and climatologists	meteorologist, agricultural
+2114	Meteorologists and climatologists	meteorologist, applied
+2114	Meteorologists and climatologists	meteorologist, industrial
+2114	Meteorologists and climatologists	meteorologist, operational
+2114	Meteorologists and climatologists	meteorologist, physical
+2114	Meteorologists and climatologists	meteorologist, synoptic
+2114	Meteorologists and climatologists	paleometeorologist
+2115	Other professional occupations in physical sciences	astronaut
+2115	Other professional occupations in physical sciences	ballistics examiner / firearms examiner
+2115	Other professional occupations in physical sciences	cosmonaut
+2115	Other professional occupations in physical sciences	hydrometallurgist
+2115	Other professional occupations in physical sciences	metallographer
+2115	Other professional occupations in physical sciences	metallurgist, extractive / research
+2115	Other professional occupations in physical sciences	pedologist
+2115	Other professional occupations in physical sciences	pyrometallurgist
+2115	Other professional occupations in physical sciences	researcher, ceramics / composite materials
+2115	Other professional occupations in physical sciences	scientist, engineering - materials
+2115	Other professional occupations in physical sciences	scientist, soil
+2121	Biologists and related scientists	agrogeologist
+2121	Biologists and related scientists	algologist
+2121	Biologists and related scientists	anatomist
+2121	Biologists and related scientists	animal biologist
+2121	Biologists and related scientists	animal ecologist
+2121	Biologists and related scientists	animal geneticist
+2121	Biologists and related scientists	animal nutritionist
+2121	Biologists and related scientists	animal taxonomist
+2121	Biologists and related scientists	apiculture entomologist
+2121	Biologists and related scientists	astrobiologist
+2121	Biologists and related scientists	bacteriologist, animal health
+2121	Biologists and related scientists	bacteriologist, food production
+2121	Biologists and related scientists	bacteriologist, human health
+2121	Biologists and related scientists	bacteriologist, industrial
+2121	Biologists and related scientists	bacteriologist, pharmaceutical
+2121	Biologists and related scientists	bacteriologist, public health
+2121	Biologists and related scientists	bacteriologist, soil
+2121	Biologists and related scientists	bioinformatician
+2121	Biologists and related scientists	biologist, cell / cellular
+2121	Biologists and related scientists	biologist, developmental
+2121	Biologists and related scientists	biologist, environmental
+2121	Biologists and related scientists	biologist, research
+2121	Biologists and related scientists	biologist, wildlife
+2121	Biologists and related scientists	biology taxonomist
+2121	Biologists and related scientists	biophysicist, physiological
+2121	Biologists and related scientists	botanist, economic
+2121	Biologists and related scientists	bryologist
+2121	Biologists and related scientists	cytochemist / cytogeneticist / cytologist
+2121	Biologists and related scientists	ecobiologist / ecologist
+2121	Biologists and related scientists	ecologist, forest / rural
+2121	Biologists and related scientists	embryologist
+2121	Biologists and related scientists	enzymologist
+2121	Biologists and related scientists	etiologist
+2121	Biologists and related scientists	geneticist
+2121	Biologists and related scientists	geneticist, developmental
+2121	Biologists and related scientists	helminthologist, wildlife
+2121	Biologists and related scientists	herpetologist
+2121	Biologists and related scientists	histologist / histiopathologist
+2121	Biologists and related scientists	hydrobiologist
+2121	Biologists and related scientists	ichthyologist
+2121	Biologists and related scientists	immunologist / laboratory immunologist
+2121	Biologists and related scientists	limnologist
+2121	Biologists and related scientists	malariologist
+2121	Biologists and related scientists	mammalogist
+2121	Biologists and related scientists	marine biologist / marine hydrobiologist
+2121	Biologists and related scientists	microbiologist
+2121	Biologists and related scientists	molecular biologist / geneticist 
+2121	Biologists and related scientists	mycologist
+2121	Biologists and related scientists	naturalist
+2121	Biologists and related scientists	naturalist, interpretative / wildlife
+2121	Biologists and related scientists	nematologist
+2121	Biologists and related scientists	ornithologist
+2121	Biologists and related scientists	osteologist
+2121	Biologists and related scientists	parasitologist
+2121	Biologists and related scientists	park naturalist
+2121	Biologists and related scientists	pharmacologist
+2121	Biologists and related scientists	physiologist
+2121	Biologists and related scientists	physiologist, human / insect / animal
+2121	Biologists and related scientists	physiologist-biochemist - nuclear medicine
+2121	Biologists and related scientists	phytobiologist / phytopathologist
+2121	Biologists and related scientists	plant anatomist / pathologist
+2121	Biologists and related scientists	plant breeder / nematologist / taxonomist
+2121	Biologists and related scientists	plant ecologist / population biologist
+2121	Biologists and related scientists	population geneticist
+2121	Biologists and related scientists	poultry scientist
+2121	Biologists and related scientists	protozoologist
+2121	Biologists and related scientists	scientist, agricultural research 
+2121	Biologists and related scientists	serologist
+2121	Biologists and related scientists	systematist, biology / systems biologist
+2121	Biologists and related scientists	toxicologist, descriptive / mechanistic
+2121	Biologists and related scientists	toxicologist, environmental / occupational
+2121	Biologists and related scientists	trainer, marine mammal
+2121	Biologists and related scientists	zoologist, vertebrate / invertebrate
+2122	Forestry professionals	forester, appraisal / consulting 
+2122	Forestry professionals	forester, district / urban
+2122	Forestry professionals	forester, forest nursery
+2122	Forestry professionals	forester, GIS (geographic info. system)
+2122	Forestry professionals	forester, industrial
+2122	Forestry professionals	forester, operations
+2122	Forestry professionals	forester, unit
+2122	Forestry professionals	RPF (registered professional forester)
+2122	Forestry professionals	superintendent, forestry
+2123	Agricultural representatives, consultants and specialists	adviser, agricultural
+2123	Agricultural representatives, consultants and specialists	agent, field service - agriculture
+2123	Agricultural representatives, consultants and specialists	agricultural consultant / representative
+2123	Agricultural representatives, consultants and specialists	agriculturist
+2123	Agricultural representatives, consultants and specialists	agrologist / consulting agrologist
+2123	Agricultural representatives, consultants and specialists	agronomist / extension service agronomist
+2123	Agricultural representatives, consultants and specialists	conservationist, soil
+2123	Agricultural representatives, consultants and specialists	consultant, farm management / irrigation
+2123	Agricultural representatives, consultants and specialists	demonstrator - Department of Agriculture
+2123	Agricultural representatives, consultants and specialists	expert, soil fertility
+2123	Agricultural representatives, consultants and specialists	officer, acreage-quota assignment
+2123	Agricultural representatives, consultants and specialists	Professional agrologist
+2123	Agricultural representatives, consultants and specialists	representative, gov't agricultural service
+2123	Agricultural representatives, consultants and specialists	specialist, agricultural livestock
+2123	Agricultural representatives, consultants and specialists	specialist, district agricultural
+2123	Agricultural representatives, consultants and specialists	specialist, soil and crop
+2123	Agricultural representatives, consultants and specialists	supervisor, agricultural extension
+2131	Civil engineers	engineer, appraisal
+2131	Civil engineers	engineer, architectural
+2131	Civil engineers	engineer, asphalt / highway
+2131	Civil engineers	engineer, bridge / tunnel / builiding
+2131	Civil engineers	engineer, cartographic / mapping
+2131	Civil engineers	engineer, civil - environmental
+2131	Civil engineers	engineer, civil - inspection / structural
+2131	Civil engineers	engineer, civil - materials & testing
+2131	Civil engineers	engineer, coastal
+2131	Civil engineers	engineer, construction / foundation
+2131	Civil engineers	engineer, county / municipal / district
+2131	Civil engineers	engineer, dams / river and canal works
+2131	Civil engineers	engineer, drainage - land / design
+2131	Civil engineers	engineer, environmental
+2131	Civil engineers	engineer, geodetic / geomatics
+2131	Civil engineers	engineer, hydraulics
+2131	Civil engineers	engineer, hydrographic / hydrological
+2131	Civil engineers	engineer, irrigation and drainage
+2131	Civil engineers	engineer, noise / pollution
+2131	Civil engineers	engineer, ocean / navigation & positioning
+2131	Civil engineers	engineer, photogrammetric
+2131	Civil engineers	engineer, precision survey
+2131	Civil engineers	engineer, public health / public works
+2131	Civil engineers	engineer, reclamation
+2131	Civil engineers	engineer, remote sensing
+2131	Civil engineers	engineer, sanitation / solid waste mgmt
+2131	Civil engineers	engineer, soil
+2131	Civil engineers	engineer, spatial information systems
+2131	Civil engineers	engineer, survey / surveying
+2131	Civil engineers	engineer, traffic / air / rail / roads
+2131	Civil engineers	engineer, water & sewer / water treatment
+2131	Civil engineers	engineer, water management / resources
+2132	Mechanical engineers	engineer, acoustical / vibration
+2132	Mechanical engineers	engineer, automotive / internal combustion
+2132	Mechanical engineers	engineer, building systems
+2132	Mechanical engineers	engineer, cryogenics / refrigeration 
+2132	Mechanical engineers	engineer, design - mechanical / research
+2132	Mechanical engineers	engineer, energy conservation
+2132	Mechanical engineers	engineer, fluid mechanics
+2132	Mechanical engineers	engineer, gas utilization mechanical
+2132	Mechanical engineers	engineer, HVAC (heating, ventilation, a / c)
+2132	Mechanical engineers	engineer, lubrication
+2132	Mechanical engineers	engineer, mechanical
+2132	Mechanical engineers	engineer, mechatronic
+2132	Mechanical engineers	engineer, micro-electro-mechanical systems
+2132	Mechanical engineers	engineer, mould design
+2132	Mechanical engineers	engineer, nuclear 
+2132	Mechanical engineers	engineer, oil well equipment design
+2132	Mechanical engineers	engineer, pattern
+2132	Mechanical engineers	engineer, piping
+2132	Mechanical engineers	engineer, robotics
+2132	Mechanical engineers	engineer, thermal design / thermal power
+2132	Mechanical engineers	engineer, tool
+2132	Mechanical engineers	tribologist
+2133	Electrical and electronics engineers	engineer, antenna / satellite
+2133	Electrical and electronics engineers	engineer, audio
+2133	Electrical and electronics engineers	engineer, broadcasting professional
+2133	Electrical and electronics engineers	engineer, circuit design
+2133	Electrical and electronics engineers	engineer, controls / instrumentation
+2133	Electrical and electronics engineers	engineer, design - electrical power
+2133	Electrical and electronics engineers	engineer, design - electronic systems
+2133	Electrical and electronics engineers	engineer, design - radio & TV broadcasting
+2133	Electrical and electronics engineers	engineer, distribution planning
+2133	Electrical and electronics engineers	engineer, electrical
+2133	Electrical and electronics engineers	engineer, electrical distribution
+2133	Electrical and electronics engineers	engineer, electrical power systems
+2133	Electrical and electronics engineers	engineer, line construction
+2133	Electrical and electronics engineers	engineer, low-voltage equipment
+2133	Electrical and electronics engineers	engineer, meter / metrology
+2133	Electrical and electronics engineers	engineer, overhead electrical distribution
+2133	Electrical and electronics engineers	engineer, protective relay
+2133	Electrical and electronics engineers	engineer, radar
+2133	Electrical and electronics engineers	engineer, research - nanoelectronics
+2133	Electrical and electronics engineers	engineer, roadway lighting design
+2133	Electrical and electronics engineers	engineer, signal
+2133	Electrical and electronics engineers	engineer, spacecraft electronics
+2133	Electrical and electronics engineers	engineer, test - electronics
+2134	Chemical engineers	engineer, biochemical
+2134	Chemical engineers	engineer, biotechnical
+2134	Chemical engineers	engineer, chemical - environmental
+2134	Chemical engineers	engineer, chemical - process control
+2134	Chemical engineers	engineer, electrochemical
+2134	Chemical engineers	engineer, environmental chemical
+2134	Chemical engineers	engineer, explosives
+2134	Chemical engineers	engineer, fuels
+2134	Chemical engineers	engineer, industrial waste treatment
+2134	Chemical engineers	engineer, liquid fuels
+2134	Chemical engineers	engineer, pipeline transport
+2134	Chemical engineers	engineer, plastics / polymers
+2141	Industrial and manufacturing engineers	engineer, computer integrated manuf'g
+2141	Industrial and manufacturing engineers	engineer, consulting industrial
+2141	Industrial and manufacturing engineers	engineer, cost / efficiency / methods
+2141	Industrial and manufacturing engineers	engineer, fire prevention
+2141	Industrial and manufacturing engineers	engineer, industrial
+2141	Industrial and manufacturing engineers	engineer, industrial efficiency
+2141	Industrial and manufacturing engineers	engineer, industrial safety
+2141	Industrial and manufacturing engineers	engineer, plant
+2141	Industrial and manufacturing engineers	engineer, production
+2141	Industrial and manufacturing engineers	engineer, QA (quality assurance)
+2141	Industrial and manufacturing engineers	engineer, QC (quality control)
+2142	Metallurgical and materials engineers	engineer, coal preparation consulting
+2142	Metallurgical and materials engineers	engineer, corrosion
+2142	Metallurgical and materials engineers	engineer, electrometallurgical
+2142	Metallurgical and materials engineers	engineer, extractive metallurgy
+2142	Metallurgical and materials engineers	engineer, foundry
+2142	Metallurgical and materials engineers	engineer, hydrometallurgical
+2142	Metallurgical and materials engineers	engineer, metallurgical
+2142	Metallurgical and materials engineers	engineer, physical metallurgical
+2142	Metallurgical and materials engineers	engineer, pyrometallurgical
+2142	Metallurgical and materials engineers	engineer, refining and metalworking
+2142	Metallurgical and materials engineers	engineer, smelter - mineral
+2142	Metallurgical and materials engineers	engineer, smelting plant
+2142	Metallurgical and materials engineers	engineer, welding
+2143	Mining engineers	engineer, mine design / layout
+2143	Mining engineers	engineer, mine exploration
+2143	Mining engineers	engineer, mine production
+2143	Mining engineers	engineer, mine ventilation / safety
+2144	Geological engineers	engineer, hydrogeological
+2144	Geological engineers	engineer, petrography
+2144	Geological engineers	engineer, rock sciences
+2145	Petroleum engineers	engineer, exploitation - oil and gas
+2145	Petroleum engineers	engineer, logging - oil wells
+2145	Petroleum engineers	engineer, mud - petroleum drilling
+2145	Petroleum engineers	engineer, offshore drilling rig
+2145	Petroleum engineers	engineer, production - oil and gas
+2145	Petroleum engineers	engineer, subsea equipment
+2146	Aerospace engineers	aerospace reliability specialist
+2146	Aerospace engineers	engineer, aerodynamics
+2146	Aerospace engineers	engineer, aeronautical
+2146	Aerospace engineers	engineer, aerospace - design & development
+2146	Aerospace engineers	engineer, aerospace - flight test
+2146	Aerospace engineers	engineer, aerospace - mass properties
+2146	Aerospace engineers	engineer, aerospace - material stress 
+2146	Aerospace engineers	engineer, aerospace - propulsion systems
+2146	Aerospace engineers	engineer, aerospace - structures
+2146	Aerospace engineers	engineer, aerospace - systems analysis
+2146	Aerospace engineers	engineer, aircraft - design / weight analyst
+2146	Aerospace engineers	engineer, design - aircraft
+2146	Aerospace engineers	specialist, space reliability
+2147	Computer engineers (except software engineers and designers)	analyst, capacity planning
+2147	Computer engineers (except software engineers and designers)	architect, computer systems / hardware
+2147	Computer engineers (except software engineers and designers)	designer, hardware systems
+2147	Computer engineers (except software engineers and designers)	designer, network - computer / fibre-optic
+2147	Computer engineers (except software engineers and designers)	engineer, ASIC design
+2147	Computer engineers (except software engineers and designers)	engineer, computer - hardware / systems
+2147	Computer engineers (except software engineers and designers)	engineer, microprocessor designer
+2147	Computer engineers (except software engineers and designers)	engineer, microwave transmission systems
+2147	Computer engineers (except software engineers and designers)	engineer, network communication / systems
+2147	Computer engineers (except software engineers and designers)	engineer, optical systems
+2147	Computer engineers (except software engineers and designers)	engineer, radio systems
+2147	Computer engineers (except software engineers and designers)	engineer, satellite data transmission
+2147	Computer engineers (except software engineers and designers)	engineer, spacecraft electronics
+2147	Computer engineers (except software engineers and designers)	engineer, telecommunications
+2147	Computer engineers (except software engineers and designers)	engineer, wireless communications network
+2147	Computer engineers (except software engineers and designers)	infrastructure architect - information technology (IT)
+2147	Computer engineers (except software engineers and designers)	planner, network capacity
+2147	Computer engineers (except software engineers and designers)	specialist, data communications
+2147	Computer engineers (except software engineers and designers)	specialist, telecommunications 
+2148	Other professional engineers, n.e.c.	engineer, agricultural / agroprocessing
+2148	Other professional engineers, n.e.c.	engineer, agronomy
+2148	Other professional engineers, n.e.c.	engineer, bio-resource
+2148	Other professional engineers, n.e.c.	engineer, clinical biomedical 
+2148	Other professional engineers, n.e.c.	engineer, dairy plant
+2148	Other professional engineers, n.e.c.	engineer, marine / marine systems / naval
+2148	Other professional engineers, n.e.c.	engineer, ship construction / shipbuilding
+2148	Other professional engineers, n.e.c.	engineering scientist
+2151	Architects	architect
+2151	Architects	architect, chief
+2151	Architects	architect, consulting
+2151	Architects	architect, industrial / commercial buildings
+2151	Architects	residential building architect
+2151	Architects	specialist, architectural standards
+2152	Landscape architects	planner, landscape
+2153	Urban and land use planners	analyst, mass transit services
+2153	Urban and land use planners	analyst, transportation route planning
+2153	Urban and land use planners	officer, zoning - land use
+2153	Urban and land use planners	planner, city land use / regional
+2153	Urban and land use planners	planner, environmental
+2153	Urban and land use planners	planner, land use - long-range / heritage
+2153	Urban and land use planners	planner, municipal park / neighbourhood
+2153	Urban and land use planners	planner, site
+2153	Urban and land use planners	planner, transportation
+2153	Urban and land use planners	planning analyst - land use
+2153	Urban and land use planners	specialist, land use
+2154	Land surveyors	surveyor, cadastral
+2154	Land surveyors	surveyor, legal
+2161	Mathematicians, statisticians and actuaries	actuary
+2161	Mathematicians, statisticians and actuaries	actuary, casualty / insurance / life
+2161	Mathematicians, statisticians and actuaries	analyst, actuarial / statistical
+2161	Mathematicians, statisticians and actuaries	biometrician / biostatisician
+2161	Mathematicians, statisticians and actuaries	consultant, statistical
+2161	Mathematicians, statisticians and actuaries	cryptanalyst / cryptographer
+2161	Mathematicians, statisticians and actuaries	demographer
+2161	Mathematicians, statisticians and actuaries	environmental epidemiologist
+2161	Mathematicians, statisticians and actuaries	expert, cipher
+2161	Mathematicians, statisticians and actuaries	mathematician, applied / research
+2161	Mathematicians, statisticians and actuaries	researcher, operations
+2161	Mathematicians, statisticians and actuaries	statistical methodologist
+2161	Mathematicians, statisticians and actuaries	statistician, applied / industrial
+2161	Mathematicians, statisticians and actuaries	statistician, biological & agricultural
+2161	Mathematicians, statisticians and actuaries	statistician, business and economics
+2161	Mathematicians, statisticians and actuaries	statistician, chemistry
+2161	Mathematicians, statisticians and actuaries	statistician, consulting pension
+2161	Mathematicians, statisticians and actuaries	statistician, education
+2161	Mathematicians, statisticians and actuaries	statistician, financial 
+2161	Mathematicians, statisticians and actuaries	statistician, mathematical
+2161	Mathematicians, statisticians and actuaries	statistician, medical / public health
+2161	Mathematicians, statisticians and actuaries	statistician, opinion polling / survey
+2161	Mathematicians, statisticians and actuaries	statistician, physical science, engineer'g
+2161	Mathematicians, statisticians and actuaries	statistician, sales
+2161	Mathematicians, statisticians and actuaries	statistician, social science
+2161	Mathematicians, statisticians and actuaries	statistician, vital
+2161	Mathematicians, statisticians and actuaries	supervisor, statistical analysis
+2171	Information systems analysts and consultants	account manager, IT (info. technology)
+2171	Information systems analysts and consultants	analyst, applications - computer systems
+2171	Information systems analysts and consultants	analyst, applications - informatics
+2171	Information systems analysts and consultants	analyst, artificial intelligence
+2171	Information systems analysts and consultants	analyst, business - continuity
+2171	Information systems analysts and consultants	analyst, business - informatics
+2171	Information systems analysts and consultants	analyst, business - information systems
+2171	Information systems analysts and consultants	analyst, business - IT (information tech)
+2171	Information systems analysts and consultants	analyst, business - re-engineering systems
+2171	Information systems analysts and consultants	analyst, information systems integration
+2171	Information systems analysts and consultants	analyst, internet security
+2171	Information systems analysts and consultants	analyst, IT (information technology)
+2171	Information systems analysts and consultants	analyst, MIS (management info systems)
+2171	Information systems analysts and consultants	analyst, QA (quality assurance) - software
+2171	Information systems analysts and consultants	auditor, EDP (electronic data processing)
+2171	Information systems analysts and consultants	auditor, QA (quality asurance) software
+2171	Information systems analysts and consultants	consultant, artificial intelligence
+2171	Information systems analysts and consultants	consultant, computer / data processing 
+2171	Information systems analysts and consultants	enterprise architect - information technology (IT)
+2171	Information systems analysts and consultants	manager, IT (information technology)
+2171	Information systems analysts and consultants	planner, security / information systems
+2171	Information systems analysts and consultants	solutions architect - information technology (IT)
+2171	Information systems analysts and consultants	specialist, business computer systems
+2171	Information systems analysts and consultants	systems analyst / auditor / consultant
+2172	Database analysts and data administrators	analyst, data - informatics and systems
+2172	Database analysts and data administrators	analyst, data warehouse / database (DBA)
+2172	Database analysts and data administrators	analyst, information resource
+2172	Database analysts and data administrators	architect, technical - database (DBA) 
+2172	Database analysts and data administrators	custodian, data
+2172	Database analysts and data administrators	data miner / mining analyst
+2172	Database analysts and data administrators	DBA (database admin / analyst / architect)
+2172	Database analysts and data administrators	specialist, EDP (electronic data procss'g)
+2172	Database analysts and data administrators	supervisor, computer database management
+2173	Software engineers and designers	architect, application / software 
+2173	Software engineers and designers	architect, systems / technical
+2173	Software engineers and designers	designer, AI (artificial intelligence)
+2173	Software engineers and designers	engineer, computer applications
+2173	Software engineers and designers	engineer, system integration
+2173	Software engineers and designers	engineer, telecommunications
+2173	Software engineers and designers	engineer, verification / testing 
+2174	Computer programmers and interactive media developers	developer, graphical user interface (GUI)
+2174	Computer programmers and interactive media developers	developer, multimedia
+2174	Computer programmers and interactive media developers	developer, multimedia / video games
+2174	Computer programmers and interactive media developers	mobile applications developer
+2174	Computer programmers and interactive media developers	programmer, computer
+2174	Computer programmers and interactive media developers	programmer, EDP (electronic data procss'g)
+2174	Computer programmers and interactive media developers	programmer, Java / visual basic
+2174	Computer programmers and interactive media developers	programmer, multimedia
+2174	Computer programmers and interactive media developers	programmer, operating systems
+2174	Computer programmers and interactive media developers	programmer, satellite telecommunications
+2174	Computer programmers and interactive media developers	programmer, scientific
+2174	Computer programmers and interactive media developers	programmer, software / business app.
+2174	Computer programmers and interactive media developers	programmer, teleprocessing software
+2174	Computer programmers and interactive media developers	programmer-analyst
+2175	Web designers and developers	designer / developer - intranet / website
+2175	Web designers and developers	developer, web - e-business / e-commerce
+2175	Web designers and developers	manager, website
+2175	Web designers and developers	Web integrator
+2175	Web designers and developers	Webmaster
+2175	Web designers and developers	webmaster, corporate
+2211	Chemical technologists and technicians	analyst, chemical 
+2211	Chemical technologists and technicians	analyst, document examiner
+2211	Chemical technologists and technicians	analyst, forensic handwriting expert
+2211	Chemical technologists and technicians	analyst, forensic lab
+2211	Chemical technologists and technicians	chromatographer, gas
+2211	Chemical technologists and technicians	crime scene examiner
+2211	Chemical technologists and technicians	dyer, master - textiles
+2211	Chemical technologists and technicians	fingerprint identification technician
+2211	Chemical technologists and technicians	laboratory assistant / technician / tester
+2211	Chemical technologists and technicians	latent fingerprint examiner
+2211	Chemical technologists and technicians	production technician - pharmaceuticals
+2211	Chemical technologists and technicians	specialist, chemical analysis
+2211	Chemical technologists and technicians	spectroscopist
+2211	Chemical technologists and technicians	supervisor, chemical laboratory
+2211	Chemical technologists and technicians	technician - pharmaceutical production
+2211	Chemical technologists and technicians	technician / technolgist, mass spectrometry
+2211	Chemical technologists and technicians	technician, analytical chemistry
+2211	Chemical technologists and technicians	technician, applied chemistry - brewery
+2211	Chemical technologists and technicians	technician, chemical - heavy water plant
+2211	Chemical technologists and technicians	technician, chemical processing QC
+2211	Chemical technologists and technicians	technician, chemical research
+2211	Chemical technologists and technicians	technician, forensic laboratory
+2211	Chemical technologists and technicians	technician, fuel 
+2211	Chemical technologists and technicians	technician, geochemical
+2211	Chemical technologists and technicians	technician, NMR (nuclear magnetic resnce)
+2211	Chemical technologists and technicians	technician, nuclear generating station
+2211	Chemical technologists and technicians	technician, paint
+2211	Chemical technologists and technicians	technician, quality control (QC)
+2211	Chemical technologists and technicians	technician, textiles - dyeing / finishing
+2211	Chemical technologists and technicians	technician, textiles - synthetics 
+2211	Chemical technologists and technicians	technician, water purification
+2211	Chemical technologists and technicians	technologist, geochemical
+2211	Chemical technologists and technicians	technologist, spectroscopic
+2211	Chemical technologists and technicians	tester, laboratory - chemical processing
+2211	Chemical technologists and technicians	tester, laboratory - pulp and paper
+2211	Chemical technologists and technicians	tester, petroleum processing
+2211	Chemical technologists and technicians	titanium pigment test analyst
+2212	Geological and mineral technologists and technicians	analyst, log / metallurgical control
+2212	Geological and mineral technologists and technicians	assayer - mineralogy / gold / minerals
+2212	Geological and mineral technologists and technicians	co-ordinator, seismic explortion line crew
+2212	Geological and mineral technologists and technicians	geophysical observer / prospecting
+2212	Geological and mineral technologists and technicians	geotechnician
+2212	Geological and mineral technologists and technicians	mud man / mud woman - petroleum drilling
+2212	Geological and mineral technologists and technicians	observer, magnetic
+2212	Geological and mineral technologists and technicians	observer, seismic exploration / prospecting
+2212	Geological and mineral technologists and technicians	opearator, geophysical equipment 
+2212	Geological and mineral technologists and technicians	survey technician / survey technologist
+2212	Geological and mineral technologists and technicians	technician / technologist, oil geology
+2212	Geological and mineral technologists and technicians	technician / technologist, sea-floor
+2212	Geological and mineral technologists and technicians	technician / technologist, soil science
+2212	Geological and mineral technologists and technicians	technician / technologist, welding
+2212	Geological and mineral technologists and technicians	technician, diamond drilling
+2212	Geological and mineral technologists and technicians	technician, foundry lab / gravity data
+2212	Geological and mineral technologists and technicians	technician, rock mechanics
+2212	Geological and mineral technologists and technicians	technician, seismic / seismometer
+2212	Geological and mineral technologists and technicians	technologist, geological prospecting
+2212	Geological and mineral technologists and technicians	technologist, geophysical engineering
+2212	Geological and mineral technologists and technicians	technologist, hydrographic / hydrology
+2212	Geological and mineral technologists and technicians	technologist, metallurgy / ore
+2212	Geological and mineral technologists and technicians	technologist, mine engineering 
+2212	Geological and mineral technologists and technicians	technologist, mine production
+2212	Geological and mineral technologists and technicians	technologist, paleontology / palynology
+2221	Biological technologists and technicians	culturist, fish
+2221	Biological technologists and technicians	examiner, forensic - hair and fibre
+2221	Biological technologists and technicians	foreperson, zoo
+2221	Biological technologists and technicians	technologist, agricultural sciences
+2221	Biological technologists and technicians	technologist, agrology / agronomy 
+2221	Biological technologists and technicians	technologist, aquaculture
+2221	Biological technologists and technicians	technologist, aquatic biology
+2221	Biological technologists and technicians	technologist, bacteriology 
+2221	Biological technologists and technicians	technologist, biological
+2221	Biological technologists and technicians	technologist, biotechnology
+2221	Biological technologists and technicians	technologist, botanical
+2221	Biological technologists and technicians	technologist, crop production
+2221	Biological technologists and technicians	technologist, dairy
+2221	Biological technologists and technicians	technologist, ecological
+2221	Biological technologists and technicians	technologist, fish farm
+2221	Biological technologists and technicians	technologist, forensic laboratory
+2221	Biological technologists and technicians	technologist, habitat mgmt
+2221	Biological technologists and technicians	technologist, life sciences research
+2221	Biological technologists and technicians	technologist, microbiology
+2221	Biological technologists and technicians	technologist, natural resources
+2221	Biological technologists and technicians	technologist, pisciculture bacteriological
+2221	Biological technologists and technicians	technologist, seed
+2221	Biological technologists and technicians	technologist, vaccine
+2221	Biological technologists and technicians	technologist, virology
+2221	Biological technologists and technicians	technologist, zoological
+2221	Biological technologists and technicians	zoo foreperson / supervisor
+2222	Agricultural and fish products inspectors	inspector, agricultural products 
+2222	Agricultural and fish products inspectors	inspector, animal health / livestock
+2222	Agricultural and fish products inspectors	inspector, bread / flour / grain
+2222	Agricultural and fish products inspectors	inspector, contagious animal disease
+2222	Agricultural and fish products inspectors	inspector, crop certification
+2222	Agricultural and fish products inspectors	inspector, dairy products
+2222	Agricultural and fish products inspectors	inspector, fish / fish products
+2222	Agricultural and fish products inspectors	inspector, food products
+2222	Agricultural and fish products inspectors	inspector, perishable goods
+2222	Agricultural and fish products inspectors	inspector, plant / processing plant
+2222	Agricultural and fish products inspectors	inspector, plant protection
+2222	Agricultural and fish products inspectors	inspector, produce
+2222	Agricultural and fish products inspectors	inspector, seed crop / seed grains
+2222	Agricultural and fish products inspectors	supervisor, agricultural inspection
+2222	Agricultural and fish products inspectors	supervisor, fruit & vegetables inspection
+2223	Forestry technologists and technicians	conservationist, range
+2223	Forestry technologists and technicians	co-ordinator, forestry crew
+2223	Forestry technologists and technicians	crew leader, forest fire suppression
+2223	Forestry technologists and technicians	cruiser / cruising chief 
+2223	Forestry technologists and technicians	forest fire officer / ranger / crew leader
+2223	Forestry technologists and technicians	forestry worker; worker, forestry
+2223	Forestry technologists and technicians	grader, log
+2223	Forestry technologists and technicians	leader, fire crew 
+2223	Forestry technologists and technicians	log scaler / scaling chief / 
+2223	Forestry technologists and technicians	manager, range
+2223	Forestry technologists and technicians	officer, enforcement
+2223	Forestry technologists and technicians	officer, fire suppression
+2223	Forestry technologists and technicians	officer, forest inventory resource
+2223	Forestry technologists and technicians	ranger / technician, forest extension
+2223	Forestry technologists and technicians	silviculturist
+2223	Forestry technologists and technicians	supervisor, field office
+2223	Forestry technologists and technicians	technician, fire control
+2223	Forestry technologists and technicians	technician, nursery
+2223	Forestry technologists and technicians	technologist - forestry / conservation
+2223	Forestry technologists and technicians	technologist,  forest resource management 
+2223	Forestry technologists and technicians	technologist, forest regional survey
+2223	Forestry technologists and technicians	technologist, natural resources
+2223	Forestry technologists and technicians	timber cruiser / maker / rider / scaler
+2224	Conservation and fishery officers	monitor / observer, fisheries
+2224	Conservation and fishery officers	officer, natural resources
+2224	Conservation and fishery officers	ranger, forest - wildlife management
+2224	Conservation and fishery officers	ranger, park
+2224	Conservation and fishery officers	supervisor, district - fisheries
+2224	Conservation and fishery officers	supervisor, fisheries inspectors / officers
+2224	Conservation and fishery officers	warden / officer, fish and game
+2225	Landscape and horticulture technicians and specialists	arborist / arboriculturist
+2225	Landscape and horticulture technicians and specialists	floriculturist
+2225	Landscape and horticulture technicians and specialists	greenskeeper / greens superintendent
+2225	Landscape and horticulture technicians and specialists	horticulturist
+2225	Landscape and horticulture technicians and specialists	interior plantscape specialist
+2225	Landscape and horticulture technicians and specialists	landscape gardener / designer / technician
+2225	Landscape and horticulture technicians and specialists	landscape horticulturist
+2225	Landscape and horticulture technicians and specialists	specialist, horticulture / tree and shrub
+2225	Landscape and horticulture technicians and specialists	specialist, lawn care / turfgrass mgmt
+2225	Landscape and horticulture technicians and specialists	superintendent, golf course / greens
+2225	Landscape and horticulture technicians and specialists	technician, hydroponics
+2225	Landscape and horticulture technicians and specialists	technician, irrigation (not agriculture)
+2225	Landscape and horticulture technicians and specialists	technician, plantscape
+2225	Landscape and horticulture technicians and specialists	technician, tree service
+2225	Landscape and horticulture technicians and specialists	technologist, horticulture
+2231	Civil engineering technologists and technicians	corrosion technician
+2231	Civil engineering technologists and technicians	corrosion technologist
+2231	Civil engineering technologists and technicians	investigator, structural
+2231	Civil engineering technologists and technicians	supervisor, architectural technicians
+2231	Civil engineering technologists and technicians	technician, land use
+2231	Civil engineering technologists and technicians	technician, measures
+2231	Civil engineering technologists and technicians	technician, road / road traffic
+2231	Civil engineering technologists and technicians	technician, traffic - civil engineering
+2231	Civil engineering technologists and technicians	technologist, architectural / engineering
+2231	Civil engineering technologists and technicians	technologist, foundation
+2231	Civil engineering technologists and technicians	writer, construction specifications
+2232	Mechanical engineering technologists and technicians	designer, machine tool
+2232	Mechanical engineering technologists and technicians	heating, ventilating and air conditioning technician
+2232	Mechanical engineering technologists and technicians	inspector, technical - mechanical
+2232	Mechanical engineering technologists and technicians	installer / repairer, robotics systems
+2232	Mechanical engineering technologists and technicians	specialist, HVAC
+2232	Mechanical engineering technologists and technicians	technician, equipment development
+2232	Mechanical engineering technologists and technicians	technician, house automation
+2232	Mechanical engineering technologists and technicians	technician, power equipment design
+2232	Mechanical engineering technologists and technicians	technician, robotics servicing
+2232	Mechanical engineering technologists and technicians	technician, thermal station
+2232	Mechanical engineering technologists and technicians	technologist, aeronautical
+2232	Mechanical engineering technologists and technicians	technologist, automation
+2232	Mechanical engineering technologists and technicians	technologist, cryonics engineering
+2232	Mechanical engineering technologists and technicians	technologist, vibration
+2232	Mechanical engineering technologists and technicians	technologist, wind tunnel test
+2233	Industrial engineering and manufacturing technologists and technicians	analyst / technologist, time study
+2233	Industrial engineering and manufacturing technologists and technicians	analyst, industrial engineering
+2233	Industrial engineering and manufacturing technologists and technicians	designer, methods
+2233	Industrial engineering and manufacturing technologists and technicians	production technologist - sawmill
+3111	Specialist physicians	anesthesiologist / anesthetist
+2233	Industrial engineering and manufacturing technologists and technicians	programmer, 3D CNC 
+2233	Industrial engineering and manufacturing technologists and technicians	programmer, CAD / CAM NC (computer-aided)
+2233	Industrial engineering and manufacturing technologists and technicians	programmer, CNC (computer numerical cntrl)
+2233	Industrial engineering and manufacturing technologists and technicians	programmer, CNC / CMM 
+2233	Industrial engineering and manufacturing technologists and technicians	programmer, numerically controlled machine
+2233	Industrial engineering and manufacturing technologists and technicians	technician, fire protection
+2233	Industrial engineering and manufacturing technologists and technicians	technician, injection moulding
+2233	Industrial engineering and manufacturing technologists and technicians	technician, inventory control
+2233	Industrial engineering and manufacturing technologists and technicians	technician, materials handling
+2233	Industrial engineering and manufacturing technologists and technicians	technician, plant layout
+2233	Industrial engineering and manufacturing technologists and technicians	technician, scheduling - manufacturing
+2233	Industrial engineering and manufacturing technologists and technicians	technologist, CNC 
+2233	Industrial engineering and manufacturing technologists and technicians	technologist, fabric design
+2233	Industrial engineering and manufacturing technologists and technicians	technologist, industrial eng. QA / QC 
+2233	Industrial engineering and manufacturing technologists and technicians	technologist, loss prevention
+2233	Industrial engineering and manufacturing technologists and technicians	technologist, operations research
+2233	Industrial engineering and manufacturing technologists and technicians	technologist, planning
+2233	Industrial engineering and manufacturing technologists and technicians	technologist, plastics manufacturing
+2233	Industrial engineering and manufacturing technologists and technicians	technologist, production & quality control
+2233	Industrial engineering and manufacturing technologists and technicians	technologist, pulp & paper manufacturing 
+2233	Industrial engineering and manufacturing technologists and technicians	technologist, tool programming
+2234	Construction estimators	estimator, contractors / trade contractors
+2234	Construction estimators	estimator, electrical 
+2234	Construction estimators	estimator, mechanical
+2234	Construction estimators	estimator, plumbing 
+2234	Construction estimators	estimator, principal
+2234	Construction estimators	estimator, professional
+2234	Construction estimators	estimator-surveyor, quantity
+2234	Construction estimators	surveyor, electrical & mechanical quantity
+2241	Electrical and electronics engineering technologists and technicians	designer, circuit - railway
+2241	Electrical and electronics engineering technologists and technicians	flight simulator technician
+2241	Electrical and electronics engineering technologists and technicians	inspector-tester, computer
+2241	Electrical and electronics engineering technologists and technicians	lead flight simulator technician
+2241	Electrical and electronics engineering technologists and technicians	repairer, audio amplifier 
+2241	Electrical and electronics engineering technologists and technicians	repairer, electronics production
+2241	Electrical and electronics engineering technologists and technicians	repairer, hospital electronic equipment
+2241	Electrical and electronics engineering technologists and technicians	repairer, medical laboratory equipment
+2241	Electrical and electronics engineering technologists and technicians	repairer, research laboratory equipment
+2241	Electrical and electronics engineering technologists and technicians	repairer, test equipment
+2241	Electrical and electronics engineering technologists and technicians	supervisor, engineering technicians
+2241	Electrical and electronics engineering technologists and technicians	technician, computer communications
+2241	Electrical and electronics engineering technologists and technicians	technician, electromedical equipment
+2241	Electrical and electronics engineering technologists and technicians	technician, equipment maintenance
+2241	Electrical and electronics engineering technologists and technicians	technician, microwave maintenance
+2241	Electrical and electronics engineering technologists and technicians	technician, production support
+2241	Electrical and electronics engineering technologists and technicians	technician, radar / radar systems / sonar
+2241	Electrical and electronics engineering technologists and technicians	technician, test
+2241	Electrical and electronics engineering technologists and technicians	technologist, biomedical engineering
+2241	Electrical and electronics engineering technologists and technicians	technologist, communications / telecom
+2241	Electrical and electronics engineering technologists and technicians	technologist, computer hardware
+2241	Electrical and electronics engineering technologists and technicians	technologist, design - electrical
+2241	Electrical and electronics engineering technologists and technicians	technologist, distribution planning
+2241	Electrical and electronics engineering technologists and technicians	technologist, electrical engineering
+2241	Electrical and electronics engineering technologists and technicians	technologist, electronics 
+2241	Electrical and electronics engineering technologists and technicians	technologist, electronics design
+2241	Electrical and electronics engineering technologists and technicians	technologist, engineering
+2241	Electrical and electronics engineering technologists and technicians	technologist, fibre optics
+2241	Electrical and electronics engineering technologists and technicians	technologist, holographics
+2241	Electrical and electronics engineering technologists and technicians	technologist, laser
+3111	Specialist physicians	bacteriologist, medical
+2241	Electrical and electronics engineering technologists and technicians	technologist, lighting - home lighting
+2241	Electrical and electronics engineering technologists and technicians	technologist, lines distribution design
+2241	Electrical and electronics engineering technologists and technicians	technologist, metering / metrics
+2241	Electrical and electronics engineering technologists and technicians	technologist, optics
+2241	Electrical and electronics engineering technologists and technicians	technologist, physical sciences lab
+2241	Electrical and electronics engineering technologists and technicians	technologist, QC (quality control)
+2241	Electrical and electronics engineering technologists and technicians	technologist, radio frequency
+2241	Electrical and electronics engineering technologists and technicians	technologist, satellite
+2241	Electrical and electronics engineering technologists and technicians	technologist, space vision
+2241	Electrical and electronics engineering technologists and technicians	technologist, underground power distrib'n
+2241	Electrical and electronics engineering technologists and technicians	tester, calibration
+2241	Electrical and electronics engineering technologists and technicians	troubleshooter, quality control
+2242	Electronic service technicians (household and business equipment)	installer / repairer, audiovisual (AV)
+2242	Electronic service technicians (household and business equipment)	installer / repairer, electronic equipment
+2242	Electronic service technicians (household and business equipment)	installer / repairer, fire / security alarms
+2242	Electronic service technicians (household and business equipment)	installer / repairer, office machines
+2242	Electronic service technicians (household and business equipment)	installer / repairer, photoelectric sorter
+2242	Electronic service technicians (household and business equipment)	installer / repairer, public address (PA)
+2242	Electronic service technicians (household and business equipment)	installer / repairer, radio communication
+2242	Electronic service technicians (household and business equipment)	installer / repairer, TV studio equipment
+2242	Electronic service technicians (household and business equipment)	installer / servicer, satellite antenna 
+2242	Electronic service technicians (household and business equipment)	installer / servicer, video equipment
+2242	Electronic service technicians (household and business equipment)	installer, alarm systems
+2242	Electronic service technicians (household and business equipment)	installer, closed circuit television
+2242	Electronic service technicians (household and business equipment)	repairer, amplifier / synthesizer
+2242	Electronic service technicians (household and business equipment)	repairer, video camera
+2242	Electronic service technicians (household and business equipment)	servicer, ATM (automatic teller machine)
+2242	Electronic service technicians (household and business equipment)	servicer, electronic cash register
+2242	Electronic service technicians (household and business equipment)	slot machine technician - casino
+2242	Electronic service technicians (household and business equipment)	supervisor, installation / repair
+2242	Electronic service technicians (household and business equipment)	supervisor, radio / TV repair
+2242	Electronic service technicians (household and business equipment)	supervisor, service technicians
+2242	Electronic service technicians (household and business equipment)	technician, computer equipment
+2242	Electronic service technicians (household and business equipment)	technician, repair - audio-video-stereo
+2242	Electronic service technicians (household and business equipment)	technician, service - radio / TV
+2242	Electronic service technicians (household and business equipment)	technician, totalizator systems
+2243	Industrial instrument technicians and mechanics	measurement technician - oil and gas installation
+2243	Industrial instrument technicians and mechanics	mechanic, industrial / precision
+2243	Industrial instrument technicians and mechanics	mechanic, utilities / maintenance
+2243	Industrial instrument technicians and mechanics	repairer, industrial instrument panel
+2243	Industrial instrument technicians and mechanics	repairer, industrial process control equip
+2243	Industrial instrument technicians and mechanics	repairer, process control equipment
+2243	Industrial instrument technicians and mechanics	technician, heavy water plant control
+2243	Industrial instrument technicians and mechanics	technician, industrial instrumentation
+2243	Industrial instrument technicians and mechanics	technician, nuclear generating station
+2244	Aircraft instrument, electrical and avionics mechanics, technicians and inspectors	electrotechnician, aircraft / missiles
+2244	Aircraft instrument, electrical and avionics mechanics, technicians and inspectors	engineer, AME (aircraft maintenance eng.)
+2244	Aircraft instrument, electrical and avionics mechanics, technicians and inspectors	inspector, shop - avionics / electrical
+2244	Aircraft instrument, electrical and avionics mechanics, technicians and inspectors	installer, avionics / radio / radar
+2244	Aircraft instrument, electrical and avionics mechanics, technicians and inspectors	mechanic, aircraft electronic system
+2244	Aircraft instrument, electrical and avionics mechanics, technicians and inspectors	repairer, communications equipmens
+2244	Aircraft instrument, electrical and avionics mechanics, technicians and inspectors	specialist, calibration (avionics)
+2244	Aircraft instrument, electrical and avionics mechanics, technicians and inspectors	technician / mechanic, aircraft instruments
+2244	Aircraft instrument, electrical and avionics mechanics, technicians and inspectors	technician / mechanic, electrical systems
+2244	Aircraft instrument, electrical and avionics mechanics, technicians and inspectors	technician / mechanic, radio and electronics
+2244	Aircraft instrument, electrical and avionics mechanics, technicians and inspectors	technician / mechanic, rocket components 
+2244	Aircraft instrument, electrical and avionics mechanics, technicians and inspectors	technician, aircraft avionics
+2244	Aircraft instrument, electrical and avionics mechanics, technicians and inspectors	technician, electronic components
+2244	Aircraft instrument, electrical and avionics mechanics, technicians and inspectors	technician, precision instruments 
+2244	Aircraft instrument, electrical and avionics mechanics, technicians and inspectors	tester / inspector, avionics
+2244	Aircraft instrument, electrical and avionics mechanics, technicians and inspectors	tester / inspector, electrical
+2244	Aircraft instrument, electrical and avionics mechanics, technicians and inspectors	tester / inspector, electronics
+2244	Aircraft instrument, electrical and avionics mechanics, technicians and inspectors	tester / inspector, instrument shop
+2244	Aircraft instrument, electrical and avionics mechanics, technicians and inspectors	tester / inspector, radio and radar
+2251	Architectural technologists and technicians	technologist, registered building
+2252	Industrial designers	consultant, industrial design
+2252	Industrial designers	designer, business products
+2252	Industrial designers	designer, consumer products
+2252	Industrial designers	designer, container
+2252	Industrial designers	designer, ergonomic products
+2252	Industrial designers	designer, fixture
+2252	Industrial designers	designer, toy - industrial design
+2253	Drafting technologists and technicians	design draftsperson
+2253	Drafting technologists and technicians	detailer - structural steel drafter
+2253	Drafting technologists and technicians	drafter / draftsperson
+2253	Drafting technologists and technicians	drafter-detailer, structural steel
+2253	Drafting technologists and technicians	drafting design checker
+2253	Drafting technologists and technicians	drafting supervisor / technician
+2253	Drafting technologists and technicians	draftsperson, aeronautical
+2253	Drafting technologists and technicians	draftsperson, CAD (computer-assisted)
+2253	Drafting technologists and technicians	draftsperson, commercial
+2253	Drafting technologists and technicians	draftsperson, detail
+2253	Drafting technologists and technicians	draftsperson, electromechanical design
+2253	Drafting technologists and technicians	draftsperson, engineering design
+2253	Drafting technologists and technicians	draftsperson, geological / geophysical
+2253	Drafting technologists and technicians	draftsperson, hull - shipbuilding, repair
+2253	Drafting technologists and technicians	draftsperson, HVAC
+2253	Drafting technologists and technicians	draftsperson, hydraulic machinery
+2253	Drafting technologists and technicians	draftsperson, marine - electrical
+2253	Drafting technologists and technicians	draftsperson, mechanical building / design
+2253	Drafting technologists and technicians	draftsperson, mine
+2253	Drafting technologists and technicians	draftsperson, municipal
+2253	Drafting technologists and technicians	draftsperson, optical
+2253	Drafting technologists and technicians	draftsperson, petroleum exploration
+2253	Drafting technologists and technicians	draftsperson, piping
+2253	Drafting technologists and technicians	draftsperson, refrigeration systems
+2253	Drafting technologists and technicians	draftsperson, structural steel frame
+2253	Drafting technologists and technicians	draftsperson, survey
+2253	Drafting technologists and technicians	draftsperson, tool design
+2253	Drafting technologists and technicians	draftspersons supervisor
+2253	Drafting technologists and technicians	operator, CAD (computer-assisted drafting)
+2253	Drafting technologists and technicians	technician, drafting
+2253	Drafting technologists and technicians	technologist, design / drafting
+2253	Drafting technologists and technicians	tool checker - drafting
+2254	Land survey technologists and technicians	instrument man / woman - surveying
+2254	Land survey technologists and technicians	operator, plane table - surveying
+2254	Land survey technologists and technicians	technologist, engineering survey
+2254	Land survey technologists and technicians	technologist, geodetic survey
+2254	Land survey technologists and technicians	technologist, legal survey
+2254	Land survey technologists and technicians	transit operator - surveying
+2255	Technical occupations in geomatics and meteorology	aide, meteorological
+2255	Technical occupations in geomatics and meteorology	analyst, aerial photograph
+2255	Technical occupations in geomatics and meteorology	briefer, weather
+2255	Technical occupations in geomatics and meteorology	cartographer
+2255	Technical occupations in geomatics and meteorology	draftsperson, cartographic / map
+2255	Technical occupations in geomatics and meteorology	inspector, meteorological
+2255	Technical occupations in geomatics and meteorology	interpreter / technician, aerial photograph
+2255	Technical occupations in geomatics and meteorology	map maker
+2255	Technical occupations in geomatics and meteorology	observer / technician, aerological
+2255	Technical occupations in geomatics and meteorology	observer, avalanche / surface weather
+2255	Technical occupations in geomatics and meteorology	photogrammetrist, softcopy 
+2255	Technical occupations in geomatics and meteorology	plotter, weather chart
+2255	Technical occupations in geomatics and meteorology	processor, climate data
+2255	Technical occupations in geomatics and meteorology	specialist, airborne data acquisition
+2255	Technical occupations in geomatics and meteorology	specialist, ice conditions service 
+3111	Specialist physicians	clinical pharmacologist
+2255	Technical occupations in geomatics and meteorology	specialist, RS (remote sensing) app.
+2255	Technical occupations in geomatics and meteorology	technician, climatology / meterology
+2255	Technical occupations in geomatics and meteorology	technician, mapping
+2255	Technical occupations in geomatics and meteorology	technician, operations - weather station
+2255	Technical occupations in geomatics and meteorology	technician, weather station operations
+2255	Technical occupations in geomatics and meteorology	technologist, aerial surveys
+2255	Technical occupations in geomatics and meteorology	technologist, cartographic / map
+2255	Technical occupations in geomatics and meteorology	technologist, GIS (geographic info system)
+2255	Technical occupations in geomatics and meteorology	technologist, LIS (land info system)
+2255	Technical occupations in geomatics and meteorology	weather station officer-in-charge
+2261	Non-destructive testers and inspection technicians	inspector, NDT (non-destructive testing)
+2261	Non-destructive testers and inspection technicians	operator, non-destructive testing
+2261	Non-destructive testers and inspection technicians	technician / tester, dye penetrant
+2261	Non-destructive testers and inspection technicians	technician / tester, eddy current
+2261	Non-destructive testers and inspection technicians	technician / tester, infrared
+2261	Non-destructive testers and inspection technicians	technician / tester, magnetic particle
+2261	Non-destructive testers and inspection technicians	technician, acoustic emission
+2261	Non-destructive testers and inspection technicians	technician, aircraft NDT inspection
+2261	Non-destructive testers and inspection technicians	technician, fluorescent penetrant testing
+2261	Non-destructive testers and inspection technicians	technician, infrared thermography
+2261	Non-destructive testers and inspection technicians	technician, NDT maintenance
+2261	Non-destructive testers and inspection technicians	technician, visual inspection - welding
+2261	Non-destructive testers and inspection technicians	tester / testing, pipe / pipeline
+2261	Non-destructive testers and inspection technicians	tester, acoustic emission
+2261	Non-destructive testers and inspection technicians	tester, fluoroscope
+2261	Non-destructive testers and inspection technicians	tester, forging
+2261	Non-destructive testers and inspection technicians	tester, hydrostatic
+2261	Non-destructive testers and inspection technicians	tester, pressure tank / pressure vessel
+2261	Non-destructive testers and inspection technicians	tester, radiographic
+2261	Non-destructive testers and inspection technicians	tester, reflectoscope
+2261	Non-destructive testers and inspection technicians	tester, ultrasonic immersion / UV testing
+2261	Non-destructive testers and inspection technicians	tester, weld
+2261	Non-destructive testers and inspection technicians	thermographer, infrared
+2262	Engineering inspectors and regulatory officers	air transport inspector
+2262	Engineering inspectors and regulatory officers	inspector, ammunition safety
+2262	Engineering inspectors and regulatory officers	inspector, boiler and machinery
+2262	Engineering inspectors and regulatory officers	inspector, broadcast interference
+2262	Engineering inspectors and regulatory officers	inspector, consumer affairs
+2262	Engineering inspectors and regulatory officers	inspector, crane / lifting gear
+2262	Engineering inspectors and regulatory officers	inspector, elevator / escalator
+2262	Engineering inspectors and regulatory officers	inspector, engineering
+2262	Engineering inspectors and regulatory officers	inspector, freight car / railway
+2262	Engineering inspectors and regulatory officers	inspector, insurance loss prevention
+2262	Engineering inspectors and regulatory officers	inspector, loss prevention - insurance
+2262	Engineering inspectors and regulatory officers	inspector, motor vehicle
+2262	Engineering inspectors and regulatory officers	inspector, pipeline equipment
+2262	Engineering inspectors and regulatory officers	inspector, road safety
+2262	Engineering inspectors and regulatory officers	inspector, ship
+2262	Engineering inspectors and regulatory officers	inspector, tensile strength
+2262	Engineering inspectors and regulatory officers	investigator, motor vehicle defects
+2262	Engineering inspectors and regulatory officers	investigator, radio interference
+2262	Engineering inspectors and regulatory officers	measurement specialist - oil and gas
+2262	Engineering inspectors and regulatory officers	measurement technician - oil and gas inspection
+2262	Engineering inspectors and regulatory officers	officer, motor transportation regulations
+2262	Engineering inspectors and regulatory officers	officer, quality assurance
+2262	Engineering inspectors and regulatory officers	officer, railway accident investigation
+2262	Engineering inspectors and regulatory officers	officer, regulatory - engineering
+2263	Inspectors in public and environmental health and occupational health and safety	examiner, mine
+2263	Inspectors in public and environmental health and occupational health and safety	health and safety advisor
+2263	Inspectors in public and environmental health and occupational health and safety	inspector, beauty salon
+2263	Inspectors in public and environmental health and occupational health and safety	inspector, cross connection control
+2263	Inspectors in public and environmental health and occupational health and safety	inspector, dangerous goods - railway
+2263	Inspectors in public and environmental health and occupational health and safety	inspector, flood damage
+2263	Inspectors in public and environmental health and occupational health and safety	inspector, food / restaurant / hotel
+3111	Specialist physicians	dermatologist / skin specialist
+2263	Inspectors in public and environmental health and occupational health and safety	inspector, mine safety
+2263	Inspectors in public and environmental health and occupational health and safety	inspector, nursing home
+2263	Inspectors in public and environmental health and occupational health and safety	inspector, occupational health / safety
+2263	Inspectors in public and environmental health and occupational health and safety	inspector, rodent control
+2263	Inspectors in public and environmental health and occupational health and safety	inspector, welfare
+2263	Inspectors in public and environmental health and occupational health and safety	monitor, radiation
+2263	Inspectors in public and environmental health and occupational health and safety	occupational health and safety consultant (OHS)
+2263	Inspectors in public and environmental health and occupational health and safety	officer, quarantine - public health
+2263	Inspectors in public and environmental health and occupational health and safety	officer, rodent control
+2263	Inspectors in public and environmental health and occupational health and safety	prevention officer - occupational health
+2263	Inspectors in public and environmental health and occupational health and safety	radiation surveyor
+2263	Inspectors in public and environmental health and occupational health and safety	safety supervisor - occupational health and safety
+2263	Inspectors in public and environmental health and occupational health and safety	supervisor, public health unit
+2263	Inspectors in public and environmental health and occupational health and safety	technologist, environmental health &safety
+2263	Inspectors in public and environmental health and occupational health and safety	technologist, hazardous waste management
+2263	Inspectors in public and environmental health and occupational health and safety	technologist, health and safety
+2263	Inspectors in public and environmental health and occupational health and safety	tester
+2263	Inspectors in public and environmental health and occupational health and safety	tester, cross connection control
+2264	Construction inspectors	construction inspector supervisor
+2264	Construction inspectors	foreperson, construction inspectors
+2264	Construction inspectors	inspector, building
+2264	Construction inspectors	inspector, closed-circuit TV sewer
+2264	Construction inspectors	inspector, CMHC 
+2264	Construction inspectors	inspector, electrical 
+2264	Construction inspectors	inspector, irrigation
+2264	Construction inspectors	inspector, wiring - domestic / industrial
+2264	Construction inspectors	officer, construction safety
+2264	Construction inspectors	tester, construction inspector
+2271	Air pilots, flight engineers and flying instructors	aerial crop duster
+2271	Air pilots, flight engineers and flying instructors	instructor, flight
+2271	Air pilots, flight engineers and flying instructors	navigator - air transport
+2271	Air pilots, flight engineers and flying instructors	pilot, air patrol 
+2271	Air pilots, flight engineers and flying instructors	pilot, air transport
+2271	Air pilots, flight engineers and flying instructors	pilot, business aircraft / corporate
+2271	Air pilots, flight engineers and flying instructors	pilot, check
+2271	Air pilots, flight engineers and flying instructors	pilot, commercial
+2271	Air pilots, flight engineers and flying instructors	pilot, fire patrol / water bomber
+2271	Air pilots, flight engineers and flying instructors	pilot, relief
+2271	Air pilots, flight engineers and flying instructors	pilot, test - engineering / experimental
+2271	Air pilots, flight engineers and flying instructors	pilot, topgraphic survey / mapping
+2271	Air pilots, flight engineers and flying instructors	supervisor, pilots / flight engineers
+2272	Air traffic controllers and related occupations	air traffic control chief / officer
+2272	Air traffic controllers and related occupations	air traffic controller (ATC)
+2272	Air traffic controllers and related occupations	controller, tower - air traffic
+2272	Air traffic controllers and related occupations	flight service specialist (FSS)
+2272	Air traffic controllers and related occupations	officer, flight operations
+2273	Deck officers, water transport	Coast Guard vessel chief officer
+2273	Deck officers, water transport	Coast Guard vessel commanding officer
+2273	Deck officers, water transport	commanding officer
+2273	Deck officers, water transport	dredge captain / officer
+2273	Deck officers, water transport	ferryboat captain / officer
+2273	Deck officers, water transport	first mate
+2273	Deck officers, water transport	launchman / launchwoman
+2273	Deck officers, water transport	mariner, master
+2273	Deck officers, water transport	master, inland waters / minor waters
+2273	Deck officers, water transport	master, self-propelled drilling rig
+2273	Deck officers, water transport	offshore drilling rig first mate
+2273	Deck officers, water transport	offshore rig captain / commanding officer
+2273	Deck officers, water transport	pilot - ship / harbour / river
+2273	Deck officers, water transport	waterman / waterwoman
+2274	Engineer officers, water transport	chief engineer
+2274	Engineer officers, water transport	chief marine engineer
+2274	Engineer officers, water transport	engineer, Coast Guard vessel
+2274	Engineer officers, water transport	marine engineer
+2274	Engineer officers, water transport	officer-cadet, marine engineer
+2274	Engineer officers, water transport	offshore drilling rig engineer
+2275	Railway traffic controllers and marine traffic regulators	checker, traffic - waterways
+2275	Railway traffic controllers and marine traffic regulators	dispatcher, train / locomotive
+2275	Railway traffic controllers and marine traffic regulators	operator, centralized traffic control 
+2281	Computer network technicians	administrator, server / network / website
+2281	Computer network technicians	LAN (local area network) administrator
+2281	Computer network technicians	librarian, computer records
+2281	Computer network technicians	network administrator / controller
+2281	Computer network technicians	operator, data centre / network
+2281	Computer network technicians	technican, computer network
+2281	Computer network technicians	technician, internet / web / website 
+2281	Computer network technicians	WAN (wide area network) administrator
+2282	User support technicians	agent, call centre - technical support
+2282	User support technicians	analyst, technical support
+2282	User support technicians	deskside support technician
+2282	User support technicians	PC (personal computer) support analyst
+2282	User support technicians	representative, computer help desk
+2282	User support technicians	technician, hardware / softwar installation
+2282	User support technicians	technician, hardware installation
+2283	Information systems testing technicians	analyst, test co-ordination
+2283	Information systems testing technicians	co-ordinator, software testing
+2283	Information systems testing technicians	technician, testing - application / systems
+2283	Information systems testing technicians	tester, software / user acceptance
+2283	Information systems testing technicians	video game tester
+3011	Nursing co-ordinators and supervisors	nurse - team leader
+3011	Nursing co-ordinators and supervisors	nurse, head / assistant head
+3011	Nursing co-ordinators and supervisors	nursing co-ordinator / supervisor 
+3012	Registered nurses and registered psychiatric nurses	RN (registered nurse)
+3012	Registered nurses and registered psychiatric nurses	adviser, nursing
+3012	Registered nurses and registered psychiatric nurses	consultant, nurse - public health nurse
+3012	Registered nurses and registered psychiatric nurses	nurse
+3012	Registered nurses and registered psychiatric nurses	nurse, ambulatory care
+3012	Registered nurses and registered psychiatric nurses	nurse, burn unit 
+3012	Registered nurses and registered psychiatric nurses	nurse, clinic / public health clinic
+3012	Registered nurses and registered psychiatric nurses	nurse, dialysis / hemodialysis
+3012	Registered nurses and registered psychiatric nurses	nurse,medical office
+3012	Registered nurses and registered psychiatric nurses	nurse, emergency care / ICU
+3012	Registered nurses and registered psychiatric nurses	nurse, home care
+3012	Registered nurses and registered psychiatric nurses	nurse, hospital 
+3012	Registered nurses and registered psychiatric nurses	nurse, industrial
+3012	Registered nurses and registered psychiatric nurses	nurse, infection control
+3012	Registered nurses and registered psychiatric nurses	nurse, liaison / outreach
+3012	Registered nurses and registered psychiatric nurses	nurse, missionary / religious
+3012	Registered nurses and registered psychiatric nurses	nurse, nephrology
+3012	Registered nurses and registered psychiatric nurses	nurse, neuroscience
+3012	Registered nurses and registered psychiatric nurses	nurse, obstetrics / neonatal
+3012	Registered nurses and registered psychiatric nurses	nurse, occupational health
+3012	Registered nurses and registered psychiatric nurses	nurse, on-call
+3012	Registered nurses and registered psychiatric nurses	nurse, oncology / cancer care
+3012	Registered nurses and registered psychiatric nurses	nurse, OR (operating room)
+3012	Registered nurses and registered psychiatric nurses	nurse, outpost
+3012	Registered nurses and registered psychiatric nurses	nurse, palliative care
+3012	Registered nurses and registered psychiatric nurses	nurse, pediatric
+3012	Registered nurses and registered psychiatric nurses	nurse, physiotherapy
+3012	Registered nurses and registered psychiatric nurses	nurse, primary care nurse
+3012	Registered nurses and registered psychiatric nurses	nurse, private care
+3012	Registered nurses and registered psychiatric nurses	nurse, psychiatric / mental health 
+3012	Registered nurses and registered psychiatric nurses	nurse, public health / community health
+3012	Registered nurses and registered psychiatric nurses	nurse, Red Cross
+3012	Registered nurses and registered psychiatric nurses	nurse, registered - independent practice
+3012	Registered nurses and registered psychiatric nurses	nurse, registered (RN) - public 
+3012	Registered nurses and registered psychiatric nurses	nurse, registered (RN) - telehealth
+3012	Registered nurses and registered psychiatric nurses	nurse, registered industrial
+3012	Registered nurses and registered psychiatric nurses	nurse, registered psychiatric (RPN)
+3012	Registered nurses and registered psychiatric nurses	nurse, respiratory care
+3012	Registered nurses and registered psychiatric nurses	nurse, school / youth centre
+3012	Registered nurses and registered psychiatric nurses	nurse, surgery - cardiac 
+3012	Registered nurses and registered psychiatric nurses	nurse, Victorian Order of Nurses (VON)
+3012	Registered nurses and registered psychiatric nurses	nurse-consultant
+3012	Registered nurses and registered psychiatric nurses	nurse-researcher
+3012	Registered nurses and registered psychiatric nurses	nurse-technician
+3012	Registered nurses and registered psychiatric nurses	nursing, teacher / trainer / evaluator
+3111	Specialist physicians	allergist / immunologist
+3111	Specialist physicians	anatomical pathologist / anatomopathologist
+3111	Specialist physicians	endocrinologist
+3111	Specialist physicians	environmental medicine specialist
+3111	Specialist physicians	gastroenterologist
+3111	Specialist physicians	geneticist - medical specialist
+3111	Specialist physicians	geriatrician / geriatrist
+3111	Specialist physicians	gynecologist
+3111	Specialist physicians	heart specialist / cardiologist
+3111	Specialist physicians	hematologist / hematopathologist
+3111	Specialist physicians	infectious disease physician
+3111	Specialist physicians	internist / internal medicine specialist
+3111	Specialist physicians	medical examiner
+3111	Specialist physicians	microbiologist, medical
+3111	Specialist physicians	nephrologist / kidney specialist
+3111	Specialist physicians	nerve specialist
+3111	Specialist physicians	neurologist / neuropathologist
+3111	Specialist physicians	obstetrician / gynecologist
+3111	Specialist physicians	occupational health physician (OHP)
+3111	Specialist physicians	oculist / eye specialist
+3111	Specialist physicians	OHP (occupational health physician)
+3111	Specialist physicians	oncologist
+3111	Specialist physicians	ophthalmologist / eye specialist
+3111	Specialist physicians	otolaryngologist
+3111	Specialist physicians	parasitologist, medical
+3111	Specialist physicians	pathologist 
+3111	Specialist physicians	pediatrician / neonatologist
+3111	Specialist physicians	phoniatrician / phoniatrist
+3111	Specialist physicians	physiatrist
+3111	Specialist physicians	physician, hyperbaric
+3111	Specialist physicians	physician, in-patient
+3111	Specialist physicians	pneumologist / lung specialist
+3111	Specialist physicians	proctologist
+3111	Specialist physicians	psychiatrist
+3111	Specialist physicians	psychopharmacologist
+3111	Specialist physicians	respirologist / respiratory specialist
+3111	Specialist physicians	rheumatologist
+3111	Specialist physicians	rhinologist / nose specialist
+3111	Specialist physicians	specialist, acute care / critical care
+3111	Specialist physicians	specialist, cancer / oncology
+3111	Specialist physicians	specialist, cardiology
+3111	Specialist physicians	specialist, emergency medicine
+3111	Specialist physicians	specialist, environmental medicine
+3111	Specialist physicians	specialist, epidemiology / public health
+3111	Specialist physicians	specialist, fertility / infertility
+3111	Specialist physicians	specialist, gerontology
+3111	Specialist physicians	specialist, hematopathology
+3111	Specialist physicians	specialist, infectious diseases
+3111	Specialist physicians	specialist, internal medicine
+3111	Specialist physicians	specialist, nuclear medicine
+3111	Specialist physicians	specialist, pediatric / neonatology
+3111	Specialist physicians	specialist, plastic surgery
+3111	Specialist physicians	specialist, preventive medicine
+3111	Specialist physicians	specialist, spinal injury
+3111	Specialist physicians	specialist, sports medicine
+3111	Specialist physicians	surgeon, cardothoracic surgeon
+3111	Specialist physicians	surgeon, cosmetic / plastic / esthetic
+3111	Specialist physicians	surgeon, general
+3111	Specialist physicians	surgeon, neurological / neurosurgeon
+3111	Specialist physicians	surgeon, orthopedic
+3111	Specialist physicians	surgeon, pediatric
+3111	Specialist physicians	surgeon, police
+3111	Specialist physicians	surgeon, vascular
+3111	Specialist physicians	surgical physician / resident
+3111	Specialist physicians	urologist
+3112	General practitioners and family physicians	GP (general practitioner)
+3112	General practitioners and family physicians	locum doctor
+3112	General practitioners and family physicians	MD (doctor of medicine)
+3112	General practitioners and family physicians	medical - civil aviation
+3112	General practitioners and family physicians	medical - industrial
+3112	General practitioners and family physicians	missionary, medical
+3112	General practitioners and family physicians	MOH (medical officer of health)
+3112	General practitioners and family physicians	physician, intern
+3112	General practitioners and family physicians	physician, resident
+3112	General practitioners and family physicians	practitioner, family / general
+3113	Dentists	DDS (doctor of dental surgery)
+3113	Dentists	dentist, general practice / pediatric
+3113	Dentists	endodontist
+3113	Dentists	implantologist - dentistry
+3113	Dentists	orthodontist
+3113	Dentists	pathologist, oral
+3113	Dentists	pedodontist
+3113	Dentists	periodontist
+3113	Dentists	prosthodontist
+3113	Dentists	radiologist, oral
+3113	Dentists	stomatologist
+3114	Veterinarians	bacteriologist, veterinary
+3114	Veterinarians	laboratory diagnostician, veterinary
+3114	Veterinarians	veterinarian, avian / poultry
+3114	Veterinarians	veterinarian, equine
+3114	Veterinarians	veterinarian, small animals
+3114	Veterinarians	veterinarian, zoo
+3114	Veterinarians	virologist, veterinary
+3121	Optometrists	OD (doctor of optometry)
+3122	Chiropractors	chiropractor / chiropractic doctor
+3122	Chiropractors	DC (doctor of chiropractic)
+3124	Allied primary health practitioners	assistant, anesthesia
+3124	Allied primary health practitioners	midwife - RM (registered midwife)
+3124	Allied primary health practitioners	nurse, advanced practice
+3124	Allied primary health practitioners	nurse-midwife
+3124	Allied primary health practitioners	nurse-practitioner, acute care
+3124	Allied primary health practitioners	nurse-practitioner, adult care
+3124	Allied primary health practitioners	nurse-practitioner, advanced
+3124	Allied primary health practitioners	nurse-practitioner, anesthesia
+3124	Allied primary health practitioners	nurse-practitioner, cardiology
+3124	Allied primary health practitioners	nurse-practitioner, extended class RN
+3124	Allied primary health practitioners	nurse-practitioner, pediatrics
+3124	Allied primary health practitioners	nurse-practitioner, primary health care
+3124	Allied primary health practitioners	physician assistant
+3124	Allied primary health practitioners	registered nurse - extended class (RN-EC)
+3125	Other professional occupations in health diagnosing and treating	chiropodist
+3125	Other professional occupations in health diagnosing and treating	doctor, naturopathy
+3125	Other professional occupations in health diagnosing and treating	doctor, osteopathic medicine / osteopathy
+3125	Other professional occupations in health diagnosing and treating	naturopath / ND (naturopathic doctor)
+3125	Other professional occupations in health diagnosing and treating	orthoptist / teaching orthoptist
+3125	Other professional occupations in health diagnosing and treating	osteopath - physician
+3125	Other professional occupations in health diagnosing and treating	physician, naturopathic
+3125	Other professional occupations in health diagnosing and treating	podiatrist / DPM
+3131	Pharmacists	druggist, hospital
+3131	Pharmacists	pharmacist, clinical
+3131	Pharmacists	pharmacist, community
+3131	Pharmacists	pharmacist, consultant
+3131	Pharmacists	pharmacist, drug information
+3131	Pharmacists	pharmacist, hospital / dispensary
+3131	Pharmacists	pharmacist, industrial
+3131	Pharmacists	pharmacist, intern
+3131	Pharmacists	pharmacist, registered
+3131	Pharmacists	pharmacist, retail
+3132	Dietitians and nutritionists	consultant, nutrition
+3132	Dietitians and nutritionists	dietician
+3132	Dietitians and nutritionists	dietitian, clinical / community
+3132	Dietitians and nutritionists	dietitian - nutritionist
+3132	Dietitians and nutritionists	nutritionist, clinical / community
+3132	Dietitians and nutritionists	Professional dietitian
+3132	Dietitians and nutritionists	RD (registered dietitian)
+3132	Dietitians and nutritionists	RDN (registered dietitian-nutritionist)
+3132	Dietitians and nutritionists	researcher, nutrition and dietetics
+3141	Audiologists and speech-language pathologists	audiologist, amplification
+3141	Audiologists and speech-language pathologists	audiologist, certified 
+3141	Audiologists and speech-language pathologists	audiologist, clinical / diagnostic
+3141	Audiologists and speech-language pathologists	audiologist, community / educational
+3141	Audiologists and speech-language pathologists	audiologist, dispensing
+3141	Audiologists and speech-language pathologists	audiologist, industrial
+3141	Audiologists and speech-language pathologists	audiologist, pediatric
+3141	Audiologists and speech-language pathologists	clinician, audiology / speech-language
+3141	Audiologists and speech-language pathologists	logopedist
+3141	Audiologists and speech-language pathologists	pathologist, educational speech-language
+3141	Audiologists and speech-language pathologists	researcher, speech-language pathologist
+3142	Physiotherapists	co-ordinator, clinical physiotherapy
+3142	Physiotherapists	physiotherapist
+3142	Physiotherapists	physiotherapist, clinical
+3142	Physiotherapists	physiotherapist, registered
+3142	Physiotherapists	therapist, physical - clinical, consultant
+3143	Occupational therapists	consultant, occupational therapy rehab.
+3143	Occupational therapists	occupational therapy specialist, clinical
+3143	Occupational therapists	OT (occupational therapist)
+3143	Occupational therapists	rehabilitation consultant
+3143	Occupational therapists	specialist, clinical
+3143	Occupational therapists	vocational evaluator
+3144	Other professional occupations in therapy and assessment	biokineticist
+3144	Other professional occupations in therapy and assessment	CAT (certified athletic therapist)
+3144	Other professional occupations in therapy and assessment	DTR (registered dance therapist)
+3144	Other professional occupations in therapy and assessment	gymnast, remedial / teacher
+3144	Other professional occupations in therapy and assessment	human kineticist
+3144	Other professional occupations in therapy and assessment	kinanthropologist
+3144	Other professional occupations in therapy and assessment	kinesiologist / certified kinesiologist
+3144	Other professional occupations in therapy and assessment	supervisor, therapists (art, dance, etc.) 
+3144	Other professional occupations in therapy and assessment	therapist, athletic
+3144	Other professional occupations in therapy and assessment	therapist, exercise
+3144	Other professional occupations in therapy and assessment	therapist, recreational
+3144	Other professional occupations in therapy and assessment	therapist, remedial
+3144	Other professional occupations in therapy and assessment	trainer, athletic - therapy
+3211	Medical laboratory technologists	technologist, autopsy
+3211	Medical laboratory technologists	technologist, biochemistry
+3211	Medical laboratory technologists	technologist, blood bank
+3211	Medical laboratory technologists	technologist, charge
+3211	Medical laboratory technologists	technologist, clinical / medical laboratory
+3211	Medical laboratory technologists	technologist, clinical immunology
+3211	Medical laboratory technologists	technologist, cytology / cytotechnologist
+3211	Medical laboratory technologists	technologist, electron microscopy 
+3211	Medical laboratory technologists	technologist, hematology 
+3211	Medical laboratory technologists	technologist, histology / histopathology
+3211	Medical laboratory technologists	technologist, immunology
+3211	Medical laboratory technologists	technologist, laboratory and x-ray
+3211	Medical laboratory technologists	technologist, microbiology 
+3211	Medical laboratory technologists	technologist, registered
+3211	Medical laboratory technologists	technologist, serology
+3211	Medical laboratory technologists	technologist, tissue
+3212	Medical laboratory technicians and pathologists' assistants	assistant, medical lab / pathology
+3212	Medical laboratory technicians and pathologists' assistants	attendant, morgue
+3212	Medical laboratory technicians and pathologists' assistants	epidemiology
+3212	Medical laboratory technicians and pathologists' assistants	medical laboratory aide
+3212	Medical laboratory technicians and pathologists' assistants	phlebotomist
+3212	Medical laboratory technicians and pathologists' assistants	supervisor, morgue attendant
+3212	Medical laboratory technicians and pathologists' assistants	technician, biochemical 
+3212	Medical laboratory technicians and pathologists' assistants	technician, biological
+3212	Medical laboratory technicians and pathologists' assistants	technician, cancer research
+3212	Medical laboratory technicians and pathologists' assistants	technician, clinical laboratory
+3212	Medical laboratory technicians and pathologists' assistants	technician, combined laboratory and x-ray
+3212	Medical laboratory technicians and pathologists' assistants	technician, community health
+3212	Medical laboratory technicians and pathologists' assistants	technician, cytology
+3212	Medical laboratory technicians and pathologists' assistants	technician, hematology - medical lab.
+3212	Medical laboratory technicians and pathologists' assistants	technician, histology
+3212	Medical laboratory technicians and pathologists' assistants	technician, medical laboratory
+3212	Medical laboratory technicians and pathologists' assistants	technician, renal 
+3213	Animal health technologists and veterinary technicians	assistant, veterinarian
+3213	Animal health technologists and veterinary technicians	supervisor, veterinary technician
+3213	Animal health technologists and veterinary technicians	technician, registered veterinary (RVT)
+3213	Animal health technologists and veterinary technicians	technologist, laboratory animal
+3213	Animal health technologists and veterinary technicians	technologist, registered animal health
+3214	Respiratory therapists, clinical perfusionists and cardiopulmonary technologists	RT (respiratory therapist)
+3214	Respiratory therapists, clinical perfusionists and cardiopulmonary technologists	cardiopulmonary technology supervisor
+3214	Respiratory therapists, clinical perfusionists and cardiopulmonary technologists	CCP (certified clinical perfusionist)
+3214	Respiratory therapists, clinical perfusionists and cardiopulmonary technologists	practitioner, registered respiratory care
+3214	Respiratory therapists, clinical perfusionists and cardiopulmonary technologists	registered respiratory therapist (RRT)
+3214	Respiratory therapists, clinical perfusionists and cardiopulmonary technologists	respiratory care practitioner
+3214	Respiratory therapists, clinical perfusionists and cardiopulmonary technologists	technician / technologist, cardiopulmonary
+3214	Respiratory therapists, clinical perfusionists and cardiopulmonary technologists	technician / technologist, extracorporal
+3214	Respiratory therapists, clinical perfusionists and cardiopulmonary technologists	technician / technologist, respiratory
+3214	Respiratory therapists, clinical perfusionists and cardiopulmonary technologists	technician, oxygen therapy
+3214	Respiratory therapists, clinical perfusionists and cardiopulmonary technologists	technologist, polysomnographic
+3215	Medical radiation technologists	co-ordinator, clinical - radiography
+3215	Medical radiation technologists	co-ordinator, technical - nuclear medicine
+3215	Medical radiation technologists	director, technical - nuclear medicine
+3215	Medical radiation technologists	instructor, clinical - radiation therapy
+3215	Medical radiation technologists	operator, x-ray machine operator - medical
+3215	Medical radiation technologists	radiographer, chief / medical
+3215	Medical radiation technologists	RTNM (reg'd technologist nuclear med.)
+3215	Medical radiation technologists	RTR (registered technologist radiography)
+3215	Medical radiation technologists	RTT (radiation therapy technologist)
+3215	Medical radiation technologists	supervisor, medical radiation
+3215	Medical radiation technologists	technician, therapeutic - radiological
+3215	Medical radiation technologists	technologist, MRI
+3215	Medical radiation technologists	technologist, NMRI (nuclear MRI)
+3215	Medical radiation technologists	technologist, PET-positron-emission tomog.
+3215	Medical radiation technologists	therapist, radiation
+3216	Medical sonographers	echocardiographer, adult / pediatric
+3216	Medical sonographers	RDMS (reg. diagnostic medical sonographer)
+3216	Medical sonographers	sonographer, cardiac
+3216	Medical sonographers	sonographer, chief diagnostic medical
+3216	Medical sonographers	sonographer, vascular
+3216	Medical sonographers	technologist, diagnostic ultrasound
+3216	Medical sonographers	technologist, echocardiography
+3216	Medical sonographers	technologist, registered - ultrasound
+3216	Medical sonographers	technologist, sonography
+3216	Medical sonographers	ultrasonographer - medical
+3217	Cardiology technologists and electrophysiological diagnostic technologists, n.e.c.	instructor, cardiology
+3217	Cardiology technologists and electrophysiological diagnostic technologists, n.e.c.	instructor, electroencephalographic (EEG)
+3217	Cardiology technologists and electrophysiological diagnostic technologists, n.e.c.	technologist, charge - electrocardiography
+3217	Cardiology technologists and electrophysiological diagnostic technologists, n.e.c.	technologist, ECG (electrocardiography)
+3217	Cardiology technologists and electrophysiological diagnostic technologists, n.e.c.	technologist, EEG (electroencephalography)
+3217	Cardiology technologists and electrophysiological diagnostic technologists, n.e.c.	technologist, ENP (electroneurophysiology)
+3217	Cardiology technologists and electrophysiological diagnostic technologists, n.e.c.	technologist, EP (evoked potential)
+3217	Cardiology technologists and electrophysiological diagnostic technologists, n.e.c.	technologist, Holter monitor
+3217	Cardiology technologists and electrophysiological diagnostic technologists, n.e.c.	technologist, neuroelectrophysiology
+3217	Cardiology technologists and electrophysiological diagnostic technologists, n.e.c.	technologist, registered - cardiology
+3219	Other medical technologists and technicians (except dental health)	artificial limb assembler / finisher
+3219	Other medical technologists and technicians (except dental health)	brace maker
+3219	Other medical technologists and technicians (except dental health)	certified pedorthist
+3219	Other medical technologists and technicians (except dental health)	CO (certified orthotist)
+3219	Other medical technologists and technicians (except dental health)	CPO (certified prosthetist and orthotist)
+3219	Other medical technologists and technicians (except dental health)	fitter, surgical / surgical appliance
+3219	Other medical technologists and technicians (except dental health)	instructor, aeromedical
+3219	Other medical technologists and technicians (except dental health)	maker, orthotic corset
+3219	Other medical technologists and technicians (except dental health)	mechanic, orthopedic
+3219	Other medical technologists and technicians (except dental health)	ocularist
+3219	Other medical technologists and technicians (except dental health)	orthotist-prosthetist
+3219	Other medical technologists and technicians (except dental health)	pedorthist
+3219	Other medical technologists and technicians (except dental health)	prosthetic aide / assistant
+3219	Other medical technologists and technicians (except dental health)	prosthetist, certified
+3219	Other medical technologists and technicians (except dental health)	prosthetist, ocular / artificial eye maker
+3219	Other medical technologists and technicians (except dental health)	prosthetist-orthotist
+3219	Other medical technologists and technicians (except dental health)	ROT (registered orthotic technician)
+3219	Other medical technologists and technicians (except dental health)	RTP (registered prosthetic technician)
+3219	Other medical technologists and technicians (except dental health)	RTPO (reg. prosthetic / orthotic tech.)
+3219	Other medical technologists and technicians (except dental health)	technician / technologist, dialysis
+3219	Other medical technologists and technicians (except dental health)	technician / technologist, dietary
+3219	Other medical technologists and technicians (except dental health)	technician, aeromedical
+3219	Other medical technologists and technicians (except dental health)	technician, ocularist
+3221	Denturists	denturist
+3221	Denturists	denturologist
+3221	Denturists	mechanic, dental / denture
+3222	Dental hygienists and dental therapists	hygienist, dental - registered / community
+3222	Dental hygienists and dental therapists	hygienist, orthodontic / periodontal
+3222	Dental hygienists and dental therapists	nurse, dental
+3222	Dental hygienists and dental therapists	technician, dental hygiene
+3222	Dental hygienists and dental therapists	therapist, dental - licensed / registered
+3223	Dental technologists, technicians and laboratory assistants	assistant, dental laboratory
+3223	Dental technologists, technicians and laboratory assistants	bench - dental laboratory
+3223	Dental technologists, technicians and laboratory assistants	CDT (certified dental technician)
+3223	Dental technologists, technicians and laboratory assistants	ceramist, dental / ceramic denture caster
+3223	Dental technologists, technicians and laboratory assistants	finisher, denture / denture framework
+3223	Dental technologists, technicians and laboratory assistants	maker, dental prosthesis
+3223	Dental technologists, technicians and laboratory assistants	mechanic, ceramic denture moulds
+3223	Dental technologists, technicians and laboratory assistants	moulder, ceramic dentures
+3223	Dental technologists, technicians and laboratory assistants	occlusion rim former - dentures
+3223	Dental technologists, technicians and laboratory assistants	orthodontic band maker / prosthesis maker
+3223	Dental technologists, technicians and laboratory assistants	packer, denture
+3223	Dental technologists, technicians and laboratory assistants	RDT (registered dental technician)
+3223	Dental technologists, technicians and laboratory assistants	RDT (registered dental technologist)
+3223	Dental technologists, technicians and laboratory assistants	setter, denture
+3223	Dental technologists, technicians and laboratory assistants	technician / technologist, dental
+3223	Dental technologists, technicians and laboratory assistants	technician, crown and bridge
+3223	Dental technologists, technicians and laboratory assistants	technician, dental - certified
+3223	Dental technologists, technicians and laboratory assistants	technician, metal dental
+3223	Dental technologists, technicians and laboratory assistants	technician, orthodontic
+3223	Dental technologists, technicians and laboratory assistants	trimmer-polisher, denture trimmer
+3223	Dental technologists, technicians and laboratory assistants	wax pattern former, denture 
+3231	Opticians	contact lens dispenser / fitter
+3231	Opticians	eyeglasses fitter / frame fitter
+3231	Opticians	optician, licensed
+3231	Opticians	technician, visual orthese / orthotic 
+3232	Practitioners of natural healing	acupuncturist / doctor of acupuncture
+3232	Practitioners of natural healing	aromatherapist
+3232	Practitioners of natural healing	auriculotherapist
+3232	Practitioners of natural healing	herbalist, chartered / herb practitioner 
+3232	Practitioners of natural healing	holistic practitioner
+3232	Practitioners of natural healing	homeopath / homeopathic practitioner
+3232	Practitioners of natural healing	hypnotherapist, clinical
+3232	Practitioners of natural healing	iridologist, certified
+3232	Practitioners of natural healing	naturopathy practitioner
+3232	Practitioners of natural healing	osteopath - manual therapy
+3232	Practitioners of natural healing	osteopathic manual therapist
+3232	Practitioners of natural healing	practitioner, ayurvedic
+3232	Practitioners of natural healing	practitioner, medical Qi gong
+3232	Practitioners of natural healing	practitioner, osteopathic manual
+3232	Practitioners of natural healing	practitioner, TCM (Trad. Chinese Med.)
+3232	Practitioners of natural healing	reflexologist, certified
+3232	Practitioners of natural healing	rolfer, certified / rolfing teacher
+3232	Practitioners of natural healing	shaman
+3232	Practitioners of natural healing	therapist, acupressure
+3233	Licensed practical nurses	CNA (certified nursing assistant)
+3233	Licensed practical nurses	LPN (licensed practical nurse)
+3233	Licensed practical nurses	nursing assistant (registered - Québec)
+3233	Licensed practical nurses	operating room technician - nursing
+3233	Licensed practical nurses	RNA (registered nursing assistant)
+3233	Licensed practical nurses	RPN (registered practical nurse)
+3233	Licensed practical nurses	surgical technician - nursing
+3234	Paramedical occupations	advanced care paramedic (EMT - P / ACP)
+3234	Paramedical occupations	assistant, advanced emergency medical
+3234	Paramedical occupations	co-ordinator, advanced life support
+3234	Paramedical occupations	driver / attendant, ambulance
+3234	Paramedical occupations	EMT (emergency medical technician)
+3234	Paramedical occupations	EMT-P (emergency medical technologist)
+3234	Paramedical occupations	medic
+3234	Paramedical occupations	paramedic, advanced care
+3234	Paramedical occupations	paramedic, advanced life support
+3234	Paramedical occupations	paramedic, intermediate care
+3234	Paramedical occupations	paramedic, primary care (EMT PCP / ACP)
+3234	Paramedical occupations	paramedic, registered emergency
+3234	Paramedical occupations	technician, medical
+3236	Massage therapists	massotherapist / masso kinesitherapist
+3236	Massage therapists	MT (massage therapist)
+3236	Massage therapists	myotherapist
+3236	Massage therapists	orthotherapist
+3236	Massage therapists	practitioner, registered massage
+3236	Massage therapists	RMT (registered massage therapist)
+3237	Other technical occupations in therapy and assessment	audiometric aide / technician 
+3237	Other technical occupations in therapy and assessment	communication aide / assistant 
+3237	Other technical occupations in therapy and assessment	hearing aid assistant / consultant 
+3237	Other technical occupations in therapy and assessment	hearing instrument dispenser / specialist
+3237	Other technical occupations in therapy and assessment	kinesitherapist
+3237	Other technical occupations in therapy and assessment	practitioner, hearing instrument
+3237	Other technical occupations in therapy and assessment	PTA (physiotherapist assistant)
+3237	Other technical occupations in therapy and assessment	speech aide / correctionist 
+3237	Other technical occupations in therapy and assessment	speech-language pathology assistant
+3237	Other technical occupations in therapy and assessment	technician, ophthalmic / ophthamology
+3237	Other technical occupations in therapy and assessment	tester, hearing
+3237	Other technical occupations in therapy and assessment	therapist, manual arts
+3411	Dental assistants	aide / assistant, dental 
+3411	Dental assistants	assistant, chair-side - dental
+3411	Dental assistants	assistant, dental - certified / clinical
+3411	Dental assistants	assistant, intra-oral dental - certified
+3411	Dental assistants	assistant, licensed dental
+3411	Dental assistants	assistant, preventive dental
+3411	Dental assistants	assistant, registered dental
+3413	Nurse aides, orderlies and patient service associates	EMCA (emergency medical care attendant)
+3413	Nurse aides, orderlies and patient service associates	aide, geriatric
+3413	Nurse aides, orderlies and patient service associates	aide, nursing
+3413	Nurse aides, orderlies and patient service associates	aide, respite care
+3413	Nurse aides, orderlies and patient service associates	assistant, continuing care
+3413	Nurse aides, orderlies and patient service associates	assistant, environmental - medical
+3413	Nurse aides, orderlies and patient service associates	assistant, health care
+3413	Nurse aides, orderlies and patient service associates	assistant, nursing (non-registered)
+3413	Nurse aides, orderlies and patient service associates	assistant, patient care / patient service
+3413	Nurse aides, orderlies and patient service associates	attendant, first aid
+3413	Nurse aides, orderlies and patient service associates	attendant, geriatric health care
+3413	Nurse aides, orderlies and patient service associates	attendant, medical - patient transfer
+3413	Nurse aides, orderlies and patient service associates	companion, resident - medical
+3413	Nurse aides, orderlies and patient service associates	escort - health services
+3413	Nurse aides, orderlies and patient service associates	HCA
+3413	Nurse aides, orderlies and patient service associates	hospice
+3413	Nurse aides, orderlies and patient service associates	orderly, hospital / medical / nursing
+3413	Nurse aides, orderlies and patient service associates	patient service
+3413	Nurse aides, orderlies and patient service associates	porter, hospital
+3413	Nurse aides, orderlies and patient service associates	responder, emergency - medical 
+3413	Nurse aides, orderlies and patient service associates	support person, environmental - medical
+3414	Other assisting occupations in support of health services	activationist - health support services
+3414	Other assisting occupations in support of health services	activity - health support services
+3414	Other assisting occupations in support of health services	adjuvant, senior
+3414	Other assisting occupations in support of health services	aide / attendant, plaster room
+3414	Other assisting occupations in support of health services	aide, activity - health support services
+3414	Other assisting occupations in support of health services	aide, central supply - medical / hospital
+3414	Other assisting occupations in support of health services	aide, chiropractor / chiropractic
+3414	Other assisting occupations in support of health services	aide, health care
+3414	Other assisting occupations in support of health services	aide, orthopedist
+3414	Other assisting occupations in support of health services	aide, radiology
+3414	Other assisting occupations in support of health services	aide, recreation / recreational therapy
+3414	Other assisting occupations in support of health services	aide, rehabilitation
+3414	Other assisting occupations in support of health services	aide, supply - processing and distribution
+3414	Other assisting occupations in support of health services	aide, therapy - medical
+3414	Other assisting occupations in support of health services	assistant, autopsy
+3414	Other assisting occupations in support of health services	assistant, chiropractic
+3414	Other assisting occupations in support of health services	assistant, dispensary / pharmacy 
+3414	Other assisting occupations in support of health services	assistant, medical clinic
+3414	Other assisting occupations in support of health services	assistant, optometrist
+3414	Other assisting occupations in support of health services	assistant, rehabilitation
+3414	Other assisting occupations in support of health services	assistant, surgical - non-nursing
+3414	Other assisting occupations in support of health services	assistant, therapy / therapist - medical
+3414	Other assisting occupations in support of health services	attendant, acupuncture
+3414	Other assisting occupations in support of health services	attendant, autopsy / morgue / post-mortem
+3414	Other assisting occupations in support of health services	attendant, blood donor clinic
+3414	Other assisting occupations in support of health services	attendant, emergency room
+3414	Other assisting occupations in support of health services	attendant, first aid
+3414	Other assisting occupations in support of health services	attendant, pharmacy side room
+3414	Other assisting occupations in support of health services	attendant, sterile supply room
+3414	Other assisting occupations in support of health services	attendant, sterilization
+3414	Other assisting occupations in support of health services	bench worker, ophthalmic lenses
+3414	Other assisting occupations in support of health services	co-ordinator, health support activities
+3414	Other assisting occupations in support of health services	handler, medical material
+3414	Other assisting occupations in support of health services	inspector, ophthalmic lenses
+3414	Other assisting occupations in support of health services	leader, activity - seniors
+3414	Other assisting occupations in support of health services	lens maker / grinder / polisher / setter 
+3414	Other assisting occupations in support of health services	mounter, polishing pad
+3414	Other assisting occupations in support of health services	optometric assistant
+3414	Other assisting occupations in support of health services	sterilization processing attendant
+3414	Other assisting occupations in support of health services	sterilizer, medical instrument
+3414	Other assisting occupations in support of health services	supervisor, orthopedic
+3414	Other assisting occupations in support of health services	technician, AR (antireflection) coating
+3414	Other assisting occupations in support of health services	technician, lens coating
+3414	Other assisting occupations in support of health services	technician, ophthalamic laboratory
+3414	Other assisting occupations in support of health services	technician, ophthalmic lab / laboratory
+3414	Other assisting occupations in support of health services	technician, registered central service
+3414	Other assisting occupations in support of health services	technician, registered orthopedic
+3414	Other assisting occupations in support of health services	technician, sterile processing
+3414	Other assisting occupations in support of health services	technician, surgical  - non-nursing
+3414	Other assisting occupations in support of health services	worker, hospital
+4011	University professors and lecturers	food sciences department chairman
+4011	University professors and lecturers	food sciences department chairwoman
+4011	University professors and lecturers	physics department chairman
+4011	University professors and lecturers	physics department chairwoman
+4011	University professors and lecturers	postdoctoral fellow
+4011	University professors and lecturers	professor  - chair / emeritus / emerita
+4011	University professors and lecturers	professor  - lecturer / assistant / assoc.
+4011	University professors and lecturers	visiting professor / scholar - university
+4012	Post-secondary teaching and research assistants	assistant, graduate - university
+4012	Post-secondary teaching and research assistants	assistant, lab - college / university
+4012	Post-secondary teaching and research assistants	assistant, research - post-secondary
+4012	Post-secondary teaching and research assistants	assistant, teaching - college / university
+4012	Post-secondary teaching and research assistants	assistant, teaching - lab demonstrator
+4012	Post-secondary teaching and research assistants	assistant, teaching - marking
+4012	Post-secondary teaching and research assistants	assistant, teaching - university
+4012	Post-secondary teaching and research assistants	tutor - post-secondary teaching assistant
+4021	College and other vocational instructors	consultant, consultant - industry
+4021	College and other vocational instructors	department chair / head
+4021	College and other vocational instructors	instructor / teacher / lecturer, college
+4021	College and other vocational instructors	instructor, Bible college / seminary
+4021	College and other vocational instructors	instructor, CEGEP
+4021	College and other vocational instructors	instructor, conservatory of music
+4021	College and other vocational instructors	instructor, flight school
+4021	College and other vocational instructors	instructor, institute of technology
+4021	College and other vocational instructors	instructor, private training institute
+4021	College and other vocational instructors	instructor, retail management
+4021	College and other vocational instructors	instructor, technology institute
+4021	College and other vocational instructors	instructor, trade - community college
+4021	College and other vocational instructors	instructor, training - college level
+4021	College and other vocational instructors	instructor, vocational institute / school
+4021	College and other vocational instructors	officer, staff training - company
+4021	College and other vocational instructors	teacher / instructor, agricultural college
+4021	College and other vocational instructors	trainer, community-based
+4021	College and other vocational instructors	trainer, vocational
+4021	College and other vocational instructors	tutor, modern languages 
+4021	College and other vocational instructors	workplace trainer
+4031	Secondary school teachers	department head, secondary / high school
+4031	Secondary school teachers	librarian-teacher, secondary / high school
+4031	Secondary school teachers	reading clinician - secondary school
+4031	Secondary school teachers	teacher - Aboriginal school community
+4031	Secondary school teachers	teacher, academic subjects
+4031	Secondary school teachers	teacher, adult education
+4031	Secondary school teachers	teacher, art / drama / music
+4031	Secondary school teachers	teacher, business and commerce
+4031	Secondary school teachers	teacher, career
+4031	Secondary school teachers	teacher, classical languages
+4031	Secondary school teachers	teacher, community teacher
+4031	Secondary school teachers	teacher, computer technology
+4031	Secondary school teachers	teacher, cooperative education
+4031	Secondary school teachers	teacher, correspondence / distance ed.
+4031	Secondary school teachers	teacher, English as second language (ESL)
+4031	Secondary school teachers	teacher, guest teacher
+4031	Secondary school teachers	teacher, home economics
+4031	Secondary school teachers	teacher, humanities
+4031	Secondary school teachers	teacher, languages
+4031	Secondary school teachers	teacher, mathematics
+4031	Secondary school teachers	teacher, physical education 
+4031	Secondary school teachers	teacher, practical and applied arts
+4031	Secondary school teachers	teacher, private teacher
+4031	Secondary school teachers	teacher, science
+4031	Secondary school teachers	teacher, secondary / high school
+4031	Secondary school teachers	teacher, social sciences
+4031	Secondary school teachers	teacher, special education
+4031	Secondary school teachers	teacher, substitute / supply teacher
+4031	Secondary school teachers	teacher, technical and vocational
+4031	Secondary school teachers	teacher, trades (industrial arts)
+4032	Elementary school and kindergarten teachers	elementary school reading clinician
+4032	Elementary school and kindergarten teachers	reading clinician - elementary school
+4032	Elementary school and kindergarten teachers	teacher, Aboriginal school
+4032	Elementary school and kindergarten teachers	teacher, art / crafts
+4032	Elementary school and kindergarten teachers	teacher, early childhood education
+4032	Elementary school and kindergarten teachers	teacher, elementary / primary school 
+4032	Elementary school and kindergarten teachers	teacher, English / ESL (second language)
+4032	Elementary school and kindergarten teachers	teacher, French / French immersion
+4032	Elementary school and kindergarten teachers	teacher, home economics (cooking, sewing)
+4032	Elementary school and kindergarten teachers	teacher, languages
+4032	Elementary school and kindergarten teachers	teacher, mathematics
+4032	Elementary school and kindergarten teachers	teacher, music
+4032	Elementary school and kindergarten teachers	teacher, physical education
+4032	Elementary school and kindergarten teachers	teacher, remedial
+4032	Elementary school and kindergarten teachers	teacher, science / nature study
+4032	Elementary school and kindergarten teachers	teacher, special education
+4032	Elementary school and kindergarten teachers	teacher, substitute / supply teacher
+4032	Elementary school and kindergarten teachers	teacher, technology
+4032	Elementary school and kindergarten teachers	teacher, visiting teacher
+4032	Elementary school and kindergarten teachers	teacher-librarian - elementary school
+4033	Educational counsellors	co-op placement officer - school
+4033	Educational counsellors	co-op program co-ordinator - school
+4033	Educational counsellors	co-ordinator, student employment services
+4033	Educational counsellors	counsellor, academic
+4033	Educational counsellors	counsellor, career / vocational 
+4033	Educational counsellors	counsellor, college / university
+4033	Educational counsellors	counsellor, education / personal
+4033	Educational counsellors	counsellor, First Nations studies program
+4033	Educational counsellors	officer, co-op
+4033	Educational counsellors	officer, independent or applied studies
+4033	Educational counsellors	officer, international student
+4033	Educational counsellors	officer, school adjustment
+4033	Educational counsellors	officer, student affairs and employment
+4033	Educational counsellors	specialist, learning and study skills
+4111	Judges	judge, administrative
+4111	Judges	judge, appellate court
+4111	Judges	judge, county court / county
+4111	Judges	judge, family court / juvenile court
+4111	Judges	judge, magistrate court
+4111	Judges	judge, probate court (wills)
+4111	Judges	judge, provincial court / appeal / supreme
+4111	Judges	judge, puisne
+4111	Judges	judge, small claims court
+4111	Judges	judge, tax court
+4111	Judges	judge, trial court
+4111	Judges	justice, chief / associate chief
+4111	Judges	justice, Court of Queen's Bench
+4111	Judges	justice, deputy
+4111	Judges	justice, district court / surrogate court
+4111	Judges	justice, federal court
+4111	Judges	justice, Federal Court of Appeal
+4111	Judges	justice, superior court
+4111	Judges	justice, Supreme Court 
+4112	Lawyers and Quebec notaries	adviser / counsel, legislative
+4112	Lawyers and Quebec notaries	adviser, legal / law and corporate affairs
+4112	Lawyers and Quebec notaries	attorney / attorney-at-law
+4112	Lawyers and Quebec notaries	attorney, claim
+4112	Lawyers and Quebec notaries	attorney, Crown / prosecutor 
+4112	Lawyers and Quebec notaries	attorney, regional / county
+4112	Lawyers and Quebec notaries	attorney's assistant chief agent
+4112	Lawyers and Quebec notaries	barrister / barrister and solicitor
+4112	Lawyers and Quebec notaries	city attorney / city solicitor
+4112	Lawyers and Quebec notaries	counsel / counsellor-at-law 
+4112	Lawyers and Quebec notaries	counsel, advisory
+4112	Lawyers and Quebec notaries	judicial assistant - Supreme Court
+4112	Lawyers and Quebec notaries	law partner / law associate
+4112	Lawyers and Quebec notaries	lawyer / counsel / attorney 
+4112	Lawyers and Quebec notaries	lawyer / counsel, administrative
+4112	Lawyers and Quebec notaries	lawyer / counsel, associate 
+4112	Lawyers and Quebec notaries	lawyer / counsel, civil
+4112	Lawyers and Quebec notaries	lawyer / counsel, commercial / corporate
+4112	Lawyers and Quebec notaries	lawyer / counsel, contract
+4112	Lawyers and Quebec notaries	lawyer / counsel, criminal
+4112	Lawyers and Quebec notaries	lawyer / counsel, Crown corporation
+4112	Lawyers and Quebec notaries	lawyer / counsel, defence
+4112	Lawyers and Quebec notaries	lawyer / counsel, family / estates / probate
+4112	Lawyers and Quebec notaries	lawyer / counsel, general solicitor
+4112	Lawyers and Quebec notaries	lawyer / counsel, immigration
+4112	Lawyers and Quebec notaries	lawyer / counsel, in-house / staff counsel
+4112	Lawyers and Quebec notaries	lawyer / counsel, insurance
+4112	Lawyers and Quebec notaries	lawyer / counsel, intellectual property 
+4112	Lawyers and Quebec notaries	lawyer / counsel, labour
+4112	Lawyers and Quebec notaries	lawyer / counsel, legal aid
+4112	Lawyers and Quebec notaries	lawyer / counsel, real estate / title
+4112	Lawyers and Quebec notaries	lawyer / counsel, regional
+4112	Lawyers and Quebec notaries	lawyer / counsel, review
+4112	Lawyers and Quebec notaries	lawyer / counsel, tariff
+4112	Lawyers and Quebec notaries	lawyer / counsel, tax
+4112	Lawyers and Quebec notaries	legal advocate
+4112	Lawyers and Quebec notaries	litigator
+4112	Lawyers and Quebec notaries	notary, commercial law
+4112	Lawyers and Quebec notaries	notary, corporate (Quebec)
+4112	Lawyers and Quebec notaries	prosecutor / special prosecutor
+4112	Lawyers and Quebec notaries	Queen's Counsel
+4112	Lawyers and Quebec notaries	solicitor
+4112	Lawyers and Quebec notaries	solicitor, departmental
+4112	Lawyers and Quebec notaries	solicitor, general solicitor
+4112	Lawyers and Quebec notaries	solicitor, municipal / city / regional
+4112	Lawyers and Quebec notaries	student, articling law
+4112	Lawyers and Quebec notaries	student-at-law
+4151	Psychologists	biopsychologist
+4151	Psychologists	neuropsychologist
+4151	Psychologists	psychologist
+4151	Psychologists	psychologist / therapist, behavioural 
+4151	Psychologists	psychologist, chartered / registered
+4151	Psychologists	psychologist, child / school
+4151	Psychologists	psychologist, clinical / counselling
+4151	Psychologists	psychologist, cognitive
+4151	Psychologists	psychologist, community
+4151	Psychologists	psychologist, developmental / educational
+4151	Psychologists	psychologist, forensic
+4151	Psychologists	psychologist, industrial / organizational
+4151	Psychologists	psychologist, intern
+4151	Psychologists	psychologist, physiological psychologist
+4151	Psychologists	psychologist, research / experimental
+4151	Psychologists	psychologist, social
+4151	Psychologists	psychologist, sports
+4151	Psychologists	psychotherapist
+4152	Social workers	caseworker - social work
+4152	Social workers	consultant, social work - case management
+4152	Social workers	co-ordinator, social work
+4152	Social workers	human relations officer - social work
+4152	Social workers	intake worker - social services
+4152	Social workers	investigator, children's aid
+4152	Social workers	officer, social work
+4152	Social workers	social worker, addiction
+4152	Social workers	social worker, case management
+4152	Social workers	social worker, certified / registered
+4152	Social workers	social worker, child welfare / family
+4152	Social workers	social worker, geriatric
+4152	Social workers	social worker, group
+4152	Social workers	social worker, medical / psychiatric
+4152	Social workers	social worker, school
+4152	Social workers	supervisor, casework - social work
+4153	Family, marriage and other related counsellors	consultant, behavioural
+4153	Family, marriage and other related counsellors	consultant, disability / special needs
+4153	Family, marriage and other related counsellors	consultant, psychoeducational
+4153	Family, marriage and other related counsellors	counsellor / therapist, addictions
+4153	Family, marriage and other related counsellors	counsellor, bereavement / grief
+4153	Family, marriage and other related counsellors	counsellor, child / youth / family
+4153	Family, marriage and other related counsellors	counsellor, clinical / registered clinical
+4153	Family, marriage and other related counsellors	counsellor, community mental health
+4153	Family, marriage and other related counsellors	counsellor, crisis
+4153	Family, marriage and other related counsellors	counsellor, family planning
+4153	Family, marriage and other related counsellors	counsellor, genetic 
+4153	Family, marriage and other related counsellors	counsellor, group home
+4153	Family, marriage and other related counsellors	counsellor, special needs
+4153	Family, marriage and other related counsellors	counsellor, vocational rehabilitation
+4153	Family, marriage and other related counsellors	counsellor, welfare organization
+4153	Family, marriage and other related counsellors	officer, human relations 
+4153	Family, marriage and other related counsellors	psychoeducator
+4153	Family, marriage and other related counsellors	sexologist
+4153	Family, marriage and other related counsellors	therapist, couples
+4153	Family, marriage and other related counsellors	therapist, eating disorder
+4153	Family, marriage and other related counsellors	therapist, play 
+4153	Family, marriage and other related counsellors	therapist, registered 
+4153	Family, marriage and other related counsellors	therapist, sex
+4153	Family, marriage and other related counsellors	zootherapist
+4154	Professional occupations in religion	archbishop
+4154	Professional occupations in religion	archdeacon
+4154	Professional occupations in religion	bishop
+4154	Professional occupations in religion	cardinal
+4154	Professional occupations in religion	chancellor - religion
+4154	Professional occupations in religion	chaplain
+4154	Professional occupations in religion	clergyman / clergywoman
+4154	Professional occupations in religion	curate
+4154	Professional occupations in religion	evangelist / television evangelist
+4154	Professional occupations in religion	granthi
+4154	Professional occupations in religion	imam
+4154	Professional occupations in religion	minister - religion
+4154	Professional occupations in religion	moderator - religion
+4154	Professional occupations in religion	pastor
+4154	Professional occupations in religion	preacher
+4154	Professional occupations in religion	presbyter
+4154	Professional occupations in religion	priest, parish
+4154	Professional occupations in religion	rabbi
+4154	Professional occupations in religion	reverend
+4154	Professional occupations in religion	Salvation Army commissioned officer
+4155	Probation and parole officers and related occupations	caseworker, corrections - case manager
+4155	Probation and parole officers and related occupations	manager, corrections - community case 
+4155	Probation and parole officers and related occupations	officer, corrections - clemency
+4155	Probation and parole officers and related occupations	officer, parole - probation officer
+4155	Probation and parole officers and related occupations	program officer, social assistance
+4155	Probation and parole officers and related occupations	program worker, corrections - youth worker
+4156	Employment counsellors	coach, career
+4156	Employment counsellors	consultant, employment
+4156	Employment counsellors	consultant, outplacement / relocation
+4156	Employment counsellors	co-ordinator, career resource centre
+4156	Employment counsellors	counsellor, Aboriginal employment
+4156	Employment counsellors	counsellor, career (except education)
+4156	Employment counsellors	employment assistance officer
+4156	Employment counsellors	employment services assessment
+4156	Employment counsellors	facilitator, career development
+4156	Employment counsellors	trainer, job search / employment search
+4156	Employment counsellors	workforce development
+4156	Employment counsellors	workforce development officer
+4161	Natural and applied science policy researchers, consultants and program officers	adviser, environmental - (except engineer)
+4161	Natural and applied science policy researchers, consultants and program officers	analyst, energy - wind / energy policy
+4161	Natural and applied science policy researchers, consultants and program officers	analyst, environmental impact
+4161	Natural and applied science policy researchers, consultants and program officers	analyst, transportation - safety
+4161	Natural and applied science policy researchers, consultants and program officers	auditor, work site
+4161	Natural and applied science policy researchers, consultants and program officers	consultant, environmental education
+4161	Natural and applied science policy researchers, consultants and program officers	co-ordinator, environmental organization
+4161	Natural and applied science policy researchers, consultants and program officers	co-ordinator, environmental program
+4161	Natural and applied science policy researchers, consultants and program officers	emergency management analyst
+4161	Natural and applied science policy researchers, consultants and program officers	energy / fisheries
+4161	Natural and applied science policy researchers, consultants and program officers	engineer, human factors
+4161	Natural and applied science policy researchers, consultants and program officers	ergonomist
+4161	Natural and applied science policy researchers, consultants and program officers	hygienist, industrial - certified
+4161	Natural and applied science policy researchers, consultants and program officers	hygienist, occupational - registered
+4161	Natural and applied science policy researchers, consultants and program officers	lobbyist, agricultural / environmental
+4161	Natural and applied science policy researchers, consultants and program officers	manager - waste management / recycling 
+4161	Natural and applied science policy researchers, consultants and program officers	occupational hygiene
+4161	Natural and applied science policy researchers, consultants and program officers	patent agent / registered patent agent
+4161	Natural and applied science policy researchers, consultants and program officers	planner, disaster emergency response
+4161	Natural and applied science policy researchers, consultants and program officers	planner, natural resources
+4161	Natural and applied science policy researchers, consultants and program officers	researcher, communications policy
+4161	Natural and applied science policy researchers, consultants and program officers	specialist, human factors (not engineer)
+4161	Natural and applied science policy researchers, consultants and program officers	supervisor, environmental program devm't
+4161	Natural and applied science policy researchers, consultants and program officers	technology transfer
+4162	Economists and economic policy researchers and analysts	adviser, consumer - economics
+4162	Economists and economic policy researchers and analysts	analyst, risk management
+4162	Economists and economic policy researchers and analysts	analyst, salary / wage - economic policy
+4162	Economists and economic policy researchers and analysts	analyst, trade
+4162	Economists and economic policy researchers and analysts	business intelligence analyst
+4162	Economists and economic policy researchers and analysts	econometrician
+4162	Economists and economic policy researchers and analysts	economist, business
+4162	Economists and economic policy researchers and analysts	economist, development
+4162	Economists and economic policy researchers and analysts	economist, energy
+4162	Economists and economic policy researchers and analysts	economist, farm
+4162	Economists and economic policy researchers and analysts	economist, financial
+4162	Economists and economic policy researchers and analysts	economist, health
+4162	Economists and economic policy researchers and analysts	economist, human resources
+4162	Economists and economic policy researchers and analysts	economist, mathematical
+4162	Economists and economic policy researchers and analysts	economist, price
+4168	Program officers unique to government	official, government
+4162	Economists and economic policy researchers and analysts	economist, regional economist
+4162	Economists and economic policy researchers and analysts	economist, social
+4162	Economists and economic policy researchers and analysts	economist, tax
+4162	Economists and economic policy researchers and analysts	economist, transport
+4162	Economists and economic policy researchers and analysts	economist, welfare
+4163	Business development officers and marketing researchers and consultants	analyst / officer, tourism - government
+4163	Business development officers and marketing researchers and consultants	analyst / officer, trade promotion
+4163	Business development officers and marketing researchers and consultants	analyst, advertising
+4163	Business development officers and marketing researchers and consultants	analyst, business development
+4163	Business development officers and marketing researchers and consultants	analyst, community economic development
+4163	Business development officers and marketing researchers and consultants	analyst, economic development
+4163	Business development officers and marketing researchers and consultants	analyst, regional development
+4163	Business development officers and marketing researchers and consultants	area development - government
+4163	Business development officers and marketing researchers and consultants	category sales analyst
+4163	Business development officers and marketing researchers and consultants	consultant / officer / specialist - tourism
+4163	Business development officers and marketing researchers and consultants	consultant, development / marketing 
+4163	Business development officers and marketing researchers and consultants	consultant, mining industry development
+4163	Business development officers and marketing researchers and consultants	co-ordinator, tourism services
+4163	Business development officers and marketing researchers and consultants	counsellor, small business
+4163	Business development officers and marketing researchers and consultants	forecaster, economic
+4163	Business development officers and marketing researchers and consultants	market intelligence analyst
+4163	Business development officers and marketing researchers and consultants	sales analyst
+4163	Business development officers and marketing researchers and consultants	specialist, marketing - international
+4164	Social policy researchers, consultants and program officers	Aboriginal affairs
+4164	Social policy researchers, consultants and program officers	adviser, family violence prevention
+4164	Social policy researchers, consultants and program officers	analyst, labour market 
+4164	Social policy researchers, consultants and program officers	analyst, social policy / welfare
+4164	Social policy researchers, consultants and program officers	assistant, psychology (except university)
+4164	Social policy researchers, consultants and program officers	child-care programs
+4164	Social policy researchers, consultants and program officers	citizenship / immigration
+4164	Social policy researchers, consultants and program officers	community social development
+4164	Social policy researchers, consultants and program officers	consultant, community policing
+4164	Social policy researchers, consultants and program officers	consultant, employment equity 
+4164	Social policy researchers, consultants and program officers	consultant, immigration
+4164	Social policy researchers, consultants and program officers	co-ordinator, correction rehabilitation
+4164	Social policy researchers, consultants and program officers	co-ordinator, employment initiatives
+4164	Social policy researchers, consultants and program officers	co-ordinator, women's programs
+4164	Social policy researchers, consultants and program officers	counsellor, settlement
+4164	Social policy researchers, consultants and program officers	demographics / multiculturalism
+4164	Social policy researchers, consultants and program officers	employment insurance
+4164	Social policy researchers, consultants and program officers	home economist
+4164	Social policy researchers, consultants and program officers	international aid and development
+4164	Social policy researchers, consultants and program officers	organizer, community
+4164	Social policy researchers, consultants and program officers	peace activist / peace researcher
+4164	Social policy researchers, consultants and program officers	policy analyst, consumer
+4164	Social policy researchers, consultants and program officers	policy analyst, employment equity
+4164	Social policy researchers, consultants and program officers	policy analyst, family & child welfare
+4164	Social policy researchers, consultants and program officers	policy analyst, integration - disabilities
+4164	Social policy researchers, consultants and program officers	policy analyst, labour standards
+4164	Social policy researchers, consultants and program officers	policy analyst, public assistance / housing
+4164	Social policy researchers, consultants and program officers	policy analyst, status of women
+4164	Social policy researchers, consultants and program officers	policy analyst, workers' compensation
+4164	Social policy researchers, consultants and program officers	political organizer
+4164	Social policy researchers, consultants and program officers	pollster
+4164	Social policy researchers, consultants and program officers	program officer / planner, social service
+4164	Social policy researchers, consultants and program officers	project officer, international aid
+4164	Social policy researchers, consultants and program officers	public housing / social programs
+4164	Social policy researchers, consultants and program officers	representative, field - housing
+4164	Social policy researchers, consultants and program officers	research - social welfare
+4164	Social policy researchers, consultants and program officers	researcher, international aid / development
+4164	Social policy researchers, consultants and program officers	researcher, poverty
+4164	Social policy researchers, consultants and program officers	researcher, public opinion survey
+4164	Social policy researchers, consultants and program officers	researcher, social policy issues
+4164	Social policy researchers, consultants and program officers	specialist, human rights
+4164	Social policy researchers, consultants and program officers	specialist, international relations
+4164	Social policy researchers, consultants and program officers	supervisor, Human Rights Comms'n officers
+4165	Health policy researchers, consultants and program officers	accreditation officer, social services
+4165	Health policy researchers, consultants and program officers	consultant, dental health / mental health
+4165	Health policy researchers, consultants and program officers	consultant, labour force planning
+4165	Health policy researchers, consultants and program officers	co-ordinator, clinical trials
+4165	Health policy researchers, consultants and program officers	coroner
+4165	Health policy researchers, consultants and program officers	decision support analyst - health
+4165	Health policy researchers, consultants and program officers	decision support specialist - health
+4165	Health policy researchers, consultants and program officers	health care educator / policy development
+4165	Health policy researchers, consultants and program officers	health services consultant / researcher
+4165	Health policy researchers, consultants and program officers	liaison officer, health & social services
+4165	Health policy researchers, consultants and program officers	medical adjudicator - Canada Pension Plan
+4165	Health policy researchers, consultants and program officers	officer, child health care programs
+4165	Health policy researchers, consultants and program officers	officer, health and social service liaison
+4165	Health policy researchers, consultants and program officers	officer, health promotion program
+4165	Health policy researchers, consultants and program officers	policy development officer, long-term care
+4165	Health policy researchers, consultants and program officers	policy officer, nursing home guidelines
+4165	Health policy researchers, consultants and program officers	wellness consultant / co-ordinator
+4166	Education policy researchers, consultants and program officers	adviser / analyst, education policy
+4166	Education policy researchers, consultants and program officers	analyst, education policy
+4166	Education policy researchers, consultants and program officers	assessor, language
+4166	Education policy researchers, consultants and program officers	consultant, curriculum / teaching
+4166	Education policy researchers, consultants and program officers	consultant, distance education
+4166	Education policy researchers, consultants and program officers	co-ordinator, education outreach program
+4166	Education policy researchers, consultants and program officers	curriculum developer / planner
+4166	Education policy researchers, consultants and program officers	education policy / research
+4166	Education policy researchers, consultants and program officers	education program co-ordinator / officer
+4166	Education policy researchers, consultants and program officers	education researcher
+4166	Education policy researchers, consultants and program officers	inspector, board of education
+4166	Education policy researchers, consultants and program officers	literacy coach
+4166	Education policy researchers, consultants and program officers	policy analyst / officer, education
+4166	Education policy researchers, consultants and program officers	program officer, adult education
+4166	Education policy researchers, consultants and program officers	program, education - developer / planner
+4166	Education policy researchers, consultants and program officers	special education co-ordinator
+4166	Education policy researchers, consultants and program officers	specialist, education science
+4166	Education policy researchers, consultants and program officers	specialist, educational & vocational 
+4166	Education policy researchers, consultants and program officers	specialist, program development 
+4167	Recreation, sports and fitness policy researchers, consultants and program officers	co-ordinator, community recreation / leisure
+4167	Recreation, sports and fitness policy researchers, consultants and program officers	fitness program consultant / supervisor
+4167	Recreation, sports and fitness policy researchers, consultants and program officers	leisure analyst / co-ordinator
+4167	Recreation, sports and fitness policy researchers, consultants and program officers	policy analyst, recreation / fitness 
+4167	Recreation, sports and fitness policy researchers, consultants and program officers	recreation consultant / co-ordinator
+4167	Recreation, sports and fitness policy researchers, consultants and program officers	recreationist / recreologist
+4168	Program officers unique to government	Aboriginal land claims liaison
+4168	Program officers unique to government	attaché
+4168	Program officers unique to government	board member, health authority
+4168	Program officers unique to government	board member, parole
+4168	Program officers unique to government	board member, refugee
+4168	Program officers unique to government	chairperson, tribunal
+4168	Program officers unique to government	diplomat
+4168	Program officers unique to government	extraparliamentary commission
+4168	Program officers unique to government	intelligence analyst - security
+4168	Program officers unique to government	intelligence officer - security
+4168	Program officers unique to government	intelligence operator - security
+4168	Program officers unique to government	labour relations commission officer
+4168	Program officers unique to government	liaison - Native land claims
+4168	Program officers unique to government	Office of the Speaker of House
+4168	Program officers unique to government	official languages commission officer
+4168	Program officers unique to government	Premier's Office
+4168	Program officers unique to government	Prime Minister's Office 
+4168	Program officers unique to government	Privy Council Office officer
+4168	Program officers unique to government	protocol 
+4168	Program officers unique to government	public inquiries officer
+4168	Program officers unique to government	regional committee / council 
+4168	Program officers unique to government	research - intrgov'tal affairs
+4168	Program officers unique to government	returning / election
+4169	Other professional occupations in social science, n.e.c.	anthropologist
+4169	Other professional occupations in social science, n.e.c.	archaeologist
+4169	Other professional occupations in social science, n.e.c.	criminologist / penologist
+4169	Other professional occupations in social science, n.e.c.	ecologist, social
+4169	Other professional occupations in social science, n.e.c.	ethnographer / ethnologist
+4169	Other professional occupations in social science, n.e.c.	genealogist
+4169	Other professional occupations in social science, n.e.c.	geographer
+4169	Other professional occupations in social science, n.e.c.	gerontologist
+4169	Other professional occupations in social science, n.e.c.	historian
+4169	Other professional occupations in social science, n.e.c.	linguist
+4169	Other professional occupations in social science, n.e.c.	philosopher
+4169	Other professional occupations in social science, n.e.c.	psychometrician / psychometrist
+4169	Other professional occupations in social science, n.e.c.	scientist - political, social
+4169	Other professional occupations in social science, n.e.c.	sociologist
+4211	Paralegal and related occupations	abstractor
+4211	Paralegal and related occupations	agent, copyright / trademark 
+4211	Paralegal and related occupations	agent, court and tribunal
+4211	Paralegal and related occupations	clerk, notary public 
+4211	Paralegal and related occupations	clerk, real estate law / land titles
+4211	Paralegal and related occupations	clerk, wills & estates / probate / tax
+4211	Paralegal and related occupations	examiner / searcher, land titles
+4211	Paralegal and related occupations	notary public / lay notary public
+4211	Paralegal and related occupations	paralegal, corporate / criminal / family
+4211	Paralegal and related occupations	paralegal, independent
+4211	Paralegal and related occupations	paralegal, real estate / insurance law
+4211	Paralegal and related occupations	paralegal, tax / securities
+4211	Paralegal and related occupations	paralegal, wills and estates / probate
+4211	Paralegal and related occupations	technician, legal
+4211	Paralegal and related occupations	writer, law brief
+4212	Social and community service workers	Aboriginal outreach officer -
+4212	Social and community service workers	addictions worker
+4212	Social and community service workers	assistant / case aide, social services
+4212	Social and community service workers	coach / instructor, life skills
+4212	Social and community service workers	community counsellor - crisis intervention
+4212	Social and community service workers	community worker - liaison / mental health
+4212	Social and community service workers	co-ordinator, Aboriginal centre
+4212	Social and community service workers	counsellor, residential
+4212	Social and community service workers	disability management 
+4212	Social and community service workers	eligibility coordinator, social assistance
+4212	Social and community service workers	neighbourhood worker - social services
+4212	Social and community service workers	settlement worker - community services
+4212	Social and community service workers	social assistance - financial
+4212	Social and community service workers	social service - registered
+4212	Social and community service workers	social service - youth development
+4212	Social and community service workers	support - disabilities
+4212	Social and community service workers	technician, special education
+4212	Social and community service workers	welfare and compensation
+4212	Social and community service workers	worker / co-ordinator, transition housing
+4214	Early childhood educators and assistants	aide / worker - daycare / nursery school
+4214	Early childhood educators and assistants	daycare assistant / attendant 
+4214	Early childhood educators and assistants	early childhood program assistant
+4214	Early childhood educators and assistants	ECE (early childhood educator)
+4215	Instructors of persons with disabilities	job coach for persons with disabilities
+4215	Instructors of persons with disabilities	teacher - braille
+4215	Instructors of persons with disabilities	teacher - developmental disability
+4215	Instructors of persons with disabilities	teacher - learning disability
+4215	Instructors of persons with disabilities	teacher - physical disability
+4215	Instructors of persons with disabilities	teacher - sign language / lip-reading
+4215	Instructors of persons with disabilities	teacher - special needs / rehabilitation
+4216	Other instructors	educator, child safety
+4216	Other instructors	examiner, driver's licence / motorcycle
+4216	Other instructors	instructor, beauty / modelling
+4216	Other instructors	instructor, driving training
+4216	Other instructors	instructor, non-vocational
+4216	Other instructors	tutor, elementary school / high school
+4217	Other religious occupations	animator - pastoral / spiritual guidance
+4217	Other religious occupations	Christian Science worker / practitioner
+4217	Other religious occupations	church worker
+4217	Other religious occupations	corporate intercessor
+4217	Other religious occupations	deacon / deaconess
+4217	Other religious occupations	gospel
+4217	Other religious occupations	missionary / home mission worker
+4217	Other religious occupations	monk / brother / novice / prior / abbot
+4217	Other religious occupations	nun / sister / novice / mother superior
+4217	Other religious occupations	ragi
+4217	Other religious occupations	religious education
+4217	Other religious occupations	Salvation Army worker / captain
+4311	Police officers (except commissioned)	investigator, CSIS
+4311	Police officers (except commissioned)	police detective / investigator 
+4311	Police officers (except commissioned)	police investigator
+4311	Police officers (except commissioned)	police officer, canine team
+4311	Police officers (except commissioned)	police officer, community relations
+4311	Police officers (except commissioned)	police officer, desk / duty officer
+4311	Police officers (except commissioned)	police officer, diver / search & rescue
+4311	Police officers (except commissioned)	police officer, foot patrol / bike patrol
+4311	Police officers (except commissioned)	police officer, highway patrol / harbour
+4311	Police officers (except commissioned)	police officer, mounted / motorcycle patrol
+4311	Police officers (except commissioned)	police officer, railway 
+4311	Police officers (except commissioned)	police officer, RCMP
+4311	Police officers (except commissioned)	police officer, recruitment and training
+4311	Police officers (except commissioned)	police officer, school liaison / safety
+4311	Police officers (except commissioned)	police officer, security / bodyguard
+4311	Police officers (except commissioned)	police technician - crime scene / evidence
+4311	Police officers (except commissioned)	police, officer - uniform / plain-clothes
+4312	Firefighters	crash firefighter
+4312	Firefighters	fire prevention officer
+4312	Firefighters	firefighter, airport / shipboard
+4312	Firefighters	firefighter, fire captain / platoon chief 
+4312	Firefighters	firefighter, inspector / lieutenant
+4312	Firefighters	inspector, fire safety
+4312	Firefighters	training firefighter
+4313	Non-commissioned ranks of the Canadian Armed Forces	able seaman / master seaman
+4313	Non-commissioned ranks of the Canadian Armed Forces	armour defence gunner
+4313	Non-commissioned ranks of the Canadian Armed Forces	armoured soldier
+4313	Non-commissioned ranks of the Canadian Armed Forces	assault pioneer
+4313	Non-commissioned ranks of the Canadian Armed Forces	chief petty officer first class
+4313	Non-commissioned ranks of the Canadian Armed Forces	chief warrant officer
+4313	Non-commissioned ranks of the Canadian Armed Forces	combat engineer
+4313	Non-commissioned ranks of the Canadian Armed Forces	corporal / master corporal
+4313	Non-commissioned ranks of the Canadian Armed Forces	infanteer / infantry soldier
+4313	Non-commissioned ranks of the Canadian Armed Forces	leading seaman
+4313	Non-commissioned ranks of the Canadian Armed Forces	mortarman / mortarwoman
+4313	Non-commissioned ranks of the Canadian Armed Forces	naval acoustics operator
+4313	Non-commissioned ranks of the Canadian Armed Forces	naval electronics technician
+4313	Non-commissioned ranks of the Canadian Armed Forces	ordinary seaman - armed forces
+4313	Non-commissioned ranks of the Canadian Armed Forces	private
+4313	Non-commissioned ranks of the Canadian Armed Forces	reconnaissance patrol
+4313	Non-commissioned ranks of the Canadian Armed Forces	sergeant
+4313	Non-commissioned ranks of the Canadian Armed Forces	soldier, artillery
+4313	Non-commissioned ranks of the Canadian Armed Forces	trooper
+4411	Home child care providers	au pair / au pair girl
+4411	Home child care providers	babysitter - home / shopping centre
+4411	Home child care providers	caregiver / parents' helper
+4411	Home child care providers	foster father / mother / parent
+4411	Home child care providers	governess - child care
+4411	Home child care providers	kinship care provider / caregiver
+4412	Home support workers, housekeepers and related occupations	attendant, home care
+4412	Home support workers, housekeepers and related occupations	caregiver (live-in)
+4412	Home support workers, housekeepers and related occupations	companion
+4412	Home support workers, housekeepers and related occupations	doula / infant care
+4412	Home support workers, housekeepers and related occupations	family caregiver / family worker
+4412	Home support workers, housekeepers and related occupations	home health care / home support
+4412	Home support workers, housekeepers and related occupations	home support attendant
+4412	Home support workers, housekeepers and related occupations	homemaker / teaching homemaker
+4412	Home support workers, housekeepers and related occupations	housekeeper / domestic housekeeper
+4413	Elementary and secondary school teacher assistants	assistant, education (EA)
+4413	Elementary and secondary school teacher assistants	assistant, student support
+4413	Elementary and secondary school teacher assistants	assistant, teaching
+4413	Elementary and secondary school teacher assistants	assistant, teaching - special education
+4413	Elementary and secondary school teacher assistants	paraeducator / paraprofessional educator
+5123	Journalists	researcher, news - radio / TV / print
+4413	Elementary and secondary school teacher assistants	program assistant - education
+4413	Elementary and secondary school teacher assistants	student monitor
+4413	Elementary and secondary school teacher assistants	supervisor, lunchroom
+4421	Sheriffs and bailiffs	bailiff - court / sheriff's / writ-server
+4421	Sheriffs and bailiffs	officer, court enforcement
+4421	Sheriffs and bailiffs	process server
+4421	Sheriffs and bailiffs	reposessor, car / truck / property
+4421	Sheriffs and bailiffs	sheriff - chief / deputy / district
+4421	Sheriffs and bailiffs	sheriff's officer
+4422	Correctional service officers	detention attendant / guard
+4422	Correctional service officers	escort - correctional services
+4422	Correctional service officers	guard, convict / correctional facility 
+4422	Correctional service officers	jail guard / jailer
+4422	Correctional service officers	matron, head - prison / penitentiary
+4422	Correctional service officers	officer, correctional
+4423	By-law enforcement and other regulatory officers, n.e.c.	animal control inspector / supervisor
+4423	By-law enforcement and other regulatory officers, n.e.c.	inspector - commercial transport
+4423	By-law enforcement and other regulatory officers, n.e.c.	inspector - highway weigh scale
+4423	By-law enforcement and other regulatory officers, n.e.c.	inspector - Humane Society inspector
+4423	By-law enforcement and other regulatory officers, n.e.c.	inspector / supervisor - signs / traffic 
+4423	By-law enforcement and other regulatory officers, n.e.c.	inspector, licence - liquor board licence
+4423	By-law enforcement and other regulatory officers, n.e.c.	inspector, taxi
+4423	By-law enforcement and other regulatory officers, n.e.c.	officer / inspector, by-law enforcement
+4423	By-law enforcement and other regulatory officers, n.e.c.	officer / inspector, zoning enforcement
+4423	By-law enforcement and other regulatory officers, n.e.c.	officer, subdivision control
+4423	By-law enforcement and other regulatory officers, n.e.c.	officer, transport compliance
+4423	By-law enforcement and other regulatory officers, n.e.c.	supervisor, lottery 
+5111	Librarians	iconographer
+5111	Librarians	librarian periodicals / reference 
+5111	Librarians	librarian resource sharing / inter-library
+5111	Librarians	librarian, art / health / law / medical
+5111	Librarians	librarian, associate / supervisor 
+5111	Librarians	librarian, circulation / bookmobile
+5111	Librarians	librarian, documentation
+5111	Librarians	librarian, liaison 
+5111	Librarians	librarian, music / science / scientific
+5111	Librarians	librarian, technology / multimedia
+5111	Librarians	library bibliographer / cataloguer
+5112	Conservators and curators	conservator, ceramics and glass
+5112	Conservators and curators	conservator, fine art / furniture 
+5112	Conservators and curators	conservator, paintings / photos
+5112	Conservators and curators	curator / conservator, fossil
+5112	Conservators and curators	curator / conservator, library
+5112	Conservators and curators	curator, archaeology / museum
+5112	Conservators and curators	curator, aviation and space museum
+5112	Conservators and curators	curator, ethnology
+5112	Conservators and curators	curator, herbarium
+5112	Conservators and curators	museologist
+5113	Archivists	archivist, collections
+5113	Archivists	archivist, corporate
+5113	Archivists	archivist, historical
+5113	Archivists	archivist, multimedia / video
+5113	Archivists	archivist, photo / photography
+5113	Archivists	archivist, research
+5121	Authors and writers	author
+5121	Authors and writers	biographer
+5121	Authors and writers	crossword puzzle maker / compiler
+5121	Authors and writers	essayist
+5121	Authors and writers	ghost writer
+5121	Authors and writers	lexicographer
+5121	Authors and writers	rewriter
+5121	Authors and writers	writer, media - radio / TV / multimedia
+5121	Authors and writers	writer, news - feature writer / columnist
+5121	Authors and writers	writer, novelist / playwright / poet 
+5121	Authors and writers	writer, scientific
+5121	Authors and writers	writer, scriptwriter / screenplays
+5121	Authors and writers	writer, technical manuals
+5121	Authors and writers	writer, technical specifications 
+5122	Editors	blog editor
+5122	Editors	consultant, editorial
+5122	Editors	editor
+5122	Editors	editor, art
+5122	Editors	editor, broadcasting 
+5122	Editors	editor, language - English, French, etc.
+5122	Editors	editor, news - assignment / copy 
+5122	Editors	Web site editor
+5122	Editors	writer-editor
+5123	Journalists	anchor, news - television
+5123	Journalists	chronicler, online chronicler
+5123	Journalists	columnist, news
+5123	Journalists	commentator - radio / television / print
+5123	Journalists	correspondent, news
+5123	Journalists	critic / reviewer
+5123	Journalists	cyberjournalist / cyber-reporter
+5123	Journalists	journalist, broadcast
+5123	Journalists	multimedia information trader
+5123	Journalists	netsurfer
+5123	Journalists	reporter, business news
+5123	Journalists	reporter, news
+5123	Journalists	staff writer - newspaper
+5123	Journalists	writer, newspaper - editorial / headline
+5125	Translators, terminologists and interpreters	Certified interpreter
+5125	Translators, terminologists and interpreters	Certified terminologist
+5125	Translators, terminologists and interpreters	Certified translator
+5125	Translators, terminologists and interpreters	interpreter, ASL (American Sign Language)
+5125	Translators, terminologists and interpreters	interpreter, community / conference 
+5125	Translators, terminologists and interpreters	interpreter, elbow / escort
+5125	Translators, terminologists and interpreters	interpreter, LSQ (Quebec Sign Language)
+5125	Translators, terminologists and interpreters	interpreter, simultaneous
+5125	Translators, terminologists and interpreters	interpreter, tactile
+5125	Translators, terminologists and interpreters	localiser
+5125	Translators, terminologists and interpreters	reviser - translation
+5125	Translators, terminologists and interpreters	specialist, cultural adaptation
+5125	Translators, terminologists and interpreters	terminologist, legal / medical
+5125	Translators, terminologists and interpreters	translator
+5125	Translators, terminologists and interpreters	translator adaptor
+5125	Translators, terminologists and interpreters	translator, foreign broadcast / news
+5125	Translators, terminologists and interpreters	translator, jurilinguist / legal
+5125	Translators, terminologists and interpreters	translator, literary
+5125	Translators, terminologists and interpreters	translator, medical / scientific
+5125	Translators, terminologists and interpreters	translator, simultaneous
+5125	Translators, terminologists and interpreters	translator-reviser
+5125	Translators, terminologists and interpreters	transliterator
+5131	Producers, directors, choreographers and related occupations	choreographer / cyber-choreographer
+5131	Producers, directors, choreographers and related occupations	cinematographer
+5131	Producers, directors, choreographers and related occupations	director
+5131	Producers, directors, choreographers and related occupations	director - movies, radio, stage, TV, video
+5131	Producers, directors, choreographers and related occupations	director - photography, cinematography
+5131	Producers, directors, choreographers and related occupations	filmmaker
+5131	Producers, directors, choreographers and related occupations	producer, movies, radio, stage, TV
+5131	Producers, directors, choreographers and related occupations	producer-director
+5131	Producers, directors, choreographers and related occupations	production designer - movies / stage
+5131	Producers, directors, choreographers and related occupations	program director - broadcasting
+5131	Producers, directors, choreographers and related occupations	VFX project manager
+5131	Producers, directors, choreographers and related occupations	video game art director
+5131	Producers, directors, choreographers and related occupations	video game producer
+5131	Producers, directors, choreographers and related occupations	video games project manager
+5131	Producers, directors, choreographers and related occupations	video illustrator - multimedia work
+5131	Producers, directors, choreographers and related occupations	video maker
+5131	Producers, directors, choreographers and related occupations	visual effects producer
+5131	Producers, directors, choreographers and related occupations	visual effects project manager
+5131	Producers, directors, choreographers and related occupations	visual effects technical director - motion pictures
+5132	Conductors, composers and arrangers	arranger / music arranger
+5132	Conductors, composers and arrangers	artistic director - music / orchestra
+5132	Conductors, composers and arrangers	band conductor / director / master
+5132	Conductors, composers and arrangers	chansonnier
+5132	Conductors, composers and arrangers	choir director
+5132	Conductors, composers and arrangers	composer
+5132	Conductors, composers and arrangers	conductor, band / choral / orchestra
+5132	Conductors, composers and arrangers	lyricist
+5132	Conductors, composers and arrangers	maestro
+5132	Conductors, composers and arrangers	music adapter / arranger / orchestrator
+5132	Conductors, composers and arrangers	music copyist
+5132	Conductors, composers and arrangers	music director - movies,  radio, stage, TV
+5132	Conductors, composers and arrangers	singer-songwriter-composer
+5132	Conductors, composers and arrangers	songwriter
+5132	Conductors, composers and arrangers	writer-composer-performer
+5133	Musicians and singers	accompanist
+5133	Musicians and singers	chorister
+5133	Musicians and singers	interpreter, musical
+5133	Musicians and singers	musician, back-up / session / rehearsal
+5133	Musicians and singers	musician, street
+5133	Musicians and singers	organist / church organist
+5133	Musicians and singers	singer
+5133	Musicians and singers	teacher, music
+5134	Dancers	dance notator
+5134	Dancers	dancer, ballet / modern / jazz / tap
+5134	Dancers	dancer, chorus
+5134	Dancers	dancer, soloist
+5134	Dancers	teacher / instructor, dance
+5134	Dancers	teacher, performance movement
+5135	Actors and comedians	acting teacher - private or studio
+5135	Actors and comedians	actor / actress - movie / TV / stage
+5135	Actors and comedians	actor / actress - voice-over, narrator
+5135	Actors and comedians	coach, diction / drama / voice
+5135	Actors and comedians	comedian / comic / storyteller
+5135	Actors and comedians	dramatic reader
+5135	Actors and comedians	film dubber
+5135	Actors and comedians	humorist
+5135	Actors and comedians	performing arts extra
+5135	Actors and comedians	standardized patient
+5135	Actors and comedians	teacher, drama / dramatic arts
+5136	Painters, sculptors and other visual artists	artist - visual arts / video / multimedia
+5136	Painters, sculptors and other visual artists	artist, lithographic / printmaker
+5136	Painters, sculptors and other visual artists	painter 
+5136	Painters, sculptors and other visual artists	sculptor
+5136	Painters, sculptors and other visual artists	sculptor-modeller
+5136	Painters, sculptors and other visual artists	teacher / instructor, art
+5136	Painters, sculptors and other visual artists	teacher / instructor, painting
+5136	Painters, sculptors and other visual artists	teacher / instructor, printmaking
+5136	Painters, sculptors and other visual artists	teacher / instructor, sculpture
+5211	Library and public archive technicians	archive attendant
+5211	Library and public archive technicians	archive technician
+5211	Library and public archive technicians	assistant, archive / archival
+5211	Library and public archive technicians	librarian, music
+5211	Library and public archive technicians	librarian, school
+5211	Library and public archive technicians	technical indexer - library
+5211	Library and public archive technicians	technician, archive / archival management
+5211	Library and public archive technicians	technician, cataloguing
+5212	Technical occupations related to museums and art galleries	cataloguer, museum / museum objects
+5212	Technical occupations related to museums and art galleries	interpreter / interpretive guide, museum
+5212	Technical occupations related to museums and art galleries	interpreter, heritage site / historic site
+5212	Technical occupations related to museums and art galleries	interpreter, park / zoo
+5212	Technical occupations related to museums and art galleries	interpreter, planetarium
+5212	Technical occupations related to museums and art galleries	officer, museum
+5212	Technical occupations related to museums and art galleries	preparator, exhibit
+5212	Technical occupations related to museums and art galleries	supervisor, historical village
+5212	Technical occupations related to museums and art galleries	taxidermist / taxidermy technician
+5212	Technical occupations related to museums and art galleries	technician, archaeological
+5212	Technical occupations related to museums and art galleries	technician, community museum
+5212	Technical occupations related to museums and art galleries	technician, conservation
+5212	Technical occupations related to museums and art galleries	technician, diorama maker / model-maker
+5212	Technical occupations related to museums and art galleries	technician, exhibit
+5212	Technical occupations related to museums and art galleries	technician, fossil recovery and reparation
+5212	Technical occupations related to museums and art galleries	technician, museology 
+5212	Technical occupations related to museums and art galleries	technician, planetarium
+5212	Technical occupations related to museums and art galleries	technician, recording - museum
+5221	Photographers	illustrator, multimedia picture
+5221	Photographers	photographer, aerial / fashion / news
+5221	Photographers	photographer, chief / senior
+5221	Photographers	photographer, commercial / industrial 
+5221	Photographers	photographer, medical / scientific
+5221	Photographers	photographer, multimedia
+5221	Photographers	photographer, news - photojournalist
+5221	Photographers	photographer, police / evidence / forensic
+5221	Photographers	photographer, portrait / street / wildlife
+5221	Photographers	photographer, sports - racetrack finish
+5221	Photographers	photomicrographer
+5221	Photographers	retoucher - photography
+5222	Film and video camera operators	camera operator, EFP (e. field production)
+5222	Film and video camera operators	camera operator, ENG (electronic news)
+5222	Film and video camera operators	camera operator, film / news / movies
+5222	Film and video camera operators	videographer - news / arts / dance
+5223	Graphic arts technicians	animation (cartoon) camera operator
+5223	Graphic arts technicians	animation (cartoon) inker / painter 
+5223	Graphic arts technicians	artist, mannequin
+5223	Graphic arts technicians	compositor - animation
+5223	Graphic arts technicians	compositor - film
+5223	Graphic arts technicians	graphic arts assembler / hand painter
+5223	Graphic arts technicians	graphic arts letterer
+5223	Graphic arts technicians	painter, poster / signs / traffic signs
+5223	Graphic arts technicians	photographic airbrush artist / retoucher
+5223	Graphic arts technicians	stencil maker, photographic
+5223	Graphic arts technicians	stencil marker - graphic arts
+5223	Graphic arts technicians	technician, computer graphics / design
+5223	Graphic arts technicians	technician, graphic design
+5223	Graphic arts technicians	video game artist / designer
+5223	Graphic arts technicians	visual effects artist
+5224	Broadcast technicians	engineer, broadcast
+5224	Broadcast technicians	installer, mobile broadcasting
+5224	Broadcast technicians	MCR (master control room)
+5224	Broadcast technicians	supervisor, broadcasting operators
+5224	Broadcast technicians	technician, broadcasting
+5224	Broadcast technicians	transmitter
+5224	Broadcast technicians	video control
+5225	Audio and video recording technicians	audio recording studio
+5225	Audio and video recording technicians	colour timer - video
+5225	Audio and video recording technicians	dubbing machine
+5225	Audio and video recording technicians	editor, ENG (electronic news gathering)
+5225	Audio and video recording technicians	editor, postproduction / VTR
+5225	Audio and video recording technicians	engineer, sound - recording studio
+5225	Audio and video recording technicians	librarian - audio and video recording
+5225	Audio and video recording technicians	master record cutter
+5225	Audio and video recording technicians	playback
+5225	Audio and video recording technicians	recorder / recordist, audio / sound
+5225	Audio and video recording technicians	sound recorder / recording engineer
+5225	Audio and video recording technicians	sound-recording / sound-editing 
+5225	Audio and video recording technicians	specialist, digital effects
+5225	Audio and video recording technicians	specialist, sound - cutter / keyer / mixer
+5225	Audio and video recording technicians	technician - multimedia / sound-effects
+5225	Audio and video recording technicians	technician, AV (audiovisual)
+5225	Audio and video recording technicians	technician, video
+5225	Audio and video recording technicians	video-recording / video-editing
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	co-ordinator, broadcasting
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	co-ordinator, optical effects
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	co-ordinator, production
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	co-ordinator, stunt
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	costumer - costume maker / supervisor 
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	director, exterior shooting / floor dir.
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	foreperson, settings shop 
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	gaffer, rigging
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	grip, head / key / first
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	light board operator
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	machinist-electrician
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	make-up artist / wigmaker / hairdresser
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	manager, exterior set / location 
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	planner, program - radio / music
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	production co-ordinator - video games
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	production co-ordinator - visual effects
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	property master / custodian
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	stage electrician / manager
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	studio administrator / manager
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	supervisor, motion picture facilities
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	supervisor, script
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	technician, lighting / set electrician 
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	technician, production
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	technician, special effects
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	technician, telecasting / theatre
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	wig hairdresser
+5226	Other technical and co-ordinating occupations in motion pictures, broadcasting and the performing arts	wrangler, animal / extras
+5227	Support occupations in motion pictures, broadcasting, photography and the performing arts	assistant, AV (audiovisual)
+5227	Support occupations in motion pictures, broadcasting, photography and the performing arts	assistant, costume / wardrobe / wig
+5227	Support occupations in motion pictures, broadcasting, photography and the performing arts	assistant, lighting / production / script
+5227	Support occupations in motion pictures, broadcasting, photography and the performing arts	assistant, recording - recording studio
+5227	Support occupations in motion pictures, broadcasting, photography and the performing arts	best boy
+5227	Support occupations in motion pictures, broadcasting, photography and the performing arts	boom microphone operator / boom grip
+5227	Support occupations in motion pictures, broadcasting, photography and the performing arts	continuity person
+5241	Graphic designers and illustrators	specialist, computer graphics
+5227	Support occupations in motion pictures, broadcasting, photography and the performing arts	dolly operator / pusher
+5227	Support occupations in motion pictures, broadcasting, photography and the performing arts	dresser
+5227	Support occupations in motion pictures, broadcasting, photography and the performing arts	dresser, set
+5227	Support occupations in motion pictures, broadcasting, photography and the performing arts	examiner, duplicate-film / motion pictures
+5227	Support occupations in motion pictures, broadcasting, photography and the performing arts	flyman / flywoman
+5227	Support occupations in motion pictures, broadcasting, photography and the performing arts	focus puller
+5227	Support occupations in motion pictures, broadcasting, photography and the performing arts	grip
+5227	Support occupations in motion pictures, broadcasting, photography and the performing arts	handle, fireworks
+5227	Support occupations in motion pictures, broadcasting, photography and the performing arts	operator, boom / crane / spotlight
+5227	Support occupations in motion pictures, broadcasting, photography and the performing arts	projectionist
+5227	Support occupations in motion pictures, broadcasting, photography and the performing arts	prompter / teleprompter
+5227	Support occupations in motion pictures, broadcasting, photography and the performing arts	props handler / property person
+5227	Support occupations in motion pictures, broadcasting, photography and the performing arts	rigger, artistic / circus / stage / high
+5227	Support occupations in motion pictures, broadcasting, photography and the performing arts	scene painter / shifter / set dresser
+5227	Support occupations in motion pictures, broadcasting, photography and the performing arts	stagehand / staging assistant
+5231	Announcers and other broadcasters	announcer, PA (public address system)
+5231	Announcers and other broadcasters	broadcaster
+5231	Announcers and other broadcasters	DJ (disc jockey) - broadcast
+5231	Announcers and other broadcasters	host / hostess - TV / radio 
+5231	Announcers and other broadcasters	MC (master of ceremonies)
+5231	Announcers and other broadcasters	moderator - broadcasting
+5231	Announcers and other broadcasters	newscaster / news reader - radio / TV
+5231	Announcers and other broadcasters	reporter, radio / television 
+5231	Announcers and other broadcasters	ringmaster, circus
+5231	Announcers and other broadcasters	sportscaster / sports commentator
+5231	Announcers and other broadcasters	VJ (video jockey) - television broadcast
+5232	Other performers, n.e.c.	acrobat / aerial acrobat
+5232	Other performers, n.e.c.	busker / street entertainer
+5232	Other performers, n.e.c.	circus performer
+5232	Other performers, n.e.c.	contortionist
+5232	Other performers, n.e.c.	DJ (deejay) - turntablist
+5232	Other performers, n.e.c.	entertainer
+5232	Other performers, n.e.c.	equilibrist
+5232	Other performers, n.e.c.	exotic dancer / table dancer
+5232	Other performers, n.e.c.	face painter
+5232	Other performers, n.e.c.	impersonator / look-alike / mimic
+5232	Other performers, n.e.c.	magician - illusionist / hypnotist 
+5232	Other performers, n.e.c.	mascot
+5232	Other performers, n.e.c.	model, art and photography / fashion
+5232	Other performers, n.e.c.	puppeteer / marionette handler
+5232	Other performers, n.e.c.	rodeo driver / rodeo horse rider
+5232	Other performers, n.e.c.	Santa Claus / Mrs. Claus
+5232	Other performers, n.e.c.	slack-rope performer
+5232	Other performers, n.e.c.	stunt performer / stunt rider
+5232	Other performers, n.e.c.	ventriloquist
+5241	Graphic designers and illustrators	3D artist
+5241	Graphic designers and illustrators	3D modeler
+5241	Graphic designers and illustrators	advertising art director
+5241	Graphic designers and illustrators	animated cartoon artist / colourist 
+5241	Graphic designers and illustrators	animation artist / layout designer
+5241	Graphic designers and illustrators	animator, 2D / 3D / animated films 
+5241	Graphic designers and illustrators	animator, computer / digital artist
+5241	Graphic designers and illustrators	artist, litho / poster / storyboard
+5241	Graphic designers and illustrators	calligrapher
+5241	Graphic designers and illustrators	caricaturist / political caricaturist
+5241	Graphic designers and illustrators	cartoonist / editorial / political
+5241	Graphic designers and illustrators	commercial artist / designer
+5241	Graphic designers and illustrators	content director / strategist
+5241	Graphic designers and illustrators	designer, bank note / paper securities
+5241	Graphic designers and illustrators	designer, business forms / form layout
+5241	Graphic designers and illustrators	designer, communication
+5241	Graphic designers and illustrators	designer, cover
+5241	Graphic designers and illustrators	designer, electronic / video games
+5241	Graphic designers and illustrators	designer, graphic - multimedia
+5241	Graphic designers and illustrators	designer, interactive media
+5241	Graphic designers and illustrators	designer, package / page / sign
+5241	Graphic designers and illustrators	designer, user experience
+5241	Graphic designers and illustrators	illustrator, catalogue / fashion
+5241	Graphic designers and illustrators	illustrator, cover page / newspaper
+5241	Graphic designers and illustrators	illustrator, medical / scientific
+5241	Graphic designers and illustrators	multimedia designer / illustrator 
+5241	Graphic designers and illustrators	pictographist
+5241	Graphic designers and illustrators	RGD (registered graphic designer)
+5241	Graphic designers and illustrators	wallpaper colourist / designer
+5242	Interior designers and interior decorators	consultant, home decorating 
+5242	Interior designers and interior decorators	designer, kitchen
+5242	Interior designers and interior decorators	interior decorating / home decorating
+5242	Interior designers and interior decorators	interior design consultant
+5242	Interior designers and interior decorators	interior designer - aircraft
+5242	Interior designers and interior decorators	interior designer - certified / licensed
+5242	Interior designers and interior decorators	interior designer - green design
+5242	Interior designers and interior decorators	interior designer - office space planner
+5243	Theatre, fashion, exhibit and other creative designers	co-ordinator, fashion
+5243	Theatre, fashion, exhibit and other creative designers	couturier - haute couture
+5243	Theatre, fashion, exhibit and other creative designers	designer, accessories
+5243	Theatre, fashion, exhibit and other creative designers	designer, crest
+5243	Theatre, fashion, exhibit and other creative designers	designer, facilities
+5243	Theatre, fashion, exhibit and other creative designers	designer, fishing lure
+5243	Theatre, fashion, exhibit and other creative designers	designer, flower
+5243	Theatre, fashion, exhibit and other creative designers	designer, furnishings / pottery / tile
+5243	Theatre, fashion, exhibit and other creative designers	designer, memorial
+5243	Theatre, fashion, exhibit and other creative designers	designer, retail - store display
+5243	Theatre, fashion, exhibit and other creative designers	designer, show and demonstration
+5243	Theatre, fashion, exhibit and other creative designers	designer, sound
+5243	Theatre, fashion, exhibit and other creative designers	designer, swimming pool
+5243	Theatre, fashion, exhibit and other creative designers	designer, theatre - set design
+5243	Theatre, fashion, exhibit and other creative designers	designer, toy
+5243	Theatre, fashion, exhibit and other creative designers	designer, trophy
+5243	Theatre, fashion, exhibit and other creative designers	heraldist
+5243	Theatre, fashion, exhibit and other creative designers	merchandiser, visual
+5243	Theatre, fashion, exhibit and other creative designers	stylist, visual display
+5244	Artisans and craftspersons	artisan, Aboriginal craftwork 
+5244	Artisans and craftspersons	artisan, carver
+5244	Artisans and craftspersons	artisan, cermamics 
+5244	Artisans and craftspersons	artisan, decorative items
+5244	Artisans and craftspersons	artisan, engraving
+5244	Artisans and craftspersons	artisan, floral
+5244	Artisans and craftspersons	artisan, furniture
+5244	Artisans and craftspersons	artisan, glass
+5244	Artisans and craftspersons	artisan, jewellery
+5244	Artisans and craftspersons	artisan, leather
+5244	Artisans and craftspersons	artisan, machinery - bellows maker
+5244	Artisans and craftspersons	artisan, metal 
+5244	Artisans and craftspersons	artisan, paper - papermaker / book binder
+5244	Artisans and craftspersons	artisan, textiles
+5244	Artisans and craftspersons	artisan, toys - dollmaker
+5244	Artisans and craftspersons	bag maker - arts and crafts
+5244	Artisans and craftspersons	canoe builder / repairer - arts and crafts
+5244	Artisans and craftspersons	craftsperson
+5244	Artisans and craftspersons	instructor, arts and crafts
+5244	Artisans and craftspersons	instrument maker, musical
+5245	Patternmakers - textile, leather and fur products	doper - fabric products
+5245	Patternmakers - textile, leather and fur products	enlarger - cartoon embroidery
+5245	Patternmakers - textile, leather and fur products	operator, digitizer
+5245	Patternmakers - textile, leather and fur products	pattern designer
+5245	Patternmakers - textile, leather and fur products	pattern grader / marker / mark-remover
+5245	Patternmakers - textile, leather and fur products	pattern modifier / lay-out
+5245	Patternmakers - textile, leather and fur products	patternmaker -  textile products
+5245	Patternmakers - textile, leather and fur products	patternmaker - computer assisted
+5245	Patternmakers - textile, leather and fur products	patternmaker - sail lay-out, canvas
+5245	Patternmakers - textile, leather and fur products	patternmaker - shoes
+5245	Patternmakers - textile, leather and fur products	patternmaker-tracer
+5251	Athletes	archer
+5251	Athletes	athlete, amateur / professional / olympic
+5251	Athletes	athlete, fighting
+5251	Athletes	athlete, running
+5251	Athletes	athlete, track and field
+5251	Athletes	athlete, water sports
+5251	Athletes	athlete, winter sports
+5251	Athletes	bowler
+5251	Athletes	cyclist
+5251	Athletes	driver, horse / jockey
+5251	Athletes	driver, vehicle
+5251	Athletes	fencer
+5251	Athletes	footballer
+5251	Athletes	gamer - video games
+5251	Athletes	golfer
+5251	Athletes	gymnast
+5251	Athletes	player, ball games
+5251	Athletes	player, strategy games
+5251	Athletes	weight-lifter
+5252	Coaches	coach, amateur athletics
+5252	Coaches	coach, head
+5252	Coaches	coach, Olympic
+5252	Coaches	coach, professional sports
+5252	Coaches	coach, regional team / national team
+5252	Coaches	scout, professionals sports
+5253	Sports officials and referees	evaluator, figure skating
+5253	Sports officials and referees	judge, goal
+5253	Sports officials and referees	judge, racetrack
+5253	Sports officials and referees	line judge / referee, sports
+5253	Sports officials and referees	official, racetrack - clerk of scales
+5253	Sports officials and referees	official, racetrack - handicapper
+5253	Sports officials and referees	official, racetrack - race starter-timer
+5253	Sports officials and referees	official, sports
+5253	Sports officials and referees	scorekeeper / scoreboard operator
+5253	Sports officials and referees	umpire
+5254	Program leaders and instructors in recreation, sport and fitness	appraiser, fitness - certified
+5254	Program leaders and instructors in recreation, sport and fitness	camp co-ordinator
+5254	Program leaders and instructors in recreation, sport and fitness	crew member, search and rescue
+5254	Program leaders and instructors in recreation, sport and fitness	leader, arts / recreation
+5254	Program leaders and instructors in recreation, sport and fitness	leader, sports / leisure / recreation
+5254	Program leaders and instructors in recreation, sport and fitness	personal trainer (certified)
+5254	Program leaders and instructors in recreation, sport and fitness	playground leader / worker
+5254	Program leaders and instructors in recreation, sport and fitness	program leader, leisure
+5254	Program leaders and instructors in recreation, sport and fitness	teacher, arts and crafts
+5254	Program leaders and instructors in recreation, sport and fitness	teacher, athletics
+5254	Program leaders and instructors in recreation, sport and fitness	teacher, fishing
+5254	Program leaders and instructors in recreation, sport and fitness	teacher, fitness
+5254	Program leaders and instructors in recreation, sport and fitness	teacher, horseback riding / dressage
+5254	Program leaders and instructors in recreation, sport and fitness	teacher, martial arts
+5254	Program leaders and instructors in recreation, sport and fitness	teacher, sailing / windsurfing
+5254	Program leaders and instructors in recreation, sport and fitness	teacher, skating 
+5254	Program leaders and instructors in recreation, sport and fitness	teacher, ski / snowboarding
+5254	Program leaders and instructors in recreation, sport and fitness	teacher, swimming / diving
+6211	Retail sales supervisors	cage supervisor - casino
+6211	Retail sales supervisors	chief canvasser - retail
+6211	Retail sales supervisors	front end supervisor - retail
+6211	Retail sales supervisors	key holder - retail store
+6211	Retail sales supervisors	supervisor, door-to-door sales
+6211	Retail sales supervisors	supervisor, newspaper delivery
+6211	Retail sales supervisors	supervisor, retail
+6211	Retail sales supervisors	supervisor, supermarket - customer service
+6211	Retail sales supervisors	supervisor, supermarket - department head
+6221	Technical sales specialists - wholesale trade	agent, business - computers
+6221	Technical sales specialists - wholesale trade	consultant, alternate heating energy
+6221	Technical sales specialists - wholesale trade	representative, technical sales
+6221	Technical sales specialists - wholesale trade	sales broker - wholesale
+6221	Technical sales specialists - wholesale trade	sales engineer, technical - computer
+6221	Technical sales specialists - wholesale trade	sales engineer, technical - industrial
+6221	Technical sales specialists - wholesale trade	sales, energy - commercial / industrial
+6221	Technical sales specialists - wholesale trade	sales, energy - residential
+6221	Technical sales specialists - wholesale trade	salesperson, broadcasting equipment
+6221	Technical sales specialists - wholesale trade	salesperson, business / office equipment
+6221	Technical sales specialists - wholesale trade	salesperson, chemicals
+6221	Technical sales specialists - wholesale trade	salesperson, computer equipment
+6221	Technical sales specialists - wholesale trade	salesperson, construction equipment 
+6221	Technical sales specialists - wholesale trade	salesperson, electronic data-processing
+6221	Technical sales specialists - wholesale trade	salesperson, engineering equipment
+6221	Technical sales specialists - wholesale trade	salesperson, export / import
+6221	Technical sales specialists - wholesale trade	salesperson, farm equipment
+6221	Technical sales specialists - wholesale trade	salesperson, forestry / logging 
+6221	Technical sales specialists - wholesale trade	salesperson, forestry equipment / machinery
+6221	Technical sales specialists - wholesale trade	salesperson, heavy equipment / truck
+6221	Technical sales specialists - wholesale trade	salesperson, industrial equipment
+6221	Technical sales specialists - wholesale trade	salesperson, material-handling equipment
+6221	Technical sales specialists - wholesale trade	salesperson, medical - dental / diagnostic
+6221	Technical sales specialists - wholesale trade	salesperson, metal products
+6221	Technical sales specialists - wholesale trade	salesperson, printing equipment
+6221	Technical sales specialists - wholesale trade	salesperson, safety equipment
+6221	Technical sales specialists - wholesale trade	salesperson, scientific instrument
+6221	Technical sales specialists - wholesale trade	salesperson, topographical equipment
+6221	Technical sales specialists - wholesale trade	salesperson, transport
+6221	Technical sales specialists - wholesale trade	technical sales consultant
+6221	Technical sales specialists - wholesale trade	technical salesperson supervisor
+6221	Technical sales specialists - wholesale trade	technician, printing management
+6222	Retail and wholesale buyers	assistant buyer
+6222	Retail and wholesale buyers	beverages taster and buyer
+6222	Retail and wholesale buyers	buyers supervisor
+6222	Retail and wholesale buyers	chief buyer  retail or wholesale
+6222	Retail and wholesale buyers	food buyer
+6222	Retail and wholesale buyers	fur buyer
+6222	Retail and wholesale buyers	hardware buyer
+6222	Retail and wholesale buyers	livestock buyer
+6222	Retail and wholesale buyers	lumber buyer
+6222	Retail and wholesale buyers	meat buyer
+6222	Retail and wholesale buyers	merchandiser
+6222	Retail and wholesale buyers	pharmaceuticals buyer
+6222	Retail and wholesale buyers	produce buyer
+6222	Retail and wholesale buyers	retail buyer
+6222	Retail and wholesale buyers	retail merchandiser
+6222	Retail and wholesale buyers	salvage buyer
+6222	Retail and wholesale buyers	scrap buyer
+6222	Retail and wholesale buyers	senior buyer  retail or wholesale
+6222	Retail and wholesale buyers	timber buyer
+6222	Retail and wholesale buyers	tobacco buyer
+6222	Retail and wholesale buyers	wholesale buyer
+6231	Insurance agents and brokers	agent, insurance - automobile / fire
+6231	Insurance agents and brokers	agent, insurance - group / life 
+6231	Insurance agents and brokers	agent, insurance - real estate 
+6231	Insurance agents and brokers	district supervisor - insurance office
+6231	Insurance agents and brokers	insurance agent supervisor
+6232	Real estate agents and salespersons	real estate agent / broker / dealer
+6232	Real estate agents and salespersons	real estate agent supervisor
+6232	Real estate agents and salespersons	realtor
+6232	Real estate agents and salespersons	salesperson, new home
+6235	Financial sales representatives	account- personal / commercial
+6235	Financial sales representatives	banker, personal
+6235	Financial sales representatives	consumer credit / personal loans
+6235	Financial sales representatives	counsellor, debt / loans
+6235	Financial sales representatives	credit analyst / officer / investigator
+6235	Financial sales representatives	financial sales and service
+6235	Financial sales representatives	loan inspector / officer / supervisor
+6235	Financial sales representatives	merchant services specialist - financial
+6235	Financial sales representatives	mortgage consultant / officer
+6235	Financial sales representatives	sales - financial
+6311	Food service supervisors	cafeteria / canteen / catering
+6311	Food service supervisors	food assembly / food service
+6311	Food service supervisors	kitchen manager
+6311	Food service supervisors	shift manager - fast food restaurant
+6311	Food service supervisors	swing manager - fast food restaurant
+6311	Food service supervisors	unit supervisor - food services
+6312	Executive housekeepers	director, housekeeping
+6312	Executive housekeepers	executive housekeeper - hotel / hospital 
+6312	Executive housekeepers	manager, housekeeping
+6313	Accommodation, travel, tourism and related services supervisors	baggage handler / porter
+6313	Accommodation, travel, tourism and related services supervisors	bell captain
+6313	Accommodation, travel, tourism and related services supervisors	casino
+6313	Accommodation, travel, tourism and related services supervisors	clerks
+6313	Accommodation, travel, tourism and related services supervisors	customer relations supervisor - casino
+6313	Accommodation, travel, tourism and related services supervisors	guest service supervisor - casino
+6313	Accommodation, travel, tourism and related services supervisors	hotel staff
+6313	Accommodation, travel, tourism and related services supervisors	managing 
+6313	Accommodation, travel, tourism and related services supervisors	passenger service co-ordinator
+6313	Accommodation, travel, tourism and related services supervisors	reservations
+6313	Accommodation, travel, tourism and related services supervisors	sales and service agents 
+6314	Customer and information services supervisors	banking - safety deposit boxes
+6314	Customer and information services supervisors	call centre / contact centre
+6315	Cleaning supervisors	building maintenance
+6315	Cleaning supervisors	custodian -cleaning services
+6315	Cleaning supervisors	head caretaker / custodian / janitor
+6315	Cleaning supervisors	housekeeping / chambermaids
+6316	Other services supervisors	apparel & furnishings service
+6316	Other services supervisors	athletic club attendant supervisor
+6316	Other services supervisors	billiard / pool parlour / bingo
+6316	Other services supervisors	campground
+6316	Other services supervisors	dry cleaner / fur cleaning
+6316	Other services supervisors	foreperson, laundry / dry cleaning
+6316	Other services supervisors	racetrack clerk
+6316	Other services supervisors	security / commissionaires
+6316	Other services supervisors	ski lift operations
+6316	Other services supervisors	surveillance supervisor - casino
+6316	Other services supervisors	trailer park
+6316	Other services supervisors	ushers
+6321	Chefs	banquet chef
+6321	Chefs	chef / chef de cuisine / chef de partie 
+6321	Chefs	chef pâtissier / pastry chef
+6321	Chefs	cold foods chef
+6321	Chefs	corporate chef
+6321	Chefs	entremetier
+6321	Chefs	executive chef / executive sous-chef
+6321	Chefs	garde-manger chef
+6321	Chefs	head chef
+6321	Chefs	head rotisseur
+6321	Chefs	master chef
+6321	Chefs	meat, poultry and fish chef
+6321	Chefs	pasta chef
+6321	Chefs	rotisserie chef
+6321	Chefs	saucier
+6321	Chefs	sous-chef
+6321	Chefs	specialist chef / specialty foods chef
+6321	Chefs	supervising chef
+6321	Chefs	sushi chef
+6321	Chefs	working sous-chef
+6322	Cooks	cook, construction camp / ship
+6322	Cooks	cook, diet kitchen / dietary
+6322	Cooks	cook, hospitality
+6322	Cooks	cook, journeyman / journeywoman
+6322	Cooks	cook, licensed
+6322	Cooks	cook, specialty - ethnic / kosher / halal
+6331	Butchers, meat cutters and fishmongers - retail and wholesale	butcher - deli / grocery / supermarket
+6331	Butchers, meat cutters and fishmongers - retail and wholesale	fishmonger, retail or wholesale
+6331	Butchers, meat cutters and fishmongers - retail and wholesale	head butcher, retail or wholesale
+6331	Butchers, meat cutters and fishmongers - retail and wholesale	meat cutter / meat portion cutter
+6332	Bakers	baker, hospitality
+6332	Bakers	baker, pastry
+6332	Bakers	baker, retail / grocery / supermarket
+6332	Bakers	head baker
+6332	Bakers	supervisor, bakery
+6341	Hairstylists and barbers	barber
+6341	Hairstylists and barbers	hair stylist, wigs
+6341	Hairstylists and barbers	hair-care specialist
+6341	Hairstylists and barbers	hairdresser / hair stylist / hairstylist
+6341	Hairstylists and barbers	operator, beauty salon
+6341	Hairstylists and barbers	technician, hair colour
+6342	Tailors, dressmakers, furriers and milliners	custom furrier / fur joiner
+6342	Tailors, dressmakers, furriers and milliners	custom sewer, garments
+6342	Tailors, dressmakers, furriers and milliners	dressmaker
+6342	Tailors, dressmakers, furriers and milliners	fur tailor / repairer / estimator
+6342	Tailors, dressmakers, furriers and milliners	garment fitter / repairer
+6342	Tailors, dressmakers, furriers and milliners	milliner / millinery maker
+6342	Tailors, dressmakers, furriers and milliners	ready-to-wear garment tailor
+6342	Tailors, dressmakers, furriers and milliners	seamstress, garments - alterations
+6342	Tailors, dressmakers, furriers and milliners	tailor supervisor
+6342	Tailors, dressmakers, furriers and milliners	tailor, master / custom / bespoke 
+6343	Shoe repairers and shoemakers	boot repairer / maker
+6343	Shoe repairers and shoemakers	cobbler
+6343	Shoe repairers and shoemakers	shoe dyer
+6343	Shoe repairers and shoemakers	shoe mender / repairer
+6343	Shoe repairers and shoemakers	shoemaker - custom / orthopedic
+6344	Jewellers, jewellery and watch repairers and related occupations	clock maker / repairer
+6344	Jewellers, jewellery and watch repairers and related occupations	cutter, precious stone
+6344	Jewellers, jewellery and watch repairers and related occupations	diamond bruter / cutter / expert / grader
+6344	Jewellers, jewellery and watch repairers and related occupations	diamond polisher / sawyer / setter
+6344	Jewellers, jewellery and watch repairers and related occupations	gem cutter / expert / setter
+6344	Jewellers, jewellery and watch repairers and related occupations	gemologist
+6344	Jewellers, jewellery and watch repairers and related occupations	jewellery maker, custom
+6344	Jewellers, jewellery and watch repairers and related occupations	jewellery moulder / model maker
+6344	Jewellers, jewellery and watch repairers and related occupations	jewellery repairer
+6344	Jewellers, jewellery and watch repairers and related occupations	lapidary
+6344	Jewellers, jewellery and watch repairers and related occupations	plater - jewellery manufacturing
+6344	Jewellers, jewellery and watch repairers and related occupations	setter, precious stone
+6344	Jewellers, jewellery and watch repairers and related occupations	watch maker / repairer
+6345	Upholsterers	patternmaker and upholsterer
+6345	Upholsterers	preparation upholsterer
+6345	Upholsterers	re-upholsterer
+6345	Upholsterers	technician, aircraft furnishing
+6345	Upholsterers	upholsterer, casket
+6345	Upholsterers	upholsterer, custom
+6345	Upholsterers	upholsterer, furniture
+6345	Upholsterers	upholsterer, industrial
+6345	Upholsterers	upholsterer, production
+6345	Upholsterers	upholsterer, vehicle
+6345	Upholsterers	upholstery mechanic
+6346	Funeral directors and embalmers	embalmer
+6346	Funeral directors and embalmers	mortician
+6346	Funeral directors and embalmers	undertaker
+6411	Sales and account representatives - wholesale trade (non-technical)	agent - booking / reservation / catalogue
+6411	Sales and account representatives - wholesale trade (non-technical)	agent, freight traffic / transfer company
+6411	Sales and account representatives - wholesale trade (non-technical)	auctioneer
+6411	Sales and account representatives - wholesale trade (non-technical)	commercial traveller - wholesale
+6411	Sales and account representatives - wholesale trade (non-technical)	distributor, oil
+6411	Sales and account representatives - wholesale trade (non-technical)	exporter
+6411	Sales and account representatives - wholesale trade (non-technical)	grain broker / dealer / merchandiser
+6411	Sales and account representatives - wholesale trade (non-technical)	manufacturer's agent / representative
+6411	Sales and account representatives - wholesale trade (non-technical)	recordings contact person
+6411	Sales and account representatives - wholesale trade (non-technical)	sales agent / consultant / executive
+6411	Sales and account representatives - wholesale trade (non-technical)	sales co-ordinator
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, advertising 
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, agricultural supplies
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, aluminum / plastic / rubber
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, business services & equipment
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, cleaning services 
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, computer services
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, construction supplies
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, design - graphic / photo
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, energy - petroleum products
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, equipment
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, field / district / region
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, financial services
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, food and beverage
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, hospitality food services
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, import-export
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, membership
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, non-technical
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, novelty products
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, printing services
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, publishing
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, pulp and paper products
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, recycling
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, security services / systems
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, shipping and storage
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, sign and display
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, telephone equipment
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, tobacco products
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, transport 
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, travel
+6411	Sales and account representatives - wholesale trade (non-technical)	salesperson, vending machines
+6411	Sales and account representatives - wholesale trade (non-technical)	trader, fur
+6421	Retail salespersons	automotives sales consultant
+6421	Retail salespersons	bookseller
+6421	Retail salespersons	clerk, sales and rental (retail)
+6421	Retail salespersons	food preparer / deli cook- grocery store
+6421	Retail salespersons	sales advisor - retail
+6421	Retail salespersons	sales assistant
+6421	Retail salespersons	sales clerk, automotive rental
+6421	Retail salespersons	sales clerk, consumer goods 
+6421	Retail salespersons	sales clerk, customer service
+6421	Retail salespersons	sales clerk, department store
+6421	Retail salespersons	sales clerk, food and beverage
+6421	Retail salespersons	sales clerk, gift shop
+6421	Retail salespersons	sales clerk, rental
+6421	Retail salespersons	sales clerk, storage facility rental
+6421	Retail salespersons	sales consultant - retirement homes
+6421	Retail salespersons	sales consultant, bridal / wedding
+6421	Retail salespersons	salesperson, aluminum products
+6421	Retail salespersons	salesperson, art / picture framing
+6421	Retail salespersons	salesperson, automobiles
+6421	Retail salespersons	salesperson, boats and marine
+6421	Retail salespersons	salesperson, books / magazines
+6421	Retail salespersons	salesperson, clothing / shoes
+6421	Retail salespersons	salesperson, commissioned
+6421	Retail salespersons	salesperson, construction
+6421	Retail salespersons	salesperson, cosmetics
+6421	Retail salespersons	salesperson, education & training
+6421	Retail salespersons	salesperson, electronics
+6421	Retail salespersons	salesperson, entertainment
+6421	Retail salespersons	salesperson, fabric / fur / leather
+6421	Retail salespersons	salesperson, fitness 
+6421	Retail salespersons	salesperson, florist - arranger
+6421	Retail salespersons	salesperson, furnishings
+6421	Retail salespersons	salesperson, garden / lawn supplies
+6421	Retail salespersons	salesperson, hardware
+6421	Retail salespersons	salesperson, health aids
+6421	Retail salespersons	salesperson, house trailers
+6421	Retail salespersons	salesperson, housewares
+6421	Retail salespersons	salesperson, hunting guns
+6421	Retail salespersons	salesperson, jewellery and watches
+6421	Retail salespersons	salesperson, leisure
+6421	Retail salespersons	salesperson, lottery sales
+6421	Retail salespersons	salesperson, memorial
+6421	Retail salespersons	salesperson, musical instruments 
+6421	Retail salespersons	salesperson, pet store
+6421	Retail salespersons	salesperson, photographic equipment
+6421	Retail salespersons	salesperson, recreational equipment
+6421	Retail salespersons	salesperson, sewing machine
+6421	Retail salespersons	salesperson, telephone equipment
+6421	Retail salespersons	salesperson, tool and equipment rental
+6421	Retail salespersons	salesperson, transport
+6421	Retail salespersons	salesperson, travelling
+6511	Maîtres d'hôtel and hosts / hostesses	chief host / hostess - food services
+6511	Maîtres d'hôtel and hosts / hostesses	host / hostess - restaurant / dining room
+6511	Maîtres d'hôtel and hosts / hostesses	maître d' / maître d'hôtel
+6512	Bartenders	bartender / bar attendant / steward
+6512	Bartenders	bartender, managing / service
+6512	Bartenders	tapman / tapwoman
+6513	Food and beverage servers	banquet server / waiter / waitress
+6513	Food and beverage servers	dining car steward / server 
+6513	Food and beverage servers	headwaiter / headwaitress
+6513	Food and beverage servers	server 
+6513	Food and beverage servers	steward
+6513	Food and beverage servers	waiter / waitress
+6513	Food and beverage servers	waiter / waitress - buffet / mess 
+6513	Food and beverage servers	wine server / steward / sommelier
+6521	Travel counsellors	flight attendant, aircraft
+6521	Travel counsellors	reservation agent - travel agency
+6521	Travel counsellors	specialist, travel
+6522	Pursers and flight attendants	agent, airline - ticket and information
+6522	Pursers and flight attendants	chief steward - ship
+6522	Pursers and flight attendants	CSD (customer service director)
+6522	Pursers and flight attendants	director, passenger service
+6523	Airline ticket and service agents	agent, airline - commissary
+6523	Airline ticket and service agents	agent, airline baggage tracing / cargo
+6523	Airline ticket and service agents	agent, airline certified load control
+6523	Airline ticket and service agents	agent, airline passenger service
+6523	Airline ticket and service agents	agent, airline reservations
+6523	Airline ticket and service agents	agent, counter services
+6523	Airline ticket and service agents	agent, flight
+6523	Airline ticket and service agents	agent, station services
+6523	Airline ticket and service agents	clerk, airline reservations
+6523	Airline ticket and service agents	representative, client / customer service
+6524	Ground and water transport ticket agents, cargo service representatives and related clerks	agent, baggage / luggage checker
+6524	Ground and water transport ticket agents, cargo service representatives and related clerks	agent, check-in (except airline)
+6524	Ground and water transport ticket agents, cargo service representatives and related clerks	agent, customer sales and service
+6524	Ground and water transport ticket agents, cargo service representatives and related clerks	agent, passenger - railway / bus / ship
+6524	Ground and water transport ticket agents, cargo service representatives and related clerks	agent, station - rail / bus / ship 
+6524	Ground and water transport ticket agents, cargo service representatives and related clerks	agent, ticket / info / customer service
+6524	Ground and water transport ticket agents, cargo service representatives and related clerks	agent, transportation
+6524	Ground and water transport ticket agents, cargo service representatives and related clerks	clerk, counter / front desk / reservations
+6524	Ground and water transport ticket agents, cargo service representatives and related clerks	representative, passenger customer service
+6525	Hotel front desk clerks	agent, hotel - front desk / guest service
+6525	Hotel front desk clerks	hotel clerk / front desk clerk / concierge
+6525	Hotel front desk clerks	night auditor - hotel
+6525	Hotel front desk clerks	superintendent, services - hotel
+6531	Tour and travel guides	calèche driver / operator
+6531	Tour and travel guides	director, tour
+6531	Tour and travel guides	guide, canoeing / whitwater rafting
+6531	Tour and travel guides	guide, dogsledding / snowmobiling
+6531	Tour and travel guides	guide, fishing / hunting / trapping
+6531	Tour and travel guides	guide, hiking / rock climbing
+6531	Tour and travel guides	guide, horseback riding
+6531	Tour and travel guides	guide, outdoor
+6531	Tour and travel guides	interpreter, adventure / historic site
+6531	Tour and travel guides	pilot, airship / hot air balloonist
+6531	Tour and travel guides	tour guide - bike / boat / bus / factory
+6531	Tour and travel guides	wrangler, dude ranch
+6532	Outdoor sport and recreational guides	assistant, guide outfitter
+6532	Outdoor sport and recreational guides	guide outfitter
+6533	Casino occupations	casino dealer / runner / attendant
+6533	Casino occupations	count room attendant - casino
+6533	Casino occupations	croupier, casino
+6533	Casino occupations	gaming table dealer / operator 
+6533	Casino occupations	guest service representative - casino
+6533	Casino occupations	keno dealer / runner / writer
+6541	Security guards and related security service occupations	ATM (automatic teller machine) guard
+6541	Security guards and related security service occupations	bodyguard (except police)
+6541	Security guards and related security service occupations	bouncer - security
+6541	Security guards and related security service occupations	business establishment investigator
+6541	Security guards and related security service occupations	commissionaire
+6541	Security guards and related security service occupations	custodian, vault
+6541	Security guards and related security service occupations	escort - security services
+6541	Security guards and related security service occupations	gate attendant / security guard
+6541	Security guards and related security service occupations	guard, airport security
+6541	Security guards and related security service occupations	guard, school crossing
+6541	Security guards and related security service occupations	house detective / store detective
+6541	Security guards and related security service occupations	inspector, airport - carry-on baggage
+6541	Security guards and related security service occupations	investigator, alarm - residence / business
+6541	Security guards and related security service occupations	investigator, security - business
+6541	Security guards and related security service occupations	mystery shopper
+6541	Security guards and related security service occupations	night guard
+6541	Security guards and related security service occupations	officer, loss / theft prevention
+6541	Security guards and related security service occupations	officer, security investigation
+6541	Security guards and related security service occupations	patrol officer - security
+6541	Security guards and related security service occupations	polygraphist / polygraph examiner
+6541	Security guards and related security service occupations	private detective / investigator
+6541	Security guards and related security service occupations	surveillance operator - casino
+6551	Customer services representatives - financial institutions	agent, customer service 
+6551	Customer services representatives - financial institutions	clerk, accounts information
+6551	Customer services representatives - financial institutions	clerk, adjustment
+6551	Customer services representatives - financial institutions	officer, customer service
+6551	Customer services representatives - financial institutions	representative, current account
+6551	Customer services representatives - financial institutions	teller, bank / credit union / trust 
+6551	Customer services representatives - financial institutions	teller, foreign exchange / head
+6552	Other customer and information services representatives	agent, call centre / order desk
+6552	Other customer and information services representatives	clerk, bus information / schedule
+6552	Other customer and information services representatives	clerk, client service / customer service
+6552	Other customer and information services representatives	clerk, information - hospital / hotel
+6552	Other customer and information services representatives	clerk, lost-and-found / damaged goods
+6552	Other customer and information services representatives	clerk, route supply and return
+6552	Other customer and information services representatives	complaints adjuster / clerk / investigator
+6552	Other customer and information services representatives	customer service adviser / assistant 
+6552	Other customer and information services representatives	service advisor-writer - auto repair
+6552	Other customer and information services representatives	service representative, telecommunications
+6552	Other customer and information services representatives	terminal attendant, road transport
+6561	Image, social and other personal consultants	artist, tattoo
+6561	Image, social and other personal consultants	consultant, public image / public speaking
+6562	Estheticians, electrologists and related occupations	beautician / beauty care specialist
+6562	Estheticians, electrologists and related occupations	body piercer
+6562	Estheticians, electrologists and related occupations	consultant, skin care
+6562	Estheticians, electrologists and related occupations	cosmetician / cosmetologist
+6562	Estheticians, electrologists and related occupations	esthetician
+6562	Estheticians, electrologists and related occupations	hair removal specialist
+6562	Estheticians, electrologists and related occupations	manicurist / pedicurist 
+6562	Estheticians, electrologists and related occupations	tattoo artist - henna / mehndi
+6562	Estheticians, electrologists and related occupations	technician, hair removal / replacement
+6563	Pet groomers and animal care workers	animal attendant - laboratory / zoo / vet
+6563	Pet groomers and animal care workers	animal care / health care
+6563	Pet groomers and animal care workers	aquarist
+6563	Pet groomers and animal care workers	custodian, receiving barn
+6563	Pet groomers and animal care workers	groom - horse race track
+6563	Pet groomers and animal care workers	groomer / master groomer, animal
+6563	Pet groomers and animal care workers	kennel attendant / keeper
+6563	Pet groomers and animal care workers	pet-sitter
+6563	Pet groomers and animal care workers	trainer, animal
+6564	Other personal service occupations	astrologer / numerologist
+6564	Other personal service occupations	escort - personal services
+6564	Other personal service occupations	feng shui practitioner
+6564	Other personal service occupations	fortune teller / clairvoyant
+6564	Other personal service occupations	massager / masseur / masseuse
+6564	Other personal service occupations	Reiki master
+6564	Other personal service occupations	telephone agent, personal services / chat
+6611	Cashiers	cashier, box office / movie theatre
+6611	Cashiers	cashier, cafeteria / restaurant
+6611	Cashiers	cashier, car park / parking lot
+6611	Cashiers	cashier, convenience store / corner store
+6611	Cashiers	cashier, gas bar, self-serve
+6611	Cashiers	cashier, grocery store / supermarket
+6611	Cashiers	cashier, office
+6611	Cashiers	cashier, racetrack
+6611	Cashiers	cashier-wrapper
+6621	Service station attendants	attendant, gas bar / service station 
+6621	Service station attendants	attendant, propane gas / refueller
+6621	Service station attendants	gas jockey / bus refueler
+6622	Store shelf stockers, clerks and order fillers	assembler, airline food
+6622	Store shelf stockers, clerks and order fillers	clerk, grocery / supermarket
+6622	Store shelf stockers, clerks and order fillers	floor clerk - retail / supermarket
+6622	Store shelf stockers, clerks and order fillers	order picker / filler - retail
+6622	Store shelf stockers, clerks and order fillers	packer / bag clerk / box clerk
+6622	Store shelf stockers, clerks and order fillers	price clerk / price marker / price checker
+6622	Store shelf stockers, clerks and order fillers	shelf stocker / stockroom clerk
+6623	Other sales related occupations	agent, catalogue sales / canvasser
+6623	Other sales related occupations	agent, magazine subscription
+6623	Other sales related occupations	demonstrator, retail
+6623	Other sales related occupations	direct distributor / seller
+6623	Other sales related occupations	personal shopper / comparison shopper
+6623	Other sales related occupations	salesperson, door-to-door
+6623	Other sales related occupations	telemarketer / telephone sales agent
+6623	Other sales related occupations	vendor, cigarettes / newspaper / street
+6711	Food counter attendants, kitchen helpers and related support occupations	attendant, hotel guest services
+6711	Food counter attendants, kitchen helpers and related support occupations	barista
+6711	Food counter attendants, kitchen helpers and related support occupations	bus boy / bus girl
+6711	Food counter attendants, kitchen helpers and related support occupations	dietary aide
+6711	Food counter attendants, kitchen helpers and related support occupations	dishwasher
+6711	Food counter attendants, kitchen helpers and related support occupations	expediter - food services
+6711	Food counter attendants, kitchen helpers and related support occupations	food and beverage services attendant
+6711	Food counter attendants, kitchen helpers and related support occupations	food preparer / assembler 
+6711	Food counter attendants, kitchen helpers and related support occupations	food runner / tray carrier (hospital)
+6711	Food counter attendants, kitchen helpers and related support occupations	food vendor
+6711	Food counter attendants, kitchen helpers and related support occupations	kitchen
+6721	Support occupations in accommodation, travel and facilities set-up services	attendant, guest services 
+6721	Support occupations in accommodation, travel and facilities set-up services	audiovisual
+6721	Support occupations in accommodation, travel and facilities set-up services	baggage handler / porter 
+6721	Support occupations in accommodation, travel and facilities set-up services	car supplier - railway
+6721	Support occupations in accommodation, travel and facilities set-up services	doorkeeper / door person, hotel
+6721	Support occupations in accommodation, travel and facilities set-up services	installer, display / showcase
+6721	Support occupations in accommodation, travel and facilities set-up services	passenger attendant
+6721	Support occupations in accommodation, travel and facilities set-up services	room flipper
+6721	Support occupations in accommodation, travel and facilities set-up services	skytrain attendant
+6722	Operators and attendants in amusement, recreation and sport	attendant / operator, J-bar / T-bar
+6722	Operators and attendants in amusement, recreation and sport	attendant, billiard / pool parlour
+6722	Operators and attendants in amusement, recreation and sport	attendant, concession
+6722	Operators and attendants in amusement, recreation and sport	attendant, racetrack
+6722	Operators and attendants in amusement, recreation and sport	attendant, rental - bicycle / boat
+6722	Operators and attendants in amusement, recreation and sport	attendant, skiing 
+6722	Operators and attendants in amusement, recreation and sport	boxing second
+6722	Operators and attendants in amusement, recreation and sport	golf course attendant
+6722	Operators and attendants in amusement, recreation and sport	skate sharpener
+6722	Operators and attendants in amusement, recreation and sport	technical assistant - sports and leisure
+6731	Light duty cleaners	charworker
+6731	Light duty cleaners	cleaner, home - domestic maid
+6731	Light duty cleaners	clean-up crew
+6731	Light duty cleaners	environmental service worker (ESW) - hospital
+6732	Specialized cleaners	attendant, car wash
+6732	Specialized cleaners	automobile cleaner / auto detailer
+6732	Specialized cleaners	cleaner, acid tank
+6732	Specialized cleaners	cleaner, cesspool / septic / drain-roto
+6732	Specialized cleaners	cleaner, chimney sweep / fireplace cleaner
+6732	Specialized cleaners	cleaner, duct / vents / furnace / boiler
+6732	Specialized cleaners	cleaner, glass / window
+6732	Specialized cleaners	cleaner, steam
+6732	Specialized cleaners	cleaner-repairer, venetian blinds
+6732	Specialized cleaners	washer, vat
+6733	Janitors, caretakers and building superintendents	attendant, construction campsite
+6733	Janitors, caretakers and building superintendents	building caretaker / superintendent
+6733	Janitors, caretakers and building superintendents	custodian / janitor
+6733	Janitors, caretakers and building superintendents	maintenance worker
+6741	Dry cleaning, laundry and related occupations	launderer / washing machine extractor
+6741	Dry cleaning, laundry and related occupations	laundry and dry cleaning 
+6742	Other service support occupations, n.e.c.	attendant / custodian, fur storage / vault
+6742	Other service support occupations, n.e.c.	attendant, coin laundry / laundromat
+6742	Other service support occupations, n.e.c.	attendant, door (except hotel)
+6742	Other service support occupations, n.e.c.	attendant, gallery
+6742	Other service support occupations, n.e.c.	butler / house valet
+6742	Other service support occupations, n.e.c.	housesitter
+6742	Other service support occupations, n.e.c.	shampooer
+6742	Other service support occupations, n.e.c.	shoe shiner
+6742	Other service support occupations, n.e.c.	usher, movie / theatre / ticket taker
+7201	Contractors and supervisors, machining, metal forming, shaping and erecting trades and related occupations	contractor, structural steel
+7201	Contractors and supervisors, machining, metal forming, shaping and erecting trades and related occupations	foreperson, automotive machine shop
+7201	Contractors and supervisors, machining, metal forming, shaping and erecting trades and related occupations	foreperson, boilermakers, platers
+7201	Contractors and supervisors, machining, metal forming, shaping and erecting trades and related occupations	foreperson, machine shop
+7201	Contractors and supervisors, machining, metal forming, shaping and erecting trades and related occupations	foreperson, metal patternmakers 
+7201	Contractors and supervisors, machining, metal forming, shaping and erecting trades and related occupations	foreperson, metal-machining inspection
+7201	Contractors and supervisors, machining, metal forming, shaping and erecting trades and related occupations	foreperson, platework fabricators
+7201	Contractors and supervisors, machining, metal forming, shaping and erecting trades and related occupations	foreperson, precision instrument machining
+7201	Contractors and supervisors, machining, metal forming, shaping and erecting trades and related occupations	foreperson, quality control
+7201	Contractors and supervisors, machining, metal forming, shaping and erecting trades and related occupations	foreperson, ship riggers / ship fitters
+7201	Contractors and supervisors, machining, metal forming, shaping and erecting trades and related occupations	foreperson, smiths (black, copper, iron) 
+7201	Contractors and supervisors, machining, metal forming, shaping and erecting trades and related occupations	foreperson, steel fitters / steel riggers 
+7201	Contractors and supervisors, machining, metal forming, shaping and erecting trades and related occupations	foreperson, tool and die makers 
+7201	Contractors and supervisors, machining, metal forming, shaping and erecting trades and related occupations	foreperson, welding / headwelder
+7201	Contractors and supervisors, machining, metal forming, shaping and erecting trades and related occupations	foreperson, zinc roofers
+7201	Contractors and supervisors, machining, metal forming, shaping and erecting trades and related occupations	production supervisor - machine shop
+7201	Contractors and supervisors, machining, metal forming, shaping and erecting trades and related occupations	welder supervisor
+7202	Contractors and supervisors, electrical trades and telecommunications occupations	contractor, cable installation / telecom
+7202	Contractors and supervisors, electrical trades and telecommunications occupations	contractor-electrician
+7202	Contractors and supervisors, electrical trades and telecommunications occupations	electrical installation contractor
+7202	Contractors and supervisors, electrical trades and telecommunications occupations	electrical load tester supervisor
+7202	Contractors and supervisors, electrical trades and telecommunications occupations	electrician, chief
+7202	Contractors and supervisors, electrical trades and telecommunications occupations	foreperson, cable installation
+7202	Contractors and supervisors, electrical trades and telecommunications occupations	foreperson, communications
+7202	Contractors and supervisors, electrical trades and telecommunications occupations	foreperson, construction electricians
+7202	Contractors and supervisors, electrical trades and telecommunications occupations	foreperson, electricians
+7202	Contractors and supervisors, electrical trades and telecommunications occupations	foreperson, emergency team / troubleshoot
+7202	Contractors and supervisors, electrical trades and telecommunications occupations	foreperson, installers and repairers 
+7202	Contractors and supervisors, electrical trades and telecommunications occupations	foreperson, microwave system
+7202	Contractors and supervisors, electrical trades and telecommunications occupations	foreperson, power line and cable workers
+7202	Contractors and supervisors, electrical trades and telecommunications occupations	foreperson, power lines
+7202	Contractors and supervisors, electrical trades and telecommunications occupations	foreperson, repair / service workers
+7202	Contractors and supervisors, electrical trades and telecommunications occupations	foreperson, telephone equipment installers
+7202	Contractors and supervisors, electrical trades and telecommunications occupations	foreperson, underground electrical
+7202	Contractors and supervisors, electrical trades and telecommunications occupations	supervisor, front line 
+7202	Contractors and supervisors, electrical trades and telecommunications occupations	supervisor, head-office
+7202	Contractors and supervisors, electrical trades and telecommunications occupations	supervisor, telecom installation / service
+7203	Contractors and supervisors, pipefitting trades	foreperson, fire protection equipment
+7203	Contractors and supervisors, pipefitting trades	foreperson, gas fitters / gas service
+7203	Contractors and supervisors, pipefitting trades	foreperson, marine pipefitters
+7203	Contractors and supervisors, pipefitting trades	foreperson, plumbing / plumbers
+7203	Contractors and supervisors, pipefitting trades	foreperson, steamfitters
+7204	Contractors and supervisors, carpentry trades	carpenter-contractor
+7204	Contractors and supervisors, carpentry trades	foreperson, carpenters
+7204	Contractors and supervisors, carpentry trades	foreperson, general building construction
+7204	Contractors and supervisors, carpentry trades	foreperson, ship joiners / ship builders
+7204	Contractors and supervisors, carpentry trades	foreperson, wood frame building
+7205	Contractors and supervisors, other construction trades, installers, repairers and servicers	contractor, bricklayers / masons / cement
+7205	Contractors and supervisors, other construction trades, installers, repairers and servicers	contractor, fences / pools
+7205	Contractors and supervisors, other construction trades, installers, repairers and servicers	contractor, glass / plaster / drywall
+7205	Contractors and supervisors, other construction trades, installers, repairers and servicers	contractor, hot water heater
+7205	Contractors and supervisors, other construction trades, installers, repairers and servicers	contractor, interlocking paving
+7205	Contractors and supervisors, other construction trades, installers, repairers and servicers	contractor, paint / wallpaper
+7205	Contractors and supervisors, other construction trades, installers, repairers and servicers	foreperson, bricklayers / masons / cement
+7205	Contractors and supervisors, other construction trades, installers, repairers and servicers	foreperson, decorators 
+7205	Contractors and supervisors, other construction trades, installers, repairers and servicers	foreperson, glass / greenhouse
+7205	Contractors and supervisors, other construction trades, installers, repairers and servicers	foreperson, insulation
+7205	Contractors and supervisors, other construction trades, installers, repairers and servicers	foreperson, lath / plaster / drywall
+7205	Contractors and supervisors, other construction trades, installers, repairers and servicers	foreperson, painting / wallpaper
+7205	Contractors and supervisors, other construction trades, installers, repairers and servicers	foreperson, refrigeration / A / C
+7205	Contractors and supervisors, other construction trades, installers, repairers and servicers	foreperson, roofing 
+7205	Contractors and supervisors, other construction trades, installers, repairers and servicers	foreperson, tilesetters
+7205	Contractors and supervisors, other construction trades, installers, repairers and servicers	supervisor, building maintenance
+7205	Contractors and supervisors, other construction trades, installers, repairers and servicers	supervisor, customer service
+7205	Contractors and supervisors, other construction trades, installers, repairers and servicers	supervisor, exterminating / pest control
+7205	Contractors and supervisors, other construction trades, installers, repairers and servicers	supervisor, repair shop - bicycle / camera
+7231	Machinists and machining and tooling inspectors	experimental machinist
+7231	Machinists and machining and tooling inspectors	gear tester-machinist
+7231	Machinists and machining and tooling inspectors	inspector, aircraft propeller / turbine
+7231	Machinists and machining and tooling inspectors	machinist, computer numerical control
+7231	Machinists and machining and tooling inspectors	machinist, electrical
+7231	Machinists and machining and tooling inspectors	machinist, firearms modeller / ballistics
+7231	Machinists and machining and tooling inspectors	machinist, journeyman / journeywoman
+7231	Machinists and machining and tooling inspectors	machinist, master / precision
+7231	Machinists and machining and tooling inspectors	machinist, model maker / prototype
+7231	Machinists and machining and tooling inspectors	machinist, mould and core / mouldmaking
+7231	Machinists and machining and tooling inspectors	machinist, printing press
+7231	Machinists and machining and tooling inspectors	machinist, set-up
+7231	Machinists and machining and tooling inspectors	motion picture equipment machinist
+7232	Tool and die makers	aircraft jig and template / tool maker
+7232	Tool and die makers	bench die cutter / fitter / sinker
+7232	Tool and die makers	die cutter / maker / finisher / fitter 
+7232	Tool and die makers	diecast diemaker
+7232	Tool and die makers	gauge maker - tool and die
+7232	Tool and die makers	injection mould maker
+7232	Tool and die makers	jig and form maker / die casting
+7232	Tool and die makers	jig and template / tool maker, aircraft
+7232	Tool and die makers	journeyman / journeywoman tool & die maker
+7232	Tool and die makers	model maker - tool and die
+7232	Tool and die makers	progressive die fitter
+7232	Tool and die makers	repairer, tire mould
+7232	Tool and die makers	steel-rule die maker
+7232	Tool and die makers	template maker - tool and die
+7232	Tool and die makers	tool and die preparer / repairer / fitter 
+7232	Tool and die makers	tool, maker / precision tool maker
+7233	Sheet metal workers	aircraft layout worker - sheet metal
+7233	Sheet metal workers	coppersmith
+7233	Sheet metal workers	high rise sheet metal installer
+7233	Sheet metal workers	journeyman / journeywoman sheet metal worker
+7233	Sheet metal workers	metal furniture model maker / patternmaker
+7233	Sheet metal workers	residential (low rise) sheet metal installer
+7233	Sheet metal workers	sheet metal fabricator / mechanic 
+7233	Sheet metal workers	sheet metal mechanic bench hand
+7233	Sheet metal workers	sheet metal worker
+7233	Sheet metal workers	tinsmith - sheet metal work / roofer
+7233	Sheet metal workers	worker, industrial sheet metal
+7234	Boilermakers	boiler fitter / installer / repairer 
+7234	Boilermakers	boilermaker, construction / industrial 
+7234	Boilermakers	boilermaker, marine / pressure vessel
+7234	Boilermakers	erection and repair boilermaker
+7234	Boilermakers	fabricator, pressure vessel
+7234	Boilermakers	journeyman / journeywoman boilermaker
+7235	Structural metal and platework fabricators and fitters	fabricator and fitter, structural metal
+7235	Structural metal and platework fabricators and fitters	fitter-welder, structural metal 
+7235	Structural metal and platework fabricators and fitters	lead hand, metal preparation
+7235	Structural metal and platework fabricators and fitters	plater - shipbuilding / bridges & girders 
+7235	Structural metal and platework fabricators and fitters	plater-welder
+7235	Structural metal and platework fabricators and fitters	shaper, ship structural steel plates
+7235	Structural metal and platework fabricators and fitters	steel fabricator
+7235	Structural metal and platework fabricators and fitters	steel fitter - metal platework
+7235	Structural metal and platework fabricators and fitters	structural metal and platework fabricator
+7235	Structural metal and platework fabricators and fitters	structural steel plate worker-fitter
+7236	Ironworkers	erector, metal structure / concrete
+7236	Ironworkers	ironworker, ornamental / reinforcing rebar
+7236	Ironworkers	journeyman / journeywoman ironworker 
+7236	Ironworkers	reinforcing rodworker / steel ironworker
+7237	Welders and related machine operators	brazer and heater, metal
+7237	Welders and related machine operators	brazer, torch
+7237	Welders and related machine operators	burner, lead
+7237	Welders and related machine operators	machine tender, type-soldering
+7237	Welders and related machine operators	operator, automated welding machie
+7237	Welders and related machine operators	operator, battery lead-burner
+7237	Welders and related machine operators	operator, hydrogen braze furnace
+7237	Welders and related machine operators	operator, welding machine
+7237	Welders and related machine operators	straightener and heater, metal
+7237	Welders and related machine operators	technician, welding - aviation
+7237	Welders and related machine operators	tender, side seaming
+7237	Welders and related machine operators	welder, acetylene / blowtorch operator
+7237	Welders and related machine operators	welder, assembler tack
+7237	Welders and related machine operators	welder, boiler / pressure vessels
+7237	Welders and related machine operators	welder, cable 
+7237	Welders and related machine operators	welder, dielectric
+7237	Welders and related machine operators	welder, downhand - pipeline
+7237	Welders and related machine operators	welder, fabrication
+7237	Welders and related machine operators	welder, fit-up
+7237	Welders and related machine operators	welder, flash butt
+7237	Welders and related machine operators	welder, general
+7237	Welders and related machine operators	welder, hand arc / hand electric arc 
+7237	Welders and related machine operators	welder, industrial
+7237	Welders and related machine operators	welder, journeyman / journeywoman
+7237	Welders and related machine operators	welder, laser beam
+7237	Welders and related machine operators	welder, lead
+7237	Welders and related machine operators	welder, machine
+7237	Welders and related machine operators	welder, maintenance
+7237	Welders and related machine operators	welder, metal
+7237	Welders and related machine operators	welder, radio-frequency
+7237	Welders and related machine operators	welder, rig
+7237	Welders and related machine operators	welder, tack
+7237	Welders and related machine operators	welder, thermite
+7237	Welders and related machine operators	welder, vibration
+7237	Welders and related machine operators	welder, wire
+7237	Welders and related machine operators	welder-assembler
+7237	Welders and related machine operators	welder-fitter, jig
+7237	Welders and related machine operators	worker, welding lay-out
+7241	Electricians (except industrial and power system)	electrician, domestic / institution
+7241	Electricians (except industrial and power system)	electrician, troubleshooter
+7241	Electricians (except industrial and power system)	electrician, wiring / fixture
+7242	Industrial electricians	electrician, diesel - railway
+7242	Industrial electricians	electrician, mill / mine / plant
+7242	Industrial electricians	electrician, rail transport 
+7242	Industrial electricians	electrician, rig
+7242	Industrial electricians	electrician, ship / shipyard
+7242	Industrial electricians	installer-maintainer, railway signal
+7242	Industrial electricians	repairer, electrical
+7243	Power system electricians	electrician, electrical powerhouse
+7243	Power system electricians	electrician, power station / substation
+7243	Power system electricians	maintainer, voltage regulator
+7243	Power system electricians	relay tester-maintainer-repairer
+7244	Electrical power line and cable workers	emergency servicer
+7244	Electrical power line and cable workers	installer, conduit 
+7244	Electrical power line and cable workers	lead line worker
+7244	Electrical power line and cable workers	lead splicer - electric power systems
+7244	Electrical power line and cable workers	line checker / maintainer / repairer 
+7244	Electrical power line and cable workers	line worker, cable
+7244	Electrical power line and cable workers	line worker, construction
+7244	Electrical power line and cable workers	line worker, electric streetcar
+7244	Electrical power line and cable workers	line worker, high voltage repair
+7244	Electrical power line and cable workers	powerline worker / maintainer / repairer
+7244	Electrical power line and cable workers	repairer / servicer, traffic / street lights
+7244	Electrical power line and cable workers	splicer, wire / underground cable 
+7244	Electrical power line and cable workers	technician, power line
+7245	Telecommunications line and cable workers	access technician - telecommunication
+7245	Telecommunications line and cable workers	cable worker, telephone and telecom
+7245	Telecommunications line and cable workers	construction technician - cable TV
+7245	Telecommunications line and cable workers	electrician, communications
+7245	Telecommunications line and cable workers	line technician, communication
+7245	Telecommunications line and cable workers	line worker, telecommunications
+7245	Telecommunications line and cable workers	rigger, telecommunications
+7245	Telecommunications line and cable workers	splicer, telecommunications
+7245	Telecommunications line and cable workers	structured cabling technician
+7245	Telecommunications line and cable workers	technologist, telecontrol
+7245	Telecommunications line and cable workers	toll line
+7245	Telecommunications line and cable workers	tracer, service / signal 
+7246	Telecommunications installation and repair workers	adjuster, telephone system relay
+7246	Telecommunications installation and repair workers	attendant, charging equipment
+7246	Telecommunications installation and repair workers	central office equip. installer-repairer 
+7246	Telecommunications installation and repair workers	combination man / woman 
+7246	Telecommunications installation and repair workers	electrician, communications
+7246	Telecommunications installation and repair workers	inspector, service / telephone traffic 
+7246	Telecommunications installation and repair workers	installer / repairer, exchange
+7246	Telecommunications installation and repair workers	installer / repairer, mobile radio
+7246	Telecommunications installation and repair workers	installer / repairer, switchboard
+7246	Telecommunications installation and repair workers	installer / repairer, teletypewriters (TTY)
+7246	Telecommunications installation and repair workers	installer, PBX
+7246	Telecommunications installation and repair workers	installer, telephone line 
+7246	Telecommunications installation and repair workers	line tester / electrician / inspector
+7246	Telecommunications installation and repair workers	maintainer, telephone exchange
+7246	Telecommunications installation and repair workers	operator, test desk operator
+7246	Telecommunications installation and repair workers	racker - telecommunications
+7246	Telecommunications installation and repair workers	repairer, telecom branch exchange
+7246	Telecommunications installation and repair workers	switch / toll switch equipment
+7246	Telecommunications installation and repair workers	technician, customer service centre
+7246	Telecommunications installation and repair workers	technician, installation / repair 
+7246	Telecommunications installation and repair workers	tester / evaluator -telephone exchange
+7246	Telecommunications installation and repair workers	tester / regulator, telecom equipment
+7246	Telecommunications installation and repair workers	tester, cable station
+7246	Telecommunications installation and repair workers	tester, central office tester
+7246	Telecommunications installation and repair workers	wirer, facilities / frame-telephone
+7247	Cable television service and maintenance technicians	maintenance, maintenance - cable TV
+7247	Cable television service and maintenance technicians	repairer, cable TV converter / decoder
+7247	Cable television service and maintenance technicians	service, cablevision
+7247	Cable television service and maintenance technicians	technician, cable TV (installation-repair)
+7247	Cable television service and maintenance technicians	technician, CATV (community antenna TV)
+7247	Cable television service and maintenance technicians	technician, DBS (dir. broadcast satellite)
+7247	Cable television service and maintenance technicians	technician, head end
+7247	Cable television service and maintenance technicians	technician, installation - cable TV
+7247	Cable television service and maintenance technicians	technician, satellite television
+7247	Cable television service and maintenance technicians	technician, TVRO (television receive only)
+7251	Plumbers	installer, plumbing
+7251	Plumbers	mechanic, plumbing
+7251	Plumbers	plumber, journeyman / journeywoman
+7251	Plumbers	plumber, marine / pipefitting
+7251	Plumbers	plumber, radiator
+7252	Steamfitters, pipefitters and sprinkler system installers	fitter-installer, fire sprinkler system
+7252	Steamfitters, pipefitters and sprinkler system installers	installer, journeyman / journeywoman
+7252	Steamfitters, pipefitters and sprinkler system installers	installer, pipe-radiator / steam heating
+7252	Steamfitters, pipefitters and sprinkler system installers	installer, sprinklers and fire protection
+7252	Steamfitters, pipefitters and sprinkler system installers	mechanic, fire protection
+7252	Steamfitters, pipefitters and sprinkler system installers	pipefitter, journeyman / journeywoman
+7252	Steamfitters, pipefitters and sprinkler system installers	pipefitter, steam
+7252	Steamfitters, pipefitters and sprinkler system installers	servicer, steam main
+7252	Steamfitters, pipefitters and sprinkler system installers	steamfitter, ship / marine
+7252	Steamfitters, pipefitters and sprinkler system installers	steamfitter-pipefitter (non-construction)
+7253	Gas fitters	converter, furnace
+7253	Gas fitters	fitter-installer, gas 
+7253	Gas fitters	gas pipe mechanic
+7253	Gas fitters	pipefitter, gas
+7253	Gas fitters	technician, gas
+7271	Carpenters	carpenter, boat
+7271	Carpenters	carpenter, bridge
+7271	Carpenters	carpenter, construction
+7271	Carpenters	carpenter, finish / interior finish
+7271	Carpenters	carpenter, floor / access floor specialist
+7271	Carpenters	carpenter, form / concrete form builder
+7271	Carpenters	carpenter, journeyman / journeywoman
+7271	Carpenters	carpenter, lead hand
+7271	Carpenters	carpenter, rough
+7271	Carpenters	carpenter, sign
+7271	Carpenters	carpenter, stage / studio
+7271	Carpenters	carpenter, wood frame / stair builder
+7271	Carpenters	joiner, boat / ship / shipbuilding
+7271	Carpenters	prefabricated structure carpenter
+7271	Carpenters	repairman / repairwoman, carpentry
+7272	Cabinetmakers	cabinetmaker, custom
+7272	Cabinetmakers	cabinetmaker, furniture
+7272	Cabinetmakers	cabinetmaker, journeyman / journeywoman
+7272	Cabinetmakers	inspector, wood pattern
+7272	Cabinetmakers	jig builder - wood products manufacturing
+7272	Cabinetmakers	wood mould maker / patternmaker 
+7281	Bricklayers	bricklayer, chimney / chimney repair
+7281	Bricklayers	bricklayer, furnace lining / kiln repair 
+7281	Bricklayers	bricklayer, journeyman / journeywoman
+7281	Bricklayers	bricklayer, refractory
+7281	Bricklayers	brickmason, fireplace / industrial furnace
+7281	Bricklayers	erector, masonry silo
+7281	Bricklayers	ladle repair bricklayer
+7281	Bricklayers	mason, artificial stone / brick and stone 
+7281	Bricklayers	permastone installer
+7281	Bricklayers	repairer-mason, refractory brick
+7281	Bricklayers	setter, artificial stones / brick / 
+7281	Bricklayers	stonecutter / stonemason / restoration
+7282	Concrete finishers	concrete smoother / finisher / polisher
+7283	Tilesetters	marble layer / mason / tile setter
+7283	Tilesetters	setter, granite
+7283	Tilesetters	terrazzo finisher / floor layer
+7283	Tilesetters	tile fitter / floor layer / installer
+7283	Tilesetters	tilesetter, ceramic / mosaic
+7284	Plasterers, drywall installers and finishers and lathers	applicator, drywall / gyproc / sheetrock
+7284	Plasterers, drywall installers and finishers and lathers	drywall applicator / finisher / hanger 
+7284	Plasterers, drywall installers and finishers and lathers	installer, ceiling system / acoustic tile
+7284	Plasterers, drywall installers and finishers and lathers	lather - metal, stucco, wire, wood
+7284	Plasterers, drywall installers and finishers and lathers	mechanic, drywall and acoustic
+7284	Plasterers, drywall installers and finishers and lathers	plasterer, exterior / finish / fireproof
+7291	Roofers and shinglers	roofer, built-up / flat / residential
+7291	Roofers and shinglers	roofer-waterproofer
+7291	Roofers and shinglers	tiler, roof
+7292	Glaziers	glass setter - construction
+7292	Glaziers	glazier, journeyman / journeywoman
+7292	Glaziers	glazier, leaded glass / stained glass
+7292	Glaziers	installer, glass wall / wallcovering
+7292	Glaziers	mechanic, glass and metal
+7293	Insulators	applicator, insulation / foamed insulation
+7293	Insulators	installer, soundproof material-insulation
+7293	Insulators	insulator, asbestos
+7293	Insulators	insulator, building / ship / boiler & pipe
+7293	Insulators	insulator, fire protection / fire-stopping
+7293	Insulators	insulator, journeyman / journeywoman
+7293	Insulators	insulator, refrigeration and a / c equipment
+7293	Insulators	mechanic, insulation
+7293	Insulators	residential insulation installer
+7294	Painters and decorators (except interior decorators)	painter, bridge
+7294	Painters and decorators (except interior decorators)	painter, industrial / commercial 
+7294	Painters and decorators (except interior decorators)	painter, industrial / plant maintenance
+7294	Painters and decorators (except interior decorators)	painter, residential
+7294	Painters and decorators (except interior decorators)	painter, rough - construction
+7294	Painters and decorators (except interior decorators)	painter-decorator, specialized
+7294	Painters and decorators (except interior decorators)	paperhanger
+7295	Floor covering installers	installer, floor and wall covering
+7295	Floor covering installers	installer-layer, carpet / hardwood / vinyl
+7295	Floor covering installers	installer-layer, composition floor / lino
+7295	Floor covering installers	mechanic, floor covering 
+7301	Contractors and supervisors, mechanic trades	chief AME (aircraft maintenance engineer)
+7301	Contractors and supervisors, mechanic trades	contractor, air conditioning / heating
+7301	Contractors and supervisors, mechanic trades	contractor, appliance repair
+7301	Contractors and supervisors, mechanic trades	foreperson, a / c and refrigeration
+7301	Contractors and supervisors, mechanic trades	foreperson, aircraft engine assembly
+7301	Contractors and supervisors, mechanic trades	foreperson, aircraft maintenance engineers
+7301	Contractors and supervisors, mechanic trades	foreperson, aircraft servicing
+7301	Contractors and supervisors, mechanic trades	foreperson, automotive body repair
+7301	Contractors and supervisors, mechanic trades	foreperson, elevator construction / service
+7301	Contractors and supervisors, mechanic trades	foreperson, engine repair (bus, truck)
+7301	Contractors and supervisors, mechanic trades	foreperson, heavy equipment assembly
+7301	Contractors and supervisors, mechanic trades	foreperson, HVAC (heating ventilating a / c)
+7301	Contractors and supervisors, mechanic trades	foreperson, industrial mechanics
+7301	Contractors and supervisors, mechanic trades	foreperson, machine builders / maintenance
+7301	Contractors and supervisors, mechanic trades	foreperson, maintenance 
+7301	Contractors and supervisors, mechanic trades	foreperson, marine engine repair
+7301	Contractors and supervisors, mechanic trades	foreperson, mechanical maintenance
+7301	Contractors and supervisors, mechanic trades	foreperson, metal and woodworking
+7301	Contractors and supervisors, mechanic trades	foreperson, meter shop
+7301	Contractors and supervisors, mechanic trades	foreperson, millwrights
+7301	Contractors and supervisors, mechanic trades	foreperson, motor vehicle body repairers
+7301	Contractors and supervisors, mechanic trades	foreperson, office machine repairers
+7301	Contractors and supervisors, mechanic trades	foreperson, oil burner installation
+7301	Contractors and supervisors, mechanic trades	foreperson, printing machine mechanics
+7301	Contractors and supervisors, mechanic trades	foreperson, rail transport repair
+7301	Contractors and supervisors, mechanic trades	foreperson, railway carhouse
+7301	Contractors and supervisors, mechanic trades	foreperson, repair - aircraft
+7301	Contractors and supervisors, mechanic trades	foreperson, repair shop
+7301	Contractors and supervisors, mechanic trades	foreperson, textile machine mechanics
+7301	Contractors and supervisors, mechanic trades	foreperson, turbine assembly
+7301	Contractors and supervisors, mechanic trades	foreperson, wheel shop - railway equipment
+7302	Contractors and supervisors, heavy equipment operator crews	contractor, demolition / excavating
+7302	Contractors and supervisors, heavy equipment operator crews	contractor, house mover / building mover
+7302	Contractors and supervisors, heavy equipment operator crews	contractor, paving / pipe laying
+7302	Contractors and supervisors, heavy equipment operator crews	contractor, water well digging / drilling
+7302	Contractors and supervisors, heavy equipment operator crews	foreperson, blasters / dynamiting 
+7302	Contractors and supervisors, heavy equipment operator crews	foreperson, bridge & highway construction
+7302	Contractors and supervisors, heavy equipment operator crews	foreperson, building / bridge
+7302	Contractors and supervisors, heavy equipment operator crews	foreperson, building movers
+7302	Contractors and supervisors, heavy equipment operator crews	foreperson, cargo handling
+7302	Contractors and supervisors, heavy equipment operator crews	foreperson, demolition / wrecking crew
+7302	Contractors and supervisors, heavy equipment operator crews	foreperson, ditching
+7302	Contractors and supervisors, heavy equipment operator crews	foreperson, dredging / dredgemaster
+7302	Contractors and supervisors, heavy equipment operator crews	foreperson, excavating, grading and paving
+7302	Contractors and supervisors, heavy equipment operator crews	foreperson, freight handling / loading 
+7302	Contractors and supervisors, heavy equipment operator crews	foreperson, heavy equipment operators
+7302	Contractors and supervisors, heavy equipment operator crews	foreperson, highway construction
+7302	Contractors and supervisors, heavy equipment operator crews	foreperson, house moving
+7302	Contractors and supervisors, heavy equipment operator crews	foreperson, loading dock / longshore
+7302	Contractors and supervisors, heavy equipment operator crews	foreperson, logging road construction 
+7302	Contractors and supervisors, heavy equipment operator crews	foreperson, pavers and surfacers
+7302	Contractors and supervisors, heavy equipment operator crews	foreperson, pier
+7302	Contractors and supervisors, heavy equipment operator crews	foreperson, pipeline construction
+7302	Contractors and supervisors, heavy equipment operator crews	foreperson, public works maintenance
+7302	Contractors and supervisors, heavy equipment operator crews	foreperson, railway track laying 
+7302	Contractors and supervisors, heavy equipment operator crews	foreperson, road construction-maintenance
+7302	Contractors and supervisors, heavy equipment operator crews	foreperson, storage
+7302	Contractors and supervisors, heavy equipment operator crews	foreperson, water well digging
+7302	Contractors and supervisors, heavy equipment operator crews	roadmaster - railway track section boss
+7303	Supervisors, printing and related occupations	foreperson, bindery / compositors
+7303	Supervisors, printing and related occupations	foreperson, bindery workers / finishing
+7303	Supervisors, printing and related occupations	foreperson, compositors / photocomposers 
+7303	Supervisors, printing and related occupations	foreperson, film developers 
+7303	Supervisors, printing and related occupations	foreperson, film developing / printing
+7303	Supervisors, printing and related occupations	foreperson, OptiCopy and stripping
+7303	Supervisors, printing and related occupations	foreperson, platemakers
+7303	Supervisors, printing and related occupations	foreperson, press - gravure / offset
+7303	Supervisors, printing and related occupations	foreperson, printing - letterpress
+7303	Supervisors, printing and related occupations	foreperson, stereotypists & electroplaters
+7303	Supervisors, printing and related occupations	foreperson, typesetters / typographers
+7304	Supervisors, railway transport operations	foreperson, railway transport (freight)
+7304	Supervisors, railway transport operations	foreperson, railway transport (passengers)
+7304	Supervisors, railway transport operations	foreperson, railway transport operations
+7304	Supervisors, railway transport operations	stationmaster / agent - railway supervisor
+7304	Supervisors, railway transport operations	trainmaster / railway yardmaster
+7305	Supervisors, motor transport and other ground transit operators	contractor, trucking
+7305	Supervisors, motor transport and other ground transit operators	controller, traffic - subway system
+7305	Supervisors, motor transport and other ground transit operators	inspector, public transit
+7305	Supervisors, motor transport and other ground transit operators	route foreperson, motor transport
+7305	Supervisors, motor transport and other ground transit operators	supervisor, bus / taxi drivers / chauffeurs
+7305	Supervisors, motor transport and other ground transit operators	supervisor, LRT / subway / streetcar
+7305	Supervisors, motor transport and other ground transit operators	suprvisor, mobile canteen service
+7305	Supervisors, motor transport and other ground transit operators	terminal supervisor - motor transport
+7305	Supervisors, motor transport and other ground transit operators	traffic inspector - public transit system
+7305	Supervisors, motor transport and other ground transit operators	traffic supervisor - motor transport
+7311	Construction millwrights and industrial mechanics	adjuster, ammunition-assembling machine
+7311	Construction millwrights and industrial mechanics	adjuster, knitting machines
+7311	Construction millwrights and industrial mechanics	fixer, textile - cards / carpet looms 
+7311	Construction millwrights and industrial mechanics	fixer, textile - shearing / spinning
+7311	Construction millwrights and industrial mechanics	installer-repairer - automatic pinsetting
+7311	Construction millwrights and industrial mechanics	machine setter, braiding
+7311	Construction millwrights and industrial mechanics	mechanic / millwright, industrial mechanic 
+7311	Construction millwrights and industrial mechanics	mechanic / repairer, pump
+7311	Construction millwrights and industrial mechanics	mechanic, boilerhouse / powerhouse
+7311	Construction millwrights and industrial mechanics	mechanic, chemical plant service 
+7311	Construction millwrights and industrial mechanics	mechanic, forge shop machinery
+7311	Construction millwrights and industrial mechanics	mechanic, gas turbine machinery
+7311	Construction millwrights and industrial mechanics	mechanic, grain elevator / mill 
+7311	Construction millwrights and industrial mechanics	mechanic, mail-processing equipment
+7311	Construction millwrights and industrial mechanics	mechanic, marine engines
+7311	Construction millwrights and industrial mechanics	mechanic, metalworking machinery
+7311	Construction millwrights and industrial mechanics	mechanic, mine hoists / ore-processing
+7311	Construction millwrights and industrial mechanics	mechanic, nuclear generating station 
+7311	Construction millwrights and industrial mechanics	mechanic, plastics / rubberizing
+7311	Construction millwrights and industrial mechanics	mechanic, preventive
+7311	Construction millwrights and industrial mechanics	mechanic, processing / re-processing
+7311	Construction millwrights and industrial mechanics	mechanic, rubberizing machine
+7311	Construction millwrights and industrial mechanics	mechanic, ski lift
+7311	Construction millwrights and industrial mechanics	mechanic, tobacco-processing 
+7311	Construction millwrights and industrial mechanics	mechanic, utilities
+7311	Construction millwrights and industrial mechanics	mechanic, welding equipment
+7311	Construction millwrights and industrial mechanics	millwright - industrial / construction
+7311	Construction millwrights and industrial mechanics	mule fixer / setter - textile manufacturing
+7311	Construction millwrights and industrial mechanics	napper adjuster / grinder (textiles)
+7311	Construction millwrights and industrial mechanics	needle board repairer (textile)
+7311	Construction millwrights and industrial mechanics	reed fixer-setter - textile manufacturing
+7311	Construction millwrights and industrial mechanics	repair technician, ski lift
+7311	Construction millwrights and industrial mechanics	repairer, can seamer / carton forming 
+7311	Construction millwrights and industrial mechanics	repairer, conveyor
+7311	Construction millwrights and industrial mechanics	repairer, dairy equipment
+7311	Construction millwrights and industrial mechanics	repairer, fibreglass-forming machine
+7311	Construction millwrights and industrial mechanics	repairer, gas turbine
+7311	Construction millwrights and industrial mechanics	repairer, industrial pump
+7311	Construction millwrights and industrial mechanics	repairer, linotype
+7311	Construction millwrights and industrial mechanics	repairer, tannery machinery
+7311	Construction millwrights and industrial mechanics	repairer, welding equipment
+7311	Construction millwrights and industrial mechanics	roll builder-repairer / setter 
+7311	Construction millwrights and industrial mechanics	roller coverer - textile manufacturing
+7311	Construction millwrights and industrial mechanics	rope machine setter (textile)
+7311	Construction millwrights and industrial mechanics	setter, loom / mules (textile)
+7311	Construction millwrights and industrial mechanics	technician, textile manufacturing
+7312	Heavy-duty equipment mechanics	farm machinery wheelwright
+7312	Heavy-duty equipment mechanics	mechanic, back hoe / excavating 
+7312	Heavy-duty equipment mechanics	mechanic, combination - heavy equipment
+7312	Heavy-duty equipment mechanics	mechanic, construction 
+7312	Heavy-duty equipment mechanics	mechanic, felling equipment
+7312	Heavy-duty equipment mechanics	mechanic, heavy-duty equipment
+7312	Heavy-duty equipment mechanics	repairer, construction equipment / crane 
+7312	Heavy-duty equipment mechanics	repairer, diesel engine
+7312	Heavy-duty equipment mechanics	servicer, fuel injection unit (diesel)
+7312	Heavy-duty equipment mechanics	technician, agricultural equipment
+7312	Heavy-duty equipment mechanics	technician, crane service
+7313	Heating, refrigeration and air conditioning mechanics	hydronics technician
+7313	Heating, refrigeration and air conditioning mechanics	installer-repairer-servicer, central a / c
+7313	Heating, refrigeration and air conditioning mechanics	mechanic, a / c / heating / refrigeration
+7313	Heating, refrigeration and air conditioning mechanics	mechanic, HVAC (heating, ventilation, a / c)
+7313	Heating, refrigeration and air conditioning mechanics	mechanic, journeyman / journeywoman
+7313	Heating, refrigeration and air conditioning mechanics	mechanic, transport refrigeration
+7314	Railway carmen / women	inspector, railway 
+7314	Railway carmen / women	mechanic, railcar / streetcar / subway car
+7314	Railway carmen / women	repairer, railway - car / coach
+7315	Aircraft mechanics and aircraft inspectors	aircraft mechanical systems maintenance technician
+7315	Aircraft mechanics and aircraft inspectors	engineer, aircraft maintenance (AME)
+7315	Aircraft mechanics and aircraft inspectors	mechanic, experimental aircraft
+7315	Aircraft mechanics and aircraft inspectors	mechanic, flight line
+7315	Aircraft mechanics and aircraft inspectors	mechanic, helicopter
+7315	Aircraft mechanics and aircraft inspectors	shop inspector, aircraft mechanical system
+7315	Aircraft mechanics and aircraft inspectors	technician, aero-engine
+7315	Aircraft mechanics and aircraft inspectors	technician, aircraft hydraulics
+7315	Aircraft mechanics and aircraft inspectors	technician, aircraft maintenance
+7315	Aircraft mechanics and aircraft inspectors	technician, aircraft propulsion
+7315	Aircraft mechanics and aircraft inspectors	technician, aircraft sheet metal
+7315	Aircraft mechanics and aircraft inspectors	technician, aviation mechanical components
+7315	Aircraft mechanics and aircraft inspectors	technician, certified aircraft
+7315	Aircraft mechanics and aircraft inspectors	technician, maintenance - aircraft
+7315	Aircraft mechanics and aircraft inspectors	technician, reciprocating engines
+7315	Aircraft mechanics and aircraft inspectors	tester, aircraft hydraulics / engine
+7316	Machine fitters	builder, agricultural machinery 
+7316	Machine fitters	builder, machine tool
+7316	Machine fitters	builder, fitter, machine
+7316	Machine fitters	builder, integrator, machine tool
+7316	Machine fitters	fitter, agricultural machinery
+7316	Machine fitters	fitter, locomotives / turbine
+7316	Machine fitters	fitter, manufacturing machinery
+7316	Machine fitters	fitter, mechanical
+7316	Machine fitters	fitter, ship engine / ship machinery
+7316	Machine fitters	integrator, machine tool
+7316	Machine fitters	mechanics-fitters, assembly - lead hand
+7318	Elevator constructors and mechanics	elevator builder / installer / repairer
+7318	Elevator constructors and mechanics	escalator builder / installer / repairer
+7318	Elevator constructors and mechanics	installer-repairer, dumbwaiter
+7318	Elevator constructors and mechanics	installer-repairer, moving walkway
+7318	Elevator constructors and mechanics	journeyman / journeywoman elevator mechanic
+7318	Elevator constructors and mechanics	mechanic, elevating device
+7321	Automotive service technicians, truck and bus mechanics and mechanical repairers	inspector, automotive engine mechanic
+7321	Automotive service technicians, truck and bus mechanics and mechanical repairers	mechanic, commercial vehicles
+7321	Automotive service technicians, truck and bus mechanics and mechanical repairers	mechanic, fuel systems
+7321	Automotive service technicians, truck and bus mechanics and mechanical repairers	mechanic, manufacture / repair / testing
+7321	Automotive service technicians, truck and bus mechanics and mechanical repairers	repairer, automotive - brakes / alignment
+7321	Automotive service technicians, truck and bus mechanics and mechanical repairers	specialist, automotive - tune up
+7321	Automotive service technicians, truck and bus mechanics and mechanical repairers	technician, air conditioning system
+7321	Automotive service technicians, truck and bus mechanics and mechanical repairers	technician, brakes / drive train
+7321	Automotive service technicians, truck and bus mechanics and mechanical repairers	technician, commercial trailer / truck 
+7321	Automotive service technicians, truck and bus mechanics and mechanical repairers	technician, diagnostic / electronics
+7321	Automotive service technicians, truck and bus mechanics and mechanical repairers	technician, steering / suspension
+7321	Automotive service technicians, truck and bus mechanics and mechanical repairers	technician, transmission
+7321	Automotive service technicians, truck and bus mechanics and mechanical repairers	tester, automotive vehicle
+7321	Automotive service technicians, truck and bus mechanics and mechanical repairers	upgrader, mechanical
+7322	Motor vehicle body repairers	antique car body restorer
+7322	Motor vehicle body repairers	autobody mechanic / repairer
+7322	Motor vehicle body repairers	collision repair technician / estimator
+7322	Motor vehicle body repairers	installer, auto glass
+7322	Motor vehicle body repairers	renovator, used car
+7322	Motor vehicle body repairers	repairer, journeyman / journeywoman
+7331	Oil and solid fuel heating mechanics	installer-mechanic, coal furnace
+7331	Oil and solid fuel heating mechanics	installer-mechanic, forced air furnace
+7331	Oil and solid fuel heating mechanics	installer-mechanic, residential oil
+7331	Oil and solid fuel heating mechanics	installer-mechanic, wood burners
+7331	Oil and solid fuel heating mechanics	stoker erector
+7331	Oil and solid fuel heating mechanics	technician, heating systems
+7332	Appliance servicers and repairers	repairer, major appliances
+7332	Appliance servicers and repairers	repairer, portable appliances
+7332	Appliance servicers and repairers	servicer, electric
+7332	Appliance servicers and repairers	servicer, electrical / gas appliances
+7332	Appliance servicers and repairers	servicer, gas fireplace / gas stove
+7332	Appliance servicers and repairers	servicer, wood fireplace
+7332	Appliance servicers and repairers	technician, appliance service
+7332	Appliance servicers and repairers	technician, commercial appliances
+7333	Electrical mechanics	mechanic, electrical instrument
+7333	Electrical mechanics	mechanic, electrical rewind
+7333	Electrical mechanics	mechanic, meter repair / switchgear
+7333	Electrical mechanics	mechanic-repairer, electric motor
+7333	Electrical mechanics	repairer, armature winder
+7333	Electrical mechanics	repairer, automotive-generator and starter
+7333	Electrical mechanics	repairer, coil connector / coil winder
+7333	Electrical mechanics	repairer, generator / storage battery
+7333	Electrical mechanics	repairer, high-voltage power transformer
+7333	Electrical mechanics	repairer-technician, electric meter
+7333	Electrical mechanics	technician, electric motor systems
+7333	Electrical mechanics	winder-electrician
+7333	Electrical mechanics	winder-repairer, electric motor
+7333	Electrical mechanics	winder-repairer, industrial coil 
+7334	Motorcycle, all-terrain vehicle and other related mechanics	inboard-outboard motor mechanic
+7334	Motorcycle, all-terrain vehicle and other related mechanics	leisure vehicle technician (except recreational vehicles)
+7334	Motorcycle, all-terrain vehicle and other related mechanics	mechanic, forklift / lift truck 
+7334	Motorcycle, all-terrain vehicle and other related mechanics	repairer, all-terrain vehicle / go-kart
+7334	Motorcycle, all-terrain vehicle and other related mechanics	repairer, industrial truck / snowmobile
+7334	Motorcycle, all-terrain vehicle and other related mechanics	repairer, motor scooter / snowmobile
+7335	Other small engine and small equipment repairers	mechanic, air-cooled engine
+7335	Other small engine and small equipment repairers	mechanic, snow blowers
+7335	Other small engine and small equipment repairers	mechanic-repairer, small engines
+7335	Other small engine and small equipment repairers	repairer, garden tractor
+7335	Other small engine and small equipment repairers	repairer, gas-powered lawn mower
+7361	Railway and yard locomotive engineers	engineer, freight train
+7361	Railway and yard locomotive engineers	engineer, industrial locomotive
+7361	Railway and yard locomotive engineers	engineer, railway
+7362	Railway conductors and brakemen / women	brake worker - switching yard
+7362	Railway conductors and brakemen / women	brakeworker, freight / passenger train
+7371	Crane operators	opearator, electrical equipment - derrick
+7371	Crane operators	operator, boat crane / boom crane
+7371	Crane operators	operator, bridge crane
+7371	Crane operators	operator, climbing crane 
+7371	Crane operators	operator, construction / pile driving crane
+7371	Crane operators	operator, crane and hoisting equipment
+7371	Crane operators	operator, demolition / wrecking crane
+7371	Crane operators	operator, electric crane / dragline
+7371	Crane operators	operator, floating crane
+7371	Crane operators	operator, hoist - mechanical / foundry 
+7371	Crane operators	operator, locomotive / monorail crane
+7371	Crane operators	operator, mobile crane / overhead crane 
+7371	Crane operators	operator, skip
+7371	Crane operators	railway car puller - crane
+7371	Crane operators	rigger (not shipbuilding & aircraft)
+7372	Drillers and blasters - surface mining, quarrying and construction	driller, open-pit / seismic prospecting
+7372	Drillers and blasters - surface mining, quarrying and construction	operator, air-track drill 
+7372	Drillers and blasters - surface mining, quarrying and construction	operator, core drill 
+7372	Drillers and blasters - surface mining, quarrying and construction	operator, diamond drill
+7372	Drillers and blasters - surface mining, quarrying and construction	operator, drilling machine
+7373	Water well drillers	driller, cable tool - water well drilling
+7373	Water well drillers	driller, journeyman / journeywoman
+7373	Water well drillers	operator, churn drill - water well
+7373	Water well drillers	water pump installer
+7381	Printing press operators	cylinder printing press
+7381	Printing press operators	flat-bed press set-up
+7381	Printing press operators	flexographic press
+7381	Printing press operators	gravure / letterpress
+7381	Printing press operators	gravure press / gravure proof
+7381	Printing press operators	intaglio printing press
+7381	Printing press operators	letterpress / letterpress proof
+7381	Printing press operators	lithographic press / offset
+7381	Printing press operators	newspaper press
+7381	Printing press operators	photoengraved plate proof press
+7381	Printing press operators	plastic sheet offset press
+7381	Printing press operators	platen press
+7381	Printing press operators	printer, job / thermographic
+7381	Printing press operators	printing / commercial press 
+7381	Printing press operators	proofer - printing
+7381	Printing press operators	rotary offset press operator
+7381	Printing press operators	rotary press
+7381	Printing press operators	rotoprinter
+7381	Printing press operators	sheet metal lithographic press
+7381	Printing press operators	techncian, flexographic press set-up
+7381	Printing press operators	technologist, printing
+7381	Printing press operators	tender, platen press
+7381	Printing press operators	wallpaper rotogravure press
+7381	Printing press operators	Web press
+7384	Other trades and related occupations, n.e.c.	blacksmith
+7384	Other trades and related occupations, n.e.c.	bomb-disposal expert
+7384	Other trades and related occupations, n.e.c.	calibrator, glass / scale / instruments
+7384	Other trades and related occupations, n.e.c.	contractor, underwater
+7384	Other trades and related occupations, n.e.c.	die setter
+7384	Other trades and related occupations, n.e.c.	diver, clearance / salvage / reclamation
+7384	Other trades and related occupations, n.e.c.	diver, commercial / scuba / deep-sea
+7384	Other trades and related occupations, n.e.c.	farrier / horse-shoer
+7384	Other trades and related occupations, n.e.c.	filer, circular saw / forest products saw
+7384	Other trades and related occupations, n.e.c.	gunsmith / small arms repairer
+7384	Other trades and related occupations, n.e.c.	installer-repairer, safes and vaults
+7384	Other trades and related occupations, n.e.c.	line worker - shipbuilding
+7384	Other trades and related occupations, n.e.c.	locksmith / lock fitter / repairer
+7384	Other trades and related occupations, n.e.c.	lofts worker - aircraft / shipbuilding
+7384	Other trades and related occupations, n.e.c.	mechanic, recreation vehicle service
+7384	Other trades and related occupations, n.e.c.	model and mould maker - concrete products
+7384	Other trades and related occupations, n.e.c.	operator, remote operated vehicle (ROV)
+7384	Other trades and related occupations, n.e.c.	patternmaker / model maker
+7384	Other trades and related occupations, n.e.c.	patternmaker, stonework / plaster
+7384	Other trades and related occupations, n.e.c.	repairer, smokestack
+7384	Other trades and related occupations, n.e.c.	sawsmith - saw maker-filer-fitter-repairer
+7384	Other trades and related occupations, n.e.c.	steeplejack, restoration
+7384	Other trades and related occupations, n.e.c.	technician, rope access (RAT)
+7384	Other trades and related occupations, n.e.c.	template maker - aeronautic / shipbuilding
+7384	Other trades and related occupations, n.e.c.	toolsmith / hammersmith
+7441	Residential and commercial installers and servicers	bathtub liner installer
+7441	Residential and commercial installers and servicers	builder, installer - deck / patio / dock
+7441	Residential and commercial installers and servicers	builder, installer, fence
+7441	Residential and commercial installers and servicers	countertop installer
+7441	Residential and commercial installers and servicers	duct installer - construction
+7441	Residential and commercial installers and servicers	floor sander / finisher / polisher
+7441	Residential and commercial installers and servicers	installer, air conditioner / ducts
+7441	Residential and commercial installers and servicers	installer, automatic doors / garage doors
+7441	Residential and commercial installers and servicers	installer, awning / door / siding 
+7441	Residential and commercial installers and servicers	installer, drape / curtain / shade / blind
+7441	Residential and commercial installers and servicers	installer, irrigation system
+7441	Residential and commercial installers and servicers	installer, lab equipment / furnishings
+7441	Residential and commercial installers and servicers	installer, lightning rod / cable
+7441	Residential and commercial installers and servicers	installer, office furniture
+7441	Residential and commercial installers and servicers	installer, pipe organ
+7441	Residential and commercial installers and servicers	installer, recreation equipment / structure
+7441	Residential and commercial installers and servicers	installer, traffic light / traffic signal
+7441	Residential and commercial installers and servicers	installer, water heater / softener
+7441	Residential and commercial installers and servicers	installer, weather strip
+7441	Residential and commercial installers and servicers	installer-servicer, automatic door systems
+7441	Residential and commercial installers and servicers	installer-servicer, dental equipment
+7441	Residential and commercial installers and servicers	interlocking paving stone installer
+7441	Residential and commercial installers and servicers	servicer, water heater / conditioner
+7441	Residential and commercial installers and servicers	solar hot water system installer
+7441	Residential and commercial installers and servicers	solar panel installer
+7441	Residential and commercial installers and servicers	stair installer
+7441	Residential and commercial installers and servicers	technician, irrigation installation
+7442	Waterworks and gas maintenance workers	gas maintenance
+7442	Waterworks and gas maintenance workers	hand, utilities - field measurement
+7442	Waterworks and gas maintenance workers	hydrant and valve maintenance
+7442	Waterworks and gas maintenance workers	inspector, gas - gas leak surveyor-tester
+7442	Waterworks and gas maintenance workers	inspector, underground utility locator
+7442	Waterworks and gas maintenance workers	installer, gas meter / water meter
+7442	Waterworks and gas maintenance workers	maintenance worker - gas / water mains
+7442	Waterworks and gas maintenance workers	operator, gas utility
+7442	Waterworks and gas maintenance workers	patrol worker, pipeline
+7442	Waterworks and gas maintenance workers	pipe locator - utilities
+7442	Waterworks and gas maintenance workers	pipeline worker - maintenance / repair
+7442	Waterworks and gas maintenance workers	regulator, gas
+7442	Waterworks and gas maintenance workers	utilities - distribution
+7444	Pest controllers and fumigators	technician, pest control
+7444	Pest controllers and fumigators	trapper, animal control / nuisance control
+7445	Other repairers and servicers	automobile wrecker / dismantler
+7445	Other repairers and servicers	inspector, salvage - instruments
+7445	Other repairers and servicers	installer-repairer, sports equipment
+7445	Other repairers and servicers	machinery salvager
+7445	Other repairers and servicers	mechanic, household equipment
+7445	Other repairers and servicers	repairer, airport equipment maintenance
+7445	Other repairers and servicers	repairer, boat propeller
+7445	Other repairers and servicers	repairer, electric toy
+7445	Other repairers and servicers	repairer, industrial
+7445	Other repairers and servicers	repairer, meters - mechanical meters
+7445	Other repairers and servicers	repairer, net
+7445	Other repairers and servicers	repairer, office equipment
+7445	Other repairers and servicers	repairer, photofinishing equipment
+7445	Other repairers and servicers	repairer, pipeline safety valves
+7445	Other repairers and servicers	repairer, pneumatic tool
+7445	Other repairers and servicers	repairer, shaker
+7445	Other repairers and servicers	repairer, sieve
+7445	Other repairers and servicers	repairer, signs - neon / electric
+7445	Other repairers and servicers	repairer, spray gun
+7445	Other repairers and servicers	repairer, surveying & optical instruments
+7445	Other repairers and servicers	repairer, textiles
+7445	Other repairers and servicers	repairer, transport
+7445	Other repairers and servicers	service technician - home health care equipment
+7445	Other repairers and servicers	servicer-fitter, respirator
+7445	Other repairers and servicers	setter, stone saw
+7445	Other repairers and servicers	technician, security systems
+7451	Longshore workers	dockworker / dock hand / marine cargo
+7451	Longshore workers	loader, barge / boat / tanker
+7451	Longshore workers	longshore / wharf
+7451	Longshore workers	lumper
+7451	Longshore workers	operator, shop-loader / tower-loader
+7451	Longshore workers	stevedore
+7451	Longshore workers	stower
+7452	Material handlers	assembler, shipment
+7452	Material handlers	attendant, building materials yard
+7452	Material handlers	bin attendant / filler
+7452	Material handlers	box bander / filler
+7452	Material handlers	conveyor tender
+7452	Material handlers	cribber, grain elevator
+7452	Material handlers	dock - truck transport
+7452	Material handlers	driver, jitney / power truck
+7452	Material handlers	dumper - surface coal mining
+7452	Material handlers	hand bagger / bundler / packer / packager
+7452	Material handlers	handler / weigher, grain
+7452	Material handlers	handler, ash
+7452	Material handlers	handler, building supplies
+7452	Material handlers	handler, express service
+7452	Material handlers	handler-loader-unloader, freight
+7452	Material handlers	labourer - material handling / warehousing
+7452	Material handlers	loader-sacker, cement
+7452	Material handlers	loader-unloader, railway car / trucks 
+7452	Material handlers	malthouse
+7452	Material handlers	mover, furniture / household goods
+7452	Material handlers	operator, automated storage and retrieval
+7452	Material handlers	operator, bucket elevator
+7452	Material handlers	operator, bulk materials carrier / loader
+7452	Material handlers	operator, coal conveyor - surface mining
+7452	Material handlers	operator, conveyor belt 
+7452	Material handlers	operator, electric dolly / electric mule
+7452	Material handlers	operator, industrial truck / reach truck
+7452	Material handlers	operator, pole distributor / pole stacker
+7452	Material handlers	operator, supermarket jigger
+7452	Material handlers	packer, hand sack
+7452	Material handlers	piler, shingle
+7452	Material handlers	skidder - fruit packing
+7452	Material handlers	stockpiler / warehouse worker
+7452	Material handlers	storage - material handling
+7452	Material handlers	tender, conveyor - material handling
+7452	Material handlers	tipman / tipwoman - surface coal mining
+7452	Material handlers	warehouse disposal
+7511	Transport truck drivers	driver, automobile carrier
+7511	Transport truck drivers	driver, bulk goods truck - bulk milk / oil
+7511	Transport truck drivers	driver, cement truck / ready-mix truck
+7511	Transport truck drivers	driver, LCV (long combination vehicle)
+7511	Transport truck drivers	driver, liquid fertilizer truck
+7511	Transport truck drivers	driver, log truck / logging truck
+7511	Transport truck drivers	driver, long-distance truck / freight
+7511	Transport truck drivers	driver, moving truck / van
+7511	Transport truck drivers	driver, shunt truck / shunter
+7511	Transport truck drivers	driver, tractor-trailer / truck-trailer
+7511	Transport truck drivers	escort - transportation
+7511	Transport truck drivers	hauler, coal / gravel / logs
+7511	Transport truck drivers	owner-operator, truck
+7511	Transport truck drivers	trucker
+7512	Bus drivers, subway operators and other transit operators	conductor, bus / streetcar
+7512	Bus drivers, subway operators and other transit operators	operator, light rail / subway / trolley
+7512	Bus drivers, subway operators and other transit operators	shuttle driver - auto dealership
+7512	Bus drivers, subway operators and other transit operators	shuttle driver - car rental company
+7513	Taxi and limousine drivers and chauffeurs	chauffeur, private household / company
+7513	Taxi and limousine drivers and chauffeurs	driver, limousine / taxi
+7513	Taxi and limousine drivers and chauffeurs	owner-operator, taxi
+7514	Delivery and courier service drivers	agent, amusement machine route
+7514	Delivery and courier service drivers	delivery person, bakery - bread deliverer
+7514	Delivery and courier service drivers	driver, bookmobile
+7514	Delivery and courier service drivers	driver, delivery - commerical
+7514	Delivery and courier service drivers	driver, delivery - groceries / fast food
+7514	Delivery and courier service drivers	driver, delivery - parcels (courier van)
+7514	Delivery and courier service drivers	driver, delivery - pharmacy / newspaper
+7514	Delivery and courier service drivers	driver, mobile canteen / mobile caterer
+7514	Delivery and courier service drivers	driver, town messenger
+7514	Delivery and courier service drivers	salesperson, bakery route / dairy route
+7514	Delivery and courier service drivers	salesperson, delivery
+7521	Heavy equipment operators (except crane)	engineer, operating - heavy equipment
+7521	Heavy equipment operators (except crane)	erector, structural hydraulic jack
+7521	Heavy equipment operators (except crane)	forest road machine operator
+7521	Heavy equipment operators (except crane)	operater, dozer
+7521	Heavy equipment operators (except crane)	operator, aerial tram
+7521	Heavy equipment operators (except crane)	operator, boom-conveyor
+7521	Heavy equipment operators (except crane)	operator, buggy-scraper
+7521	Heavy equipment operators (except crane)	operator, construction equipment
+7521	Heavy equipment operators (except crane)	operator, continuous bucket excavator
+7521	Heavy equipment operators (except crane)	operator, crawler tractor
+7521	Heavy equipment operators (except crane)	operator, dredge / dredge runner
+7521	Heavy equipment operators (except crane)	operator, earth-moving equipment
+7521	Heavy equipment operators (except crane)	operator, electrical equipment - shovel
+7521	Heavy equipment operators (except crane)	operator, groove-cutting machine
+7521	Heavy equipment operators (except crane)	operator, heater-planer
+7521	Heavy equipment operators (except crane)	operator, heavy equipment
+7521	Heavy equipment operators (except crane)	operator, ho-ram
+7521	Heavy equipment operators (except crane)	operator, horizontal earth-boring machine
+7521	Heavy equipment operators (except crane)	operator, marine railway
+7521	Heavy equipment operators (except crane)	operator, mole
+7521	Heavy equipment operators (except crane)	operator, mucker / mucking machine
+7521	Heavy equipment operators (except crane)	operator, paving - asphalt spreader-roller
+7521	Heavy equipment operators (except crane)	operator, payloader
+7521	Heavy equipment operators (except crane)	operator, peat-moss-cutting-gathering
+7521	Heavy equipment operators (except crane)	operator, pile driver winch / hammer
+7521	Heavy equipment operators (except crane)	operator, pipelayer
+7521	Heavy equipment operators (except crane)	operator, pulvimixer
+7521	Heavy equipment operators (except crane)	operator, ripper - heavy equipment
+7521	Heavy equipment operators (except crane)	operator, road grader / road mixer 
+7521	Heavy equipment operators (except crane)	operator, scarifier / scraper
+7521	Heavy equipment operators (except crane)	operator, shield
+7521	Heavy equipment operators (except crane)	operator, snow-grooming machine
+7521	Heavy equipment operators (except crane)	operator, stacker - heavy equipment
+7521	Heavy equipment operators (except crane)	operator, surface mining equipment
+7521	Heavy equipment operators (except crane)	operator, track-loader
+7521	Heavy equipment operators (except crane)	operator, tunnelling machine
+7522	Public works maintenance equipment operators and related workers	driver, public works - recycling truck
+7522	Public works maintenance equipment operators and related workers	forester, electrical
+7522	Public works maintenance equipment operators and related workers	inspector, power pole / utility pole
+7522	Public works maintenance equipment operators and related workers	operator, sewer flushing truck
+7522	Public works maintenance equipment operators and related workers	operator, snowplough
+7522	Public works maintenance equipment operators and related workers	operator, street sweeper / sprinkler
+7522	Public works maintenance equipment operators and related workers	servicer, municipal drain roto
+7522	Public works maintenance equipment operators and related workers	utility arborist / forester / tree trimmer
+7611	Construction trades helpers and labourers	electrician
+7522	Public works maintenance equipment operators and related workers	utility locator
+7531	Railway yard and track maintenance workers	attendant, locomotive maintenance
+7531	Railway yard and track maintenance workers	controller, railway car / railway tank car
+7531	Railway yard and track maintenance workers	distributor, locomotive / freight cars
+7531	Railway yard and track maintenance workers	greaser / lubricator / oiler
+7531	Railway yard and track maintenance workers	maintenance - railway engine
+7531	Railway yard and track maintenance workers	operator, control tower / turntable
+7531	Railway yard and track maintenance workers	operator, motor vehicle - pole yard
+7531	Railway yard and track maintenance workers	signaller, railway / signal worker
+7531	Railway yard and track maintenance workers	switcher, railway yard
+7531	Railway yard and track maintenance workers	yard worker, yard coupler / switcher
+7532	Water transport deck and engine room crew	boatswain
+7532	Water transport deck and engine room crew	carpenter, ship's
+7532	Water transport deck and engine room crew	crew member, ship - engine and boiler room
+7532	Water transport deck and engine room crew	deckhand, barge / ship / ferryboat / tug
+7532	Water transport deck and engine room crew	helmsman / helmswoman
+7532	Water transport deck and engine room crew	marine engine mechanic / technician
+7532	Water transport deck and engine room crew	pumpman / pumpwoman
+7532	Water transport deck and engine room crew	quartermaster
+7532	Water transport deck and engine room crew	seaman / seawoman - able / ordinary / pump
+7532	Water transport deck and engine room crew	ship tunnel operator
+7532	Water transport deck and engine room crew	stoker - ship
+7532	Water transport deck and engine room crew	tanker pumper
+7532	Water transport deck and engine room crew	technician, marine service
+7532	Water transport deck and engine room crew	tender, ship boiler
+7532	Water transport deck and engine room crew	watchman / watchwoman, ship
+7532	Water transport deck and engine room crew	wheelsman / wheelswoman
+7533	Boat and cable ferry operators and related occupations	beachcomber
+7533	Boat and cable ferry operators and related occupations	bridgemaster
+7533	Boat and cable ferry operators and related occupations	captain
+7533	Boat and cable ferry operators and related occupations	deckhand, cable ferry
+7533	Boat and cable ferry operators and related occupations	ferry terminal / loading bridge
+7533	Boat and cable ferry operators and related occupations	keeper, lighthouse
+7533	Boat and cable ferry operators and related occupations	lineshandler - canal lock system
+7533	Boat and cable ferry operators and related occupations	master, charter boat / launch
+7533	Boat and cable ferry operators and related occupations	operator, barge / cable ferry / scow
+7533	Boat and cable ferry operators and related occupations	operator, canal lock / canal bridge 
+7533	Boat and cable ferry operators and related occupations	operator, charter boat / motor launch
+7533	Boat and cable ferry operators and related occupations	operator, ferry / power cable ferry 
+7533	Boat and cable ferry operators and related occupations	operator, lock / lockmaster
+7533	Boat and cable ferry operators and related occupations	operator, sightseeing boat / water taxi
+7533	Boat and cable ferry operators and related occupations	operator, workboat
+7533	Boat and cable ferry operators and related occupations	owner-operator, repair ship
+7533	Boat and cable ferry operators and related occupations	shipbuilding - dry dock
+7534	Air transport ramp attendants	air transport baggage / cargo handler
+7534	Air transport ramp attendants	air transport ramp attendant
+7534	Air transport ramp attendants	aircraft cleaner / groomer
+7534	Air transport ramp attendants	aircraft refueler
+7534	Air transport ramp attendants	aircraft towing equipment operator
+7534	Air transport ramp attendants	airport ramp attendant
+7535	Other automotive mechanical installers and servicers	driver, pipeline service truck
+7535	Other automotive mechanical installers and servicers	greaser / oiler, crane / heavy equipment
+7535	Other automotive mechanical installers and servicers	hostler - transit system
+7535	Other automotive mechanical installers and servicers	installer, automotive 
+7535	Other automotive mechanical installers and servicers	lubricator, automobile 
+7535	Other automotive mechanical installers and servicers	pipeline equipment servicer
+7535	Other automotive mechanical installers and servicers	servicer, electric golf cart
+7535	Other automotive mechanical installers and servicers	servicer, heavy-duty equipment
+7535	Other automotive mechanical installers and servicers	servicer, motor / emergency vehicles
+7535	Other automotive mechanical installers and servicers	technician, automotive lubrication
+7611	Construction trades helpers and labourers	asphalt / paving
+7611	Construction trades helpers and labourers	bridge gang
+7611	Construction trades helpers and labourers	cement / concrete
+7611	Construction trades helpers and labourers	clamper
+7611	Construction trades helpers and labourers	construction
+7611	Construction trades helpers and labourers	crane chaser
+7611	Construction trades helpers and labourers	demolition
+7611	Construction trades helpers and labourers	digging
+7611	Construction trades helpers and labourers	ditch cleaner
+7611	Construction trades helpers and labourers	dredging - shore
+7611	Construction trades helpers and labourers	drill - water well / tunnelling 
+7611	Construction trades helpers and labourers	drywall / plastering
+7611	Construction trades helpers and labourers	erector, hwy sign / scaffold / monument 
+7611	Construction trades helpers and labourers	exterior cladder
+7611	Construction trades helpers and labourers	flagman / flagwoman
+7611	Construction trades helpers and labourers	flagperson
+7611	Construction trades helpers and labourers	floor finisher
+7611	Construction trades helpers and labourers	form setter
+7611	Construction trades helpers and labourers	gas line fuser
+7611	Construction trades helpers and labourers	gas pipe fuser
+7611	Construction trades helpers and labourers	ground - pile driving
+7611	Construction trades helpers and labourers	grouter / caulker
+7611	Construction trades helpers and labourers	gunite mixer 
+7611	Construction trades helpers and labourers	ironworker
+7611	Construction trades helpers and labourers	metal form setter
+7611	Construction trades helpers and labourers	mole operator
+7611	Construction trades helpers and labourers	oil burner installer helper
+7611	Construction trades helpers and labourers	operator, air gun / air hammer 
+7611	Construction trades helpers and labourers	operator, grout machine / grout pump
+7611	Construction trades helpers and labourers	operator, manual stone spreader
+7611	Construction trades helpers and labourers	operator, mud jack
+7611	Construction trades helpers and labourers	operator, paving / roller / line painter
+7611	Construction trades helpers and labourers	operator, pipelines
+7611	Construction trades helpers and labourers	operator, pneumatic drill / jackhammmer
+7611	Construction trades helpers and labourers	painter / paperhanger
+7611	Construction trades helpers and labourers	pipelayer, sewer / irrigation
+7611	Construction trades helpers and labourers	pipeline - caulker / welder
+7611	Construction trades helpers and labourers	pit bottom
+7611	Construction trades helpers and labourers	placer, rip-rap
+7611	Construction trades helpers and labourers	reinforcing wire mesh
+7611	Construction trades helpers and labourers	rigger
+7611	Construction trades helpers and labourers	road construction
+7611	Construction trades helpers and labourers	scaffolder
+7611	Construction trades helpers and labourers	seam caulker
+7611	Construction trades helpers and labourers	seat installer
+7611	Construction trades helpers and labourers	setter, batterboard / tombstone / monument
+7611	Construction trades helpers and labourers	sheet metal worker
+7611	Construction trades helpers and labourers	shore dredging
+7611	Construction trades helpers and labourers	steam fitter
+7611	Construction trades helpers and labourers	steel form setting
+7611	Construction trades helpers and labourers	surface mining / quarry 
+7611	Construction trades helpers and labourers	tamper operator
+7611	Construction trades helpers and labourers	tamper, grade - construction
+7611	Construction trades helpers and labourers	tender, preheater - pipelines
+7611	Construction trades helpers and labourers	welder-fitter
+7612	Other trades helpers and labourers	assistant, aerial spraying
+7612	Other trades helpers and labourers	automobile body repairer
+7612	Other trades helpers and labourers	cable installation and repair
+7612	Other trades helpers and labourers	digger, peat
+7612	Other trades helpers and labourers	electrician
+7612	Other trades helpers and labourers	elevator constructor / mechanic
+7612	Other trades helpers and labourers	fire equipment servicer
+7612	Other trades helpers and labourers	ground worker - power lines / telecom
+7612	Other trades helpers and labourers	heating / cooling / furnace repair
+7612	Other trades helpers and labourers	installer, utility pole
+7612	Other trades helpers and labourers	labourer, electric power & wire comm.
+7612	Other trades helpers and labourers	locator, squeak, rattle and leak
+7612	Other trades helpers and labourers	machine mechanic-fitter
+7612	Other trades helpers and labourers	offshore drilling rig motor
+7612	Other trades helpers and labourers	powered or towed machine repair
+7612	Other trades helpers and labourers	protective signal servicer
+7612	Other trades helpers and labourers	repairer - mobile equipment
+7612	Other trades helpers and labourers	repairer - ore-process equipment
+7612	Other trades helpers and labourers	repairer - pump-installer
+7612	Other trades helpers and labourers	repairer - railway cars
+7612	Other trades helpers and labourers	repairer - surveying & optical
+7612	Other trades helpers and labourers	replacer, liner - ore-processing equipment
+7612	Other trades helpers and labourers	shipbuilding - pipefitter
+7612	Other trades helpers and labourers	splicer - telecommunications
+7612	Other trades helpers and labourers	staker - detailer
+7612	Other trades helpers and labourers	surveyor - chain / compass worker
+7612	Other trades helpers and labourers	telecommunications 
+7621	Public works and maintenance labourers	casual worker - public works
+7621	Public works and maintenance labourers	cleaner - sewer pipes / sidewalk / street
+7621	Public works and maintenance labourers	collector, parking meter
+7621	Public works and maintenance labourers	dump / garbage collection
+7621	Public works and maintenance labourers	labourer, public works - crew leader
+7621	Public works and maintenance labourers	maintenance - playground / sewers
+7621	Public works and maintenance labourers	operator, road line-painting machine
+7621	Public works and maintenance labourers	operator, sidewalk snowplough
+7621	Public works and maintenance labourers	public works
+7621	Public works and maintenance labourers	sanitation
+7622	Railway and motor transport labourers	carman / carwoman
+7622	Railway and motor transport labourers	delivery / fuel truck triver 
+7622	Railway and motor transport labourers	labourer, motor transport / railway yard
+7622	Railway and motor transport labourers	rail lubricator
+7622	Railway and motor transport labourers	railway car decal applier / car weigher
+7622	Railway and motor transport labourers	railway helper / engineer's assistant
+7622	Railway and motor transport labourers	railway operator, fuel and sand
+7622	Railway and motor transport labourers	railway siding checker-messenger
+7622	Railway and motor transport labourers	railway track greaser / sweeper
+7622	Railway and motor transport labourers	signal gang / crossing attendant
+7622	Railway and motor transport labourers	swamper - truck transport
+8211	Supervisors, logging and forestry	boom master - logging
+8211	Supervisors, logging and forestry	contractor, forestry / logging
+8211	Supervisors, logging and forestry	foreperson, forestry / logging / planting
+8211	Supervisors, logging and forestry	supervisor, buckers / forestry crew
+8211	Supervisors, logging and forestry	tender, grapple yarder hook (logging)
+8221	Supervisors, mining and quarrying	boss, mining - level boss / shift boss
+8221	Supervisors, mining and quarrying	mine captain / foreperson / supervisor
+8221	Supervisors, mining and quarrying	mining - drilling
+8221	Supervisors, mining and quarrying	mining - motormen / women
+8221	Supervisors, mining and quarrying	mining - salvage / supply
+8221	Supervisors, mining and quarrying	mining - surface / blasters
+8221	Supervisors, mining and quarrying	supervisor, construction
+8222	Contractors and supervisors, oil and gas drilling and services	consultant,  oil & gas well drilling
+8222	Contractors and supervisors, oil and gas drilling and services	contractor, oilfield / oil and gas
+8222	Contractors and supervisors, oil and gas drilling and services	foreperson, well drilling & servicing
+8222	Contractors and supervisors, oil and gas drilling and services	operator, multi-service - oil field
+8222	Contractors and supervisors, oil and gas drilling and services	rig manager - oil and gas drilling
+8222	Contractors and supervisors, oil and gas drilling and services	superintendent, offshore drilling rig
+8222	Contractors and supervisors, oil and gas drilling and services	supervisor, oil and gas - well service
+8222	Contractors and supervisors, oil and gas drilling and services	toolpusher, offshore drilling rig
+8231	Underground production and development miners	blaster / blast hole driller 
+8231	Underground production and development miners	blockholer
+8231	Underground production and development miners	bolter
+8231	Underground production and development miners	bolter, roof / rockbolter
+8231	Underground production and development miners	core drill / diamond-drill
+8231	Underground production and development miners	driller, drift / long-hole / core / shaft
+8231	Underground production and development miners	faceman / facewoman - coal mine
+8231	Underground production and development miners	firer, shot
+8231	Underground production and development miners	hoist / loading mchine / scoop
+8231	Underground production and development miners	inspector, shaft
+8231	Underground production and development miners	loader, diesel / downhole
+8231	Underground production and development miners	mine worker
+8231	Underground production and development miners	miner, hard rock / soft rock 
+8231	Underground production and development miners	mucker - underground mining
+8231	Underground production and development miners	shearer
+8231	Underground production and development miners	tender, brine well
+8232	Oil and gas well drillers, servicers, testers and related workers	coring / downhole tool 
+8232	Oil and gas well drillers, servicers, testers and related workers	driller, oil and gas / directional
+8232	Oil and gas well drillers, servicers, testers and related workers	logger, hydrocarbon mud logger
+8232	Oil and gas well drillers, servicers, testers and related workers	perforator, gun / oil wells
+8232	Oil and gas well drillers, servicers, testers and related workers	production test / service rig 
+8232	Oil and gas well drillers, servicers, testers and related workers	puller / well puller
+8232	Oil and gas well drillers, servicers, testers and related workers	sampler, sidewall core
+8232	Oil and gas well drillers, servicers, testers and related workers	technician, rig
+8232	Oil and gas well drillers, servicers, testers and related workers	tester, drill stem / gas
+8241	Logging machinery operators	chipper, mobile whole tree
+8241	Logging machinery operators	operator, bunk skidder
+8241	Logging machinery operators	operator, cable yarding / yarding engineer
+8241	Logging machinery operators	operator, mechanical harvester
+8241	Logging machinery operators	operator, pulpwood / shortwood harvester
+8241	Logging machinery operators	operator, slasher saw / slasher loader
+8241	Logging machinery operators	operator, steel spar
+8241	Logging machinery operators	operator, tree-length harvester
+8241	Logging machinery operators	slinger, rigging
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	aerial crop dusting
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	agriculture
+8431	General farm workers	operator, cultivator
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	animal farm 
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	attendant, herd feedlot
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	boss, farm / stable
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	caponizing service
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	dairy farm / dairy herder 
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	farm operation / grain crop
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	farm produce grading / packing
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	handler, sheep / shepherd
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	harvester, grain custom
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	hatchery
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	herder, swine / beef cattle / sheep
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	horse stable / livery stable
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	inseminator, artificial
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	irrigation / soil testing 
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	livestock exchange
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	livestock farm workers
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	manager, egg grading station
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	maple products / sugarbush
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	milking services
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	operator, custom combine
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	seeding / seed cleaning
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	specialized livestock worker
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	stockyard and herdsmen
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	supervisor, farm
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	supervisor, farm workers
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	technician, pork production
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	trainer, dressage & stunt / racehorses
+8252	Agricultural service contractors, farm supervisors and specialized livestock workers	trainer, horse
+8255	Contractors and supervisors, landscaping, grounds maintenance and horticulture services	contractor, landscape design
+8255	Contractors and supervisors, landscaping, grounds maintenance and horticulture services	contractor, tree removal / tree service
+8255	Contractors and supervisors, landscaping, grounds maintenance and horticulture services	crew chief, greenhouse / nursery workers
+8255	Contractors and supervisors, landscaping, grounds maintenance and horticulture services	foreperson, groundskeeping
+8255	Contractors and supervisors, landscaping, grounds maintenance and horticulture services	groundskeeper / groundskeeping supervisor
+8255	Contractors and supervisors, landscaping, grounds maintenance and horticulture services	supervisor, park maintenance
+8255	Contractors and supervisors, landscaping, grounds maintenance and horticulture services	supervisor, public works groundskeeping
+8261	Fishing masters and officers	fishing master
+8261	Fishing masters and officers	fishing vessel boatswain / bo'sun / master
+8261	Fishing masters and officers	fishing vessel navigation officer
+8262	Fishermen / women	fisherman / fisherwoman, beam / otter trawl
+8262	Fishermen / women	fisherman / fisherwoman, Danish / purse seine
+8262	Fishermen / women	fisherman / fisherwoman, inshore / offshore
+8262	Fishermen / women	fisherman / fisherwoman, shellfish 
+8262	Fishermen / women	fisherman / fisherwoman, swordfish
+8262	Fishermen / women	fisherman / fisherwoman, weir
+8262	Fishermen / women	operator, seaweed harvesting machine
+8411	Underground mine service and support workers	assembler, extensible conveyor belt 
+8411	Underground mine service and support workers	attendant, mine
+8411	Underground mine service and support workers	blaster
+8411	Underground mine service and support workers	blaster, line crew
+8411	Underground mine service and support workers	brusher 
+8411	Underground mine service and support workers	builder, brattice
+8411	Underground mine service and support workers	deckman / deckwoman
+8411	Underground mine service and support workers	diamond driller / jumbo drill
+8411	Underground mine service and support workers	driver, haulage truck
+8411	Underground mine service and support workers	dryman / drywoman
+8411	Underground mine service and support workers	erector, steelwork / steel form
+8411	Underground mine service and support workers	footman / footwoman
+8411	Underground mine service and support workers	hauler, coal
+8411	Underground mine service and support workers	keeper, lamp
+8411	Underground mine service and support workers	loader, chute / skip
+8411	Underground mine service and support workers	materialman / materialwoman
+8431	General farm workers	organic farm
+8411	Underground mine service and support workers	mine construction
+8411	Underground mine service and support workers	mine rescue
+8411	Underground mine service and support workers	miner, support
+8411	Underground mine service and support workers	motorman / motorwoman
+8411	Underground mine service and support workers	nipper - underground mining
+8411	Underground mine service and support workers	operator, backfill plant
+8411	Underground mine service and support workers	operator, bridge
+8411	Underground mine service and support workers	operator, chute gate / chute loader
+8411	Underground mine service and support workers	operator, conveyor / ore handling
+8411	Underground mine service and support workers	operator, crusher
+8411	Underground mine service and support workers	operator, jack operator
+8411	Underground mine service and support workers	operator, loading head / loading pocket
+8411	Underground mine service and support workers	operator, sludge pump
+8411	Underground mine service and support workers	pipe turner - trackman / trackwoman
+8411	Underground mine service and support workers	roadmaker
+8411	Underground mine service and support workers	sand fill man / woman - hydraulic stowing
+8411	Underground mine service and support workers	skip loader / tender
+8411	Underground mine service and support workers	tender, cage / bottom cager / top cager
+8411	Underground mine service and support workers	tender, orepass 
+8411	Underground mine service and support workers	underground mining
+8411	Underground mine service and support workers	ventilation
+8412	Oil and gas well drilling and related workers and services operators	acidizer, oil well / acid treater
+8412	Oil and gas well drilling and related workers and services operators	cementer, oil field / oil well
+8412	Oil and gas well drilling and related workers and services operators	derrick worker / derrickhand
+8412	Oil and gas well drilling and related workers and services operators	driver, acid truck / cement truck
+8412	Oil and gas well drilling and related workers and services operators	driver, frac
+8412	Oil and gas well drilling and related workers and services operators	locator, pipeline
+8412	Oil and gas well drilling and related workers and services operators	operator, ballast control
+8412	Oil and gas well drilling and related workers and services operators	operator, carbon dioxide / nitrogen
+8412	Oil and gas well drilling and related workers and services operators	operator, cementing equipment
+8412	Oil and gas well drilling and related workers and services operators	operator, chemical services / truck
+8412	Oil and gas well drilling and related workers and services operators	operator, coiled tubing
+8412	Oil and gas well drilling and related workers and services operators	operator, control room
+8412	Oil and gas well drilling and related workers and services operators	operator, dynamic positioning
+8412	Oil and gas well drilling and related workers and services operators	operator, formation fracturing
+8412	Oil and gas well drilling and related workers and services operators	operator, power-tong
+8412	Oil and gas well drilling and related workers and services operators	operator, production / reeled tubing
+8412	Oil and gas well drilling and related workers and services operators	operator, snubbing-unit
+8412	Oil and gas well drilling and related workers and services operators	operator, well treatment pump
+8412	Oil and gas well drilling and related workers and services operators	technician, rig - derrickhand / motorhand
+8421	Chain saw and skidder operators	chaser - logging
+8421	Chain saw and skidder operators	feller - logging
+8421	Chain saw and skidder operators	landing bucker / faller and bucker
+8421	Chain saw and skidder operators	logger / lumberjack / horse logger
+8421	Chain saw and skidder operators	operator, chain saw / logging tractor
+8421	Chain saw and skidder operators	pieceworker - logging
+8421	Chain saw and skidder operators	worker, forest logging
+8422	Silviculture and forestry workers	brush cutter - forestry
+8422	Silviculture and forestry workers	operator, clearing saw / spacing saw
+8422	Silviculture and forestry workers	pieceworker - silviculture
+8422	Silviculture and forestry workers	seed cone collector / picker
+8422	Silviculture and forestry workers	tree pruner / precommercial tree thinner
+8422	Silviculture and forestry workers	worker, logging crew / conservation
+8431	General farm workers	artificial breeding / insemination
+8431	General farm workers	barn
+8431	General farm workers	beef cattle farm / cattle ranch
+8431	General farm workers	cowhand / cowboy / cowgirl / cowpuncher
+8431	General farm workers	crew member, custom harvest
+8431	General farm workers	dairy farm / milking machine
+8431	General farm workers	egg candler / gatherer / grader / packer
+8431	General farm workers	examiner, fruit 
+8431	General farm workers	farm hand / farm labourer
+8431	General farm workers	feedlot / feedyard
+8431	General farm workers	field crops / grain farm / orchard
+8431	General farm workers	groom - farm
+8431	General farm workers	hand, farm / ranch / stable
+8431	General farm workers	herder - stockyards
+8431	General farm workers	honey farm
+8431	General farm workers	horse breaker
+8431	General farm workers	irrigation
+8431	General farm workers	maple tapping / sugar bush
+8431	General farm workers	operator, baler / binder / combine
+8431	General farm workers	operator, cropsprayer machine
+8431	General farm workers	poultry farm
+8431	General farm workers	rider, pasture / penrider
+8431	General farm workers	shearer, sheep
+8431	General farm workers	stable
+8431	General farm workers	technician, apiary / bee farm / beekeeping
+8431	General farm workers	technician, swine / farrowing
+8431	General farm workers	thinner, vegetable
+8431	General farm workers	vineyard
+8432	Nursery and greenhouse workers	Christmas tree shearer / trimmer
+8432	Nursery and greenhouse workers	horticulturist helper
+8432	Nursery and greenhouse workers	plantscaper, interior
+8432	Nursery and greenhouse workers	worker, forest nursery / tree grafter
+8432	Nursery and greenhouse workers	worker, greenhouse / hydroponics
+8432	Nursery and greenhouse workers	worker, horticulture
+8441	Fishing vessel deckhands	crew member, fishing vessel
+8441	Fishing vessel deckhands	fishing vessel checker / crew member
+8441	Fishing vessel deckhands	trawlerman / trawlerwoman
+8442	Trappers and hunters	hunter, land-based seal
+8442	Trappers and hunters	trapper, beaver / fur / game / muskrat
+8611	Harvesting labourers	hand, harvest
+8611	Harvesting labourers	packer, fruit - apple / berry / etc.
+8611	Harvesting labourers	packer, vegetable - cucumber
+8611	Harvesting labourers	sorter, fruit / vegetable
+8611	Harvesting labourers	worker, harvesting - field-grown crops
+8611	Harvesting labourers	worker, tobacco harvesting 
+8611	Harvesting labourers	worm harvester / picker / packer
+8612	Landscaping and grounds maintenance labourers	groundskeeper, stadium 
+8612	Landscaping and grounds maintenance labourers	landscaping 
+8612	Landscaping and grounds maintenance labourers	lawn care
+8612	Landscaping and grounds maintenance labourers	sod laying
+8613	Aquaculture and marine harvest labourers	aquaculture
+8613	Aquaculture and marine harvest labourers	digger, clam / quahog
+8613	Aquaculture and marine harvest labourers	fish farm / sea farm
+8613	Aquaculture and marine harvest labourers	gatherer, seaweed
+8613	Aquaculture and marine harvest labourers	oyster harvester / picker / shucker
+8613	Aquaculture and marine harvest labourers	shellfish harvester
+8614	Mine labourers	chute puller
+8614	Mine labourers	core cutter
+8614	Mine labourers	duster, rock / stone
+8614	Mine labourers	labourer - mining exploration
+8614	Mine labourers	miner / pipeworker 
+8614	Mine labourers	pit scaler
+8614	Mine labourers	powder carrier - underground mining
+8614	Mine labourers	sampler, coal / sample processor
+8614	Mine labourers	setter, timber and steel prop
+8614	Mine labourers	shoveller
+8614	Mine labourers	slate picker
+8614	Mine labourers	splitter, core
+8614	Mine labourers	spreader, limestone
+8614	Mine labourers	underground mine - grizzly worker
+8614	Mine labourers	weigher, mine check
+8615	Oil and gas drilling, servicing and related labourers	leasehand, oil and gas drilling
+8615	Oil and gas drilling, servicing and related labourers	observer - prospecting
+8615	Oil and gas drilling, servicing and related labourers	oil field
+8615	Oil and gas drilling, servicing and related labourers	roughneck / roustabout
+8615	Oil and gas drilling, servicing and related labourers	seismic GPS rover / seismic line cutter
+8615	Oil and gas drilling, servicing and related labourers	shakerhand - oil and gas drilling
+8615	Oil and gas drilling, servicing and related labourers	shooter - seismograph
+8615	Oil and gas drilling, servicing and related labourers	slasher - oil and gas
+8615	Oil and gas drilling, servicing and related labourers	swamper - oil and gas
+8616	Logging and forestry labourers	boom worker - logging / mill pond
+8616	Logging and forestry labourers	cable hooker - logging
+8616	Logging and forestry labourers	choke setter - logging
+8616	Logging and forestry labourers	log driver / rider / river driver
+8616	Logging and forestry labourers	pondman / pondwoman
+8616	Logging and forestry labourers	sprayer - logging and forestry
+9211	Supervisors, mineral and metal processing	coach, roll shop operations - steel mill
+9211	Supervisors, mineral and metal processing	co-ordinator, shift - steel mill
+9211	Supervisors, mineral and metal processing	foreperson, annealing / anodizing
+9211	Supervisors, mineral and metal processing	foreperson, asbestos manufacturing
+9211	Supervisors, mineral and metal processing	foreperson, casting operations 
+9211	Supervisors, mineral and metal processing	foreperson, cement / concrete processing
+9211	Supervisors, mineral and metal processing	foreperson, clay manufacturing
+9211	Supervisors, mineral and metal processing	foreperson, concentrator / converter
+9211	Supervisors, mineral and metal processing	foreperson, crushing, grinding, screening
+9211	Supervisors, mineral and metal processing	foreperson, electrolytic cell operations
+9211	Supervisors, mineral and metal processing	foreperson, extruding and drawing
+9211	Supervisors, mineral and metal processing	foreperson, foundry
+9211	Supervisors, mineral and metal processing	foreperson, glass processing
+9211	Supervisors, mineral and metal processing	foreperson, inspecting, testing, grading
+9211	Supervisors, mineral and metal processing	foreperson, kiln operations
+9211	Supervisors, mineral and metal processing	foreperson, mineral processing filter
+9211	Supervisors, mineral and metal processing	foreperson, mixing and separating
+9211	Supervisors, mineral and metal processing	foreperson, primary metal processing
+9211	Supervisors, mineral and metal processing	foreperson, scrap metal / reclamation
+9211	Supervisors, mineral and metal processing	foreperson, sintering plant
+9211	Supervisors, mineral and metal processing	foreperson, smelting, converting, refining
+9211	Supervisors, mineral and metal processing	foreperson, stone processing
+9211	Supervisors, mineral and metal processing	foreperson, tankhouse
+9211	Supervisors, mineral and metal processing	foreperson, tapper operations
+9211	Supervisors, mineral and metal processing	foreperson, uranium processing
+9212	Supervisors, petroleum, gas and chemical processing and utilities	by-products extraction
+9212	Supervisors, petroleum, gas and chemical processing and utilities	chief power engineer
+9212	Supervisors, petroleum, gas and chemical processing and utilities	chief, power plant / water treatment
+9212	Supervisors, petroleum, gas and chemical processing and utilities	chlorine plant
+9212	Supervisors, petroleum, gas and chemical processing and utilities	coater, calendering
+9212	Supervisors, petroleum, gas and chemical processing and utilities	compost facility / landfill
+9212	Supervisors, petroleum, gas and chemical processing and utilities	compressor station
+9212	Supervisors, petroleum, gas and chemical processing and utilities	continuous process
+9212	Supervisors, petroleum, gas and chemical processing and utilities	cosmetics processing
+9212	Supervisors, petroleum, gas and chemical processing and utilities	detergents and removers
+9212	Supervisors, petroleum, gas and chemical processing and utilities	engineer, chief stationary / refrigeration
+9212	Supervisors, petroleum, gas and chemical processing and utilities	evaporator
+9212	Supervisors, petroleum, gas and chemical processing and utilities	filtration plant
+9212	Supervisors, petroleum, gas and chemical processing and utilities	gas field / plant
+9212	Supervisors, petroleum, gas and chemical processing and utilities	incinerator / waste treat,emt
+9212	Supervisors, petroleum, gas and chemical processing and utilities	ink preparation / paint making
+9212	Supervisors, petroleum, gas and chemical processing and utilities	leader, steam engineer
+9212	Supervisors, petroleum, gas and chemical processing and utilities	natural gas / power plant
+9212	Supervisors, petroleum, gas and chemical processing and utilities	pharmaceutical compounding
+9212	Supervisors, petroleum, gas and chemical processing and utilities	pipeline operations
+9212	Supervisors, petroleum, gas and chemical processing and utilities	processing / refining
+9212	Supervisors, petroleum, gas and chemical processing and utilities	pumping and blending
+9212	Supervisors, petroleum, gas and chemical processing and utilities	specialty chemicals production
+9212	Supervisors, petroleum, gas and chemical processing and utilities	water purification plant
+9212	Supervisors, petroleum, gas and chemical processing and utilities	water, sewer, and sanitation
+9213	Supervisors, food and beverage processing	co-ordinator, HACCP
+9213	Supervisors, food and beverage processing	foreperson, abattoir
+9213	Supervisors, food and beverage processing	foreperson, bakery and confectionery 
+9213	Supervisors, food and beverage processing	foreperson, boiling house
+9213	Supervisors, food and beverage processing	foreperson, bottling / cannery
+9213	Supervisors, food and beverage processing	foreperson, brewery / distilling
+9213	Supervisors, food and beverage processing	foreperson, char house
+9213	Supervisors, food and beverage processing	foreperson, chocolate processing
+9213	Supervisors, food and beverage processing	foreperson, cigarette inspectors / graders
+9213	Supervisors, food and beverage processing	foreperson, coffee roasting / tea blending
+9213	Supervisors, food and beverage processing	foreperson, dairy products processing
+9213	Supervisors, food and beverage processing	foreperson, dry starch / wet starch
+9213	Supervisors, food and beverage processing	foreperson, fish processing
+9213	Supervisors, food and beverage processing	foreperson, food and beverage testers
+9213	Supervisors, food and beverage processing	foreperson, fruit and vegetable processing
+9213	Supervisors, food and beverage processing	foreperson, hide curing
+9213	Supervisors, food and beverage processing	foreperson, meat processing
+9213	Supervisors, food and beverage processing	foreperson, milling (feed, grain, flour)
+9213	Supervisors, food and beverage processing	foreperson, pan house
+9213	Supervisors, food and beverage processing	foreperson, poultry processing
+9213	Supervisors, food and beverage processing	foreperson, slaughterhouse / meat packing
+9213	Supervisors, food and beverage processing	foreperson, sugar processing / refining
+9213	Supervisors, food and beverage processing	foreperson, testing, grading and sampling
+9213	Supervisors, food and beverage processing	foreperson, tobacco processing 
+9213	Supervisors, food and beverage processing	foreperson, wash house
+9213	Supervisors, food and beverage processing	mastery, winery cellar
+9213	Supervisors, food and beverage processing	supervisor, food / beverage production
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, assemblers
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, blow moulding
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, calendering
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, compounding foreperson
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, compression moulding
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, conveyor belt building
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, curing
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, extrusion
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, fibreglass plastics
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, finishing / trimming
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, foam products inspection
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, hose building
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, injection moulding
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, inner tube building
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, matting inspection
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, millroom
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, mixing
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, moulded footwear inspection
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, paint department
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, plastic inspectors
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, quality control
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, roll building
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, rubber footwear moulding
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, rubber fuel tank
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, rubber manufacturing - V-belt
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, rubber products manufacturing
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, sampling
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, snowtrack
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, spray chamber
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, stock preparation
+9214	Supervisors, plastic and rubber products manufacturing	foreperson, tire building 
+9215	Supervisors, forest products processing	foreperson, forest products
+9215	Supervisors, forest products processing	foreperson, lumber grading
+9215	Supervisors, forest products processing	foreperson, paper products manufacturing
+9215	Supervisors, forest products processing	foreperson, papermaking and finishing
+9215	Supervisors, forest products processing	foreperson, pulp and paper mill
+9215	Supervisors, forest products processing	foreperson, sawmill
+9215	Supervisors, forest products processing	foreperson, screen room - pulp and paper
+9215	Supervisors, forest products processing	foreperson, shake and shingle machine
+9215	Supervisors, forest products processing	foreperson, tour - pulp and paper
+9215	Supervisors, forest products processing	foreperson, winding room - pulp and paper
+9215	Supervisors, forest products processing	foreperson, wood processing 
+9217	Supervisors, textile, fabric, fur and leather products processing and manufacturing	foreperson, bootmakers and shoemakers
+9217	Supervisors, textile, fabric, fur and leather products processing and manufacturing	foreperson, canvas products manufacturing
+9217	Supervisors, textile, fabric, fur and leather products processing and manufacturing	foreperson, carpet manufacturing
+9217	Supervisors, textile, fabric, fur and leather products processing and manufacturing	foreperson, clothing manufacture
+9217	Supervisors, textile, fabric, fur and leather products processing and manufacturing	foreperson, fabric, fur, leather manuf'g
+9217	Supervisors, textile, fabric, fur and leather products processing and manufacturing	foreperson, garment manufacturing
+9217	Supervisors, textile, fabric, fur and leather products processing and manufacturing	foreperson, hide and pelt processing
+9217	Supervisors, textile, fabric, fur and leather products processing and manufacturing	foreperson, inspectors / quality control
+9217	Supervisors, textile, fabric, fur and leather products processing and manufacturing	foreperson, layout / marking / cutting
+9217	Supervisors, textile, fabric, fur and leather products processing and manufacturing	foreperson, luggage assembly
+9217	Supervisors, textile, fabric, fur and leather products processing and manufacturing	foreperson, millinery
+9217	Supervisors, textile, fabric, fur and leather products processing and manufacturing	foreperson, preparation department
+9217	Supervisors, textile, fabric, fur and leather products processing and manufacturing	foreperson, sample room
+9217	Supervisors, textile, fabric, fur and leather products processing and manufacturing	foreperson, sewing machine operators
+9217	Supervisors, textile, fabric, fur and leather products processing and manufacturing	foreperson, textile processing
+9217	Supervisors, textile, fabric, fur and leather products processing and manufacturing	foreperson, yarn preparation
+9221	Supervisors, motor vehicle assembling	foreperson, automobile assembly
+9221	Supervisors, motor vehicle assembling	foreperson, motor vehicle manufacturing
+9221	Supervisors, motor vehicle assembling	supervisor, body shop / paint shop
+9222	Supervisors, electronics manufacturing	foreperson, business machines
+9222	Supervisors, electronics manufacturing	foreperson, IC (integrated circuit) making
+9222	Supervisors, electronics manufacturing	foreperson, inspection / systems test 
+9222	Supervisors, electronics manufacturing	foreperson, PCB (printed circuit board)
+9222	Supervisors, electronics manufacturing	foreperson, semiconductors
+9222	Supervisors, electronics manufacturing	foreperson, telecommunications
+9223	Supervisors, electrical products manufacturing	foreperson, electric cable manufacturing
+9223	Supervisors, electrical products manufacturing	foreperson, electrical appliance assembly
+9223	Supervisors, electrical products manufacturing	foreperson, electrical dry cell assembly
+9223	Supervisors, electrical products manufacturing	foreperson, electrical equipment 
+9223	Supervisors, electrical products manufacturing	foreperson, motor assembly / testing
+9224	Supervisors, furniture and fixtures manufacturing	foreperson, furniture / fixtures manuf'g
+9224	Supervisors, furniture and fixtures manufacturing	foreperson, furniture assembly
+9224	Supervisors, furniture and fixtures manufacturing	foreperson, machining - furniture / fixtures
+9224	Supervisors, furniture and fixtures manufacturing	foreperson, mattress manufacturing
+9224	Supervisors, furniture and fixtures manufacturing	foreperson, sanding / buffing / lacquer
+9224	Supervisors, furniture and fixtures manufacturing	foreperson, woodworking
+9226	Supervisors, other mechanical and metal products manufacturing	foreperson, agricultural equipment
+9226	Supervisors, other mechanical and metal products manufacturing	foreperson, aircraft / helicopters
+9226	Supervisors, other mechanical and metal products manufacturing	foreperson, ball and roller-bearings
+9226	Supervisors, other mechanical and metal products manufacturing	foreperson, construction machinery
+9226	Supervisors, other mechanical and metal products manufacturing	foreperson, electroplating / galvanizing 
+9226	Supervisors, other mechanical and metal products manufacturing	foreperson, engines
+9226	Supervisors, other mechanical and metal products manufacturing	foreperson, garden equipment
+9226	Supervisors, other mechanical and metal products manufacturing	foreperson, industrial truck
+9226	Supervisors, other mechanical and metal products manufacturing	foreperson, inspection - aircraft assembly
+9226	Supervisors, other mechanical and metal products manufacturing	foreperson, material-handling equipment 
+9226	Supervisors, other mechanical and metal products manufacturing	foreperson, mobile home
+9226	Supervisors, other mechanical and metal products manufacturing	foreperson, paint department
+9226	Supervisors, other mechanical and metal products manufacturing	foreperson, power transmission
+9226	Supervisors, other mechanical and metal products manufacturing	foreperson, printing equipment
+9226	Supervisors, other mechanical and metal products manufacturing	foreperson, small engine 
+9226	Supervisors, other mechanical and metal products manufacturing	foreperson, spacecraft subassembly
+9226	Supervisors, other mechanical and metal products manufacturing	foreperson, vending machine
+9227	Supervisors, other products manufacturing and assembly	foreperson, baby carriage
+9227	Supervisors, other products manufacturing and assembly	foreperson, bicycle
+9227	Supervisors, other products manufacturing and assembly	foreperson, candle making
+9227	Supervisors, other products manufacturing and assembly	foreperson, clock and watch assembly
+9227	Supervisors, other products manufacturing and assembly	foreperson, fibreglass boat
+9227	Supervisors, other products manufacturing and assembly	foreperson, firearms
+9227	Supervisors, other products manufacturing and assembly	foreperson, hand tools manufacturing
+9227	Supervisors, other products manufacturing and assembly	foreperson, lamp shade fabrication
+9227	Supervisors, other products manufacturing and assembly	foreperson, manufacturing / repair
+9227	Supervisors, other products manufacturing and assembly	foreperson, mirror silvering
+9227	Supervisors, other products manufacturing and assembly	foreperson, musical instrument manuf'g
+9227	Supervisors, other products manufacturing and assembly	foreperson, optical instruments
+9227	Supervisors, other products manufacturing and assembly	foreperson, photographic equipment
+9227	Supervisors, other products manufacturing and assembly	foreperson, recording instruments
+9227	Supervisors, other products manufacturing and assembly	foreperson, spikemaking
+9227	Supervisors, other products manufacturing and assembly	foreperson, sporting equipment manuf'g
+9227	Supervisors, other products manufacturing and assembly	foreperson, toy manufacturing
+9227	Supervisors, other products manufacturing and assembly	foreperson, wood products
+9231	Central control and process operators, mineral and metal processing	alloy control / purity control
+9231	Central control and process operators, mineral and metal processing	bar mill finisher / billet mill
+9231	Central control and process operators, mineral and metal processing	blast furnace / crucible
+9231	Central control and process operators, mineral and metal processing	caster, central control
+9231	Central control and process operators, mineral and metal processing	charger, head
+9231	Central control and process operators, mineral and metal processing	chief flotation
+9231	Central control and process operators, mineral and metal processing	coke plant 
+9231	Central control and process operators, mineral and metal processing	cold mill / hot mill
+9231	Central control and process operators, mineral and metal processing	console - cement manufacturing
+9231	Central control and process operators, mineral and metal processing	continuous casting 
+9231	Central control and process operators, mineral and metal processing	control room
+9231	Central control and process operators, mineral and metal processing	controller, slurry
+9231	Central control and process operators, mineral and metal processing	furnace - vacuum / reverberatory
+9231	Central control and process operators, mineral and metal processing	ion exchange
+9231	Central control and process operators, mineral and metal processing	metal heater / melter / smelter / roaster
+9231	Central control and process operators, mineral and metal processing	open-flame furnace
+9231	Central control and process operators, mineral and metal processing	processor, nuclear fuel
+9231	Central control and process operators, mineral and metal processing	refinery - copper / electrolytic
+9231	Central control and process operators, mineral and metal processing	roaster - ore / molybdenum
+9231	Central control and process operators, mineral and metal processing	vacuum-degasser / steel-degasser
+9231	Central control and process operators, mineral and metal processing	zinc pressure leach
+9232	Central control and process operators, petroleum, gas and chemical processing	batching / continuous process
+9232	Central control and process operators, petroleum, gas and chemical processing	battery operator - oil and gas
+9232	Central control and process operators, petroleum, gas and chemical processing	blender, petroleum / propellants
+9232	Central control and process operators, petroleum, gas and chemical processing	boardman / boardwoman
+9232	Central control and process operators, petroleum, gas and chemical processing	catalytic conversion operator
+9232	Central control and process operators, petroleum, gas and chemical processing	caustic cell
+9232	Central control and process operators, petroleum, gas and chemical processing	cell room - chlor-alkali plant
+9232	Central control and process operators, petroleum, gas and chemical processing	coal gas exhaust
+9232	Central control and process operators, petroleum, gas and chemical processing	column - chemical processing
+9232	Central control and process operators, petroleum, gas and chemical processing	fermenter, antibiotics
+9232	Central control and process operators, petroleum, gas and chemical processing	field contract operator - oil and gas
+9232	Central control and process operators, petroleum, gas and chemical processing	fractionator operator - petroleum
+9232	Central control and process operators, petroleum, gas and chemical processing	gas - field production / plant
+9232	Central control and process operators, petroleum, gas and chemical processing	gas control coordinator / dispatcher
+9232	Central control and process operators, petroleum, gas and chemical processing	gauger, oil / pipelines
+9232	Central control and process operators, petroleum, gas and chemical processing	lead / chief / master
+9232	Central control and process operators, petroleum, gas and chemical processing	maker, nitocellulose / nitroglycerine
+9232	Central control and process operators, petroleum, gas and chemical processing	oil blender / controller / dispatcher
+9232	Central control and process operators, petroleum, gas and chemical processing	oil field production
+9232	Central control and process operators, petroleum, gas and chemical processing	petroleum distillation / refinery
+9232	Central control and process operators, petroleum, gas and chemical processing	petroleum equipment installer
+9232	Central control and process operators, petroleum, gas and chemical processing	phosphate process fertilizer maker
+9232	Central control and process operators, petroleum, gas and chemical processing	pipeline compressor station
+9232	Central control and process operators, petroleum, gas and chemical processing	plant oil and gas
+9232	Central control and process operators, petroleum, gas and chemical processing	process control system
+9232	Central control and process operators, petroleum, gas and chemical processing	processor, sterile products
+9232	Central control and process operators, petroleum, gas and chemical processing	roaster, chemical
+9232	Central control and process operators, petroleum, gas and chemical processing	service technician
+9232	Central control and process operators, petroleum, gas and chemical processing	tank farm
+9232	Central control and process operators, petroleum, gas and chemical processing	tender, rotary furnace
+9232	Central control and process operators, petroleum, gas and chemical processing	wet explosives mixer
+9235	Pulping, papermaking and coating control operators	control operator - pulping / paper machine
+9235	Pulping, papermaking and coating control operators	control room / panelboard
+9235	Pulping, papermaking and coating control operators	cooking systems
+9235	Pulping, papermaking and coating control operators	cylinder machine 
+9235	Pulping, papermaking and coating control operators	paper maker
+9235	Pulping, papermaking and coating control operators	peroxide bleach plant 
+9235	Pulping, papermaking and coating control operators	recovery plant
+9235	Pulping, papermaking and coating control operators	technician, pulping
+9241	Power engineers and power systems operators	air compressor
+9241	Power engineers and power systems operators	auxiliary plant equipment
+9241	Power engineers and power systems operators	biomass plant technician
+9241	Power engineers and power systems operators	building HVAC systems
+9241	Power engineers and power systems operators	controller, system 
+9241	Power engineers and power systems operators	conversion substation
+9241	Power engineers and power systems operators	dispatcher, power station
+9241	Power engineers and power systems operators	electrical generating station
+9241	Power engineers and power systems operators	energy recovery incinerator
+9241	Power engineers and power systems operators	heavy water steam plant
+9241	Power engineers and power systems operators	inspector, electrical substation
+9241	Power engineers and power systems operators	mobile generator 
+9241	Power engineers and power systems operators	nuclear generating station
+9241	Power engineers and power systems operators	operating engineer - power plant
+9241	Power engineers and power systems operators	power control room / switchboard
+9241	Power engineers and power systems operators	power engineer, first-class / fourth-class
+9241	Power engineers and power systems operators	power system - offshore drilling
+9241	Power engineers and power systems operators	rectifier - electrical power
+9241	Power engineers and power systems operators	refrigeration / thermal plant
+9241	Power engineers and power systems operators	stationary diesel engine
+9241	Power engineers and power systems operators	stationary engineer, first-class 
+9241	Power engineers and power systems operators	stationary engineer, power plant / hospital
+9241	Power engineers and power systems operators	steam turbine
+9243	Water and waste treatment plant operators	controller, water filtration plant
+9243	Water and waste treatment plant operators	environmental systems
+9243	Water and waste treatment plant operators	industrial waste treatment plant
+9243	Water and waste treatment plant operators	liquid waste treatment plant operator
+9243	Water and waste treatment plant operators	technician, water and wastewater treatment
+9243	Water and waste treatment plant operators	wastewater collection systems
+9243	Water and waste treatment plant operators	water gate
+9243	Water and waste treatment plant operators	water treatment pump station
+9243	Water and waste treatment plant operators	waterworks pump house
+9243	Water and waste treatment plant operators	well-point pump
+9411	Machine operators, mineral and metal processing	alumina clarifier / recovery
+9411	Machine operators, mineral and metal processing	aluminum equipment
+9411	Machine operators, mineral and metal processing	annealer 
+9411	Machine operators, mineral and metal processing	anode / anode caster
+9411	Machine operators, mineral and metal processing	attendant, agglomerating
+9411	Machine operators, mineral and metal processing	attendant, discharge door / induration
+9411	Machine operators, mineral and metal processing	attendant, spiral conveyor
+9411	Machine operators, mineral and metal processing	baghouse
+9411	Machine operators, mineral and metal processing	bar-straightening machine
+9411	Machine operators, mineral and metal processing	blender, diamond powder
+9411	Machine operators, mineral and metal processing	brine maker
+9411	Machine operators, mineral and metal processing	cadmium equipment 
+9411	Machine operators, mineral and metal processing	calciner, gypsum
+9411	Machine operators, mineral and metal processing	casting machine
+9411	Machine operators, mineral and metal processing	cathode-stripping machine
+9411	Machine operators, mineral and metal processing	cement and concrete equipment
+9411	Machine operators, mineral and metal processing	charging machine
+9411	Machine operators, mineral and metal processing	classifier
+9411	Machine operators, mineral and metal processing	coal breaker / screener / washer
+9411	Machine operators, mineral and metal processing	coiler
+9411	Machine operators, mineral and metal processing	condenser
+9411	Machine operators, mineral and metal processing	continuous drossing
+9411	Machine operators, mineral and metal processing	cooling bed
+9411	Machine operators, mineral and metal processing	copper billet piercing mill
+9411	Machine operators, mineral and metal processing	crusher and blender
+9411	Machine operators, mineral and metal processing	dewatering equipment
+9411	Machine operators, mineral and metal processing	digester
+9411	Machine operators, mineral and metal processing	dryer
+9411	Machine operators, mineral and metal processing	dryer, asbestos / asbestos screen tender
+9411	Machine operators, mineral and metal processing	electrolytic cleaner
+9411	Machine operators, mineral and metal processing	electrostatic separator
+9411	Machine operators, mineral and metal processing	extrusion press
+9411	Machine operators, mineral and metal processing	finisher - primary metal processing
+9411	Machine operators, mineral and metal processing	foil-winding machine
+9411	Machine operators, mineral and metal processing	fume scrubber
+9411	Machine operators, mineral and metal processing	hardener / case hardener
+9411	Machine operators, mineral and metal processing	heater, coke oven / rivet heater
+9411	Machine operators, mineral and metal processing	heat-treat furnace / kettle / kiln
+9411	Machine operators, mineral and metal processing	induction machine
+9411	Machine operators, mineral and metal processing	ingot finishing
+9411	Machine operators, mineral and metal processing	jumbo casting
+9411	Machine operators, mineral and metal processing	ladle / ladle pourer
+9411	Machine operators, mineral and metal processing	larry car
+9411	Machine operators, mineral and metal processing	leaching
+9411	Machine operators, mineral and metal processing	lead equipment
+9411	Machine operators, mineral and metal processing	magnetic separator
+9411	Machine operators, mineral and metal processing	manipulator machine
+9411	Machine operators, mineral and metal processing	metal extrusion press / hardener
+9411	Machine operators, mineral and metal processing	mica equipment
+9411	Machine operators, mineral and metal processing	milling machine
+9411	Machine operators, mineral and metal processing	molten metal mixer
+9411	Machine operators, mineral and metal processing	molybdenum flotation / leaching
+9411	Machine operators, mineral and metal processing	opperator, dust pump (slag furnace)
+9411	Machine operators, mineral and metal processing	ore crusher
+9411	Machine operators, mineral and metal processing	phosphate granulator
+9411	Machine operators, mineral and metal processing	pickler / pickle line
+9411	Machine operators, mineral and metal processing	pig iron equipment
+9411	Machine operators, mineral and metal processing	pointer
+9417	Machining tool operators	milling machine
+9411	Machine operators, mineral and metal processing	pot liner / tender 
+9411	Machine operators, mineral and metal processing	pourer, crane ladle / crucible
+9411	Machine operators, mineral and metal processing	processor, dental amalgam
+9411	Machine operators, mineral and metal processing	purification - zinc oxide leach
+9411	Machine operators, mineral and metal processing	quenching car
+9411	Machine operators, mineral and metal processing	recovery equipment
+9411	Machine operators, mineral and metal processing	reeling machine
+9411	Machine operators, mineral and metal processing	refiner, mint precious metal
+9411	Machine operators, mineral and metal processing	residue filter
+9411	Machine operators, mineral and metal processing	rod mill / rod drawer
+9411	Machine operators, mineral and metal processing	roll table / roller plate mill
+9411	Machine operators, mineral and metal processing	roller, tandem / temper mill
+9411	Machine operators, mineral and metal processing	salt machinery
+9411	Machine operators, mineral and metal processing	scalehouse - zinc melting
+9411	Machine operators, mineral and metal processing	scrap metal shredder / remelter
+9411	Machine operators, mineral and metal processing	scrubber operator
+9411	Machine operators, mineral and metal processing	seamless steel billet piercer
+9411	Machine operators, mineral and metal processing	seamless tube roller 
+9411	Machine operators, mineral and metal processing	setter, pipe and tube roll
+9411	Machine operators, mineral and metal processing	sheet rougher
+9411	Machine operators, mineral and metal processing	sink-float equipment
+9411	Machine operators, mineral and metal processing	sintering machine
+9411	Machine operators, mineral and metal processing	slime recovery / slime treater
+9411	Machine operators, mineral and metal processing	slurry equipment
+9411	Machine operators, mineral and metal processing	stack dust leach - zinc casting
+9411	Machine operators, mineral and metal processing	steel pourer / roller
+9411	Machine operators, mineral and metal processing	straightening machine
+9411	Machine operators, mineral and metal processing	stretcher-leveller
+9411	Machine operators, mineral and metal processing	sulphur control
+9411	Machine operators, mineral and metal processing	tankhouse equipment
+9411	Machine operators, mineral and metal processing	tapper, blast furnace / kettle
+9411	Machine operators, mineral and metal processing	tender, amalgamation
+9411	Machine operators, mineral and metal processing	tender, coke screen / coke blender
+9411	Machine operators, mineral and metal processing	tender, cone
+9411	Machine operators, mineral and metal processing	tender, Cottrell
+9411	Machine operators, mineral and metal processing	tender, flotation cell
+9411	Machine operators, mineral and metal processing	tender, flux-mixing machine
+9411	Machine operators, mineral and metal processing	tender, grinder / classifier / floatation
+9411	Machine operators, mineral and metal processing	tender, heavy media separation
+9411	Machine operators, mineral and metal processing	tender, hot strip finishing / roughing mill
+9411	Machine operators, mineral and metal processing	tender, pan 
+9411	Machine operators, mineral and metal processing	tender, peat moss dehydrator
+9411	Machine operators, mineral and metal processing	tender, pellet press / pellet segregator
+9411	Machine operators, mineral and metal processing	tender, precipitator
+9411	Machine operators, mineral and metal processing	tender, reagent
+9411	Machine operators, mineral and metal processing	tender, tailings thickener
+9411	Machine operators, mineral and metal processing	tender, wet plant recovery equipment
+9411	Machine operators, mineral and metal processing	transfer bed
+9411	Machine operators, mineral and metal processing	tube rolling mill
+9411	Machine operators, mineral and metal processing	waste treatment
+9411	Machine operators, mineral and metal processing	wire drawing machine
+9411	Machine operators, mineral and metal processing	zinc cell / zinc pressure leach
+9412	Foundry workers	caster
+9412	Foundry workers	caster, foundry
+9412	Foundry workers	coater, wax-pattern / moulder
+9412	Foundry workers	coremaker, bench / machine / pipe
+9412	Foundry workers	extruder, core
+9412	Foundry workers	foundry - core-sand mixer 
+9412	Foundry workers	maker, hand sand-core / pellet / shot
+9412	Foundry workers	moulder, foundry
+9412	Foundry workers	moulder, shell core / shell core maker
+9412	Foundry workers	mouldmaker, ceramic / hand
+9412	Foundry workers	operator, automatic moulding machine
+9412	Foundry workers	operator, casting / centrifugal casting 
+9412	Foundry workers	operator, core machine / core oven
+9412	Foundry workers	operator, foundry machines
+9412	Foundry workers	operator, furnace (cupola)
+9412	Foundry workers	operator, furnace (electric)
+9412	Foundry workers	operator, furnace (induction)
+9412	Foundry workers	operator, sand system
+9412	Foundry workers	operator, strand
+9412	Foundry workers	operator, vessel
+9412	Foundry workers	pattern moulder / gater
+9412	Foundry workers	setter, core
+9412	Foundry workers	tender, sintering press
+9413	Glass forming and finishing machine operators and glass cutters	controller, yardage
+9413	Glass forming and finishing machine operators and glass cutters	cutter, special glass / staple
+9413	Glass forming and finishing machine operators and glass cutters	gatherer
+9413	Glass forming and finishing machine operators and glass cutters	grinder, glassware
+9413	Glass forming and finishing machine operators and glass cutters	inspector, bottle
+9413	Glass forming and finishing machine operators and glass cutters	maker, tinted glassware
+9413	Glass forming and finishing machine operators and glass cutters	mirror maker / silverer
+9413	Glass forming and finishing machine operators and glass cutters	neon sign pumper / tube bender
+9413	Glass forming and finishing machine operators and glass cutters	operator, automatic glass-cutting table
+9413	Glass forming and finishing machine operators and glass cutters	operator, bottle maker
+9413	Glass forming and finishing machine operators and glass cutters	operator, diamond grinder
+9413	Glass forming and finishing machine operators and glass cutters	operator, drawing kiln / tempering furnace
+9413	Glass forming and finishing machine operators and glass cutters	operator, enamelling furnace
+9413	Glass forming and finishing machine operators and glass cutters	operator, float
+9413	Glass forming and finishing machine operators and glass cutters	operator, glass bonding machine
+9413	Glass forming and finishing machine operators and glass cutters	operator, glass cut-off machine
+9413	Glass forming and finishing machine operators and glass cutters	operator, glass edger / hand-finisher
+9413	Glass forming and finishing machine operators and glass cutters	operator, glass furnace / set-up
+9413	Glass forming and finishing machine operators and glass cutters	operator, glass lehr / annealer
+9413	Glass forming and finishing machine operators and glass cutters	operator, glass spin mould machine set-up
+9413	Glass forming and finishing machine operators and glass cutters	operator, glass windshield autoclave
+9413	Glass forming and finishing machine operators and glass cutters	operator, glass-blowing lathe 
+9413	Glass forming and finishing machine operators and glass cutters	operator, glass-decorating / finishing 
+9413	Glass forming and finishing machine operators and glass cutters	operator, glass-tube-expander
+9413	Glass forming and finishing machine operators and glass cutters	operator, strapping machine
+9413	Glass forming and finishing machine operators and glass cutters	tender, banding machine
+9413	Glass forming and finishing machine operators and glass cutters	tester, beaker / bottle
+9413	Glass forming and finishing machine operators and glass cutters	worker, glass - ornamental / stained glass
+9413	Glass forming and finishing machine operators and glass cutters	worker, glass - polisher / presser 
+9413	Glass forming and finishing machine operators and glass cutters	worker, glass bender / beveller / breaker
+9414	Concrete, clay and stone forming operators	abrasives furnace preparer / mixer / kiln
+9414	Concrete, clay and stone forming operators	asbestos shingle assembler / cutter 
+9414	Concrete, clay and stone forming operators	buffer / polisher (hand, machine)
+9414	Concrete, clay and stone forming operators	builder, clay insulator
+9414	Concrete, clay and stone forming operators	carbon planer tender
+9414	Concrete, clay and stone forming operators	caster / scagliola caster
+9414	Concrete, clay and stone forming operators	cement / cinder block maker
+9414	Concrete, clay and stone forming operators	clay glaze maker
+9414	Concrete, clay and stone forming operators	concrete plant
+9414	Concrete, clay and stone forming operators	cutter / planer / drill press 
+9414	Concrete, clay and stone forming operators	driller (clayware, greenware)
+9414	Concrete, clay and stone forming operators	extruder / finisher
+9414	Concrete, clay and stone forming operators	furnace (hydrogen)
+9414	Concrete, clay and stone forming operators	greenware turner / finisher
+9414	Concrete, clay and stone forming operators	grinder / hammer mill
+9414	Concrete, clay and stone forming operators	hot press / dry press
+9414	Concrete, clay and stone forming operators	hydraulic press 
+9414	Concrete, clay and stone forming operators	insulation mat machine
+9414	Concrete, clay and stone forming operators	jigger
+9414	Concrete, clay and stone forming operators	kiln - baker / caster / presser
+9414	Concrete, clay and stone forming operators	mill / pug mill
+9414	Concrete, clay and stone forming operators	mixer / caster / dry plaster
+9414	Concrete, clay and stone forming operators	modelling clay mixer and extruder
+9414	Concrete, clay and stone forming operators	mortar mixer / refractory mortar
+9414	Concrete, clay and stone forming operators	moulder, cement blocks / concrete poles 
+9414	Concrete, clay and stone forming operators	mouldmaker / mould installer / filler
+9414	Concrete, clay and stone forming operators	pipe fittings moulder
+9414	Concrete, clay and stone forming operators	polisher / temperer / decorator
+9414	Concrete, clay and stone forming operators	pottery and porcelain chipper / former
+9414	Concrete, clay and stone forming operators	pottery and porcelain dishmaker
+9414	Concrete, clay and stone forming operators	pottery mould maker / trimmer / dryer
+9414	Concrete, clay and stone forming operators	quartzware fabricator
+9414	Concrete, clay and stone forming operators	retort / steam-pressure cylinder
+9414	Concrete, clay and stone forming operators	slate bed maker
+9414	Concrete, clay and stone forming operators	slate cutter / mixer / grinder / crusher
+9414	Concrete, clay and stone forming operators	stone grinder tender / stone layout marker
+9414	Concrete, clay and stone forming operators	stone saw / stone drill press
+9414	Concrete, clay and stone forming operators	surface plate finisher
+9414	Concrete, clay and stone forming operators	tile burner / maker / terrazzo maker
+9414	Concrete, clay and stone forming operators	turner (greenware, porcelain)
+9414	Concrete, clay and stone forming operators	worker, cement pipe shaper
+9415	Inspectors and testers, mineral and metal processing	adjuster, anode adjuster
+9415	Inspectors and testers, mineral and metal processing	asbestos classifier / grader / inspector
+9415	Inspectors and testers, mineral and metal processing	coke inspector / sampler / tester
+9415	Inspectors and testers, mineral and metal processing	inspector, cement / concrete products
+9415	Inspectors and testers, mineral and metal processing	inspector, finishing
+9415	Inspectors and testers, mineral and metal processing	inspector, foundry - core tester
+9415	Inspectors and testers, mineral and metal processing	inspector, monuments
+9415	Inspectors and testers, mineral and metal processing	inspector, steel mill - quality assurance
+9415	Inspectors and testers, mineral and metal processing	inspector, wires
+9415	Inspectors and testers, mineral and metal processing	sampler, mineral / ore / molten metal
+9415	Inspectors and testers, mineral and metal processing	tester, abrasive wheel / electrolytic cell
+9416	Metalworking and forging machine operators	acetylene torch / arc cutter 
+9416	Metalworking and forging machine operators	aluminum sheet cutter - ductwork
+9416	Metalworking and forging machine operators	automatic cut-off saw operator
+9416	Metalworking and forging machine operators	bender, tube - musical instruments
+9416	Metalworking and forging machine operators	bending press
+9416	Metalworking and forging machine operators	burning table / plate burner
+9416	Metalworking and forging machine operators	cage builder - metal fabrication
+9416	Metalworking and forging machine operators	CNC brake press
+9416	Metalworking and forging machine operators	cold press / cold drawn
+9416	Metalworking and forging machine operators	dimensional inspector - machine shop
+9416	Metalworking and forging machine operators	disk flange
+9416	Metalworking and forging machine operators	expanding machine
+9416	Metalworking and forging machine operators	forger, heavy
+9416	Metalworking and forging machine operators	hammer (air, drop, dual-action)
+9416	Metalworking and forging machine operators	heater / drop forge
+9416	Metalworking and forging machine operators	hoop-maker machine
+9416	Metalworking and forging machine operators	lead fabricator
+9416	Metalworking and forging machine operators	lead hand, forging machine operators
+9416	Metalworking and forging machine operators	maker, leaf spring
+9416	Metalworking and forging machine operators	manipulator
+9416	Metalworking and forging machine operators	marker, lay-out
+9416	Metalworking and forging machine operators	metal power / table saw
+9416	Metalworking and forging machine operators	metal-forming machine set-up
+9416	Metalworking and forging machine operators	nibbling machine
+9416	Metalworking and forging machine operators	pantograph burner / flame cutter
+9416	Metalworking and forging machine operators	power brake / press brake
+9416	Metalworking and forging machine operators	press 
+9416	Metalworking and forging machine operators	repairer, vehicle spring
+9416	Metalworking and forging machine operators	ring mill
+9416	Metalworking and forging machine operators	roll forming machine
+9416	Metalworking and forging machine operators	sheet metal corrugator 
+9416	Metalworking and forging machine operators	slide forming machine 
+9416	Metalworking and forging machine operators	steel shot machine
+9416	Metalworking and forging machine operators	tender, multi-operation forming machine
+9416	Metalworking and forging machine operators	tender, sheet metal brake
+9416	Metalworking and forging machine operators	threader 
+9416	Metalworking and forging machine operators	upsetter / upsetting machine 
+9416	Metalworking and forging machine operators	worker, ornamental metal
+9417	Machining tool operators	aircraft parts machine tool
+9417	Machining tool operators	automated machine tool 
+9417	Machining tool operators	automatic screw machine
+9417	Machining tool operators	bench set-up
+9417	Machining tool operators	bolt-threading / broaching
+9417	Machining tool operators	boring machine - boring mill
+9417	Machining tool operators	broacher
+9417	Machining tool operators	centreless cylindrical-grinder
+9417	Machining tool operators	CNC machining / profile mill
+9417	Machining tool operators	countersinking / diesinking
+9417	Machining tool operators	cutter, thread / production gear
+9417	Machining tool operators	cylinder grinder
+9417	Machining tool operators	drill press
+9417	Machining tool operators	electrical discharge machine
+9417	Machining tool operators	electrochemical machining tool
+9417	Machining tool operators	file cutter / maker / hand tool-filer
+9417	Machining tool operators	gear hobber / cutter / grinder
+9417	Machining tool operators	gear-cutting / gear-milling
+9417	Machining tool operators	general machine tool set-up
+9417	Machining tool operators	keyseater
+9417	Machining tool operators	lapper, hand / precision / tool
+9417	Machining tool operators	lathe
+9417	Machining tool operators	layer-out / layout marker - machine shop
+9417	Machining tool operators	machining tool & set-up
+9417	Machining tool operators	metal band saw / metal saw tooth
+9417	Machining tool operators	NC (numerical control) drill
+9417	Machining tool operators	numerically controlled machine
+9417	Machining tool operators	pantograph milling machine
+9417	Machining tool operators	pipe-threading machine
+9417	Machining tool operators	planer
+9417	Machining tool operators	precision grinding / honing
+9417	Machining tool operators	printing-roller grinder / polisher
+9417	Machining tool operators	rifler, barrel
+9417	Machining tool operators	router operator 
+9417	Machining tool operators	spiral gear-generator
+9417	Machining tool operators	stamper, name plate
+9417	Machining tool operators	straight bevel-gear cutter
+9417	Machining tool operators	threader, barrel - small arms
+9417	Machining tool operators	threader, bolt / screw
+9417	Machining tool operators	threading machine
+9417	Machining tool operators	tool filer, hand - metal machining
+9417	Machining tool operators	tool grinder / lapper / dresser
+9418	Other metal products machine operators	automatic bolt machine
+9418	Other metal products machine operators	barbed wire machine
+9418	Other metal products machine operators	beading machine / tinware beader
+9418	Other metal products machine operators	blade sharpener / polisher
+9418	Other metal products machine operators	bolt header / bolt maker
+9418	Other metal products machine operators	buckshot swage / bullet maker
+9418	Other metal products machine operators	bunching
+9418	Other metal products machine operators	cable armourer / insulator / maker
+9418	Other metal products machine operators	cable stretcher / braiding 
+9418	Other metal products machine operators	can-forming machine
+9418	Other metal products machine operators	carbide press
+9418	Other metal products machine operators	chain-link fence making
+9418	Other metal products machine operators	chain-making machine
+9418	Other metal products machine operators	coiling machine - springs
+9418	Other metal products machine operators	crimping machine (wires)
+9418	Other metal products machine operators	cutter - axle / pipe
+9418	Other metal products machine operators	explosives manufacturing
+9418	Other metal products machine operators	fabricator, cylinder roll
+9418	Other metal products machine operators	finisher, asbestos-covered wires
+9418	Other metal products machine operators	fixture maker, plating equipment
+9418	Other metal products machine operators	hoop-making / punching / coiling
+9418	Other metal products machine operators	industrial needle machine 
+9418	Other metal products machine operators	inspector, cans / chains / springs
+9418	Other metal products machine operators	job setter, grid machine
+9418	Other metal products machine operators	knurling machine
+9418	Other metal products machine operators	maker - nail, safety pin, nut, bolt, rivet
+9418	Other metal products machine operators	maker, chandelier / lampshade / floor lamp
+9418	Other metal products machine operators	maker, metal chain / zipper links
+9418	Other metal products machine operators	metal awning / tent frame maker
+9418	Other metal products machine operators	metal cable maker / stretcher
+9418	Other metal products machine operators	metal header machine
+9418	Other metal products machine operators	metal sponge machine
+9418	Other metal products machine operators	metal-bonding / metal-twisting
+9418	Other metal products machine operators	miller, saw blades
+9418	Other metal products machine operators	NC (numerical control) riveter
+9418	Other metal products machine operators	polishing machine
+9418	Other metal products machine operators	reinforcing cage maker
+9418	Other metal products machine operators	rewinder, foil
+9418	Other metal products machine operators	roll threader
+9418	Other metal products machine operators	scarfing and boring machine
+9418	Other metal products machine operators	shaker-plate
+9418	Other metal products machine operators	shaper, shadow mask
+9418	Other metal products machine operators	spooler / spool winder
+9418	Other metal products machine operators	spring assembly / coiler
+9418	Other metal products machine operators	staple machine / steel wool
+9418	Other metal products machine operators	weaver, wire lattice / loom setter 
+9418	Other metal products machine operators	weaver, wire mesh / netting / screens
+9418	Other metal products machine operators	wire cable assembler-tester / stretcher
+9418	Other metal products machine operators	wire mesh fence-making machine
+9418	Other metal products machine operators	wire rope maker / rope sling / splicer
+9418	Other metal products machine operators	wire screen weaver / cutter / trimmer
+9418	Other metal products machine operators	wire-netting / winding / weaving
+9421	Chemical plant machine operators	acid pumper
+9421	Chemical plant machine operators	asphalt coater / heater 
+9421	Chemical plant machine operators	attendant, acetylene plant
+9421	Chemical plant machine operators	battery acid adjuster / paste maker
+9421	Chemical plant machine operators	bleacher, oils / wax
+9421	Chemical plant machine operators	blender, glue / powder / vinyl / asbestos
+9421	Chemical plant machine operators	burner, charcoal
+9421	Chemical plant machine operators	ink matcher / purifier
+9421	Chemical plant machine operators	maker, bleaching solution / cadmium liquor
+9421	Chemical plant machine operators	maker, varnish / lacquer
+9421	Chemical plant machine operators	mixer, batch / cleaning / coating compounds
+9421	Chemical plant machine operators	mixer, fertilizer / pesticide
+9421	Chemical plant machine operators	mixer, liquid photographic chemicals
+9421	Chemical plant machine operators	mixer, print colour / textile solution
+9421	Chemical plant machine operators	moulder and compressor, toiletries
+9421	Chemical plant machine operators	operator, autoclave / electrode oven
+9421	Chemical plant machine operators	operator, backing-in machine
+9421	Chemical plant machine operators	operator, black powder press
+9421	Chemical plant machine operators	operator, capsule filler
+9421	Chemical plant machine operators	operator, carbon black pelletizer
+9421	Chemical plant machine operators	operator, cellulose film caster
+9421	Chemical plant machine operators	operator, centrifuge
+9421	Chemical plant machine operators	operator, coating machine
+9421	Chemical plant machine operators	operator, colour grinder / mixer / weigher
+9421	Chemical plant machine operators	operator, crusher / digester / flaker
+9421	Chemical plant machine operators	operator, crystallizer / dehydrating press
+9421	Chemical plant machine operators	operator, devulcanizer
+9421	Chemical plant machine operators	operator, dryhouse - explosive primers
+9421	Chemical plant machine operators	operator, extractor
+9421	Chemical plant machine operators	operator, filter press / precipitator
+9421	Chemical plant machine operators	operator, graining press / granulator
+9421	Chemical plant machine operators	operator, hydrator / saturator
+9421	Chemical plant machine operators	operator, kettle / ring furnace / chiller
+9421	Chemical plant machine operators	operator, latex coagulation / compounder
+9421	Chemical plant machine operators	operator, lead oxide mill
+9421	Chemical plant machine operators	operator, mixer - asphalt roofing
+9421	Chemical plant machine operators	operator, nitrocellulose dryer
+9421	Chemical plant machine operators	operator, packaging machine
+9421	Chemical plant machine operators	operator, paradichlorobenzene equipment
+9421	Chemical plant machine operators	operator, pelletizer - plastics
+9421	Chemical plant machine operators	operator, pump - coke by-products
+9421	Chemical plant machine operators	operator, recovery equipment
+9421	Chemical plant machine operators	operator, sealant 
+9421	Chemical plant machine operators	operator, splash line
+9421	Chemical plant machine operators	operator, viscose filter-maker
+9421	Chemical plant machine operators	operator, wash-house and recovery
+9421	Chemical plant machine operators	preparer, spinneret pack
+9421	Chemical plant machine operators	recoverer, mercury
+9421	Chemical plant machine operators	screener-perfumer, detergents / soaps
+9421	Chemical plant machine operators	settler-filterer
+9421	Chemical plant machine operators	slabber
+9421	Chemical plant machine operators	soap boiler / cutter / stamper
+9421	Chemical plant machine operators	soda dialyzer / solution maker
+9421	Chemical plant machine operators	technician, odorization
+9421	Chemical plant machine operators	tester, mill roll
+9421	Chemical plant machine operators	weigher, drug and toilet goods
+9422	Plastics processing machine operators	inspector, plastic film roll
+9422	Plastics processing machine operators	operator, arch cushion press
+9422	Plastics processing machine operators	operator, bag-making machine - cellophane
+9422	Plastics processing machine operators	operator, bakelite mixer / banbury mixer
+9422	Plastics processing machine operators	operator, blender
+9422	Plastics processing machine operators	operator, calender - multi-roll / wind-up
+9422	Plastics processing machine operators	operator, casting room
+9422	Plastics processing machine operators	operator, coagulator
+9422	Plastics processing machine operators	operator, encapsulator
+9422	Plastics processing machine operators	operator, extruder
+9422	Plastics processing machine operators	operator, fibreglass moulder / sprayer
+9422	Plastics processing machine operators	operator, foam plastic spraying
+9422	Plastics processing machine operators	operator, grinder
+9422	Plastics processing machine operators	operator, heat-sealing machine
+9422	Plastics processing machine operators	operator, imprinting machine
+9422	Plastics processing machine operators	operator, injection blow moulding
+9422	Plastics processing machine operators	operator, laminating machine 
+9422	Plastics processing machine operators	operator, linoleum floor tile backer
+9422	Plastics processing machine operators	operator, mixer - solvent / solution
+9422	Plastics processing machine operators	operator, moulder / moulding cutter
+9422	Plastics processing machine operators	operator, plastic centrifugal caster
+9422	Plastics processing machine operators	operator, plasticator
+9422	Plastics processing machine operators	operator, plastic-making machine
+9422	Plastics processing machine operators	operator, preform machine
+9422	Plastics processing machine operators	operator, pressure-sensitive coater
+9422	Plastics processing machine operators	operator, roll 
+9422	Plastics processing machine operators	operator, sheeter / shredder / slitter
+9422	Plastics processing machine operators	operator, skin-former machine
+9422	Plastics processing machine operators	operator, vaporizer
+9422	Plastics processing machine operators	operator, wash line
+9422	Plastics processing machine operators	processor, plastic windshield
+9422	Plastics processing machine operators	worker, synthetic marble production
+9423	Rubber processing machine operators and related workers	arch-cushion skiving
+9423	Rubber processing machine operators and related workers	assembler, tire
+9423	Rubber processing machine operators and related workers	bead-forming machine
+9423	Rubber processing machine operators and related workers	bonder, hand
+9423	Rubber processing machine operators and related workers	boot maker / boot cutter / heel cutter
+9423	Rubber processing machine operators and related workers	buffer, valve
+9423	Rubber processing machine operators and related workers	builder, air brake hose / airbag
+9423	Rubber processing machine operators and related workers	builder, belt - maker / buffer / brander
+9423	Rubber processing machine operators and related workers	builder, fuel tank - finisher / repairer
+9423	Rubber processing machine operators and related workers	builder, rubber snowtrack
+9423	Rubber processing machine operators and related workers	builder, finisher, expansion joint
+9423	Rubber processing machine operators and related workers	calender machine
+9423	Rubber processing machine operators and related workers	cementer / gluing machine
+9423	Rubber processing machine operators and related workers	curer, airbag and tube curer
+9423	Rubber processing machine operators and related workers	cutter / bias cutting
+9423	Rubber processing machine operators and related workers	foxer
+9423	Rubber processing machine operators and related workers	golf ball assembler / vulcanizer
+9423	Rubber processing machine operators and related workers	grinder / scrap rubber grinder
+9423	Rubber processing machine operators and related workers	hooker-laster / puller-laster
+9423	Rubber processing machine operators and related workers	hose maker
+9423	Rubber processing machine operators and related workers	inspector, foam rubber goods
+9423	Rubber processing machine operators and related workers	inspector, reclaimed rubber / sheet rubber
+9423	Rubber processing machine operators and related workers	installer, rubber lining / rubber closure
+9423	Rubber processing machine operators and related workers	laminating machine
+9423	Rubber processing machine operators and related workers	latex ribbon / thread machine
+9423	Rubber processing machine operators and related workers	loom / polisher / rug underlay
+9423	Rubber processing machine operators and related workers	maker, fire hose 
+9423	Rubber processing machine operators and related workers	maker, folded gasket / gasket cutter
+9423	Rubber processing machine operators and related workers	maker, glove
+9423	Rubber processing machine operators and related workers	maker, rubber footwear / rubber stamp
+9423	Rubber processing machine operators and related workers	mill - refiner / feeder
+9423	Rubber processing machine operators and related workers	mixer / foam rubber
+9423	Rubber processing machine operators and related workers	moulder, rubber gear / softball centre
+9423	Rubber processing machine operators and related workers	ply assembler / splicer
+9423	Rubber processing machine operators and related workers	preparer, band stock
+9423	Rubber processing machine operators and related workers	press
+9423	Rubber processing machine operators and related workers	reclaim millman / millwoman
+9423	Rubber processing machine operators and related workers	repairer, padded products
+9423	Rubber processing machine operators and related workers	reroller, liner reroller
+9423	Rubber processing machine operators and related workers	roll builder / coverer / grinder / repair
+9423	Rubber processing machine operators and related workers	rubber cord assembler / cutter / splicer
+9423	Rubber processing machine operators and related workers	sheeter
+9423	Rubber processing machine operators and related workers	splicer / squeegee splicer
+9423	Rubber processing machine operators and related workers	splicer, conveyor belt 
+9423	Rubber processing machine operators and related workers	strip machine
+9423	Rubber processing machine operators and related workers	tester, electrical rubber goods manuf'g
+9423	Rubber processing machine operators and related workers	tire builder - aircraft / green / truck
+9423	Rubber processing machine operators and related workers	tire inspector / tire retreading inspector
+9423	Rubber processing machine operators and related workers	tire rebuilder / recapper / retreader
+9423	Rubber processing machine operators and related workers	Transmix
+9423	Rubber processing machine operators and related workers	trimmer / trim lathe
+9423	Rubber processing machine operators and related workers	tube / inner-tube processor
+9423	Rubber processing machine operators and related workers	tumbler / freeze tumbler
+9423	Rubber processing machine operators and related workers	vulcanizer
+9423	Rubber processing machine operators and related workers	wrapper
+9431	Sawmill machine operators	operator, automatic edger
+9431	Sawmill machine operators	operator, canter
+9431	Sawmill machine operators	operator, chip reclaim
+9431	Sawmill machine operators	operator, Chip-N-Saw
+9431	Sawmill machine operators	operator, circular saw
+9431	Sawmill machine operators	operator, high-speed stud
+9431	Sawmill machine operators	operator, jumbo
+9431	Sawmill machine operators	operator, log hoist / tilt-hoist
+9431	Sawmill machine operators	operator, lumber sizer
+9431	Sawmill machine operators	operator, machine / block splitter
+9431	Sawmill machine operators	operator, planer mill
+9431	Sawmill machine operators	operator, ripsaw / scrag-saw / trim saw
+9431	Sawmill machine operators	operator, sawdust reclaim
+9431	Sawmill machine operators	operator, slasher saw / slasher trim
+9431	Sawmill machine operators	operator, transfer
+9431	Sawmill machine operators	sawyer, boards / bolts / shakes / head
+9431	Sawmill machine operators	shake maker / sawyer / splitter
+9431	Sawmill machine operators	shingle cutter / maker / sawyer
+9432	Pulp mill machine operators	acid maker
+9432	Pulp mill machine operators	beater / broke beater
+9432	Pulp mill machine operators	bleacher
+9432	Pulp mill machine operators	blow pit
+9432	Pulp mill machine operators	breaker
+9432	Pulp mill machine operators	causticizer / lime kiln 
+9432	Pulp mill machine operators	centri-cleaner / chemi-wash
+9432	Pulp mill machine operators	chemical pulping plant
+9432	Pulp mill machine operators	chemical solutions
+9432	Pulp mill machine operators	cook, batch process / continous process
+9432	Pulp mill machine operators	decker
+9432	Pulp mill machine operators	digester - batch / continuous
+9432	Pulp mill machine operators	dryer - insulation boards
+9432	Pulp mill machine operators	evaporator
+9432	Pulp mill machine operators	filter
+9432	Pulp mill machine operators	grinder / grinder loader
+9432	Pulp mill machine operators	mixer
+9432	Pulp mill machine operators	pulp maker / cook / dryer 
+9432	Pulp mill machine operators	recovery operator
+9432	Pulp mill machine operators	stock tester / washer / brown stock washer
+9432	Pulp mill machine operators	tall oil
+9432	Pulp mill machine operators	tester, paper pulp / pulpwood products
+9433	Papermaking and finishing machine operators	back tender, paper machine
+9433	Papermaking and finishing machine operators	baling press
+9433	Papermaking and finishing machine operators	calender
+9433	Papermaking and finishing machine operators	combiner machine
+9433	Papermaking and finishing machine operators	core cutter and reamer
+9433	Papermaking and finishing machine operators	crimping head
+9433	Papermaking and finishing machine operators	fourdrinier machine
+9433	Papermaking and finishing machine operators	grader, paper
+9433	Papermaking and finishing machine operators	label
+9433	Papermaking and finishing machine operators	laminating
+9433	Papermaking and finishing machine operators	paper jogger
+9433	Papermaking and finishing machine operators	paper roll finisher
+9433	Papermaking and finishing machine operators	paper-coating machine
+9433	Papermaking and finishing machine operators	press - pulp
+9433	Papermaking and finishing machine operators	sheeter
+9433	Papermaking and finishing machine operators	winder
+9434	Other wood processing machine operators	barker / debarker
+9434	Other wood processing machine operators	chip screen / chip mixing
+9434	Other wood processing machine operators	core layer
+9434	Other wood processing machine operators	dip tank / timber treating tank
+9434	Other wood processing machine operators	dryer / drying kiln
+9434	Other wood processing machine operators	excelsior machine
+9434	Other wood processing machine operators	gluer - edge / scarf
+9434	Other wood processing machine operators	hardboard press
+9434	Other wood processing machine operators	humidifier
+9434	Other wood processing machine operators	incising saw
+9434	Other wood processing machine operators	layup machine
+9434	Other wood processing machine operators	log vat / log cooker
+9434	Other wood processing machine operators	lumber drop sorter
+9434	Other wood processing machine operators	maker, fuel log
+9434	Other wood processing machine operators	miller, wood flour
+9434	Other wood processing machine operators	mixer-dryer - wood particles
+9434	Other wood processing machine operators	plywood bundler / panel assembler
+9434	Other wood processing machine operators	press - plywood / insulation
+9434	Other wood processing machine operators	scarfing machine
+9434	Other wood processing machine operators	spotter, lathe
+9434	Other wood processing machine operators	veneer clipper / cutter / dryer / jointer
+9434	Other wood processing machine operators	wood treater - wood preserving
+9434	Other wood processing machine operators	wood-oiling machine
+9435	Paper converting machine operators	bag-making machine set-up
+9435	Paper converting machine operators	book jacket machine
+9435	Paper converting machine operators	box cutter / finisher / gluer / liner
+9435	Paper converting machine operators	carbon-coating machine
+9435	Paper converting machine operators	cardboard box maker-gluer
+9435	Paper converting machine operators	cardboard-tube-winder
+9435	Paper converting machine operators	carton-making
+9435	Paper converting machine operators	coater, laminator / varnishing
+9435	Paper converting machine operators	colour card making machine
+9435	Paper converting machine operators	cone former / winder
+9435	Paper converting machine operators	core maker / cutter / winder
+9435	Paper converting machine operators	core winding / cutting / making
+9435	Paper converting machine operators	corrugating machine
+9435	Paper converting machine operators	creaser / scorer 
+9435	Paper converting machine operators	creping machine
+9435	Paper converting machine operators	die-cutting machine
+9435	Paper converting machine operators	drill punch
+9435	Paper converting machine operators	envelope maker 
+9435	Paper converting machine operators	folding machine 
+9435	Paper converting machine operators	friction paint machine
+9435	Paper converting machine operators	liner machine
+9435	Paper converting machine operators	matchbook comb-cutting machine
+9435	Paper converting machine operators	mixer, slurry
+9435	Paper converting machine operators	paper converting press
+9435	Paper converting machine operators	partition assembly machine
+9435	Paper converting machine operators	wallpaper lapper / reeler
+9436	Lumber graders and other wood processing inspectors and graders	grader, board / lumber / particleboard
+9436	Lumber graders and other wood processing inspectors and graders	grader, planer / planer mill
+9436	Lumber graders and other wood processing inspectors and graders	inspector, lumber / plywood / shingles
+9436	Lumber graders and other wood processing inspectors and graders	matcher, plywood / veneer
+9436	Lumber graders and other wood processing inspectors and graders	measurer, wood
+9436	Lumber graders and other wood processing inspectors and graders	tester, treated pole
+9437	Woodworking machine operators	barrel assembler / cooper
+9437	Woodworking machine operators	bucket chucker
+9437	Woodworking machine operators	cutter, disk / mouldings / stock
+9437	Woodworking machine operators	driver, corrugated fastener
+9437	Woodworking machine operators	end matcher, sash and door
+9437	Woodworking machine operators	feeder, cylinder sander / planer
+9437	Woodworking machine operators	finisher, trunk panel
+9437	Woodworking machine operators	flarer, wood products
+9437	Woodworking machine operators	grader-operator, ripsaw
+9437	Woodworking machine operators	maker, hat block / rolling pin / oar
+9437	Woodworking machine operators	maker, lacrosse stick bender
+9437	Woodworking machine operators	maker, smoking pipe
+9437	Woodworking machine operators	marker, lay-out
+9437	Woodworking machine operators	operator, basket machine / bench machine
+9437	Woodworking machine operators	operator, bowl / box blank boring
+9437	Woodworking machine operators	operator, carver / spindle carver
+9437	Woodworking machine operators	operator, chucking and boring machine
+9437	Woodworking machine operators	operator, cleat notcher / dovetail machine
+9437	Woodworking machine operators	operator, cooper header / hoop-driver
+9437	Woodworking machine operators	operator, door-hanging machine
+9437	Woodworking machine operators	operator, dowel machine / dowel pointer
+9437	Woodworking machine operators	operator, edge bander / table top edger
+9437	Woodworking machine operators	operator, embossing / fluting / grooving
+9437	Woodworking machine operators	operator, equalizer
+9437	Woodworking machine operators	operator, facer
+9437	Woodworking machine operators	operator, fastener-driver
+9437	Woodworking machine operators	operator, frame table
+9437	Woodworking machine operators	operator, frazing machine / frazer
+9437	Woodworking machine operators	operator, jointer machine / glue jointer
+9437	Woodworking machine operators	operator, laminated bowl machine
+9437	Woodworking machine operators	operator, lathe - last-lathe / last turner
+9437	Woodworking machine operators	operator, leveller / chair leveller
+9437	Woodworking machine operators	operator, looping machine
+9437	Woodworking machine operators	operator, mortiser / tenoner
+9437	Woodworking machine operators	operator, moulder / moulding cutter
+9437	Woodworking machine operators	operator, nailing machine
+9437	Woodworking machine operators	operator, overhead dado
+9437	Woodworking machine operators	operator, panel jointer / panel raiser
+9437	Woodworking machine operators	operator, pencil-grooving / rounding
+9437	Woodworking machine operators	operator, planer - dimension / finish
+9437	Woodworking machine operators	operator, planer - lacross stick / shuttle
+9437	Woodworking machine operators	operator, press - drill / hydraulic
+9437	Woodworking machine operators	operator, rip and groove machine
+9437	Woodworking machine operators	operator, rough mill / rough planer
+9437	Woodworking machine operators	operator, router
+9437	Woodworking machine operators	operator, saddle machine
+9437	Woodworking machine operators	operator, sander - belt / clean-up / lathe
+9437	Woodworking machine operators	operator, saw
+9437	Woodworking machine operators	operator, shaper
+9437	Woodworking machine operators	operator, shaver / shredder
+9437	Woodworking machine operators	operator, splitter / cork splitter
+9437	Woodworking machine operators	operator, stave machine / jointer / sawyer
+9437	Woodworking machine operators	operator, trimmer / defects trimmer
+9437	Woodworking machine operators	operator, turning machine
+9437	Woodworking machine operators	operator, wooden barrel header
+9437	Woodworking machine operators	operator, woodworking machine
+9437	Woodworking machine operators	repairer, custom cue
+9437	Woodworking machine operators	shuttle finisher / maker / planer
+9437	Woodworking machine operators	slat picker / slicer
+9437	Woodworking machine operators	trimmer, defect
+9437	Woodworking machine operators	worker, line and frame pole
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	boarder, hosiery
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	bobbin dryer / stripper / winder
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	cloth bleacher / dryer / dyer / finisher
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	fibre classer / mizer / washer
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	fur blender / blower / dresser / mixer
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	leather buffer / dyer / polisher / tanner
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	maker, asbestos rope / rope coiler
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, aging machine
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, autoclave / conditioner
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, bale-breaker
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, batting / cotton ball machine
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, beamer
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, boiler / kier-boiler / kettle
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, breaker / breaker feeder
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, brusher and shearer
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, calender / embossing calender
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, carding machine 
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, cloth-doubling / yarn-doubling
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, coating (rubber, latex)
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, colourer / colour mixer
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, crimping machine
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, cutting and printing machine
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, dryer / continuous dryer
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, dyer
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, extractor - centrifugal
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, fabric-printing / fabric dyer
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, finishing machine
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, fleshing machine
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, hide-pelt processing
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, jig / jigger
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, lap machine / lap-winder
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, loom 
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, napper / naps teaseller
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, padder / pad-extractor
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, picker / picking machine
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, press
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, printing machine
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, quiller / quill winder
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, range
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, reeling machine / reeler
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, ring frame / ring spinner
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, roller machine / roller printer
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, rover / roving frame
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, rug-coating machine
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, scray machine feeder
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, silk-screen printing
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, sliver lapper
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, slubber / hand slubber
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, spinning machine
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, spooler / spool winder
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, staple processor / staple cutter
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, steam cabinet / steam sponger
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, tenter machine / tenterframe
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, textile machine
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, twine-cropping machine
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, twister / uptwister
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, warp beamer / dresser 
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, washing machine 
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, winder / loom-winder
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	operator, yarn equipment
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	textile dyer / fleecer / finisher
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	thread doubler / spinner / spooler
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	winder, cone / skein spooler
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	wool batcher / blender / mixer
+9441	Textile fibre and yarn, hide and pelt processing machine operators and workers	yarn conditioner / spinner / winder
+9442	Weavers, knitters and other fabric making occupations	ball fringe maker / tassel maker
+9442	Weavers, knitters and other fabric making occupations	band-knitting machine
+9442	Weavers, knitters and other fabric making occupations	carpet-weaving / carpet-tufting
+9442	Weavers, knitters and other fabric making occupations	chain builder - textiles
+9442	Weavers, knitters and other fabric making occupations	circular / flat knitting
+9442	Weavers, knitters and other fabric making occupations	drop-pinning machine
+9442	Weavers, knitters and other fabric making occupations	felt press / felting machine
+9442	Weavers, knitters and other fabric making occupations	glass-fibre-bonding machine
+9442	Weavers, knitters and other fabric making occupations	hosiery machine
+9442	Weavers, knitters and other fabric making occupations	knitting / crochet machine
+9442	Weavers, knitters and other fabric making occupations	mender, knitting machine
+9442	Weavers, knitters and other fabric making occupations	net-knitting / pinning
+9442	Weavers, knitters and other fabric making occupations	pad mangle
+9442	Weavers, knitters and other fabric making occupations	patroller, knitting area
+9442	Weavers, knitters and other fabric making occupations	preparer - harness / pattern card
+9442	Weavers, knitters and other fabric making occupations	rope maker / twister
+9442	Weavers, knitters and other fabric making occupations	rope-coiling machine
+9442	Weavers, knitters and other fabric making occupations	topper
+9445	Fabric, fur and leather cutters	bias cutting machine
+9445	Fabric, fur and leather cutters	cutter, hand - fabric / fur / leather
+9445	Fabric, fur and leather cutters	cutter, pattern / master pattern cutter
+9445	Fabric, fur and leather cutters	cutter, saddle
+9445	Fabric, fur and leather cutters	cutting machine
+9445	Fabric, fur and leather cutters	leather press / stripping
+9445	Fabric, fur and leather cutters	maker, leather products
+9445	Fabric, fur and leather cutters	marker, garment / leather / upholstery
+9445	Fabric, fur and leather cutters	sample cutter
+9445	Fabric, fur and leather cutters	slitter, mink tail
+9445	Fabric, fur and leather cutters	slitter-rewinder
+9445	Fabric, fur and leather cutters	trimmer - leather products manufacturing
+9445	Fabric, fur and leather cutters	welt-trimming machine
+9446	Industrial sewing machine operators	blindstitch-sewing hemmer
+9446	Industrial sewing machine operators	buttonhole maker
+9446	Industrial sewing machine operators	carpet binder / sewer / mender
+9446	Industrial sewing machine operators	fabric mender / repairer
+9446	Industrial sewing machine operators	fancy stitch machine
+9446	Industrial sewing machine operators	footwear manufacturing
+9446	Industrial sewing machine operators	maker, drapery header / drapery sewer
+9446	Industrial sewing machine operators	mender, cloth / fabric / garment / textile
+9446	Industrial sewing machine operators	pocket setter
+9446	Industrial sewing machine operators	serger / overseamer
+9446	Industrial sewing machine operators	sewer, hat / underwear / stocking / sample
+9446	Industrial sewing machine operators	sewer, rug / rug joiner
+9446	Industrial sewing machine operators	zipper-sewing / slide-fastener
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing	checker, sample / swatch
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing	cloth / fabric examiner / grader / inspector
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing	colour grader / matcher
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing	draper
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing	examiner, leather glove / mitten
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing	fibre examiner / grader / inspector
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing	fur grader / matcher / sorter 
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing	gauger, leather / textiles / fabric
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing	grader, textile / product sampler 
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing	grader-inspector - pelt / pelt processing
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing	hosiery grader / inspector
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing	inspector, canvas goods / parachute
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing	inspector, clothing / garments
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing	inspector, fitting room
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing	inspector, furniture coverings / carpet
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing	inspector, hide and pelt processing
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing	inspector, quality control / QC tester
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing	inspector, textiles
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing	inspector, thread / yarn 
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing	inspector, weaving / finishing
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing	operator, cloth-measuring machine
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing	preparer, sample
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing	sampler, textile
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing	shader, textile / shade matcher
+9447	Inspectors and graders, textile, fabric, fur and leather products manufacturing	tester, textile / warp tension
+9461	Process control and machine operators, food and beverage processing	beer-wine-spirits processing
+9461	Process control and machine operators, food and beverage processing	beverage processing
+9461	Process control and machine operators, food and beverage processing	bread processing
+9461	Process control and machine operators, food and beverage processing	canning equipment
+9461	Process control and machine operators, food and beverage processing	cereal-grain processing
+9461	Process control and machine operators, food and beverage processing	coffee processing
+9461	Process control and machine operators, food and beverage processing	condiment processing
+9461	Process control and machine operators, food and beverage processing	confectionery processing
+9461	Process control and machine operators, food and beverage processing	corn products processing
+9461	Process control and machine operators, food and beverage processing	dairy processing
+9461	Process control and machine operators, food and beverage processing	fats and oils processing
+9461	Process control and machine operators, food and beverage processing	feed processing / milling
+9461	Process control and machine operators, food and beverage processing	food and beverage packaging
+9461	Process control and machine operators, food and beverage processing	food and beverage processing
+9461	Process control and machine operators, food and beverage processing	fruit and vegetable processing
+9461	Process control and machine operators, food and beverage processing	grain processing
+9461	Process control and machine operators, food and beverage processing	meat processing
+9461	Process control and machine operators, food and beverage processing	meat-poultry-fish processing
+9461	Process control and machine operators, food and beverage processing	nut processing 
+9461	Process control and machine operators, food and beverage processing	sugar processing
+9461	Process control and machine operators, food and beverage processing	tobacco processing
+9461	Process control and machine operators, food and beverage processing	yeast dryer / cutter
+9462	Industrial butchers and meat cutters, poultry preparers and related workers	air knife meat cutter - meat packing plant
+9462	Industrial butchers and meat cutters, poultry preparers and related workers	animal stunner / skinner / eviscerator
+9462	Industrial butchers and meat cutters, poultry preparers and related workers	beef boner / cooler / sticker / trimmer
+9462	Industrial butchers and meat cutters, poultry preparers and related workers	benchman / benchwoman - meat packing plant
+9462	Industrial butchers and meat cutters, poultry preparers and related workers	chuck cap puller - meat packing plant
+9462	Industrial butchers and meat cutters, poultry preparers and related workers	cutter, brisket / ham
+9462	Industrial butchers and meat cutters, poultry preparers and related workers	dropper, dehairing machine
+9462	Industrial butchers and meat cutters, poultry preparers and related workers	eviscerator, animals / poultry
+9462	Industrial butchers and meat cutters, poultry preparers and related workers	killer, livestock / hog
+9462	Industrial butchers and meat cutters, poultry preparers and related workers	meat boner / chopper / cutter / dresser
+9462	Industrial butchers and meat cutters, poultry preparers and related workers	operator, shackle hoist
+9462	Industrial butchers and meat cutters, poultry preparers and related workers	poultry boner / butcher / dresser / hanger
+9462	Industrial butchers and meat cutters, poultry preparers and related workers	sawyer, ham
+9462	Industrial butchers and meat cutters, poultry preparers and related workers	skinner, animals / calf
+9462	Industrial butchers and meat cutters, poultry preparers and related workers	slaughterer / slaughterhouse butcher
+9462	Industrial butchers and meat cutters, poultry preparers and related workers	splitter, carcass
+9462	Industrial butchers and meat cutters, poultry preparers and related workers	sticker, animal
+9463	Fish and seafood plant workers	clam shucker / steamer
+9463	Fish and seafood plant workers	crab butcher
+9463	Fish and seafood plant workers	fish processor
+9463	Fish and seafood plant workers	operator, basket filter / canner
+9463	Fish and seafood plant workers	operator, fish filleting / chopping
+9463	Fish and seafood plant workers	oyster canner / packer / shucker / washer
+9463	Fish and seafood plant workers	scallop shucker
+9463	Fish and seafood plant workers	shellfish processor (hand, machine)
+9463	Fish and seafood plant workers	shrimp processor / peeler
+9463	Fish and seafood plant workers	shucker, clams-oysters-scallops
+9463	Fish and seafood plant workers	steamer, clams
+9463	Fish and seafood plant workers	worker, fish and seafood processing plant
+9465	Testers and graders, food and beverage processing	inspector, kosher inspector / mashgiach
+9465	Testers and graders, food and beverage processing	tester, agricultural
+9465	Testers and graders, food and beverage processing	tester, bakery products
+9465	Testers and graders, food and beverage processing	tester, beverages
+9465	Testers and graders, food and beverage processing	tester, confectionery 
+9465	Testers and graders, food and beverage processing	tester, dairy products
+9465	Testers and graders, food and beverage processing	tester, fish and seafood
+9465	Testers and graders, food and beverage processing	tester, food packaging
+9465	Testers and graders, food and beverage processing	tester, meat products
+9465	Testers and graders, food and beverage processing	tester, poultry products
+9465	Testers and graders, food and beverage processing	tester, quality control
+9465	Testers and graders, food and beverage processing	tester, sugar products
+9465	Testers and graders, food and beverage processing	tester, tobacco products
+9471	Plateless printing equipment operators	approver, proofsheet
+9471	Plateless printing equipment operators	operator, blueprinting machine
+9471	Plateless printing equipment operators	operator, braille-impressing printer
+9471	Plateless printing equipment operators	operator, copy-staple-glue machine
+9471	Plateless printing equipment operators	operator, electronic printing
+9471	Plateless printing equipment operators	operator, embossing-imprinting / engraving
+9471	Plateless printing equipment operators	operator, high-speed printer / quick print
+9471	Plateless printing equipment operators	operator, machine marker
+9471	Plateless printing equipment operators	operator, machine printer - signs
+9471	Plateless printing equipment operators	operator, printer-slotter
+9471	Plateless printing equipment operators	operator, shotgun-shell printing machine
+9471	Plateless printing equipment operators	operator, silk-screen printing
+9471	Plateless printing equipment operators	printer, balloon / boxes / label
+9471	Plateless printing equipment operators	printer, wallpaper / sample sheet cutter
+9471	Plateless printing equipment operators	stamper, printing die
+9472	Camera, platemaking and other prepress occupations	camera operator - graphic arts / printing
+9472	Camera, platemaking and other prepress occupations	clamper - camera and platemaking
+9472	Camera, platemaking and other prepress occupations	colour correction scanning
+9472	Camera, platemaking and other prepress occupations	cylinder engraver / painter / impresser
+9472	Camera, platemaking and other prepress occupations	electroplating tank
+9472	Camera, platemaking and other prepress occupations	electrotyper
+9472	Camera, platemaking and other prepress occupations	etcher, photoengraving / platemaking
+9472	Camera, platemaking and other prepress occupations	examiner, alignment / lineup
+9472	Camera, platemaking and other prepress occupations	file preparation / preflight
+9472	Camera, platemaking and other prepress occupations	film assembler / sizer / stripper / layout
+9472	Camera, platemaking and other prepress occupations	flexible printing plate mounter
+9472	Camera, platemaking and other prepress occupations	image processing / reproduction
+9472	Camera, platemaking and other prepress occupations	letterer-engraver, computer-assisted
+9472	Camera, platemaking and other prepress occupations	opticopy offline programmer
+9472	Camera, platemaking and other prepress occupations	pantographer
+9472	Camera, platemaking and other prepress occupations	photoengraver / photoengraving etcher
+9472	Camera, platemaking and other prepress occupations	plate finisher / grainer / processor
+9472	Camera, platemaking and other prepress occupations	platemaker - print / lithographic / offset
+9472	Camera, platemaking and other prepress occupations	preparer, offset printing plate / stencil
+9472	Camera, platemaking and other prepress occupations	preprint-coating machine
+9472	Camera, platemaking and other prepress occupations	printer, contact / gravure-prepress
+9472	Camera, platemaking and other prepress occupations	printing plate engraver / presensitizer
+9472	Camera, platemaking and other prepress occupations	processor, bright type
+9472	Camera, platemaking and other prepress occupations	proofmaker
+9472	Camera, platemaking and other prepress occupations	repairer, print roller
+9472	Camera, platemaking and other prepress occupations	scanner (colour corrections)
+9472	Camera, platemaking and other prepress occupations	set-up, newspaper
+9472	Camera, platemaking and other prepress occupations	siderographer
+9472	Camera, platemaking and other prepress occupations	stager
+9472	Camera, platemaking and other prepress occupations	stereotyper
+9472	Camera, platemaking and other prepress occupations	studio-image-processing system
+9472	Camera, platemaking and other prepress occupations	technician, prepress / rotogravure 
+9472	Camera, platemaking and other prepress occupations	tracer-transferrer
+9473	Binding and finishing machine operators	binder / finisher
+9473	Binding and finishing machine operators	binder, industrial / machine
+9473	Binding and finishing machine operators	collating machine / gluer
+9473	Binding and finishing machine operators	credit card die-cutter
+9473	Binding and finishing machine operators	cutter - guillotine / trimmer
+9473	Binding and finishing machine operators	gathering and gluing machine
+9473	Binding and finishing machine operators	machine - folding / inserting
+9473	Binding and finishing machine operators	perfect-binder / saddle stitcher
+9473	Binding and finishing machine operators	press - embossing / stamping
+9473	Binding and finishing machine operators	stamper, design / lettering / gold leaf
+9473	Binding and finishing machine operators	stitcher
+9474	Photographic and film processors	analyzer, colour films
+9474	Photographic and film processors	enlarger / quick print machine
+9474	Photographic and film processors	motion picture film developer
+9474	Photographic and film processors	negative cutter / restorer / retoucher
+9474	Photographic and film processors	photo developer / processor / finisher
+9474	Photographic and film processors	technician, darkroom
+9521	Aircraft assemblers and aircraft assembly inspectors	assembler, airframe unit subassembler
+9521	Aircraft assemblers and aircraft assembly inspectors	composite technician - aircraft assembly
+9521	Aircraft assemblers and aircraft assembly inspectors	fitter, aileron / aircraft parts
+9521	Aircraft assemblers and aircraft assembly inspectors	installer-repairer, fabric
+9521	Aircraft assemblers and aircraft assembly inspectors	mechanic, aircraft rigging and controls
+9521	Aircraft assemblers and aircraft assembly inspectors	mechanic, installation - hydraulics
+9521	Aircraft assemblers and aircraft assembly inspectors	sealer, pressurized compartments
+9521	Aircraft assemblers and aircraft assembly inspectors	tester, aircraft
+9522	Motor vehicle assemblers, inspectors and testers	adjuster, automotive - doors / headlights
+9522	Motor vehicle assemblers, inspectors and testers	assembler, automotive
+9522	Motor vehicle assemblers, inspectors and testers	composite technician - motor vehicle manufacturing
+9522	Motor vehicle assemblers, inspectors and testers	inspector, quality assurance (QA)
+9522	Motor vehicle assemblers, inspectors and testers	inspector, quality control (QC)
+9522	Motor vehicle assemblers, inspectors and testers	inspector-tester, automotive assembly 
+9522	Motor vehicle assemblers, inspectors and testers	installer, engine / radiator / tire
+9522	Motor vehicle assemblers, inspectors and testers	installer-repairer, automobile accessories
+9522	Motor vehicle assemblers, inspectors and testers	operator, production - body / trim
+9522	Motor vehicle assemblers, inspectors and testers	preparer, new passenger car
+9522	Motor vehicle assemblers, inspectors and testers	repairer, utility 
+9522	Motor vehicle assemblers, inspectors and testers	technician, body / electrical / paint 
+9522	Motor vehicle assemblers, inspectors and testers	tester - road test mechanic / test driver
+9522	Motor vehicle assemblers, inspectors and testers	trimmer, soft top
+9523	Electronics assemblers, fabricators, inspectors and testers	adjuster, filament-winding machine
+9523	Electronics assemblers, fabricators, inspectors and testers	aligner, electronic equipment manuf'g
+9523	Electronics assemblers, fabricators, inspectors and testers	assembler, bench / components
+9523	Electronics assemblers, fabricators, inspectors and testers	assembler, business-office machine
+9523	Electronics assemblers, fabricators, inspectors and testers	assembler, capacitor
+9523	Electronics assemblers, fabricators, inspectors and testers	assembler, circuit board / microcircuit
+9523	Electronics assemblers, fabricators, inspectors and testers	assembler, communications equipment
+9523	Electronics assemblers, fabricators, inspectors and testers	assembler, electronics
+9523	Electronics assemblers, fabricators, inspectors and testers	assembler, precision instruments
+9523	Electronics assemblers, fabricators, inspectors and testers	assembler, resistor / variable resistor
+9523	Electronics assemblers, fabricators, inspectors and testers	assembler, television / speaker
+9523	Electronics assemblers, fabricators, inspectors and testers	assembler-installer, chassis
+9523	Electronics assemblers, fabricators, inspectors and testers	bench / conveyor line
+9523	Electronics assemblers, fabricators, inspectors and testers	cleaner, electronic component
+9523	Electronics assemblers, fabricators, inspectors and testers	coater, funnel
+9523	Electronics assemblers, fabricators, inspectors and testers	crystal calibrator / final tester
+9523	Electronics assemblers, fabricators, inspectors and testers	die attacher 
+9523	Electronics assemblers, fabricators, inspectors and testers	etcher and plater, quartz crystal
+9523	Electronics assemblers, fabricators, inspectors and testers	fabricator, microelectronic circuit
+9523	Electronics assemblers, fabricators, inspectors and testers	former, fluorescent screen
+9523	Electronics assemblers, fabricators, inspectors and testers	gauger, grid / semiconductor material
+9523	Electronics assemblers, fabricators, inspectors and testers	impregnator and dryer 
+9523	Electronics assemblers, fabricators, inspectors and testers	inspector-tester, capacitor / coil / grid
+9523	Electronics assemblers, fabricators, inspectors and testers	inspector-tester, electronics
+9523	Electronics assemblers, fabricators, inspectors and testers	inspector-tester, hearing aid 
+9523	Electronics assemblers, fabricators, inspectors and testers	inspector-tester, mobile transceiver
+9523	Electronics assemblers, fabricators, inspectors and testers	installer, electronic equipment manuf'g
+9523	Electronics assemblers, fabricators, inspectors and testers	maker, electronic instruments
+9523	Electronics assemblers, fabricators, inspectors and testers	maker, printed circuit board (PCB)
+9523	Electronics assemblers, fabricators, inspectors and testers	mounter, electronic products
+9523	Electronics assemblers, fabricators, inspectors and testers	operator, automatic component assembly
+9523	Electronics assemblers, fabricators, inspectors and testers	operator, backplane and frame wiring
+9523	Electronics assemblers, fabricators, inspectors and testers	operator, coil-winding machine
+9523	Electronics assemblers, fabricators, inspectors and testers	operator, exhaust and sealing machine
+9523	Electronics assemblers, fabricators, inspectors and testers	operator, pick and place machine
+9523	Electronics assemblers, fabricators, inspectors and testers	operator, utility operator
+9523	Electronics assemblers, fabricators, inspectors and testers	picture tube assembler
+9523	Electronics assemblers, fabricators, inspectors and testers	plater, vacuum evaporation process 
+9523	Electronics assemblers, fabricators, inspectors and testers	printer, photoresist
+9523	Electronics assemblers, fabricators, inspectors and testers	semiconductor assembler / calibrator
+9523	Electronics assemblers, fabricators, inspectors and testers	setter, exhaust equipment
+9523	Electronics assemblers, fabricators, inspectors and testers	technician, wafer technician
+9523	Electronics assemblers, fabricators, inspectors and testers	typewriter aligner / parts salvager
+9523	Electronics assemblers, fabricators, inspectors and testers	winder, choke / condenser
+9523	Electronics assemblers, fabricators, inspectors and testers	wire and harness assembler
+9524	Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing	adjuster, coils 
+9524	Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing	armature bander / winder (small motor)
+9524	Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing	assembler, air conditioner / fans 
+9524	Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing	assembler, electric appliance, large / small
+9524	Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing	assembler, electric heating unit
+9524	Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing	assembler, electrical mercury switch
+9524	Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing	assembler, heavy-duty capacitor / resistor
+9524	Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing	assembler, lawn mowers / snow blowers
+9524	Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing	assembler, motor and generator
+9524	Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing	assembly lead hand / line expediter
+9524	Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing	charger, refrigeration equipment gas
+9524	Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing	cutter and former, electrical insulation
+9524	Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing	inspector-tester, ballast transformers
+9524	Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing	inspector-tester, circuit breaker assembly
+9524	Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing	inspector-tester, grid / electrical relays
+9524	Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing	inspector-tester, household appliances
+9524	Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing	inspector-tester, small motor / transformer
+9524	Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing	insulation cutter / former / installer
+9524	Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing	maker, mica products
+9524	Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing	operator, electrical equipment manuf'g
+9524	Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing	operator, electrical utility
+9524	Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing	repairer, electrical appliance production
+9525	Assemblers, fabricators and inspectors, industrial electrical motors and transformers	assembler, armature - coil former / winder
+9525	Assemblers, fabricators and inspectors, industrial electrical motors and transformers	assembler, high-voltage transformer
+9525	Assemblers, fabricators and inspectors, industrial electrical motors and transformers	assembler, industrial brakes / motors
+9525	Assemblers, fabricators and inspectors, industrial electrical motors and transformers	assembler, motors - AC / DC
+9525	Assemblers, fabricators and inspectors, industrial electrical motors and transformers	assembler, transformer
+9525	Assemblers, fabricators and inspectors, industrial electrical motors and transformers	builder, welder, stator and rotor cores
+9525	Assemblers, fabricators and inspectors, industrial electrical motors and transformers	inspector-tester, AC / DC motors
+9525	Assemblers, fabricators and inspectors, industrial electrical motors and transformers	inspector-tester, alternator / armature
+9525	Assemblers, fabricators and inspectors, industrial electrical motors and transformers	inspector-tester, electrical continuity
+9525	Assemblers, fabricators and inspectors, industrial electrical motors and transformers	installer, motor and generator coils 
+9525	Assemblers, fabricators and inspectors, industrial electrical motors and transformers	operator, undercutting machine
+9525	Assemblers, fabricators and inspectors, industrial electrical motors and transformers	repairer, electrolytic cell
+9525	Assemblers, fabricators and inspectors, industrial electrical motors and transformers	stacker, lamination
+9525	Assemblers, fabricators and inspectors, industrial electrical motors and transformers	welder, stator-core and rotor-core
+9525	Assemblers, fabricators and inspectors, industrial electrical motors and transformers	winder, AC / DC armatures 
+9525	Assemblers, fabricators and inspectors, industrial electrical motors and transformers	wirer, electric panel / motor / generator
+9526	Mechanical assemblers and inspectors	agricultural implement assembly inspector
+9526	Mechanical assemblers and inspectors	assembler, agricultural equipment
+9526	Mechanical assemblers and inspectors	assembler, automotive 
+9526	Mechanical assemblers and inspectors	assembler, bus 
+9526	Mechanical assemblers and inspectors	assembler, construction equipment
+9526	Mechanical assemblers and inspectors	assembler, engine - diesel / gasoline
+9526	Mechanical assemblers and inspectors	assembler, furnace - electric / gas 
+9526	Mechanical assemblers and inspectors	assembler, gun / firearm fitter
+9526	Mechanical assemblers and inspectors	assembler, railway car / liner / trimmer
+9526	Mechanical assemblers and inspectors	assembler, wheelchair lift
+9526	Mechanical assemblers and inspectors	bench fitter - buses and trucks
+9526	Mechanical assemblers and inspectors	caulker, shipbuilding steel plate
+9526	Mechanical assemblers and inspectors	inspector-tester, agricultural equipment
+9526	Mechanical assemblers and inspectors	inspector-tester, automotive assembly
+9526	Mechanical assemblers and inspectors	inspector-tester, automotive engine
+9526	Mechanical assemblers and inspectors	inspector-tester, food-packaging equipment
+9526	Mechanical assemblers and inspectors	inspector-tester, marine / outboard motor
+9526	Mechanical assemblers and inspectors	inspector-tester, quality-control (QC)
+9526	Mechanical assemblers and inspectors	inspector-tester, sewing machine assembly
+9526	Mechanical assemblers and inspectors	inspector-tester, snowmobile / ATV
+9526	Mechanical assemblers and inspectors	inspector-tester, truck assembly / trailer
+9526	Mechanical assemblers and inspectors	inspector-tester, try-out 
+9526	Mechanical assemblers and inspectors	inspector-tester, turbine assembly
+9526	Mechanical assemblers and inspectors	inspector-tester, vending machine
+9526	Mechanical assemblers and inspectors	lead hand, mechanical assemblers
+9527	Machine operators and inspectors, electrical apparatus manufacturing	assembler, batteries / chargers
+9527	Machine operators and inspectors, electrical apparatus manufacturing	assembler, industrial storage battery
+9527	Machine operators and inspectors, electrical apparatus manufacturing	assembler, machine sleeve / machine tube
+9527	Machine operators and inspectors, electrical apparatus manufacturing	changer, electrolytic anode
+9527	Machine operators and inspectors, electrical apparatus manufacturing	crimper, electrical connection
+9527	Machine operators and inspectors, electrical apparatus manufacturing	filler, electric lead acid storage battery
+9527	Machine operators and inspectors, electrical apparatus manufacturing	former, lead
+9527	Machine operators and inspectors, electrical apparatus manufacturing	inspector heavy-duty battery charger
+9527	Machine operators and inspectors, electrical apparatus manufacturing	inspector, armature
+9527	Machine operators and inspectors, electrical apparatus manufacturing	inspector, battery production
+9527	Machine operators and inspectors, electrical apparatus manufacturing	inspector, storage battery
+9527	Machine operators and inspectors, electrical apparatus manufacturing	installer, electrode
+9527	Machine operators and inspectors, electrical apparatus manufacturing	maker, electric bulb / fuse / plug
+9527	Machine operators and inspectors, electrical apparatus manufacturing	operator, arbor press
+9527	Machine operators and inspectors, electrical apparatus manufacturing	operator, automatic coil winder
+9527	Machine operators and inspectors, electrical apparatus manufacturing	operator, battery charger / charging room
+9527	Machine operators and inspectors, electrical apparatus manufacturing	operator, brush-lacing and trimming
+9527	Machine operators and inspectors, electrical apparatus manufacturing	operator, cable-coding / marking
+9527	Machine operators and inspectors, electrical apparatus manufacturing	operator, crimping / forming / lamination
+9527	Machine operators and inspectors, electrical apparatus manufacturing	operator, dry battery coremaking
+9527	Machine operators and inspectors, electrical apparatus manufacturing	operator, epoxy coating / encapsulator
+9527	Machine operators and inspectors, electrical apparatus manufacturing	operator, equipment manufacturing
+9527	Machine operators and inspectors, electrical apparatus manufacturing	operator, filling / cement filling
+9527	Machine operators and inspectors, electrical apparatus manufacturing	operator, lamp-making / filament making
+9527	Machine operators and inspectors, electrical apparatus manufacturing	operator, lead-acid storage battery filler
+9527	Machine operators and inspectors, electrical apparatus manufacturing	operator, light bulb making / sealing
+9527	Machine operators and inspectors, electrical apparatus manufacturing	operator, small electric motors
+9527	Machine operators and inspectors, electrical apparatus manufacturing	operator, storage battery assembly line
+9527	Machine operators and inspectors, electrical apparatus manufacturing	operator, tranformer coil impregnator
+9527	Machine operators and inspectors, electrical apparatus manufacturing	operator, tuber / riveting / sleeve-making
+9527	Machine operators and inspectors, electrical apparatus manufacturing	repairer, production line storage battery
+9527	Machine operators and inspectors, electrical apparatus manufacturing	set-up worker and servicer
+9527	Machine operators and inspectors, electrical apparatus manufacturing	wire-cutter / wire stripper
+9531	Boat assemblers and inspectors	assembler, wooden boat
+9531	Boat assemblers and inspectors	cavasser, canoe / waterproofer
+9531	Boat assemblers and inspectors	composite technician - boat assembly
+9531	Boat assemblers and inspectors	surveyor, hull
+9531	Boat assemblers and inspectors	tester, boat rivets / leaks 
+9532	Furniture and fixture assemblers and inspectors	assembler, bed / box spring / mattress
+9532	Furniture and fixture assemblers and inspectors	assembler, casket / coffin
+9532	Furniture and fixture assemblers and inspectors	assembler, chair caner / seat weaver
+9532	Furniture and fixture assemblers and inspectors	assembler, frame - mirror / picture
+9532	Furniture and fixture assemblers and inspectors	assembler, table
+9532	Furniture and fixture assemblers and inspectors	bench / marquetry / productions
+9532	Furniture and fixture assemblers and inspectors	caner, furniture 
+9532	Furniture and fixture assemblers and inspectors	fitter, coffin / casket / drawer
+9532	Furniture and fixture assemblers and inspectors	gluer, furniture manufacturing
+9532	Furniture and fixture assemblers and inspectors	inlayer - woodworking
+9532	Furniture and fixture assemblers and inspectors	inspector, assembled furniture
+9532	Furniture and fixture assemblers and inspectors	inspector, fixtures manufacturing
+9532	Furniture and fixture assemblers and inspectors	installer, hardware - hardware mounter
+9532	Furniture and fixture assemblers and inspectors	laminator, hand
+9532	Furniture and fixture assemblers and inspectors	repairer, furniture assembly
+9532	Furniture and fixture assemblers and inspectors	upfitter - furniture manufacturing
+9533	Other wood products assemblers and inspectors	assembler, barrel
+9533	Other wood products assemblers and inspectors	assembler, manufactured / prefab homes
+9533	Other wood products assemblers and inspectors	assembler, wood furniture
+9533	Other wood products assemblers and inspectors	assembler, wood sports equipment
+9533	Other wood products assemblers and inspectors	clamp carrier / chain carrier
+9533	Other wood products assemblers and inspectors	flask maker, wood - foundry
+9533	Other wood products assemblers and inspectors	grader, wooden sashes and doors
+9533	Other wood products assemblers and inspectors	inspector, quality control (QC)
+9533	Other wood products assemblers and inspectors	inspector-grader, wood products
+9533	Other wood products assemblers and inspectors	maker, wooden truss
+9533	Other wood products assemblers and inspectors	repairer, wood products
+9534	Furniture finishers and refinishers	finisher, polisher / decorator
+9534	Furniture finishers and refinishers	finisher, stain / varnish / paint
+9534	Furniture finishers and refinishers	finisher, wood grainer-matcher 
+9534	Furniture finishers and refinishers	finisher, refinisher, piano / organ
+9534	Furniture finishers and refinishers	operator, furniture finishing - wash-off 
+9534	Furniture finishers and refinishers	painter-finisher - furniture finishing
+9534	Furniture finishers and refinishers	repairer, furniture finishing
+9534	Furniture finishers and refinishers	reproducer, furniture
+9535	Plastic products assemblers, finishers and inspectors	assembler-maker, aircraft plastic parts
+9535	Plastic products assemblers, finishers and inspectors	belt / fibreglass laminator
+9535	Plastic products assemblers, finishers and inspectors	bottle trimmer / box maker
+9535	Plastic products assemblers, finishers and inspectors	composite material laminator
+9535	Plastic products assemblers, finishers and inspectors	fibreglass / plastic reproduction
+9535	Plastic products assemblers, finishers and inspectors	finisher-grinder - plastic manufacturing
+9535	Plastic products assemblers, finishers and inspectors	foam cushion reinforcer
+9535	Plastic products assemblers, finishers and inspectors	inspector-tester, quality control (QC)
+9535	Plastic products assemblers, finishers and inspectors	moulded plastic
+9535	Plastic products assemblers, finishers and inspectors	operator, plastic manufacturing equipment
+9535	Plastic products assemblers, finishers and inspectors	repairer, aircraft parts / safety goggles
+9535	Plastic products assemblers, finishers and inspectors	template maker / mould-filler
+9536	Industrial painters, coaters and metal finishing process operators	anodizer
+9536	Industrial painters, coaters and metal finishing process operators	applier, decal / print
+9536	Industrial painters, coaters and metal finishing process operators	burnisher-finisher, firearm
+9536	Industrial painters, coaters and metal finishing process operators	coater, painter, pipe / spray painter
+9536	Industrial painters, coaters and metal finishing process operators	crester
+9536	Industrial painters, coaters and metal finishing process operators	electrogalvanizer / electroformer
+9536	Industrial painters, coaters and metal finishing process operators	inspector, metal electroplating
+9536	Industrial painters, coaters and metal finishing process operators	operator, coating machine 
+9536	Industrial painters, coaters and metal finishing process operators	operator, dip tank / coating tank 
+9536	Industrial painters, coaters and metal finishing process operators	operator, enameller / enamel baker
+9536	Industrial painters, coaters and metal finishing process operators	operator, galvanizer
+9536	Industrial painters, coaters and metal finishing process operators	operator, hardboard spray-coating
+9536	Industrial painters, coaters and metal finishing process operators	operator, metal finishing
+9536	Industrial painters, coaters and metal finishing process operators	operator, metallizer / vacuum-metallizer
+9536	Industrial painters, coaters and metal finishing process operators	operator, painting machine
+9536	Industrial painters, coaters and metal finishing process operators	operator, pencil-coating / tip-banding
+9536	Industrial painters, coaters and metal finishing process operators	operator, spray paint
+9536	Industrial painters, coaters and metal finishing process operators	operator, spraying
+9536	Industrial painters, coaters and metal finishing process operators	operator, wire-paint-coating
+9536	Industrial painters, coaters and metal finishing process operators	painter, industrial
+9536	Industrial painters, coaters and metal finishing process operators	painter, railway car letterer
+9536	Industrial painters, coaters and metal finishing process operators	plater, bronze / chromium / copper / tin
+9536	Industrial painters, coaters and metal finishing process operators	plater, electroless / electroplater
+9536	Industrial painters, coaters and metal finishing process operators	preparer-prefinisher - product surface
+9536	Industrial painters, coaters and metal finishing process operators	repairer, finished vehicle paint
+9536	Industrial painters, coaters and metal finishing process operators	rustproofer, motor vehicle - spray / coater 
+9536	Industrial painters, coaters and metal finishing process operators	sander-glazier, block
+9536	Industrial painters, coaters and metal finishing process operators	temperer - plating and metal spraying
+9537	Other products assemblers, finishers and inspectors	advertising buttons
+9537	Other products assemblers, finishers and inspectors	aircraft heat shield / sensors
+9537	Other products assemblers, finishers and inspectors	automotive - car seats
+9537	Other products assemblers, finishers and inspectors	baggage
+9537	Other products assemblers, finishers and inspectors	calibrator, thermostat / pressure switch
+9537	Other products assemblers, finishers and inspectors	charger, thermometric capillary tube
+9537	Other products assemblers, finishers and inspectors	cleaning equipment
+9537	Other products assemblers, finishers and inspectors	construction
+9537	Other products assemblers, finishers and inspectors	cutlery
+9537	Other products assemblers, finishers and inspectors	doors / windows
+9537	Other products assemblers, finishers and inspectors	explosives / fireworks
+9537	Other products assemblers, finishers and inspectors	eyeglass / contact lens / frame
+9537	Other products assemblers, finishers and inspectors	fasteners - zippers
+9537	Other products assemblers, finishers and inspectors	footwear
+9537	Other products assemblers, finishers and inspectors	fuel rod / atomic fuel bundles
+9537	Other products assemblers, finishers and inspectors	glass - mirrors / framer
+9537	Other products assemblers, finishers and inspectors	hats
+9537	Other products assemblers, finishers and inspectors	home decorating
+9537	Other products assemblers, finishers and inspectors	industrial products
+9537	Other products assemblers, finishers and inspectors	inspector-tester, automotive
+9537	Other products assemblers, finishers and inspectors	inspector-tester, buttons / closures
+9537	Other products assemblers, finishers and inspectors	inspector-tester, clock and watch assembly
+9537	Other products assemblers, finishers and inspectors	inspector-tester, compact disc matrix
+9537	Other products assemblers, finishers and inspectors	inspector-tester, explosives
+9537	Other products assemblers, finishers and inspectors	inspector-tester, eyeglass frames / lenses
+9537	Other products assemblers, finishers and inspectors	inspector-tester, fasteners - zippers
+9537	Other products assemblers, finishers and inspectors	inspector-tester, firearms
+9537	Other products assemblers, finishers and inspectors	inspector-tester, industrial products
+9537	Other products assemblers, finishers and inspectors	inspector-tester, matches / matchbooks
+9537	Other products assemblers, finishers and inspectors	inspector-tester, miscellaneous 
+9537	Other products assemblers, finishers and inspectors	inspector-tester, musical instruments
+9537	Other products assemblers, finishers and inspectors	inspector-tester, packaging
+9537	Other products assemblers, finishers and inspectors	inspector-tester, pens and pencils
+9537	Other products assemblers, finishers and inspectors	inspector-tester, photographic equipment
+9537	Other products assemblers, finishers and inspectors	inspector-tester, precision instruments
+9537	Other products assemblers, finishers and inspectors	inspector-tester, soap and toilet goods
+9537	Other products assemblers, finishers and inspectors	inspector-tester, sports equipment
+9537	Other products assemblers, finishers and inspectors	inspector-tester, tools 
+9537	Other products assemblers, finishers and inspectors	kitchen equipment
+9537	Other products assemblers, finishers and inspectors	mannequin / mannequin wig maker
+9537	Other products assemblers, finishers and inspectors	musical instruments
+9537	Other products assemblers, finishers and inspectors	office equipment
+9537	Other products assemblers, finishers and inspectors	operator, abrasive belt cutter
+9537	Other products assemblers, finishers and inspectors	operator, anvil-seating press
+9537	Other products assemblers, finishers and inspectors	operator, art supply making 
+9537	Other products assemblers, finishers and inspectors	operator, assembly press / press set-up
+9537	Other products assemblers, finishers and inspectors	operator, button-making 
+9537	Other products assemblers, finishers and inspectors	operator, construction
+9537	Other products assemblers, finishers and inspectors	operator, explosives
+9537	Other products assemblers, finishers and inspectors	operator, eyeglass making - prism maker
+9537	Other products assemblers, finishers and inspectors	operator, fasteners
+9537	Other products assemblers, finishers and inspectors	operator, finishing / engraving
+9537	Other products assemblers, finishers and inspectors	operator, footwear
+9537	Other products assemblers, finishers and inspectors	operator, garment-making
+9537	Other products assemblers, finishers and inspectors	operator, glass manufacture
+9537	Other products assemblers, finishers and inspectors	operator, gluer / epoxy-pouring
+9537	Other products assemblers, finishers and inspectors	operator, heading / staking / twisting
+9537	Other products assemblers, finishers and inspectors	operator, home product manufacture
+9537	Other products assemblers, finishers and inspectors	operator, ice-making / ice-cutting machine
+9537	Other products assemblers, finishers and inspectors	operator, jewellery
+9537	Other products assemblers, finishers and inspectors	operator, medical product manufacture
+9537	Other products assemblers, finishers and inspectors	operator, packaging equipment
+9537	Other products assemblers, finishers and inspectors	operator, sports equipment
+9537	Other products assemblers, finishers and inspectors	operator, textile manufacture
+9537	Other products assemblers, finishers and inspectors	operator, tinsel maker
+9537	Other products assemblers, finishers and inspectors	operator, tool-making
+9537	Other products assemblers, finishers and inspectors	packaging
+9537	Other products assemblers, finishers and inspectors	pen and paper
+9537	Other products assemblers, finishers and inspectors	precision instruments
+9537	Other products assemblers, finishers and inspectors	safety equipment
+9537	Other products assemblers, finishers and inspectors	sports equipment
+9537	Other products assemblers, finishers and inspectors	textiles
+9537	Other products assemblers, finishers and inspectors	tobacco products (pipes, etc.)
+9537	Other products assemblers, finishers and inspectors	tools
+9537	Other products assemblers, finishers and inspectors	valves - magnetic / automated
+9537	Other products assemblers, finishers and inspectors	waterproofer
+9537	Other products assemblers, finishers and inspectors	wig
+9537	Other products assemblers, finishers and inspectors	window and door assembler - PVC window and door manufacturing
+9537	Other products assemblers, finishers and inspectors	window treatments
+9611	Labourers in mineral and metal processing	alloy mixer / annealer / dryer
+9611	Labourers in mineral and metal processing	annealer / cadmium leach 
+9611	Labourers in mineral and metal processing	assembler, cladding / ingot cladder
+9611	Labourers in mineral and metal processing	attendant, coke oven standpipe / filtering
+9611	Labourers in mineral and metal processing	casting wheel / cleaner
+9611	Labourers in mineral and metal processing	charger / fibreglass oven charger
+9611	Labourers in mineral and metal processing	charger, cupola / furnace
+9611	Labourers in mineral and metal processing	clay processing - kiln cleaner
+9611	Labourers in mineral and metal processing	depiler table lever
+9611	Labourers in mineral and metal processing	drawing - wire / rod / tube
+9611	Labourers in mineral and metal processing	dust collector
+9611	Labourers in mineral and metal processing	explosives manufacturing
+9611	Labourers in mineral and metal processing	extruder / welding-rod-extruder
+9611	Labourers in mineral and metal processing	furnace - cupola / blast / foundry
+9611	Labourers in mineral and metal processing	glass manufacturing
+9611	Labourers in mineral and metal processing	glass-forming
+9611	Labourers in mineral and metal processing	kiln operator / lime kiln operator
+9611	Labourers in mineral and metal processing	lead burner, zinc electrolysis
+9611	Labourers in mineral and metal processing	loader, cathode / coke / furnace / scrap
+9611	Labourers in mineral and metal processing	maker, carnallite flux / fluorospar flux
+9611	Labourers in mineral and metal processing	marker, metal tube
+9611	Labourers in mineral and metal processing	melt shop / refinery / smelter
+9611	Labourers in mineral and metal processing	melter / metal pourer
+9611	Labourers in mineral and metal processing	metal reclaimer / salvager
+9611	Labourers in mineral and metal processing	mill - ball / billet roll / foil
+9611	Labourers in mineral and metal processing	mill / ball mill 
+9611	Labourers in mineral and metal processing	mixer
+9611	Labourers in mineral and metal processing	mixer, brick and tile / powdered metal
+9611	Labourers in mineral and metal processing	moulder - asbestos
+9611	Labourers in mineral and metal processing	operator, atomizer / filtering / extruding
+9611	Labourers in mineral and metal processing	operator, baghouse / extruder
+9611	Labourers in mineral and metal processing	operator, coil bander / cold roll catcher
+9611	Labourers in mineral and metal processing	operator, sheet separator / buggy operator
+9611	Labourers in mineral and metal processing	ore crushing / screening
+9611	Labourers in mineral and metal processing	placer, saggar
+9611	Labourers in mineral and metal processing	plasterboard cutter
+9611	Labourers in mineral and metal processing	precipitator
+9611	Labourers in mineral and metal processing	puller, zinc cathode / zinc drosser
+9611	Labourers in mineral and metal processing	salvager, powdered metal / lead reclaimer
+9611	Labourers in mineral and metal processing	scrap machine / scrap shredder
+9611	Labourers in mineral and metal processing	scrap yard
+9611	Labourers in mineral and metal processing	setter, stone bed
+9611	Labourers in mineral and metal processing	skimmer / dross skimmer / furnace skimmer
+9611	Labourers in mineral and metal processing	tailings disposal / sludge
+9611	Labourers in mineral and metal processing	tar chaser, coke oven
+9612	Labourers in metal fabrication	assembler, nut and bolt
+9612	Labourers in metal fabrication	battery lead burner
+9612	Labourers in metal fabrication	bench hand, machine shop
+9612	Labourers in metal fabrication	bending machine
+9612	Labourers in metal fabrication	buffer, hand / metal
+9612	Labourers in metal fabrication	burnisher
+9612	Labourers in metal fabrication	calibrator, tanks
+9612	Labourers in metal fabrication	chipper / chipper-grinder
+9612	Labourers in metal fabrication	cleaner, firearms / foundry moulds
+9612	Labourers in metal fabrication	cleaner, metal / immersion cleaning
+9612	Labourers in metal fabrication	deburrer
+9612	Labourers in metal fabrication	dresser
+9612	Labourers in metal fabrication	feeder, brazing / soldering machine
+9612	Labourers in metal fabrication	filer, metal - machine / hand
+9612	Labourers in metal fabrication	fitter - shipbuilding / structure
+9612	Labourers in metal fabrication	foundry mould cleaner / dresser / finisher
+9612	Labourers in metal fabrication	grinder, bench / spring / drill / finish
+9612	Labourers in metal fabrication	grinder-chipper / deburrer / sharpener
+9612	Labourers in metal fabrication	industrial sheet metal worker
+9612	Labourers in metal fabrication	labourer, metal polishing-plating
+9612	Labourers in metal fabrication	machine shop / mechanical press
+9612	Labourers in metal fabrication	metal pickler / polish / coating
+9612	Labourers in metal fabrication	operator, bit sharpener / sandblaster
+9612	Labourers in metal fabrication	packer, nut and bolt
+9612	Labourers in metal fabrication	plater / power hammer / shear 
+9612	Labourers in metal fabrication	polisher, sheet metal / slide fastener
+9612	Labourers in metal fabrication	spooler, wire
+9612	Labourers in metal fabrication	tender, tumbler / tumbling barrel
+9612	Labourers in metal fabrication	trimmer
+9612	Labourers in metal fabrication	wrapper, reel 
+9613	Labourers in chemical products processing and utilities	attendant, transformer stockroom
+9613	Labourers in chemical products processing and utilities	batch dryer / boiler / boilerhouse
+9613	Labourers in chemical products processing and utilities	cleaner, electrolytic cell / equipment
+9613	Labourers in chemical products processing and utilities	compounder, bullet lubricant
+9613	Labourers in chemical products processing and utilities	distiller / filter / gas fitter
+9613	Labourers in chemical products processing and utilities	feeder, machine - coating / saturating
+9613	Labourers in chemical products processing and utilities	labourer, gas plant / utility / refinery
+9613	Labourers in chemical products processing and utilities	loader, oven loader / retort unloader
+9613	Labourers in chemical products processing and utilities	moulder, wax moulder
+9613	Labourers in chemical products processing and utilities	operator, integrator / landfill scale
+9613	Labourers in chemical products processing and utilities	preparer, chemical samples
+9613	Labourers in chemical products processing and utilities	recoverer, bath mix solvent
+9613	Labourers in chemical products processing and utilities	refrigeration / stationary engineer
+9613	Labourers in chemical products processing and utilities	regulator, temperature 
+9613	Labourers in chemical products processing and utilities	spooler, film spooler
+9613	Labourers in chemical products processing and utilities	stove-bottom / stove-carriage
+9614	Labourers in wood, pulp and paper processing	attendant, chip bin / chip silo-storage
+9614	Labourers in wood, pulp and paper processing	bag-making / coating machine
+9614	Labourers in wood, pulp and paper processing	bundler, hand - wood processing
+9614	Labourers in wood, pulp and paper processing	cleaner, barking machine / conveyor
+9614	Labourers in wood, pulp and paper processing	feeder, carton forming / plywood dryer
+9614	Labourers in wood, pulp and paper processing	labourer, chainman / chainwoman
+9614	Labourers in wood, pulp and paper processing	labourer, paper converting / broke hustler
+9614	Labourers in wood, pulp and paper processing	labourer, plywood & veneer plant / sawmill
+9614	Labourers in wood, pulp and paper processing	labourer, wood processing yard
+9614	Labourers in wood, pulp and paper processing	loader, bolt / trimmer / chip unloader
+9614	Labourers in wood, pulp and paper processing	log deck tender / feeder / handler
+9614	Labourers in wood, pulp and paper processing	lumber feeder / handler / salvager
+9614	Labourers in wood, pulp and paper processing	offbearer, greensaw / dry chain 
+9614	Labourers in wood, pulp and paper processing	operator, chip dump
+9614	Labourers in wood, pulp and paper processing	packer, shake
+9614	Labourers in wood, pulp and paper processing	pulp washer / recovery plant 
+9614	Labourers in wood, pulp and paper processing	tender, hogger / jack ladder
+9614	Labourers in wood, pulp and paper processing	tender, sawmill chain conveyor
+9614	Labourers in wood, pulp and paper processing	timber treatment tank
+9614	Labourers in wood, pulp and paper processing	trimmer, shingle
+9614	Labourers in wood, pulp and paper processing	utility man / woman - pulp and paper
+9615	Labourers in rubber and plastic products manufacturing	balloon collar roll / form stripper-cleaner
+9615	Labourers in rubber and plastic products manufacturing	bias cutting / extruder / spreader
+9615	Labourers in rubber and plastic products manufacturing	booker
+9615	Labourers in rubber and plastic products manufacturing	cementer, hand / tire repair 
+9615	Labourers in rubber and plastic products manufacturing	cleaner, moulds / screen cleaner / tires
+9615	Labourers in rubber and plastic products manufacturing	cooler, milled rubber
+9615	Labourers in rubber and plastic products manufacturing	extractor, airbag
+9615	Labourers in rubber and plastic products manufacturing	feeder, calender coating machine
+9615	Labourers in rubber and plastic products manufacturing	inspector, golf balls 
+9615	Labourers in rubber and plastic products manufacturing	labourer, tire manufacture
+9615	Labourers in rubber and plastic products manufacturing	mould cleaner / filler / preparer / setter
+9615	Labourers in rubber and plastic products manufacturing	offbearer, machine / moulding machine
+9615	Labourers in rubber and plastic products manufacturing	packer, insulation 
+9615	Labourers in rubber and plastic products manufacturing	picker, bead picker / beam press
+9615	Labourers in rubber and plastic products manufacturing	pole-up 
+9615	Labourers in rubber and plastic products manufacturing	repairer, inner tubes / tire tubes
+9615	Labourers in rubber and plastic products manufacturing	rubber compounder / seamer
+9615	Labourers in rubber and plastic products manufacturing	rubber footwear moulding
+9615	Labourers in rubber and plastic products manufacturing	spooler, latex threads
+9615	Labourers in rubber and plastic products manufacturing	stock lay-up / stock preparer
+9615	Labourers in rubber and plastic products manufacturing	tender, baling press / slab-off machine
+9615	Labourers in rubber and plastic products manufacturing	weigher, formula weigher / rubber compound
+9616	Labourers in textile processing	beam warper / bleacher / callender
+9616	Labourers in textile processing	bobbin changer / cleaner / sorter
+9616	Labourers in textile processing	carrier, filling 
+9616	Labourers in textile processing	chainer
+9616	Labourers in textile processing	changer, traveller
+9616	Labourers in textile processing	checker, bale
+9616	Labourers in textile processing	cleaner, carding machine / harness / loom
+9616	Labourers in textile processing	cloth carrier / hand-folder / offbearer
+9616	Labourers in textile processing	doffer / can doffer / loom doffer
+9616	Labourers in textile processing	dryer, hosiery tray
+9616	Labourers in textile processing	finder, twisted end
+9616	Labourers in textile processing	folder, tubing 
+9616	Labourers in textile processing	hauler, piece 
+9616	Labourers in textile processing	hosiery folder / hosiery tray dryer
+9616	Labourers in textile processing	loader, battery / dying-finishing machine
+9616	Labourers in textile processing	rag sorter and cutter
+9616	Labourers in textile processing	roll carrier / hauler / turner / cleaner
+9616	Labourers in textile processing	sample steamer
+9616	Labourers in textile processing	shuttle filler
+9616	Labourers in textile processing	skeiner, hand 
+9616	Labourers in textile processing	spool carrier / hauler / creeler
+9616	Labourers in textile processing	spun yarn linker / weigher / storekeeper
+9616	Labourers in textile processing	tender, drying machine / felt press
+9616	Labourers in textile processing	textile machine cleaner / feeder 
+9616	Labourers in textile processing	turner, knitted fabric
+9616	Labourers in textile processing	yarn handler / yarn salvager
+9617	Labourers in food and beverage processing	attendant, tank
+9617	Labourers in food and beverage processing	baker / grain cleaner
+9617	Labourers in food and beverage processing	bakery 
+9617	Labourers in food and beverage processing	barrel cleaner / filler
+9617	Labourers in food and beverage processing	beef marker / sampler
+9617	Labourers in food and beverage processing	bottle caser / checker / washer / bottler
+9617	Labourers in food and beverage processing	brewery
+9617	Labourers in food and beverage processing	butcher
+9617	Labourers in food and beverage processing	cannery / chilling / freezer
+9617	Labourers in food and beverage processing	casing salter / shirrer / stripper
+9617	Labourers in food and beverage processing	char filter / char kiln
+9617	Labourers in food and beverage processing	cleaner, bin / food processing equipment
+9617	Labourers in food and beverage processing	confectionery
+9617	Labourers in food and beverage processing	corn syrup / sugar processing
+9617	Labourers in food and beverage processing	custom feed miller
+9617	Labourers in food and beverage processing	dairy
+9617	Labourers in food and beverage processing	dairy helper / sampler / butter packer
+9617	Labourers in food and beverage processing	edible oil processing
+9617	Labourers in food and beverage processing	egg breaker
+9617	Labourers in food and beverage processing	feeder, nut-chopping machine
+9617	Labourers in food and beverage processing	flour mixer / flour sifter-bolter
+9617	Labourers in food and beverage processing	liquor gallery tender
+9617	Labourers in food and beverage processing	machine blender - juice / tea / coffee
+9617	Labourers in food and beverage processing	meat packager - food and beverage processing
+9617	Labourers in food and beverage processing	meat processing
+9617	Labourers in food and beverage processing	meat-packing
+9617	Labourers in food and beverage processing	mixer, seasoning / soft drink
+9617	Labourers in food and beverage processing	neutralizer, corn starch
+9617	Labourers in food and beverage processing	packaging
+9617	Labourers in food and beverage processing	poultry processing
+9617	Labourers in food and beverage processing	produce processing
+9617	Labourers in food and beverage processing	sampler, food and beverage products
+9617	Labourers in food and beverage processing	tender, food-cooler / tumbler / centrifuge
+9617	Labourers in food and beverage processing	vinegar maker
+9617	Labourers in food and beverage processing	weigher / tare assessor
+9617	Labourers in food and beverage processing	yeast processing / yeast sampler
+9618	Labourers in fish and seafood processing	fish bin worker / hopper filling
+9618	Labourers in fish and seafood processing	fish briner / salter / pickler / flaker
+9618	Labourers in fish and seafood processing	fish culler / dipper / freezer / packer
+9618	Labourers in fish and seafood processing	fish washer / weigher / sorter
+9618	Labourers in fish and seafood processing	handler, fish-processing plant
+9618	Labourers in fish and seafood processing	labourer, fish cannery / fish processing
+9618	Labourers in fish and seafood processing	labourer, shellfish checker / packer 
+9618	Labourers in fish and seafood processing	operator, cooler
+9619	Other labourers in processing, manufacturing and utilities	button and buckle making
+9619	Other labourers in processing, manufacturing and utilities	clay products manufacture
+9619	Other labourers in processing, manufacturing and utilities	construction - door sander
+9619	Other labourers in processing, manufacturing and utilities	construction - paint masker
+9619	Other labourers in processing, manufacturing and utilities	core mounter / pipe extractor
+9619	Other labourers in processing, manufacturing and utilities	electrical equipment assembly
+9619	Other labourers in processing, manufacturing and utilities	electrical products
+9619	Other labourers in processing, manufacturing and utilities	explosives manufacturing
+9619	Other labourers in processing, manufacturing and utilities	eyeglass and contact lens maker
+9619	Other labourers in processing, manufacturing and utilities	factory / assembly line
+9619	Other labourers in processing, manufacturing and utilities	filler, ampoule (pharmaceutical) / stamps
+9619	Other labourers in processing, manufacturing and utilities	film cutter / film mounter / film numberer
+9619	Other labourers in processing, manufacturing and utilities	footwear manufacture
+9619	Other labourers in processing, manufacturing and utilities	furniture manufacture
+9619	Other labourers in processing, manufacturing and utilities	garment manufacture
+9619	Other labourers in processing, manufacturing and utilities	glass manufacturing
+9619	Other labourers in processing, manufacturing and utilities	inspector-tester
+9619	Other labourers in processing, manufacturing and utilities	jewellery manufacturing
+9619	Other labourers in processing, manufacturing and utilities	luggage manufacture
+9619	Other labourers in processing, manufacturing and utilities	machine feeder
+9619	Other labourers in processing, manufacturing and utilities	metal processing and manufacture
+9619	Other labourers in processing, manufacturing and utilities	mineral processing
+9619	Other labourers in processing, manufacturing and utilities	moulding - shell mould bonder
+9619	Other labourers in processing, manufacturing and utilities	optical element cleaner / hardener
+9619	Other labourers in processing, manufacturing and utilities	paper manufacture
+9619	Other labourers in processing, manufacturing and utilities	plastic-packing
+9619	Other labourers in processing, manufacturing and utilities	printing
+9619	Other labourers in processing, manufacturing and utilities	production
+9619	Other labourers in processing, manufacturing and utilities	production weigher-counter
+9619	Other labourers in processing, manufacturing and utilities	recycling and disposal
+9619	Other labourers in processing, manufacturing and utilities	sample room / spray paint helper
+9619	Other labourers in processing, manufacturing and utilities	sealer, thermostat capillary
+9619	Other labourers in processing, manufacturing and utilities	shipbuilding
+9619	Other labourers in processing, manufacturing and utilities	sports equipment manufacture
+9619	Other labourers in processing, manufacturing and utilities	stationery and office supplies
+9619	Other labourers in processing, manufacturing and utilities	tannery manufacturing
+9619	Other labourers in processing, manufacturing and utilities	textile manufacture
+9619	Other labourers in processing, manufacturing and utilities	toolmaking
+9619	Other labourers in processing, manufacturing and utilities	toy manufacture
+9619	Other labourers in processing, manufacturing and utilities	wood products manufacture
+\.
 
 
 --
@@ -599,6 +10856,41 @@ COPY public.wages (noc, occupation_title, esdc_wage_rate_low_2021, esdc_wage_rat
 
 
 --
+-- Name: career_provincial_noc_idx; Type: INDEX; Schema: public; Owner: ssot
+--
+
+CREATE UNIQUE INDEX career_provincial_noc_idx ON public.career_provincial USING btree (noc);
+
+
+--
+-- Name: career_regional_noc_idx; Type: INDEX; Schema: public; Owner: ssot
+--
+
+CREATE UNIQUE INDEX career_regional_noc_idx ON public.career_regional USING btree (noc);
+
+
+--
+-- Name: census_noc_idx; Type: INDEX; Schema: public; Owner: ssot
+--
+
+CREATE UNIQUE INDEX census_noc_idx ON public.census USING btree (noc);
+
+
+--
+-- Name: education_noc_idx; Type: INDEX; Schema: public; Owner: ssot
+--
+
+CREATE UNIQUE INDEX education_noc_idx ON public.education USING btree (noc);
+
+
+--
+-- Name: titles_noc_idx; Type: INDEX; Schema: public; Owner: ssot
+--
+
+CREATE INDEX titles_noc_idx ON public.titles USING btree (noc);
+
+
+--
 -- Name: wages_noc_idx; Type: INDEX; Schema: public; Owner: ssot
 --
 
@@ -610,6 +10902,41 @@ CREATE UNIQUE INDEX wages_noc_idx ON public.wages USING btree (noc);
 --
 
 GRANT USAGE ON SCHEMA public TO ssot_readonly;
+
+
+--
+-- Name: TABLE career_provincial; Type: ACL; Schema: public; Owner: ssot
+--
+
+GRANT SELECT ON TABLE public.career_provincial TO ssot_readonly;
+
+
+--
+-- Name: TABLE career_regional; Type: ACL; Schema: public; Owner: ssot
+--
+
+GRANT SELECT ON TABLE public.career_regional TO ssot_readonly;
+
+
+--
+-- Name: TABLE census; Type: ACL; Schema: public; Owner: ssot
+--
+
+GRANT SELECT ON TABLE public.census TO ssot_readonly;
+
+
+--
+-- Name: TABLE education; Type: ACL; Schema: public; Owner: ssot
+--
+
+GRANT SELECT ON TABLE public.education TO ssot_readonly;
+
+
+--
+-- Name: TABLE titles; Type: ACL; Schema: public; Owner: ssot
+--
+
+GRANT SELECT ON TABLE public.titles TO ssot_readonly;
 
 
 --
@@ -625,6 +10952,16 @@ GRANT SELECT ON TABLE public.wages TO ssot_readonly;
 
 ALTER DEFAULT PRIVILEGES FOR ROLE ssot IN SCHEMA public GRANT SELECT ON TABLES  TO ssot_readonly;
 
+
+--
+-- Name: pgrst_watch; Type: EVENT TRIGGER; Schema: -; Owner: ssot
+--
+
+CREATE EVENT TRIGGER pgrst_watch ON ddl_command_end
+   EXECUTE FUNCTION public.pgrst_watch();
+
+
+ALTER EVENT TRIGGER pgrst_watch OWNER TO ssot;
 
 --
 -- PostgreSQL database dump complete
