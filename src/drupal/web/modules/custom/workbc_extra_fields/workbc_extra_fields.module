@@ -16,7 +16,7 @@ function workbc_extra_fields_node_view(array &$build, \Drupal\Core\Entity\Entity
   if ($view_mode == "full" && $entity->bundle() == "career_profile") {
     $client = new Client();
     try {
-      $response = $client->get('http://localhost:3000/wages?noc=eq.' . $entity->get("field_noc")->getString());
+      $response = $client->get('http://ssot:3000/wages?noc=eq.' . $entity->get("field_noc")->getString());
       $result = json_decode($response->getBody(), TRUE);
       if (isset($result[0])) {
         $data = $result[0];

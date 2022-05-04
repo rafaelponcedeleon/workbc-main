@@ -5,10 +5,9 @@ This branch contains a prototype implementation of a Drupal site that displays C
 
 ## Usage
 
-- `cd ssot && docker-compose up`
-- `docker-compose exec -T db psql --username ssot ssot < ssot.sql`
-- `cd ../drupal && docker-compose up`
-- `docker-compose exec -T mariadb mysql -u drupal --password=drupal workbc < workbc.sql`
+- `cd src && docker-compose up`
+- `docker-compose exec -T db psql --username ssot ssot < ssot/ssot.sql`
+- `docker-compose exec -T mariadb mysql -u drupal --password=drupal workbc < drupal/workbc.sql`
 - Edit your `hosts` file to add the following line:
 ```
 127.0.0.1       workbc.docker.localhost
