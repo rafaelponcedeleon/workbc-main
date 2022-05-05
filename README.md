@@ -12,5 +12,5 @@ This branch contains a prototype implementation of a Drupal site that displays C
 ```
 127.0.0.1       workbc.docker.localhost
 ```
-- Open http://workbc.docker.localhost:8000/ to view the Drupal prototype
+- Open http://workbc.docker.localhost:8000/ to view the Drupal prototype and login as `admin` / `hello`
 - Open http://localhost:8080/ to view the SSoT prototype
