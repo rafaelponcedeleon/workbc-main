@@ -316,6 +316,7 @@ services:
 
   db:
     image: postgres
+    container_name: "${PROJECT_NAME}_ssot_db"
     ports:
       - "5432:5432"
     environment:
@@ -327,6 +328,7 @@ services:
       - "./ssot/postgres-init:/docker-entrypoint-initdb.d"
   ssot:
     image: postgrest/postgrest
+    container_name: "${PROJECT_NAME}_ssot_api"
     ports:
       - "3000:3000"
     environment:
@@ -338,6 +340,7 @@ services:
       - db
   swagger:
     image: swaggerapi/swagger-ui
+    container_name: "${PROJECT_NAME}_ssot_swagger"
     ports:
       - "8080:8080"
     environment:
