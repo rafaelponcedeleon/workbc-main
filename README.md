@@ -6,8 +6,8 @@ This branch contains a prototype implementation of a Drupal site that displays C
 ## Usage
 
 - `cd src && docker-compose up`
-- `docker-compose exec -T db psql --username ssot ssot < ssot/ssot.sql`
-- `docker-compose exec -T mariadb mysql -u drupal --password=drupal workbc < drupal/workbc.sql`
+- `docker-compose exec -T db psql --username ssot ssot < ssot/ssot.sql` (in Windows PowerShell: `cmd /c "docker-compose exec -T db psql --username ssot ssot < ssot/ssot.sql"`)
+- `docker-compose exec -T mariadb mysql -u drupal --password=drupal workbc < drupal/workbc.sql` (in Windows PowerShell: `cmd /c "docker-compose exec -T mariadb mysql -u drupal --password=drupal workbc < drupal/workbc.sql"`)
 - Edit your `hosts` file to add the following line:
 ```
 127.0.0.1       workbc.docker.localhost
@@ -39,9 +39,9 @@ If that doesn't work you can use WAMP as your webserver and php service.
     CustomLog "logs/workbc-access.log" common
   	<Directory "D:/Websites/htdocs/workbc-main/src/drupal/web">
 	    Options -Indexes +FollowSymLinks +Includes
-    	AllowOverride All   
+    	AllowOverride All
     	Require local
-  	</Directory>    
+  	</Directory>
 </VirtualHost>
 ```
 
