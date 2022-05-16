@@ -1,0 +1,21 @@
+uuid: f5879926-19b9-436e-9988-d726c1b87ca4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_industry_highlights
+    - node.type.career_profile
+  module:
+    - text
+id: node.career_profile.field_industry_highlights
+field_name: field_industry_highlights
+entity_type: node
+bundle: career_profile
+label: 'Industry Highlights Introduction'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

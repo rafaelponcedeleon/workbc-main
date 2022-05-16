@@ -1,0 +1,19 @@
+uuid: 2680d53f-6ca0-43ad-8d01-ce18a8d813cd
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_insights_from_industry
+field_name: field_insights_from_industry
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

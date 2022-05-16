@@ -1,0 +1,21 @@
+uuid: 59816ed5-503a-41b8-8e36-521cd41ad00b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_career_pathways
+    - node.type.career_profile
+  module:
+    - text
+id: node.career_profile.field_career_pathways
+field_name: field_career_pathways
+entity_type: node
+bundle: career_profile
+label: 'Career Pathways'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

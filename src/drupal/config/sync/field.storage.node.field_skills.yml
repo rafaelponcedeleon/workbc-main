@@ -1,0 +1,19 @@
+uuid: 3e09f952-52ea-4ba1-986e-957b701857cf
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_skills
+field_name: field_skills
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

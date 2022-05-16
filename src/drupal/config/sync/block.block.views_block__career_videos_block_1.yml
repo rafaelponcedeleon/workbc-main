@@ -1,0 +1,33 @@
+uuid: 5178b634-38e8-4ae3-8ace-b59f65263e7f
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.career_videos
+  module:
+    - node
+    - views
+  theme:
+    - bartik
+id: views_block__career_videos_block_1
+theme: bartik
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'views_block:career_videos-block_1'
+settings:
+  id: 'views_block:career_videos-block_1'
+  label: ''
+  label_display: visible
+  provider: views
+  context_mapping: {  }
+  views_label: ''
+  items_per_page: none
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      career_profile: career_profile

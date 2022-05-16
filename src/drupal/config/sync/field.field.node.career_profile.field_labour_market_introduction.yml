@@ -1,0 +1,21 @@
+uuid: ca894ef4-5543-4993-a5a3-bac7bfed4a6d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_labour_market_introduction
+    - node.type.career_profile
+  module:
+    - text
+id: node.career_profile.field_labour_market_introduction
+field_name: field_labour_market_introduction
+entity_type: node
+bundle: career_profile
+label: 'Labour Market Introduction'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

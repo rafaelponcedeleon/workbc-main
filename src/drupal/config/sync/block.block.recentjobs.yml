@@ -1,0 +1,33 @@
+uuid: e581f554-5957-4d64-a37d-4b78fbe0968a
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:d26c67b0-5d8d-4d74-bf95-21a4326d7a0b'
+  module:
+    - block_content
+    - node
+  theme:
+    - bartik
+id: recentjobs
+theme: bartik
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'block_content:d26c67b0-5d8d-4d74-bf95-21a4326d7a0b'
+settings:
+  id: 'block_content:d26c67b0-5d8d-4d74-bf95-21a4326d7a0b'
+  label: 'Recent Jobs'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      career_profile: career_profile

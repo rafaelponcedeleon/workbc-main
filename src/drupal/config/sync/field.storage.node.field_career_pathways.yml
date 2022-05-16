@@ -1,0 +1,19 @@
+uuid: 72f65de6-632b-4828-a601-58bb0d4119e1
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_career_pathways
+field_name: field_career_pathways
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

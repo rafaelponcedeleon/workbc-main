@@ -1,0 +1,21 @@
+uuid: f85edd59-840d-4139-bc6e-a6cb234ca93c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_insights_from_industry
+    - node.type.career_profile
+  module:
+    - text
+id: node.career_profile.field_insights_from_industry
+field_name: field_insights_from_industry
+entity_type: node
+bundle: career_profile
+label: 'Insights from Industry'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

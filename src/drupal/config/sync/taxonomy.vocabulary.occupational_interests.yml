@@ -1,0 +1,8 @@
+uuid: 52d1b3b1-151e-4605-b9db-db6f20a258e2
+langcode: en
+status: true
+dependencies: {  }
+name: 'Occupational Interests'
+vid: occupational_interests
+description: ''
+weight: 0

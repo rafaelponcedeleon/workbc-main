@@ -1,0 +1,23 @@
+uuid: 011daa81-2296-4870-b39b-e85ac833dd47
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_level_of_importance
+    - paragraphs.paragraphs_type.skills
+id: paragraph.skills.field_level_of_importance
+field_name: field_level_of_importance
+entity_type: paragraph
+bundle: skills
+label: 'Level of Importance'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

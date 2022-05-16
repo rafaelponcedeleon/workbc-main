@@ -1,0 +1,37 @@
+uuid: 42f89012-be04-423d-a9f0-d916d2defb6c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_actions
+    - node.type.action
+    - paragraphs.paragraphs_type.action
+  module:
+    - entity_reference_revisions
+id: node.action.field_actions
+field_name: field_actions
+entity_type: node
+bundle: action
+label: Actions
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      action: action
+    negate: 0
+    target_bundles_drag_drop:
+      action:
+        weight: 4
+        enabled: true
+      additional_duties:
+        weight: 5
+        enabled: false
+      skills:
+        weight: 6
+        enabled: false
+field_type: entity_reference_revisions

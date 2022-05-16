@@ -1,0 +1,21 @@
+uuid: 04d0f368-1f87-4950-80a7-ec1e32170c35
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_salary
+    - node.type.career_profile
+  module:
+    - text
+id: node.career_profile.field_salary
+field_name: field_salary
+entity_type: node
+bundle: career_profile
+label: Salary
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

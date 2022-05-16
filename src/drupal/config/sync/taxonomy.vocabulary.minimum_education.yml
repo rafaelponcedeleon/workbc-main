@@ -1,0 +1,8 @@
+uuid: 2c9ce650-5df0-4291-9f3c-8386a77259a7
+langcode: en
+status: true
+dependencies: {  }
+name: 'Minimum Education'
+vid: minimum_education
+description: ''
+weight: 0

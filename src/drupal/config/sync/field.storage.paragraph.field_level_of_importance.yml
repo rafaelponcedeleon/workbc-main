@@ -1,0 +1,20 @@
+uuid: 46a6740f-da4a-4b58-a8f1-a4638a35119d
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_level_of_importance
+field_name: field_level_of_importance
+entity_type: paragraph
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

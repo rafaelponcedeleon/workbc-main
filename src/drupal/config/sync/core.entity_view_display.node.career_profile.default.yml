@@ -1,0 +1,421 @@
+uuid: 38eff7ce-f735-4f40-a1a1-e5eee4cc402a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.career_profile.field_additional_duties
+    - field.field.node.career_profile.field_career_overview_introducti
+    - field.field.node.career_profile.field_career_pathways
+    - field.field.node.career_profile.field_career_videos
+    - field.field.node.career_profile.field_duties
+    - field.field.node.career_profile.field_education_training_skills
+    - field.field.node.career_profile.field_hero_image
+    - field.field.node.career_profile.field_high_opportunity_occupatio
+    - field.field.node.career_profile.field_industry_highlights
+    - field.field.node.career_profile.field_insights_from_industry
+    - field.field.node.career_profile.field_job_titles
+    - field.field.node.career_profile.field_labour_market_introduction
+    - field.field.node.career_profile.field_minimum_education
+    - field.field.node.career_profile.field_noc
+    - field.field.node.career_profile.field_occupational_interests
+    - field.field.node.career_profile.field_related_careers
+    - field.field.node.career_profile.field_resources
+    - field.field.node.career_profile.field_salary
+    - field.field.node.career_profile.field_skills
+    - field.field.node.career_profile.field_skills_list
+    - field.field.node.career_profile.field_work_environment
+    - node.type.career_profile
+  module:
+    - entity_reference_revisions
+    - field_group
+    - image
+    - link
+    - text
+    - user
+third_party_settings:
+  field_group:
+    group_career_profile_tabs:
+      children:
+        - group_career_overview
+        - group_education_training_skills
+        - group_labour_market_statistics
+        - group_industry_highlights
+        - group_resources
+      label: 'Career Profile Tabs'
+      parent_name: ''
+      region: content
+      weight: 7
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        direction: horizontal
+        width_breakpoint: 640
+    group_career_overview:
+      children:
+        - field_career_overview_introducti
+        - field_duties
+        - field_additional_duties
+        - field_salary
+        - extra_field_salary_info_annual_salary
+        - extra_field_salary_info_hourly_rate
+        - field_work_environment
+        - extra_field_work_environment_number_employed
+        - extra_field_work_environment_percent_fulltime
+        - field_career_pathways
+        - field_related_careers
+        - field_occupational_interests
+        - field_job_titles
+      label: 'Career Overview'
+      parent_name: group_career_profile_tabs
+      region: content
+      weight: 23
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: open
+        description: ''
+    group_education_training_skills:
+      children:
+        - field_education_training_skills
+        - extra_field_education_programs
+        - field_skills
+        - field_skills_list
+      label: 'Education, Training & Skills'
+      parent_name: group_career_profile_tabs
+      region: content
+      weight: 24
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_labour_market_statistics:
+      children:
+        - field_labour_market_introduction
+        - extra_field_labour_market_number_employed
+        - extra_field_labour_market_region_employment
+        - extra_field_labour_market_expected_openings
+        - extra_field_job_openings_forecast
+        - extra_field_employment_growth_rate_forecast
+        - extra_field_job_openings_composition
+        - extra_field_job_openings_by_region
+      label: 'Labour Market Statistics'
+      parent_name: group_career_profile_tabs
+      region: content
+      weight: 25
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_industry_highlights:
+      children:
+        - field_industry_highlights
+        - extra_field_job_openings_by_industry
+        - field_insights_from_industry
+      label: 'Industry Highlights'
+      parent_name: group_career_profile_tabs
+      region: content
+      weight: 26
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_resources:
+      children:
+        - field_resources
+      label: Resources
+      parent_name: group_career_profile_tabs
+      region: content
+      weight: 27
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+id: node.career_profile.default
+targetEntityType: node
+bundle: career_profile
+mode: default
+content:
+  extra_field_annual_salary:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  extra_field_education_programs:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 17
+    region: content
+  extra_field_employment_growth_rate_forecast:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 24
+    region: content
+  extra_field_job_openings:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  extra_field_job_openings_by_industry:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 23
+    region: content
+  extra_field_job_openings_by_region:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 26
+    region: content
+  extra_field_job_openings_composition:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 25
+    region: content
+  extra_field_job_openings_forecast:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 23
+    region: content
+  extra_field_labour_market_expected_openings:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 22
+    region: content
+  extra_field_labour_market_number_employed:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 20
+    region: content
+  extra_field_labour_market_region_employment:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 21
+    region: content
+  extra_field_labour_market_stats:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 20
+    region: content
+  extra_field_salary_info_annual_hourly:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  extra_field_salary_info_annual_salary:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  extra_field_salary_info_hourly_rate:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  extra_field_work_environment_number_employed:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  extra_field_work_environment_percent_fulltime:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 16
+    region: content
+  field_additional_duties:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_career_overview_introducti:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_career_pathways:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 17
+    region: content
+  field_duties:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_education_training_skills:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 16
+    region: content
+  field_hero_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_high_opportunity_occupatio:
+    type: boolean
+    label: inline
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_industry_highlights:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 21
+    region: content
+  field_insights_from_industry:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 24
+    region: content
+  field_job_titles:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 20
+    region: content
+  field_labour_market_introduction:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 19
+    region: content
+  field_minimum_education:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_noc:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_occupational_interests:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 19
+    region: content
+  field_related_careers:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 18
+    region: content
+  field_resources:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 22
+    region: content
+  field_salary:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_skills:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 18
+    region: content
+  field_skills_list:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 19
+    region: content
+  field_work_environment:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  job_openings:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  salary_annual_salary:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden:
+  extra_field_all_nodes: true
+  extra_field_featured_stats: true
+  extra_field_industry_highlights: true
+  extra_field_labour_market_employment: true
+  extra_field_labour_market_outlook: true
+  extra_field_salary_info: true
+  extra_field_work_environment: true
+  field_career_videos: true
