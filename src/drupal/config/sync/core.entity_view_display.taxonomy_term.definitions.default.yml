@@ -1,0 +1,21 @@
+uuid: 24f737bf-a1fa-4421-82d4-6dbfdabe00e8
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.definitions
+  module:
+    - text
+id: taxonomy_term.definitions.default
+targetEntityType: taxonomy_term
+bundle: definitions
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

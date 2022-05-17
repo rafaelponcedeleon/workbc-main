@@ -1,19 +1,20 @@
-uuid: 4d3058ea-4dbe-4a2c-87c9-327c560cf9eb
+uuid: 641f99bb-c697-4f34-936f-75c023d90e9e
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_related_topics
     - node.type.action
-    - node.type.page
-id: node.action.field_related_topics
+    - node.type.career_profile
+    - node.type.general
+id: node.general.field_related_topics
 field_name: field_related_topics
 entity_type: node
-bundle: action
+bundle: general
 label: 'Related Topics'
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
@@ -21,9 +22,10 @@ settings:
   handler_settings:
     target_bundles:
       action: action
-      page: page
+      career_profile: career_profile
+      general: general
     sort:
-      field: title
+      field: _none
       direction: ASC
     auto_create: false
     auto_create_bundle: action

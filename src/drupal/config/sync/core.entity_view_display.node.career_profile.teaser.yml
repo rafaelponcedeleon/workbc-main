@@ -36,9 +36,24 @@ content:
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
 hidden:
+  extra_field_annual_salary: true
+  extra_field_education_programs: true
+  extra_field_employment_growth_rate_forecast: true
+  extra_field_job_openings: true
+  extra_field_job_openings_by_industry: true
+  extra_field_job_openings_by_region: true
+  extra_field_job_openings_composition: true
+  extra_field_job_openings_forecast: true
+  extra_field_labour_market_expected_openings: true
+  extra_field_labour_market_number_employed: true
+  extra_field_labour_market_region_employment: true
+  extra_field_salary_info_annual_salary: true
+  extra_field_salary_info_hourly_rate: true
+  extra_field_work_environment_number_employed: true
+  extra_field_work_environment_percent_fulltime: true
   field_additional_duties: true
   field_career_overview_introducti: true
   field_career_pathways: true

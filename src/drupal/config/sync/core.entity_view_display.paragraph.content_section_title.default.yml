@@ -1,0 +1,21 @@
+uuid: 9a0a59ea-9837-43be-b818-99709e54e429
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.content_section_title.field_title
+    - paragraphs.paragraphs_type.content_section_title
+id: paragraph.content_section_title.default
+targetEntityType: paragraph
+bundle: content_section_title
+mode: default
+content:
+  field_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }
