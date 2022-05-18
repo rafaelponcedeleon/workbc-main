@@ -1,0 +1,15 @@
+uuid: 54ab544a-c343-4acd-95ab-4a45b44ac385
+langcode: en
+status: true
+dependencies: {  }
+name: feature_component
+label: 'Feature Component'
+effects:
+  74b5bd96-ee25-4461-88e5-600c3052123f:
+    uuid: 74b5bd96-ee25-4461-88e5-600c3052123f
+    id: image_scale
+    weight: 1
+    data:
+      width: 580
+      height: 300
+      upscale: false

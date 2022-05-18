@@ -1,0 +1,26 @@
+uuid: 8edd16e4-ef09-4e19-bb83-6daf3ce9b5d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.single.field_background_color
+    - field.field.paragraph.single.field_single
+    - paragraphs.paragraphs_type.single
+  module:
+    - entity_reference_revisions
+id: paragraph.single.default
+targetEntityType: paragraph
+bundle: single
+mode: default
+content:
+  field_single:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_background_color: true

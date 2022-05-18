@@ -1,0 +1,15 @@
+uuid: c63ee1b5-f0d4-45d1-97e5-b5fff4a50373
+langcode: en
+status: true
+dependencies: {  }
+name: third_width_component
+label: 'Third Width Component'
+effects:
+  e00ef3da-e357-4081-b8fe-cbc80a4d48a0:
+    uuid: e00ef3da-e357-4081-b8fe-cbc80a4d48a0
+    id: image_scale
+    weight: 1
+    data:
+      width: 380
+      height: 200
+      upscale: false

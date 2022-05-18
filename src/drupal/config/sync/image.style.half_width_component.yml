@@ -1,0 +1,15 @@
+uuid: 90f64f93-89dd-4854-b512-79b99675b4d3
+langcode: en
+status: true
+dependencies: {  }
+name: half_width_component
+label: 'Half Width Component'
+effects:
+  ab77ccee-dbce-4c32-98c0-db9823df8827:
+    uuid: ab77ccee-dbce-4c32-98c0-db9823df8827
+    id: image_scale
+    weight: 1
+    data:
+      width: 580
+      height: 300
+      upscale: false

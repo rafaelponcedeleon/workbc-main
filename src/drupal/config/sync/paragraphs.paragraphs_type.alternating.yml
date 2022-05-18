@@ -1,0 +1,10 @@
+uuid: 7a0e8019-0515-4e73-9f39-c9c68b17826c
+langcode: en
+status: true
+dependencies: {  }
+id: alternating
+label: Alternating
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

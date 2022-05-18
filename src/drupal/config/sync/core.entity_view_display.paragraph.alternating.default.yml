@@ -1,0 +1,24 @@
+uuid: 9a17ed69-ca11-475c-b985-8827f2361f62
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.alternating.field_alternating_actions
+    - paragraphs.paragraphs_type.alternating
+  module:
+    - entity_reference_revisions
+id: paragraph.alternating.default
+targetEntityType: paragraph
+bundle: alternating
+mode: default
+content:
+  field_alternating_actions:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

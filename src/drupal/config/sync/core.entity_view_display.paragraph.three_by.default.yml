@@ -1,0 +1,24 @@
+uuid: 8a17e5ec-0f4b-47a2-96ba-5539081c3f3a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.three_by.field_three_by
+    - paragraphs.paragraphs_type.three_by
+  module:
+    - entity_reference_revisions
+id: paragraph.three_by.default
+targetEntityType: paragraph
+bundle: three_by
+mode: default
+content:
+  field_three_by:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

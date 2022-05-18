@@ -1,0 +1,55 @@
+uuid: 6f0c8855-63b6-4f90-bb85-82941a61b3e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_alternating_actions
+    - paragraphs.paragraphs_type.action
+    - paragraphs.paragraphs_type.alternating
+  module:
+    - entity_reference_revisions
+id: paragraph.alternating.field_alternating_actions
+field_name: field_alternating_actions
+entity_type: paragraph
+bundle: alternating
+label: 'Alternating Actions'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      action: action
+    negate: 0
+    target_bundles_drag_drop:
+      action:
+        weight: 10
+        enabled: true
+      additional_duties:
+        weight: 11
+        enabled: false
+      alternating:
+        weight: 12
+        enabled: false
+      content_image:
+        weight: 13
+        enabled: false
+      content_section_title:
+        weight: 14
+        enabled: false
+      content_video:
+        weight: 15
+        enabled: false
+      content_view:
+        weight: 16
+        enabled: false
+      skills:
+        weight: 17
+        enabled: false
+      text:
+        weight: 18
+        enabled: false
+field_type: entity_reference_revisions

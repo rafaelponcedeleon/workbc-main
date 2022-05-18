@@ -1,21 +1,18 @@
-uuid: 42f89012-be04-423d-a9f0-d916d2defb6c
+uuid: 68ecc219-1183-4817-8947-0cc9cbdce31e
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_actions
-    - node.type.action
-    - paragraphs.paragraphs_type.alternating
-    - paragraphs.paragraphs_type.single
-    - paragraphs.paragraphs_type.three_by
+    - field.storage.paragraph.field_two_by
+    - paragraphs.paragraphs_type.action
     - paragraphs.paragraphs_type.two_by
   module:
     - entity_reference_revisions
-id: node.action.field_actions
-field_name: field_actions
-entity_type: node
-bundle: action
-label: 'Action Groups'
+id: paragraph.two_by.field_two_by
+field_name: field_two_by
+entity_type: paragraph
+bundle: two_by
+label: 'Two By'
 description: ''
 required: false
 translatable: false
@@ -25,46 +22,37 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      alternating: alternating
-      single: single
-      two_by: two_by
-      three_by: three_by
+      action: action
     negate: 0
     target_bundles_drag_drop:
       action:
-        weight: 4
-        enabled: false
+        weight: 11
+        enabled: true
       additional_duties:
-        weight: 5
+        weight: 12
         enabled: false
       alternating:
         weight: 13
-        enabled: true
+        enabled: false
       content_image:
-        weight: 11
-        enabled: false
-      content_section_title:
-        weight: 12
-        enabled: false
-      content_video:
-        weight: 13
-        enabled: false
-      content_view:
         weight: 14
         enabled: false
-      single:
-        weight: 20
-        enabled: true
-      skills:
-        weight: 6
+      content_section_title:
+        weight: 15
         enabled: false
-      text:
+      content_video:
         weight: 16
         enabled: false
-      three_by:
-        weight: 21
-        enabled: true
+      content_view:
+        weight: 17
+        enabled: false
+      skills:
+        weight: 18
+        enabled: false
+      text:
+        weight: 19
+        enabled: false
       two_by:
         weight: 20
-        enabled: true
+        enabled: false
 field_type: entity_reference_revisions

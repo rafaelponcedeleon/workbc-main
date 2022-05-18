@@ -1,0 +1,24 @@
+uuid: a9f9d498-b324-4672-a179-e3ff20e9eb21
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.two_by.field_two_by
+    - paragraphs.paragraphs_type.two_by
+  module:
+    - entity_reference_revisions
+id: paragraph.two_by.default
+targetEntityType: paragraph
+bundle: two_by
+mode: default
+content:
+  field_two_by:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

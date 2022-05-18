@@ -1,0 +1,15 @@
+uuid: 52fc2538-289e-42de-a4e5-98ff1a1dfdde
+langcode: en
+status: true
+dependencies: {  }
+name: quarter_width_component
+label: 'Quarter Width Component'
+effects:
+  61a1910a-acf4-4271-a468-580c2577c3fb:
+    uuid: 61a1910a-acf4-4271-a468-580c2577c3fb
+    id: image_scale
+    weight: 1
+    data:
+      width: 280
+      height: 150
+      upscale: false
