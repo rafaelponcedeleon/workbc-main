@@ -1,0 +1,10 @@
+uuid: 75fb34ea-375e-490a-ae0c-e61d71144545
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.action_three_by
+label: 'Action - Three By'
+targetEntityType: paragraph
+cache: true

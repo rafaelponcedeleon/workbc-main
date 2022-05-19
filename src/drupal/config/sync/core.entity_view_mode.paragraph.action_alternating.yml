@@ -1,0 +1,10 @@
+uuid: 462557a4-ee2a-4b5f-a827-7a5ba846c193
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.action_alternating
+label: 'Action - Alternating'
+targetEntityType: paragraph
+cache: true

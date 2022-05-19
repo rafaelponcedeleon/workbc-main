@@ -1,8 +1,9 @@
-uuid: 69369d4e-3009-40c8-8d08-37bea8eb8e6f
+uuid: 74e62c31-0a13-4723-831b-75fa804f8a8f
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.paragraph.action_two_by
     - field.field.paragraph.action.field_description
     - field.field.paragraph.action.field_image
     - field.field.paragraph.action.field_link
@@ -12,10 +13,10 @@ dependencies:
   module:
     - image
     - link
-id: paragraph.action.default
+id: paragraph.action.action_two_by
 targetEntityType: paragraph
 bundle: action
-mode: default
+mode: action_two_by
 content:
   field_description:
     type: basic_string

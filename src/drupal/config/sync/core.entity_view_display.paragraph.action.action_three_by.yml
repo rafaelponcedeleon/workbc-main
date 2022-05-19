@@ -1,21 +1,22 @@
-uuid: 69369d4e-3009-40c8-8d08-37bea8eb8e6f
+uuid: c27fbfbf-1cac-458a-b0c9-40e8d95d970c
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.paragraph.action_three_by
     - field.field.paragraph.action.field_description
     - field.field.paragraph.action.field_image
     - field.field.paragraph.action.field_link
     - field.field.paragraph.action.field_title
-    - image.style.half_width_component
+    - image.style.third_width_component
     - paragraphs.paragraphs_type.action
   module:
     - image
     - link
-id: paragraph.action.default
+id: paragraph.action.action_three_by
 targetEntityType: paragraph
 bundle: action
-mode: default
+mode: action_three_by
 content:
   field_description:
     type: basic_string
@@ -29,7 +30,7 @@ content:
     label: visually_hidden
     settings:
       image_link: ''
-      image_style: half_width_component
+      image_style: third_width_component
     third_party_settings: {  }
     weight: 2
     region: content

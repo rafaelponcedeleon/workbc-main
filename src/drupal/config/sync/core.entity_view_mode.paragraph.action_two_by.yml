@@ -1,0 +1,10 @@
+uuid: c3d2b776-1d9c-4ee8-8ae5-575d20a2663c
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.action_two_by
+label: 'Action - Two By'
+targetEntityType: paragraph
+cache: true

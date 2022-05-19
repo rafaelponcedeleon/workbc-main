@@ -2,7 +2,7 @@ _core:
   default_config_hash: VDJxTZtQR21qB4lvOq8zszJZLvLKrSPQpdn2E3T71Ww
 langcode: en
 uuid: 063a7f85-f1b6-48ec-927b-adec07f141d5
-name: 'Refresh 2'
+name: 'WorkBC Refresh - Prototype'
 mail: admin@wampserver.invalid
 slogan: ''
 page:
