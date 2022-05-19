@@ -1,0 +1,10 @@
+uuid: 06dc18cd-ea45-4627-baca-5f3da02aae54
+langcode: en
+status: true
+dependencies: {  }
+id: call_to_action_1_4
+label: 'Call to action: 1/4'
+icon_uuid: null
+icon_default: null
+description: 'A section of calls to action with a 4-per-row layout.'
+behavior_plugins: {  }

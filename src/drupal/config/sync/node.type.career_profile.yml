@@ -9,7 +9,7 @@ third_party_settings:
     available_menus:
       - main
     parent: 'main:'
-name: 'Career Profile'
+name: 'Career profile'
 type: career_profile
 description: ''
 help: ''

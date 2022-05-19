@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies: {  }
 id: single
-label: Single
+label: 'Call to action: Feature'
 icon_uuid: null
 icon_default: null
-description: ''
+description: 'A section containing a single, featured call to action.'
 behavior_plugins: {  }

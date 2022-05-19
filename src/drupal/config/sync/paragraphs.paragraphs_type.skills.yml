@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 id: skills
-label: Skills
+label: Skill
 icon_uuid: null
 icon_default: null
 description: ''

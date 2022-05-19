@@ -9,15 +9,15 @@ id: paragraph.skills.field_level_of_importance
 field_name: field_level_of_importance
 entity_type: paragraph
 bundle: skills
-label: 'Level of Importance'
+label: 'Level of importance'
 description: ''
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  min: null
-  max: null
+  min: 1
+  max: 100
   prefix: ''
   suffix: ''
 field_type: integer

@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 id: additional_duties
-label: 'Additional Duties'
+label: 'Additional duty'
 icon_uuid: null
 icon_default: null
 description: ''

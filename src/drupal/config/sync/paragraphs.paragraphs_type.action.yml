@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies: {  }
 id: action
-label: Action
+label: 'Call to action'
 icon_uuid: null
 icon_default: null
-description: 'Call to Action'
+description: 'A "call to action" is a component that includes title, description, image and a button that links to another page. It is the basic building block for landing pages.'
 behavior_plugins: {  }

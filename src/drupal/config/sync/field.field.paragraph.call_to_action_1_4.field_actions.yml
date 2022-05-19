@@ -1,0 +1,67 @@
+uuid: a98f23dd-3577-4a15-b1d4-3962138f0db5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_actions
+    - paragraphs.paragraphs_type.action
+    - paragraphs.paragraphs_type.call_to_action_1_4
+  module:
+    - entity_reference_revisions
+id: paragraph.call_to_action_1_4.field_actions
+field_name: field_actions
+entity_type: paragraph
+bundle: call_to_action_1_4
+label: Actions
+description: 'Calls to action to show in this section.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      action: action
+    negate: 0
+    target_bundles_drag_drop:
+      action:
+        weight: 14
+        enabled: true
+      additional_duties:
+        weight: 15
+        enabled: false
+      alternating:
+        weight: 16
+        enabled: false
+      call_to_action_1_4:
+        weight: 17
+        enabled: false
+      content_image:
+        weight: 18
+        enabled: false
+      content_section_title:
+        weight: 19
+        enabled: false
+      content_video:
+        weight: 20
+        enabled: false
+      content_view:
+        weight: 21
+        enabled: false
+      single:
+        weight: 22
+        enabled: false
+      skills:
+        weight: 23
+        enabled: false
+      text:
+        weight: 24
+        enabled: false
+      three_by:
+        weight: 25
+        enabled: false
+      two_by:
+        weight: 26
+        enabled: false
+field_type: entity_reference_revisions

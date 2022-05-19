@@ -1,0 +1,24 @@
+uuid: da6f41a7-ff0b-4154-805e-029d7a841618
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.call_to_action_1_4.field_actions
+    - paragraphs.paragraphs_type.call_to_action_1_4
+  module:
+    - entity_reference_revisions
+id: paragraph.call_to_action_1_4.default
+targetEntityType: paragraph
+bundle: call_to_action_1_4
+mode: default
+content:
+  field_actions:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

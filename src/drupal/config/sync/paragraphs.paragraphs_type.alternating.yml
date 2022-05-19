@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies: {  }
 id: alternating
-label: Alternating
+label: 'Call to action: Full-width'
 icon_uuid: null
 icon_default: null
-description: ''
+description: 'A section of full-width calls to action with alternating image/text layout on each row. '
 behavior_plugins: {  }
