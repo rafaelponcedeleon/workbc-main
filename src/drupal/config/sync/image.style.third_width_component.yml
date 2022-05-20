@@ -5,11 +5,11 @@ dependencies: {  }
 name: third_width_component
 label: 'Third Width Component'
 effects:
-  e00ef3da-e357-4081-b8fe-cbc80a4d48a0:
-    uuid: e00ef3da-e357-4081-b8fe-cbc80a4d48a0
-    id: image_scale
-    weight: 1
+  a193f55f-9ed3-4d78-b3b4-1923f3468f3e:
+    uuid: a193f55f-9ed3-4d78-b3b4-1923f3468f3e
+    id: image_scale_and_crop
+    weight: 2
     data:
       width: 380
       height: 200
-      upscale: false
+      anchor: center-center

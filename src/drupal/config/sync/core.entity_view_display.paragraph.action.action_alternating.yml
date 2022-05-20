@@ -8,7 +8,7 @@ dependencies:
     - field.field.paragraph.action.field_image
     - field.field.paragraph.action.field_link
     - field.field.paragraph.action.field_title
-    - image.style.half_width_component
+    - image.style.full_width_component
     - paragraphs.paragraphs_type.action
   module:
     - image
@@ -30,7 +30,7 @@ content:
     label: visually_hidden
     settings:
       image_link: ''
-      image_style: half_width_component
+      image_style: full_width_component
     third_party_settings: {  }
     weight: 2
     region: content

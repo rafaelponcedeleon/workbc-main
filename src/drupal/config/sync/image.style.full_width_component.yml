@@ -5,11 +5,11 @@ dependencies: {  }
 name: full_width_component
 label: 'Full Width Component'
 effects:
-  90baa878-4732-4c0a-93e5-68d71fad518d:
-    uuid: 90baa878-4732-4c0a-93e5-68d71fad518d
-    id: image_scale
-    weight: 1
+  421b4b00-03d9-4517-a706-b4c0090c1e11:
+    uuid: 421b4b00-03d9-4517-a706-b4c0090c1e11
+    id: image_scale_and_crop
+    weight: 2
     data:
       width: 380
       height: 250
-      upscale: false
+      anchor: center-center

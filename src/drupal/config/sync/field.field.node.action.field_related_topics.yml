@@ -6,7 +6,7 @@ dependencies:
     - field.storage.node.field_related_topics
     - node.type.action
     - node.type.career_profile
-    - node.type.general
+    - node.type.page
 id: node.action.field_related_topics
 field_name: field_related_topics
 entity_type: node
@@ -21,9 +21,9 @@ settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
-      action: action
+      page: page
       career_profile: career_profile
-      general: general
+      action: action
     sort:
       field: title
       direction: ASC
