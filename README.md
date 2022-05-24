@@ -21,7 +21,7 @@ If you are experiencing errors running the prototype on a Windows computer (ie. 
 
 Try unchecking "Use the WSL 2 based engine" in the Docker Desktop options.
 
-If that doesn't work you can use WAMP as your webserver and php service.
+If that doesn't work you can use [WAMP](https://www.wampserver.com/en/) as your web server and PHP service.
 
 - Edit your `hosts` file to add the following lines:
 ```
@@ -33,18 +33,15 @@ If that doesn't work you can use WAMP as your webserver and php service.
 ```
 <VirtualHost *:80>
     ServerAdmin webmaster@workbc.localhost
-    DocumentRoot "C:/Websites/htdocs/workbc-main/src/drupal/web"
+    DocumentRoot "C:/Path/To/htdocs/workbc-main/src/drupal/web"
     ServerName workbc.localhost
     ErrorLog "logs/workbc-error.log"
     CustomLog "logs/workbc-access.log" common
-  	<Directory "D:/Websites/htdocs/workbc-main/src/drupal/web">
+  	<Directory "C:/Path/To/htdocs/workbc-main/src/drupal/web">
 	    Options -Indexes +FollowSymLinks +Includes
     	AllowOverride All
     	Require local
   	</Directory>
 </VirtualHost>
 ```
-
-NOTE: If using WAMP to provide webserver and php service several containers in the docker profile are not needed.
-Use the `docker-compose-windows.yml` file instead of `docker-compose.yml` to avoid creating unnecessary containers.
-- `cd src && docker-compose -f docker-compose-windows.yml up`
+- `cd src && docker-compose -f docker-compose.yml -f docker-compose-windows.yml up`
