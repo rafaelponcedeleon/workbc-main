@@ -1,0 +1,27 @@
+uuid: eaae6b62-ad4f-4bd0-8ec0-a201b8f0646b
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - workbc_prototype
+_core:
+  default_config_hash: fxlrBC1ORFe6QiowyI40Yy8Io4hRCi5f-v6iNHYMPfs
+id: workbc_prototype_main_navigation
+theme: workbc_prototype
+region: nav_main
+weight: 0
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: true
+visibility: {  }

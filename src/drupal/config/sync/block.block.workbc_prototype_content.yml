@@ -1,0 +1,22 @@
+uuid: a643da3d-420a-4e05-92fb-f7235b19a38e
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - workbc_prototype
+_core:
+  default_config_hash: R530jKvXMFCaD10bow7ZBS0WqBDldv-frAkqKp1HRp8
+id: workbc_prototype_content
+theme: workbc_prototype
+region: content
+weight: -1
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

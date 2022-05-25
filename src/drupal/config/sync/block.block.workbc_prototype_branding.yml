@@ -1,0 +1,25 @@
+uuid: 1eb107a4-760a-45bf-82cf-1f9d1be12564
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - workbc_prototype
+_core:
+  default_config_hash: '-THtFMYVlD9sQA-ul5qxI-fHjwmW8hxnwPAzX5j8YxM'
+id: workbc_prototype_branding
+theme: workbc_prototype
+region: nav_branding
+weight: -6
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: false
+visibility: {  }

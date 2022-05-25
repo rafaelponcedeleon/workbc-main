@@ -1,0 +1,22 @@
+uuid: 5650f3d1-981a-473d-9bfd-151352fbb7ab
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - workbc_prototype
+_core:
+  default_config_hash: nPq3v4oA_9VKFBrTIgRBokZHu-solU9p4KlXf1EpjRk
+id: workbc_prototype_help
+theme: workbc_prototype
+region: content
+weight: -3
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

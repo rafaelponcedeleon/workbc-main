@@ -1,0 +1,22 @@
+uuid: 17e62851-31f9-4ea7-851b-169dfa9ebfb8
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - workbc_prototype
+_core:
+  default_config_hash: PUJGoorRX8LkiMzUig2wR531pEAAryYL6nrL5wPwvGA
+id: workbc_prototype_messages
+theme: workbc_prototype
+region: content
+weight: -7
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: Messages
+  label_display: '0'
+  provider: system
+visibility: {  }

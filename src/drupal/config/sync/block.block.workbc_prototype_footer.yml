@@ -1,0 +1,27 @@
+uuid: 4105d404-9e1a-43c7-bee0-cc83368ea0e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.footer
+  module:
+    - system
+  theme:
+    - workbc_prototype
+_core:
+  default_config_hash: vu_jUKa07t8pBoRhbEsbqtfHZ1I_AiTF-O8-LPQj9S4
+id: workbc_prototype_footer
+theme: workbc_prototype
+region: footer
+weight: -6
+provider: null
+plugin: 'system_menu_block:footer'
+settings:
+  id: 'system_menu_block:footer'
+  label: Footer
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

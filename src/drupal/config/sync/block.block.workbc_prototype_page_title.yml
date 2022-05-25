@@ -1,0 +1,20 @@
+uuid: 107deb35-8b3e-4a12-8082-72185f829b23
+langcode: en
+status: true
+dependencies:
+  theme:
+    - workbc_prototype
+_core:
+  default_config_hash: M4mS1oJ8u-mz_1trWEhW4Rg564z9ynRepby1Mz8qRTQ
+id: workbc_prototype_page_title
+theme: workbc_prototype
+region: content
+weight: -6
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility: {  }
