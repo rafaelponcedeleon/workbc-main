@@ -12,7 +12,7 @@ id: paragraph.single.field_single
 field_name: field_single
 entity_type: paragraph
 bundle: single
-label: Single
+label: Feature
 description: ''
 required: false
 translatable: false
@@ -33,6 +33,9 @@ settings:
         enabled: false
       alternating:
         weight: 15
+        enabled: false
+      call_to_action_1_4:
+        weight: 17
         enabled: false
       content_image:
         weight: 16
