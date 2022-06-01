@@ -1,24 +1,26 @@
 <?php
 
-namespace Drupal\workbc_extra_fields\Plugin\ExtraField\Display;
+namespace Drupal\workbc_extra_fields\Plugin\ExtraField\Display\RegionProfile;
 
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\extra_field\Plugin\ExtraFieldDisplayFormattedBase;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 
 /**
  * Example Extra field with formatted output.
  *
  * @ExtraFieldDisplay(
- *   id = "labour_market_number_employed",
- *   label = @Translation("Labour Market Info - Number Employed"),
- *   description = @Translation("An extra field to display job opening forecast chart."),
+ *   id = "region_employment",
+ *   label = @Translation("Employment"),
+ *   description = @Translation("An extra field to display region employment."),
  *   bundles = {
- *     "node.career_profile",
+ *     "node.region_profile",
  *   }
  * )
  */
-class CareerProfileLabourMarketEmployed extends ExtraFieldDisplayFormattedBase {
+class RegionEmployment extends ExtraFieldDisplayFormattedBase {
 
   use StringTranslationTrait;
 
@@ -43,10 +45,7 @@ class CareerProfileLabourMarketEmployed extends ExtraFieldDisplayFormattedBase {
    */
   public function viewElements(ContentEntityInterface $entity) {
 
-    mt_srand($entity->id());
-    $employed = mt_rand(50000, 500000);
-
-    $output = Number_format($employed,0);
+    $output = "[not-yet-available]";
 
     return [
       ['#markup' => $output],

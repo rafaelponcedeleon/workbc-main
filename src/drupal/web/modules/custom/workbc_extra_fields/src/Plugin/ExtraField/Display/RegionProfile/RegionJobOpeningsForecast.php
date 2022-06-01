@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\workbc_extra_fields\Plugin\ExtraField\Display;
+namespace Drupal\workbc_extra_fields\Plugin\ExtraField\Display\RegionProfile;
 
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
@@ -12,15 +12,15 @@ use GuzzleHttp\Exception\RequestException;
  * Example Extra field with formatted output.
  *
  * @ExtraFieldDisplay(
- *   id = "annual_salary",
- *   label = @Translation("Annual Salary"),
- *   description = @Translation("An extra field to display job opening forecast chart."),
+ *   id = "region_job_openings_forecast",
+ *   label = @Translation("Job Openings Forecast"),
+ *   description = @Translation("An extra field to display region job openings forecast."),
  *   bundles = {
- *     "node.career_profile",
+ *     "node.region_profile",
  *   }
  * )
  */
-class CareerProfileAnnualSalary extends ExtraFieldDisplayFormattedBase {
+class RegionJobOpeningsForecast extends ExtraFieldDisplayFormattedBase {
 
   use StringTranslationTrait;
 
@@ -29,7 +29,7 @@ class CareerProfileAnnualSalary extends ExtraFieldDisplayFormattedBase {
    */
   public function getLabel() {
 
-    return $this->t('Annual Salary');
+    return $this->t('Job Openings Forecast');
   }
 
   /**
@@ -45,7 +45,7 @@ class CareerProfileAnnualSalary extends ExtraFieldDisplayFormattedBase {
    */
   public function viewElements(ContentEntityInterface $entity) {
 
-    $output = "$" . Number_format($entity->ssot_data['calculated_median_annual_salary_2021'],0);
+    $output = "[not-yet-available]";
 
     return [
       ['#markup' => $output],

@@ -1,24 +1,26 @@
 <?php
 
-namespace Drupal\workbc_extra_fields\Plugin\ExtraField\Display;
+namespace Drupal\workbc_extra_fields\Plugin\ExtraField\Display\RegionProfile;
 
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\extra_field\Plugin\ExtraFieldDisplayFormattedBase;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 
 /**
  * Example Extra field with formatted output.
  *
  * @ExtraFieldDisplay(
- *   id = "labour_market_expected_openings",
- *   label = @Translation("Labour Market Info - Expected Job Openings"),
- *   description = @Translation("An extra field to display job opening forecast chart."),
+ *   id = "region_job_openings_composition_chart",
+ *   label = @Translation("Job Openings Composition Chart"),
+ *   description = @Translation("An extra field to display region job openings forecast chart."),
  *   bundles = {
- *     "node.career_profile",
+ *     "node.region_profile",
  *   }
  * )
  */
-class CareerProfileLabourMarketExpectedOpenings extends ExtraFieldDisplayFormattedBase {
+class RegionJobOpeningsCompositionChart extends ExtraFieldDisplayFormattedBase {
 
   use StringTranslationTrait;
 
@@ -27,7 +29,7 @@ class CareerProfileLabourMarketExpectedOpenings extends ExtraFieldDisplayFormatt
    */
   public function getLabel() {
 
-    return $this->t('Expected Job Openings (2019-2029)');
+    return $this->t('Job Openings Composition Chart');
   }
 
   /**
@@ -43,10 +45,7 @@ class CareerProfileLabourMarketExpectedOpenings extends ExtraFieldDisplayFormatt
    */
   public function viewElements(ContentEntityInterface $entity) {
 
-    mt_srand($entity->id());
-    $openings = mt_rand(5000, 33000);
-
-    $output = Number_format($openings,0);
+    $output = "[not-yet-available]";
 
     return [
       ['#markup' => $output],

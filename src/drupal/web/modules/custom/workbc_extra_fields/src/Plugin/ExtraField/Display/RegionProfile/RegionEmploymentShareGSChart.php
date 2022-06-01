@@ -1,24 +1,26 @@
 <?php
 
-namespace Drupal\workbc_extra_fields\Plugin\ExtraField\Display;
+namespace Drupal\workbc_extra_fields\Plugin\ExtraField\Display\RegionProfile;
 
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\extra_field\Plugin\ExtraFieldDisplayFormattedBase;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 
 /**
  * Example Extra field with formatted output.
  *
  * @ExtraFieldDisplay(
- *   id = "salary_info_annual_salary",
- *   label = @Translation("Salary Info - Annual Salary"),
- *   description = @Translation("An extra field to display job opening forecast chart."),
+ *   id = "region_employment_shart_goods_services_chart",
+ *   label = @Translation("Employment Share Goods & Services Chart"),
+ *   description = @Translation("An extra field to display employment share goods & services chart."),
  *   bundles = {
- *     "node.career_profile",
+ *     "node.region_profile",
  *   }
  * )
  */
-class CareerProfileSalaryInfoSalary extends ExtraFieldDisplayFormattedBase {
+class RegionEmploymentShareGSChart extends ExtraFieldDisplayFormattedBase {
 
   use StringTranslationTrait;
 
@@ -27,7 +29,7 @@ class CareerProfileSalaryInfoSalary extends ExtraFieldDisplayFormattedBase {
    */
   public function getLabel() {
 
-    return $this->t('Annual Salary');
+    return $this->t('Employment Share in Goods & Services Chart');
   }
 
   /**
@@ -43,15 +45,7 @@ class CareerProfileSalaryInfoSalary extends ExtraFieldDisplayFormattedBase {
    */
   public function viewElements(ContentEntityInterface $entity) {
 
-      if (!empty($entity->ssot_data)) {
-        $output = "$" . Number_format($entity->ssot_data['calculated_median_annual_salary_2021'],0);
-      }
-      else {
-        $output = "n/a";
-      }
-
-
-
+    $output = "[not-yet-available]";
 
     return [
       ['#markup' => $output],

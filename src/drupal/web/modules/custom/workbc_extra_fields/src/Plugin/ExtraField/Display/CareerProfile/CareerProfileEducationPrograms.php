@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\workbc_extra_fields\Plugin\ExtraField\Display;
+namespace Drupal\workbc_extra_fields\Plugin\ExtraField\Display\CareerProfile;
 
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
@@ -48,7 +48,7 @@ class CareerProfileEducationPrograms extends ExtraFieldDisplayFormattedBase {
     $text .= "<ul>";
     $text .= "<li>[education-program]</li>";
     $text .= "<li>[education-program]</li>";
-    $text .= "<li>[education-program]</li>";    
+    $text .= "<li>[education-program]</li>";
     $text .= "</ul>";
     $text .= "<p></p>";
     $text .= "<p>Find out more information about programs offered specifically for this career.</p>";

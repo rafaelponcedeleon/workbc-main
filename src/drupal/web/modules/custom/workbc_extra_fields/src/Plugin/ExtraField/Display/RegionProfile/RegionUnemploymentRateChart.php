@@ -1,24 +1,26 @@
 <?php
 
-namespace Drupal\workbc_extra_fields\Plugin\ExtraField\Display;
+namespace Drupal\workbc_extra_fields\Plugin\ExtraField\Display\RegionProfile;
 
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\extra_field\Plugin\ExtraFieldDisplayFormattedBase;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 
 /**
  * Example Extra field with formatted output.
  *
  * @ExtraFieldDisplay(
- *   id = "work_environment_percent_fulltime",
- *   label = @Translation("Work Environment Info - Percent Fulltime"),
- *   description = @Translation("An extra field to display job opening forecast chart."),
+ *   id = "region_unemployment_rate",
+ *   label = @Translation("Unemployment Rate"),
+ *   description = @Translation("An extra field to display unemployment rate."),
  *   bundles = {
- *     "node.career_profile",
+ *     "node.region_profile",
  *   }
  * )
  */
-class CareerProfileWorkEnvironmentPercentFT extends ExtraFieldDisplayFormattedBase {
+class RegionUnemploymentRateChart extends ExtraFieldDisplayFormattedBase {
 
   use StringTranslationTrait;
 
@@ -27,7 +29,7 @@ class CareerProfileWorkEnvironmentPercentFT extends ExtraFieldDisplayFormattedBa
    */
   public function getLabel() {
 
-    return $this->t('% Employed Full Time');
+    return $this->t('Unemployment Rate Chart');
   }
 
   /**
@@ -43,10 +45,7 @@ class CareerProfileWorkEnvironmentPercentFT extends ExtraFieldDisplayFormattedBa
    */
   public function viewElements(ContentEntityInterface $entity) {
 
-    mt_srand($entity->id());
-    $fulltime = mt_rand(35, 90);
-
-    $output = number_format($fulltime,0) . '%';
+    $output = "[not-yet-available]";
 
     return [
       ['#markup' => $output],
