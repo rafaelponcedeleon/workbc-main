@@ -200,6 +200,7 @@ class ComposerStaticInit2046637831a370ced054ce93d3e13e21
             'Composer\\Installers\\' => 20,
             'Composer\\CaBundle\\' => 18,
             'Composer\\' => 9,
+            'Cheppers\\GatherContent\\' => 23,
         ),
         'B' => 
         array (
@@ -645,6 +646,10 @@ class ComposerStaticInit2046637831a370ced054ce93d3e13e21
         'Composer\\' => 
         array (
             0 => __DIR__ . '/..' . '/composer/composer/src/Composer',
+        ),
+        'Cheppers\\GatherContent\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cheppers/gathercontent-client/src',
         ),
         'Behat\\Mink\\Driver\\' => 
         array (

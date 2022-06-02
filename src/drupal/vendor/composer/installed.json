@@ -198,6 +198,52 @@
             "install-path": "../behat/mink-selenium2-driver"
         },
         {
+            "name": "cheppers/gathercontent-client",
+            "version": "v2.0.7",
+            "version_normalized": "2.0.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Cheppers/gathercontent-client.git",
+                "reference": "0720e0f8667c1da97a010d85b0995e364c312605"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Cheppers/gathercontent-client/zipball/0720e0f8667c1da97a010d85b0995e364c312605",
+                "reference": "0720e0f8667c1da97a010d85b0995e364c312605",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.3"
+            },
+            "require-dev": {
+                "cheppers/git-hooks": "^0.0.9",
+                "cheppers/lint-report": "^0.0.5",
+                "cheppers/robo-git": "^0.0.5",
+                "cheppers/robo-phpcs": "^0.0.13",
+                "consolidation/robo": "^1.1",
+                "phpunit/phpunit": "^6.2",
+                "webmozart/path-util": "^2.3"
+            },
+            "time": "2021-07-07T10:49:36+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Cheppers\\GatherContent\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "GatherContent client",
+            "support": {
+                "issues": "https://github.com/Cheppers/gathercontent-client/issues",
+                "source": "https://github.com/Cheppers/gathercontent-client/tree/v2.0.7"
+            },
+            "install-path": "../cheppers/gathercontent-client"
+        },
+        {
             "name": "chi-teck/drupal-code-generator",
             "version": "1.33.1",
             "version_normalized": "1.33.1.0",
@@ -2513,7 +2559,7 @@
                 "source": "https://git.drupalcode.org/project/bootstrap5",
                 "issues": "https://www.drupal.org/project/issues/bootstrap5"
             },
-            "install-path": "../../../../../../../websites/htdocs/workbc-main/src/drupal/web/themes/contrib/bootstrap5"
+            "install-path": "../../web/themes/contrib/bootstrap5"
         },
         {
             "name": "drupal/coder",
@@ -2821,7 +2867,7 @@
             "support": {
                 "source": "https://github.com/drupal/core/tree/9.3.12"
             },
-            "install-path": "../../../../../../../websites/htdocs/workbc-main/src/drupal/web/core"
+            "install-path": "../../web/core"
         },
         {
             "name": "drupal/core-composer-scaffold",
@@ -3076,7 +3122,7 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/entity_reference_revisions"
             },
-            "install-path": "../../../../../../../websites/htdocs/workbc-main/src/drupal/web/modules/contrib/entity_reference_revisions"
+            "install-path": "../../web/modules/contrib/entity_reference_revisions"
         },
         {
             "name": "drupal/paragraphs",
@@ -3160,7 +3206,7 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/paragraphs"
             },
-            "install-path": "../../../../../../../websites/htdocs/workbc-main/src/drupal/web/modules/contrib/paragraphs"
+            "install-path": "../../web/modules/contrib/paragraphs"
         },
         {
             "name": "drupal/viewsreference",
@@ -3245,7 +3291,7 @@
                 "source": "http://cgit.drupalcode.org/viewsreference",
                 "issues": "http://drupal.org/project/issues/viewsreference"
             },
-            "install-path": "../../../../../../../websites/htdocs/workbc-main/src/drupal/web/modules/contrib/viewsreference"
+            "install-path": "../../web/modules/contrib/viewsreference"
         },
         {
             "name": "drush/drush",

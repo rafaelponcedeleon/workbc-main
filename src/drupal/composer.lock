@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6c0da59cc19e02f4b171b14a984b5e0d",
+    "content-hash": "e3a528691f47bd52ffa81771ee565c65",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -61,6 +61,49 @@
                 "source": "https://github.com/asm89/stack-cors/tree/1.3.0"
             },
             "time": "2019-12-24T22:41:47+00:00"
+        },
+        {
+            "name": "cheppers/gathercontent-client",
+            "version": "v2.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Cheppers/gathercontent-client.git",
+                "reference": "0720e0f8667c1da97a010d85b0995e364c312605"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Cheppers/gathercontent-client/zipball/0720e0f8667c1da97a010d85b0995e364c312605",
+                "reference": "0720e0f8667c1da97a010d85b0995e364c312605",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.3"
+            },
+            "require-dev": {
+                "cheppers/git-hooks": "^0.0.9",
+                "cheppers/lint-report": "^0.0.5",
+                "cheppers/robo-git": "^0.0.5",
+                "cheppers/robo-phpcs": "^0.0.13",
+                "consolidation/robo": "^1.1",
+                "phpunit/phpunit": "^6.2",
+                "webmozart/path-util": "^2.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cheppers\\GatherContent\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "GatherContent client",
+            "support": {
+                "issues": "https://github.com/Cheppers/gathercontent-client/issues",
+                "source": "https://github.com/Cheppers/gathercontent-client/tree/v2.0.7"
+            },
+            "time": "2021-07-07T10:49:36+00:00"
         },
         {
             "name": "chi-teck/drupal-code-generator",
