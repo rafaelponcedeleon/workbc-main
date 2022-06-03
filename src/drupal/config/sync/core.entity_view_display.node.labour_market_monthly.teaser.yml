@@ -1,0 +1,30 @@
+uuid: f3e9b980-e900-407a-a91f-9644b473408d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.labour_market_monthly.body
+    - node.type.labour_market_monthly
+  module:
+    - text
+    - user
+id: node.labour_market_monthly.teaser
+targetEntityType: node
+bundle: labour_market_monthly
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

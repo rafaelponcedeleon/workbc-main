@@ -1,0 +1,113 @@
+uuid: 44c7c2be-0272-4a6e-9260-5b0884a570ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.region_profile.body
+    - node.type.region_profile
+  module:
+    - text
+    - user
+id: node.region_profile.default
+targetEntityType: node
+bundle: region_profile
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  extra_field_region_employment:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  extra_field_region_employment_by_industry_table:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  extra_field_region_employment_by_region_table:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  extra_field_region_employment_growth_forecast_percent:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 16
+    region: content
+  extra_field_region_employment_growth_forecast_total:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 17
+    region: content
+  extra_field_region_employment_shart_goods_services_chart:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  extra_field_region_ft_pt_employment_table:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  extra_field_region_ft_pt_employment_table_bc:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  extra_field_region_job_openings:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  extra_field_region_job_openings_composition_chart:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  extra_field_region_job_openings_forecast:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  extra_field_region_job_openings_forecast_chart:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  extra_field_region_population:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  extra_field_region_population_bc:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  extra_field_region_top_ten_occupations:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 18
+    region: content
+  extra_field_region_unemployment_rate:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  extra_field_region_unemployment_rate_bc:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

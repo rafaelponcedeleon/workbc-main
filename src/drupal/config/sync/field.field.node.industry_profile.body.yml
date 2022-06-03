@@ -1,0 +1,23 @@
+uuid: 8dbc1675-3f9f-44d1-9bfa-a34c18c6451b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.industry_profile
+  module:
+    - text
+id: node.industry_profile.body
+field_name: body
+entity_type: node
+bundle: industry_profile
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

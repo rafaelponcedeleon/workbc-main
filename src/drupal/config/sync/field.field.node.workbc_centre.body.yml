@@ -1,0 +1,23 @@
+uuid: fdaab54e-ff4d-4793-b5ba-a5f177738340
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.workbc_centre
+  module:
+    - text
+id: node.workbc_centre.body
+field_name: body
+entity_type: node
+bundle: workbc_centre
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

@@ -1,0 +1,23 @@
+uuid: 31a8d52c-a249-4eb3-a800-a9c679a78f2d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.labour_market_monthly
+  module:
+    - text
+id: node.labour_market_monthly.body
+field_name: body
+entity_type: node
+bundle: labour_market_monthly
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary
