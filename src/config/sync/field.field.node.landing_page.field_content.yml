@@ -1,0 +1,76 @@
+uuid: 75711f47-dc93-4e11-9db5-d183f980e86a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content
+    - node.type.landing_page
+    - paragraphs.paragraphs_type.action_card_feature
+    - paragraphs.paragraphs_type.action_cards_1_2
+    - paragraphs.paragraphs_type.action_cards_1_3
+    - paragraphs.paragraphs_type.action_cards_1_4
+    - paragraphs.paragraphs_type.action_cards_full_width
+    - paragraphs.paragraphs_type.content_text
+    - paragraphs.paragraphs_type.content_view
+  module:
+    - entity_reference_revisions
+id: node.landing_page.field_content
+field_name: field_content
+entity_type: node
+bundle: landing_page
+label: Content
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      action_card_feature: action_card_feature
+      action_cards_full_width: action_cards_full_width
+      action_cards_1_2: action_cards_1_2
+      action_cards_1_3: action_cards_1_3
+      action_cards_1_4: action_cards_1_4
+      content_text: content_text
+      content_view: content_view
+    negate: 0
+    target_bundles_drag_drop:
+      action_card:
+        weight: -25
+        enabled: false
+      action_card_feature:
+        weight: -24
+        enabled: true
+      action_cards_1_2:
+        weight: -22
+        enabled: true
+      action_cards_1_3:
+        weight: -21
+        enabled: true
+      action_cards_1_4:
+        weight: -20
+        enabled: true
+      action_cards_full_width:
+        weight: -23
+        enabled: true
+      additional_duties:
+        weight: -19
+        enabled: false
+      content_text:
+        weight: -18
+        enabled: true
+      content_view:
+        weight: -17
+        enabled: true
+      hours_of_operation:
+        weight: -16
+        enabled: false
+      quote_card:
+        weight: -15
+        enabled: false
+      skills:
+        weight: -14
+        enabled: false
+field_type: entity_reference_revisions

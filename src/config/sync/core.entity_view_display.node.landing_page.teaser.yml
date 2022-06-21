@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.landing_page.body
     - field.field.node.landing_page.field_action_card_groups
+    - field.field.node.landing_page.field_content
     - field.field.node.landing_page.field_hero_image
     - field.field.node.landing_page.field_related_topics
     - node.type.landing_page
@@ -32,5 +33,6 @@ content:
     region: content
 hidden:
   field_action_card_groups: true
+  field_content: true
   field_hero_image: true
   field_related_topics: true
